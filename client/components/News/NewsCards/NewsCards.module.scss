@@ -1,0 +1,94 @@
+@use '../../../styles/media/media-queres';
+@import '../../../styles/varriables/varriables';
+
+.cards {
+  position: relative;
+  width: 389px;
+
+  @include media-queres.mediaOnly535px {
+    width: 320px;
+  }
+
+  @include media-queres.mediaOnly360px {
+    width: 280px;
+  }
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 232px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(24, 38, 82, .35);
+  }
+
+  @include media-queres.mediaOnly535px {
+    height: 190px;
+  }
+
+  @include media-queres.mediaOnly360px {
+    height: 150px;
+  }
+}
+
+.newsName {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  color: $mainWhite;
+  z-index: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.newsDate {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  background: $primary;
+  padding: 8px;
+  color: $mainWhite;
+
+  span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 11px;
+    text-transform: uppercase;
+  }
+}
+
+.content {
+  color: $skyBlue;
+  margin-top: 13px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.newsDescription {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+}

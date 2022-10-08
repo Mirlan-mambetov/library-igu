@@ -1,0 +1,51 @@
+@use '../../styles/media/media-queres';
+@import '../../styles/varriables/varriables';
+
+.tab {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+  padding-top: 10px;
+  padding-left: 50px;
+  max-height: 0;
+  transition: max-height .4s ease;
+
+  &.active {
+    max-height: 100vh;
+  }
+}
+
+.tabTop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #b1b1b1;
+  padding: 7px 0 7px 13px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 23px;
+  z-index: 2;
+  background: $mainWhite;
+
+  svg {
+    transition: transform .3s ease;
+  }
+
+  &.active {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+}

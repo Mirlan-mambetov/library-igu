@@ -1,0 +1,10 @@
+@use '../../styles/media/media-queres';
+
+.cards {
+  display: flex;
+  min-height: 200px;
+
+  @include media-queres.mediaOnly720px {
+    flex-wrap: wrap;
+  }
+}

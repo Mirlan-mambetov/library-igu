@@ -1,0 +1,13 @@
+@use '../../../styles/media/media-queres';
+
+.cardImage {
+  width: 150px;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include media-queres.mediaOnly1024px {
+    background-size: contain;
+  }
+}

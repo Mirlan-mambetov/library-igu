@@ -1,6 +1,8 @@
+@use '../styles/media/media-queres';
 @import './varriables/varriables';
 @import './fonts/font';
 @import './mixins';
+
 
 * {
   margin: 0;
@@ -18,4 +20,28 @@ body {
   padding-left: $Paddings;
   padding-right: $Paddings;
   margin: 0 auto;
+
+  @include media-queres.mediaOnly1280px {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+// RESET STYLES BASIC
+ul,
+a,
+a:focus {
+  outline: none;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+// SWIPER SLIDE PROGRESSBAR
+.swiper-pagination-progressbar {
+  background: none !important;
+  border: 1px solid $black;
+}
+
+.swiper-pagination-progressbar-fill {
+  background: $black  !important;
 }
