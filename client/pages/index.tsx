@@ -32,8 +32,18 @@ const Home: FC = (): JSX.Element => {
   ]
   // Tabs arrivals
   const arrivalTabs: TabsInterface[] = [
-    { id: 1, link: 'http://nbisu.moy.su/Novinki/sentjabr_2019.pdf', name: "Сентябрь 2022 - PDF" },
-    { id: 2, link: 'http://nbisu.moy.su/Novinki/oktjabr_2019.pdf', name: "Октябрь 2022 - PDF" }
+    {
+      id: 1, title: 'Книжняя литература', isLink: [
+        { id: 1, link: 'http://nbisu.moy.su/Novinki/sentjabr_2019.pdf', name: 'Сентябрь 2022 - PDF' },
+        { id: 2, link: 'http://nbisu.moy.su/Novinki/oktjabr_2019.pdf', name: 'Октябрь 2022 - PDF' },
+      ]
+    },
+    {
+      id: 2, title: 'Периодические издания ', isLink: [
+        { id: 1, link: 'http://nbisu.moy.su/Novinki/oktjabr_2019.pdf', name: '1 полугодие 2019 года' },
+        { id: 2, link: 'http://nbisu.moy.su/Novinki/oktjabr_2019.pdf', name: '2 полугодие 2019 года' }
+      ]
+    },
   ]
   // Partners
   const partners: PartnersInterface[] = [
@@ -53,7 +63,6 @@ const Home: FC = (): JSX.Element => {
       {/* Hero section */}
       <Hero
         title="Научная библиотека ИГУ им. К. Тыныстанова"
-        image="https://res.cloudinary.com/djzubalr7/image/upload/v1665219599/Library-igu/background-default_z6g7u1.png"
       />
       {/* News */}
       <News news={newses} />
@@ -64,8 +73,9 @@ const Home: FC = (): JSX.Element => {
           <div className={classes.arrivalsWrapp}>
             <ImageCards className={classes.books} images={newArrivals} />
             <div className={classes.content}>
-              <Tabs tabs={arrivalTabs} title="Книжняя литература" />
-              <Tabs tabs={arrivalTabs} title="Периодические издания - PDF" />
+              {arrivalTabs.map(s => (
+                <Tabs tabs={s} key={s.id} />
+              ))}
             </div>
           </div>
         </div>

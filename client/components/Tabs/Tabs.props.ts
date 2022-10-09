@@ -1,7 +1,6 @@
-import { DelHTMLAttributes, ReactNode } from "react";
-import { TabsInterface } from "../../interfaces/Tabs.interface";
+import { DetailsHTMLAttributes } from "react"
+import { TabsInterface } from "../../interfaces/Tabs.interface"
 
-export interface TabsProps extends DelHTMLAttributes<HTMLDivElement> {
-  tabs: TabsInterface[]
-  title: string
+export interface TabsProps extends DetailsHTMLAttributes<HTMLDivElement> {
+  tabs: TabsInterface
 }

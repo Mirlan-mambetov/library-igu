@@ -1,8 +1,12 @@
 import { FC } from 'react'
 import { ParagraphProps } from './Paragraph.props'
+import classNames from 'classnames'
 
-export const Paragraph: FC<ParagraphProps> = ({ children, ...props }) => {
+// STYLES
+import classes from './Paragraph.module.scss'
+
+export const Paragraph: FC<ParagraphProps> = ({ children, line, ...props }) => {
   return (
-    <p {...props}>{children}</p>
+    <p className={classNames(classes.paragraph, { [classes.line]: line })} {...props}>{children}</p>
   )
 }

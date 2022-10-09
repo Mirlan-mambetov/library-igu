@@ -45,7 +45,6 @@
   color: $mainWhite;
   @include titleFont;
   text-align: center;
-  width: 70%;
 
   @include media-queres.mediaOnly1280px {
     width: 80%;

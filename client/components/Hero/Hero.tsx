@@ -1,12 +1,15 @@
 import { FC } from "react"
-import { HeroProps } from "../../interfaces/Hero.props"
+import { HeroProps } from "./Hero.props"
 import { Listgroup, Title } from '../'
 
 // STYLES
 import classes from './Hero.module.scss'
 import { LinkProps } from "../../interfaces/Link.props"
 
-export const Hero: FC<HeroProps> = ({ image, title }): JSX.Element => {
+export const Hero: FC<HeroProps> = ({
+  image = "https://res.cloudinary.com/djzubalr7/image/upload/v1665219599/Library-igu/background-default_z6g7u1.png",
+  title
+}): JSX.Element => {
   const heroNavLink: LinkProps[] = [
     { id: 1, name: 'Труды перподавателей', href: '/works' },
     { id: 2, name: 'Кыргыз-тили жана адабияты', href: '/kyrgyz' },
