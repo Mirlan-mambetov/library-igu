@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { TitleProps } from "../../interfaces/Title.props"
+import { TitleProps } from "./Title.props"
 import classNames from "classnames"
 
 // STYLES

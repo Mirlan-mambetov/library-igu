@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { ParagraphIterface } from '../../interfaces/Paragraph.interface'
+import { TextBoxProps } from './TextBox.props'
 import { Paragraph } from '../Paragraph/Paragraph'
 import { Title } from '../Title/Title'
 import classNames from 'classnames'
@@ -7,7 +7,7 @@ import classNames from 'classnames'
 // STYLES 
 import classes from './TextBox.module.scss'
 
-export const TextBox: FC<ParagraphIterface> = ({ paragraph, image, title }): JSX.Element => {
+export const TextBox: FC<TextBoxProps> = ({ paragraph, image, title }): JSX.Element => {
   return (
     <div className={classes.wrapp}>
       <div className={classNames(classes.content, { [classes.contentLow]: title, [classes.contentFill]: !title })}>
