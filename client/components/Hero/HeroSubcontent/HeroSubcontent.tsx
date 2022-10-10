@@ -10,8 +10,8 @@ export const HeroSubcontent: FC<HeroSubcontentProps> = ({ content }): JSX.Elemen
       {content.map(c => (
         <div className={classes.subContentItem} key={c.id}>
           <span>{c.title}</span>
-          {c.text?.map(t => (
-            <span>{t}</span>
+          {c.text?.map((t, i) => (
+            <span key={i}>{t}</span>
           ))}
         </div>
       ))}

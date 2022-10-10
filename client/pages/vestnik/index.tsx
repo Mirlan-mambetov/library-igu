@@ -1,8 +1,10 @@
 import { NextSeo } from 'next-seo'
+import Link from 'next/link'
 import { FC } from 'react'
-import { Hero, Title } from '../../components'
+import { Hero, Paragraph, Tabs, Title } from '../../components'
 import { HeroProps } from '../../components/Hero/Hero.props'
-import { VestnikInformationI } from '../../interfaces/Vestnik.interface'
+import { TabsInterface } from '../../interfaces/Tabs.interface'
+import { JurnalAboutI, VestnikArhivsI, VestnikInformationI } from '../../interfaces/Vestnik.interface'
 import { withLayout } from '../../Layout/WithLayout'
 
 // STYLES
@@ -29,6 +31,60 @@ const Vestink: FC = (): JSX.Element => {
         { id: 2, name: 'Тел', description: '+996 3922 52696' },
         { id: 3, name: 'E-mail', description: 'interiksu@gmail.com' },
         { id: 4, name: 'Website', description: 'https://iksu.kg' }
+      ]
+    }
+  ]
+  // jurnal about
+  const jurnalAbout: JurnalAboutI = {
+    title: '«Вестник Иссык-Кульского государственного университета» основан в январе 1999 года.',
+    text: 'Этот журнал публикует статьи, результаты научно-методических исследований педагогов, ученых, аспирантов, докторантов и соискателей, полностью отвечающих требованиям издательства. Журнал имеет разрешение Международного издательского общества и комиссии НАК КР на публикацию статей для подготовки кандидатских и докторских диссертаций. «Вестник ИГУ» является научно - теоретическим, методическим и информационным журналом, руководствующимся положениями и принципами Конституции КР, а также «Законом о средствах массовой информации», «Законом о государственном языке», Национальной образовательной программой «Билим», Гражданским Кодексом КР и другими законодательными актами Кыргызской Республики. В настоящее время журнал является единственным научноинформационным и методическим журналом в Иссык - Кульском регионе и издается 2 - 3 раза в год на кыргызском, русском и английском языках. «Вестник ИГУ» является активным проводником научно - технической политики нашего государства, пособником осуществления социальнополитических, экономических, научно - образовательных реформ, пропагандируя новейшие достижения науки и техники, как отечественный, так и зарубежный.Все это являются главной задачей журнала.Свою деятельность редакционная коллегия журнала ведет в тесном сотрудничестве с ближним и дальним зарубежьем.Редакция подготавливает совместные издания отдельных номеров и соответствующими министерствами и ведомствами по приоритетным направлениям науки и новым технологиям.В состав редколлегии журнала «Вестник ИГУ» входит главный редактор, зам.главного редактора, ответственный секретарь, главный специалист, редакторы - корректоры, инженер - программист.',
+    image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665423857/Library-igu/vestnik-image_1_1_fhv5rb.png'
+  }
+  // Jurnal information
+  const jurnalInformation: TabsInterface[] = [
+    {
+      id: 1, title: 'Рубрики журнала',
+      isLink: [
+        { id: 1, link: 'http://nbisu.moy.su/_ld/35/3525_2668_IGUKIDIBAE.pdf', name: 'Рубрика - 1 PDF' },
+        { id: 2, link: 'http://nbisu.moy.su/_ld/35/3525_2668_IGUKIDIBAE.pdf', name: 'Рубрика - 2 PDF' },
+        { id: 3, link: 'http://nbisu.moy.su/_ld/35/3525_2668_IGUKIDIBAE.pdf', name: 'Рубрика - 3 PDF' },
+      ]
+    },
+    {
+      id: 2, title: 'Порядок рецензирования',
+      isLink: [
+        { id: 1, link: 'http://nbisu.moy.su/_ld/35/3525_2668_IGUKIDIBAE.pdf', name: 'Порядок рецензирования' },
+      ]
+    },
+    {
+      id: 3, title: 'Редакция',
+      isLink: [
+        { id: 1, link: 'http://nbisu.moy.su/_ld/35/3525_2668_IGUKIDIBAE.pdf', name: 'Редакционная политика' },
+        { id: 2, link: 'http://nbisu.moy.su/_ld/35/3525_2668_IGUKIDIBAE.pdf', name: 'Редакционная коллегия' },
+      ]
+    },
+    {
+      id: 4, title: 'Авторам',
+      isLink: [
+        { id: 1, link: 'http://nbisu.moy.su/_ld/35/3525_2668_IGUKIDIBAE.pdf', name: 'Требования по оформлению стайте' },
+        { id: 2, link: 'http://nbisu.moy.su/_ld/35/3525_2668_IGUKIDIBAE.pdf', name: 'Примеры оформления списка литературы' },
+        { id: 3, link: 'http://nbisu.moy.su/_ld/35/3525_2668_IGUKIDIBAE.pdf', name: 'Рекомендации по написанию аннотации' },
+      ]
+    }
+  ]
+  // Arhivs
+  const arhivsData: VestnikArhivsI[] = [
+    {
+      totalArhivs: 70,
+      totalMaterials: 5032,
+      arhivs: [
+        { id: 1, alias: '№11999', name: '№ 1 / 1999' },
+        { id: 2, alias: '№11999', name: '№ 1 / 1999' },
+        { id: 3, alias: '№11999', name: '№ 1 / 1999' },
+        { id: 4, alias: '№11999', name: '№ 1 / 1999' },
+        { id: 5, alias: '№11999', name: '№ 1 / 1999' },
+        { id: 6, alias: '№11999', name: '№ 1 / 1999' },
+        { id: 7, alias: '№11999', name: '№ 1 / 1999' }
       ]
     }
   ]
@@ -60,6 +116,55 @@ const Vestink: FC = (): JSX.Element => {
             ))}
           </div>
         ))}
+      </div>
+      {/* Jurnal about */}
+      <div className="container">
+        <div className={classes.jurnalAbout}>
+          <div className={classes.jurnalTitle}>
+            <Title type='h3'>О журнале</Title>
+          </div>
+          <div className={classes.jurnalContent}>
+            <Title className={classes.jurnalContentTitle} type='h4'>{jurnalAbout.title}</Title>
+            <div className={classes.jurnalWrapp}>
+              <Paragraph className={classes.jurnalDescription}>
+                {jurnalAbout.text}
+              </Paragraph>
+              <div className={classes.junralImage}>
+                <img src={jurnalAbout.image} alt={jurnalAbout.image} />
+              </div>
+            </div>
+          </div>
+          <div className={classes.jurnalInformation}>
+            {jurnalInformation.map(ji => (
+              <Tabs tabs={ji} key={ji.id} />
+            ))}
+          </div>
+        </div>
+        {/* Arhivs */}
+        <div className={classes.arhivs}>
+          <Title type='h3'>архивы вестника</Title>
+          {arhivsData.map((a, i) => (
+            <div className={classes.arhivsContent} key={i}>
+              <div className={classes.arhivsInfo}>
+                <span>количество архивов:</span>
+                <span>{a.totalArhivs}</span>
+              </div>
+              <div className={classes.arhivsInfo}>
+                <span>материалов в архивах:</span>
+                <span>{a.totalMaterials}</span>
+              </div>
+              <div className={classes.arhivsWrapp}>
+                {a.arhivs.map(arhiv => (
+                  <div className={classes.arhivsLinks} key={arhiv.id}>
+                    <Link href={`/vestnik/arhivs/${arhiv.alias}`}>
+                      <a>{arhiv.name}</a>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   )

@@ -60,6 +60,9 @@
   font-size: 14px;
   line-height: 23px;
   padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 
   a {
     display: inline-block;
