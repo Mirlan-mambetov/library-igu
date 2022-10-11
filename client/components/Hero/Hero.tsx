@@ -16,8 +16,8 @@ export const Hero: FC<HeroProps> = ({
 }): JSX.Element => {
 
   const heroNavLink: LinkProps[] = [
-    { id: 1, name: 'Труды перподавателей', href: '/works' },
-    { id: 2, name: 'Кыргыз-тили жана адабияты', href: '/kyrgyz' },
+    { id: 1, name: 'Труды перподавателей', href: '/teachers' },
+    { id: 2, name: 'Кыргыз-тили жана адабияты', href: '/kyrgyz-language' },
     { id: 3, name: 'Электронная библиотека', href: '/elibrary' },
     { id: 4, name: 'Электронные ресурсы', href: '#' }
   ]

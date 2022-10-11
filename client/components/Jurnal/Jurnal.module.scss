@@ -1,0 +1,72 @@
+@use '../../styles/media/media-queres';
+@import '../../styles/varriables/varriables';
+
+.jurnalAbout {
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+  padding: 50px 0;
+}
+
+.jurnalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.jurnalContentTitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.jurnalWrapp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include media-queres.mediaOnly859px {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+}
+
+.jurnalDescription {
+  max-width: 60%;
+
+  @include media-queres.mediaOnly1024px {
+    max-width: 55%;
+  }
+
+  @include media-queres.mediaOnly859px {
+    max-width: 100%;
+  }
+}
+
+.junralImage {
+  width: 30%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @include media-queres.mediaOnly1024px {
+    width: 40%;
+  }
+
+  @include media-queres.mediaOnly480px {
+    width: 50%;
+  }
+}
+
+.jurnalInformation {
+  display: flex;
+  flex-wrap: wrap;
+
+  a {
+    color: $primary;
+  }
+}

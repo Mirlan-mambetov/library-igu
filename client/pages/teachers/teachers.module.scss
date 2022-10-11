@@ -1,0 +1,11 @@
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 80px 0;
+}
+
+.recents {
+  padding: 2px 0;
+}

@@ -1,11 +1,12 @@
 export interface BooksI {
   id: string | number
-  title: string
+  text: string
   auhtors: string[]
   link: string
-  publishedYear: string
+  publishedYear?: string
   downloaded: number
   views: number
+  createdAt: string
 }
 export interface BooksCategory {
   id: string | number

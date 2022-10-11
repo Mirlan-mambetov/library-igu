@@ -1,14 +1,16 @@
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { FC } from 'react'
-import { Button, Hero, Paragraph, Tabs, Title } from '../../components'
+import { Arhivs, Button, Hero, Jurnal, Title } from '../../components'
+import { ArhivsProps } from '../../components/Arhivs/Arhivs.props'
 import { HeroProps } from '../../components/Hero/Hero.props'
+import { JurnalProps } from '../../components/Jurnal/Jurnal.props'
 import { TabsInterface } from '../../interfaces/Tabs.interface'
-import { JurnalAboutI, VestnikArhivsI, VestnikInformationI } from '../../interfaces/Vestnik.interface'
+import { VestnikInformationI } from '../../interfaces/Vestnik.interface'
 import { withLayout } from '../../Layout/WithLayout'
 
 // STYLES
-import classes from './vetnik.module.scss'
+import classes from './vestnik.module.scss'
 
 const Vestink: FC = (): JSX.Element => {
   // vestnik Hero data
@@ -35,10 +37,11 @@ const Vestink: FC = (): JSX.Element => {
     }
   ]
   // jurnal about
-  const jurnalAbout: JurnalAboutI = {
-    title: '«Вестник Иссык-Кульского государственного университета» основан в январе 1999 года.',
+  const jurnalAbout: JurnalProps = {
+    title: 'О журнале',
     text: 'Этот журнал публикует статьи, результаты научно-методических исследований педагогов, ученых, аспирантов, докторантов и соискателей, полностью отвечающих требованиям издательства. Журнал имеет разрешение Международного издательского общества и комиссии НАК КР на публикацию статей для подготовки кандидатских и докторских диссертаций. «Вестник ИГУ» является научно - теоретическим, методическим и информационным журналом, руководствующимся положениями и принципами Конституции КР, а также «Законом о средствах массовой информации», «Законом о государственном языке», Национальной образовательной программой «Билим», Гражданским Кодексом КР и другими законодательными актами Кыргызской Республики. В настоящее время журнал является единственным научноинформационным и методическим журналом в Иссык - Кульском регионе и издается 2 - 3 раза в год на кыргызском, русском и английском языках. «Вестник ИГУ» является активным проводником научно - технической политики нашего государства, пособником осуществления социальнополитических, экономических, научно - образовательных реформ, пропагандируя новейшие достижения науки и техники, как отечественный, так и зарубежный.Все это являются главной задачей журнала.Свою деятельность редакционная коллегия журнала ведет в тесном сотрудничестве с ближним и дальним зарубежьем.Редакция подготавливает совместные издания отдельных номеров и соответствующими министерствами и ведомствами по приоритетным направлениям науки и новым технологиям.В состав редколлегии журнала «Вестник ИГУ» входит главный редактор, зам.главного редактора, ответственный секретарь, главный специалист, редакторы - корректоры, инженер - программист.',
-    image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665423857/Library-igu/vestnik-image_1_1_fhv5rb.png'
+    image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665423857/Library-igu/vestnik-image_1_1_fhv5rb.png',
+    subTitle: '«Вестник Иссык-Кульского государственного университета» основан в январе 1999 года. '
   }
   // Jurnal information
   const jurnalInformation: TabsInterface[] = [
@@ -73,7 +76,7 @@ const Vestink: FC = (): JSX.Element => {
     }
   ]
   // Arhivs
-  const arhivsData: VestnikArhivsI[] = [
+  const arhivsData: ArhivsProps[] = [
     {
       totalArhivs: 70,
       totalMaterials: 5032,
@@ -117,53 +120,17 @@ const Vestink: FC = (): JSX.Element => {
           </div>
         ))}
         {/* Jurnal about */}
-        <div className={classes.jurnalAbout}>
-          <div className={classes.jurnalTitle}>
-            <Title type='h3'>О журнале</Title>
-          </div>
-          <div className={classes.jurnalContent}>
-            <Title className={classes.jurnalContentTitle} type='h4'>{jurnalAbout.title}</Title>
-            <div className={classes.jurnalWrapp}>
-              <Paragraph className={classes.jurnalDescription}>
-                {jurnalAbout.text}
-              </Paragraph>
-              <div className={classes.junralImage}>
-                <img src={jurnalAbout.image} alt={jurnalAbout.image} />
-              </div>
-            </div>
-          </div>
-          <div className={classes.jurnalInformation}>
-            {jurnalInformation.map(ji => (
-              <Tabs tabs={ji} key={ji.id} />
-            ))}
-          </div>
-        </div>
+        <Jurnal
+          image={jurnalAbout.image}
+          subTitle={jurnalAbout.subTitle}
+          text={jurnalAbout.text}
+          information={jurnalInformation}
+          title={jurnalAbout.title}
+        />
         {/* Arhivs */}
-        <div className={classes.arhivs}>
-          <Title type='h3'>архивы вестника</Title>
-          {arhivsData.map((a, i) => (
-            <div className={classes.arhivsContent} key={i}>
-              <div className={classes.arhivsInfo}>
-                <span>количество архивов:</span>
-                <span>{a.totalArhivs}</span>
-              </div>
-              <div className={classes.arhivsInfo}>
-                <span>материалов в архивах:</span>
-                <span>{a.totalMaterials}</span>
-              </div>
-              <div className={classes.arhivsWrapp}>
-                {a.arhivs.map(arhiv => (
-                  <div className={classes.arhivsLinks} key={arhiv.id}>
-                    <Link href={`/vestnik/arhivs/${arhiv.alias}`}>
-                      <a>{arhiv.name}</a>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-          <Button orientation='right'>Показать больше архивов</Button>
-        </div>
+        {arhivsData.map((a, i) => (
+          <Arhivs {...a} arhivLink="vestnik" key={i} />
+        ))}
       </div>
     </>
   )
