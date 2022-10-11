@@ -4,4 +4,7 @@ export interface HeroProps {
   image?: string
   title: string
   content?: HeroInterface[]
+  button?: {
+    name: string
+  }
 }

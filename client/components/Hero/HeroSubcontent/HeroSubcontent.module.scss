@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-
   position: absolute;
   bottom: 24px;
 }
@@ -14,6 +13,7 @@
 .subContentItem {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
 
   span {
@@ -35,10 +35,19 @@
       margin-bottom: 4px;
     }
   }
+}
 
-  &:nth-child(2) {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+.btn {
+  display: flex;
+  justify-content: center;
+  max-width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 14px 63px;
+  color: $mainWhite;
+  background: $primary  !important;
+
+  svg {
+    fill: $mainWhite;
   }
 }

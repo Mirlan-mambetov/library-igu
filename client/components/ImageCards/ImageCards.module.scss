@@ -2,6 +2,7 @@
 
 .cards {
   display: flex;
+  gap: 12px;
   min-height: 200px;
 
   @include media-queres.mediaOnly720px {

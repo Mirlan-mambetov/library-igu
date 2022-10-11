@@ -6,9 +6,9 @@ import classNames from 'classnames'
 // STYLES
 import classes from './Button.module.scss'
 
-export const Button: FC<ButtonProps> = ({ children, orientation, ...props }): JSX.Element => {
+export const Button: FC<ButtonProps> = ({ children, orientation, className, ...props }): JSX.Element => {
   return (
-    <button className={classes.button} {...props}>
+    <button className={classNames(classes.button, className)} {...props}>
       {children}
       <svg className={classNames(classes.icon, {
         [classes.top]: orientation = 'top',

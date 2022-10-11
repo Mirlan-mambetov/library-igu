@@ -1,10 +1,11 @@
 import { FC } from 'react'
+import { Button } from '../../'
 
 // STYLES
 import classes from './HeroSubcontent.module.scss'
 import { HeroSubcontentProps } from './HeroSubcontent.props'
 
-export const HeroSubcontent: FC<HeroSubcontentProps> = ({ content }): JSX.Element => {
+export const HeroSubcontent: FC<HeroSubcontentProps> = ({ content, button }): JSX.Element => {
   return (
     <div className={classes.subContent}>
       {content.map(c => (
@@ -15,6 +16,12 @@ export const HeroSubcontent: FC<HeroSubcontentProps> = ({ content }): JSX.Elemen
           ))}
         </div>
       ))}
+      {
+        button ?
+          <Button className={classes.btn}>{button?.name}</Button>
+          :
+          <></>
+      }
     </div>
   )
 }

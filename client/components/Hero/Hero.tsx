@@ -11,7 +11,8 @@ import classes from './Hero.module.scss'
 export const Hero: FC<HeroProps> = ({
   image = "https://res.cloudinary.com/djzubalr7/image/upload/v1665219599/Library-igu/background-default_z6g7u1.png",
   title,
-  content
+  content,
+  button
 }): JSX.Element => {
 
   const heroNavLink: LinkProps[] = [
@@ -29,7 +30,7 @@ export const Hero: FC<HeroProps> = ({
         <Title className={classes.title} type="h1">{title}</Title>
         {
           content ?
-            <HeroSubcontent content={content} />
+            <HeroSubcontent content={content} button={button} />
             :
             null
         }
