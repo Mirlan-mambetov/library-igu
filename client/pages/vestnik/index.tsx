@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { FC } from 'react'
-import { Hero, Paragraph, Tabs, Title } from '../../components'
+import { Button, Hero, Paragraph, Tabs, Title } from '../../components'
 import { HeroProps } from '../../components/Hero/Hero.props'
 import { TabsInterface } from '../../interfaces/Tabs.interface'
 import { JurnalAboutI, VestnikArhivsI, VestnikInformationI } from '../../interfaces/Vestnik.interface'
@@ -116,9 +116,7 @@ const Vestink: FC = (): JSX.Element => {
             ))}
           </div>
         ))}
-      </div>
-      {/* Jurnal about */}
-      <div className="container">
+        {/* Jurnal about */}
         <div className={classes.jurnalAbout}>
           <div className={classes.jurnalTitle}>
             <Title type='h3'>О журнале</Title>
@@ -164,6 +162,7 @@ const Vestink: FC = (): JSX.Element => {
               </div>
             </div>
           ))}
+          <Button orientation='right'>Показать больше архивов</Button>
         </div>
       </div>
     </>
