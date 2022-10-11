@@ -68,14 +68,16 @@ const Elibrary: FC = (): JSX.Element => {
         description="Научная библиотека ИГУ,Вестник игу"
       />
       {/* Hero section */}
-      {heroData.map((h, i) => (
-        <Hero
-          key={i}
-          title={h.title}
-          content={h.content}
-          button={h.button}
-        />
-      ))}
+      <div className={classes.hero}>
+        {heroData.map((h, i) => (
+          <Hero
+            key={i}
+            title={h.title}
+            content={h.content}
+            button={h.button}
+          />
+        ))}
+      </div>
       {/* Недавние в электронной библиотеке */}
       <div className="container">
         <div className={classes.newInLib}>

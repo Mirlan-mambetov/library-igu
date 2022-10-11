@@ -1,5 +1,5 @@
 export interface HeroInterface {
   id: string | number
-  title: string
+  title?: string
   text?: string[]
 }

@@ -10,9 +10,11 @@ export const HeroSubcontent: FC<HeroSubcontentProps> = ({ content, button }): JS
     <div className={classes.subContent}>
       {content.map(c => (
         <div className={classes.subContentItem} key={c.id}>
-          <span>{c.title}</span>
+          <span className={classes.subContentTitle}>{c.title}</span>
           {c.text?.map((t, i) => (
-            <span key={i}>{t}</span>
+            <div className={classes.subContentText}>
+              <span key={i}>{t}</span>
+            </div>
           ))}
         </div>
       ))}
