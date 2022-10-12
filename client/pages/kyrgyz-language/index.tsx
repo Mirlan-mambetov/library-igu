@@ -73,11 +73,9 @@ const KyrgyzLanguage: FC = (): JSX.Element => {
           />
         </div>
         {/* Arhivs */}
-        <div className="arhivs">
-          {arhivsData.map((a, i) => (
-            <Arhivs {...a} arhivLink="kyrgyz-language" key={i} />
-          ))}
-        </div>
+        {arhivsData.map((a, i) => (
+          <Arhivs {...a} arhivLink="kyrgyz-language" key={i} />
+        ))}
       </div>
     </>
   )

@@ -11,8 +11,10 @@ import classes from './Hero.module.scss'
 export const Hero: FC<HeroProps> = ({
   image = "https://res.cloudinary.com/djzubalr7/image/upload/v1665219599/Library-igu/background-default_z6g7u1.png",
   title,
+  subTitle,
   content,
-  button
+  button,
+  arhivInfo
 }): JSX.Element => {
 
   const heroNavLink: LinkProps[] = [
@@ -28,6 +30,8 @@ export const Hero: FC<HeroProps> = ({
     >
       <div className={classes.content}>
         <Title className={classes.title} type="h1">{title}</Title>
+        {subTitle && <Title className={classes.subTitle} type="h3">{subTitle}</Title>}
+        {arhivInfo && <span className={classes.arhivInfo}>Количество материалов: {arhivInfo}</span>}
         {
           content ?
             <HeroSubcontent content={content} button={button} />

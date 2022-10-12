@@ -1,7 +1,6 @@
 import { NextSeo } from 'next-seo'
-import Link from 'next/link'
 import { FC } from 'react'
-import { Arhivs, Button, Hero, Jurnal, Title } from '../../components'
+import { Arhivs, Hero, Jurnal, Title } from '../../components'
 import { ArhivsProps } from '../../components/Arhivs/Arhivs.props'
 import { HeroProps } from '../../components/Hero/Hero.props'
 import { JurnalProps } from '../../components/Jurnal/Jurnal.props'
@@ -80,6 +79,7 @@ const Vestink: FC = (): JSX.Element => {
     {
       totalArhivs: 70,
       totalMaterials: 5032,
+      arhivTitle: "Архивы вестника",
       arhivs: [
         { id: 1, alias: '№11999', name: '№ 1 / 1999' },
         { id: 2, alias: '№11999', name: '№ 1 / 1999' },

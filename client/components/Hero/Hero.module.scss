@@ -62,6 +62,19 @@
   }
 }
 
+.subTitle {
+  color: $mainWhite;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.arhivInfo {
+  position: absolute;
+  bottom: 40px;
+  width: 80%;
+  color: $mainWhite;
+}
+
 .navigation {
   position: absolute;
   bottom: -40px;

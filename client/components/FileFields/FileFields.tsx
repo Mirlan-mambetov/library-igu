@@ -1,13 +1,14 @@
 import { FC } from 'react'
 import { FileFieldProps } from './FileFields.props'
+import { FileField } from './FileField/FileField'
+import classNames from 'classnames'
 
 // STYLES 
 import classes from './FileFields.module.scss'
-import { FileField } from './FileField/FileField'
 
-export const FileFields: FC<FileFieldProps> = ({ books }): JSX.Element => {
+export const FileFields: FC<FileFieldProps> = ({ books, position = 'column' }): JSX.Element => {
   return (
-    <div className={classes.books}>
+    <div className={classNames(classes.books, { [classes.row]: position === 'row' })}>
       {books.map(book => (
         <FileField {...book} key={book.id} />
       ))}

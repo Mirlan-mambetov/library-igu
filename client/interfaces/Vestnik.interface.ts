@@ -9,3 +9,8 @@ export interface VestnikInformationI {
   title: string
   address: addressItems[]
 }
+export interface VestnikCategoryInterface {
+  id: string | number
+  name: string
+  alias: string
+}

@@ -7,6 +7,10 @@
   justify-content: space-between;
   padding: 50px 0;
 
+  &.row {
+    flex-direction: column;
+  }
+
   @include media-queres.mediaOnly1024px {
     flex-direction: column;
   }

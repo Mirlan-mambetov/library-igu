@@ -1,8 +1,10 @@
-import Link from "next/link"
 import { FC } from "react"
+import Link from "next/link"
+import Logo from '../../public/logo.png'
 
 // STYLES 
 import classes from './Navbar.module.scss'
+import Image from "next/image"
 
 export const Navbar: FC = (): JSX.Element => {
   return (
@@ -33,7 +35,7 @@ export const Navbar: FC = (): JSX.Element => {
         </ul>
         {/* Logo */}
         <div className={classes.logo}>
-          <img src="./logo.png" alt="Logo" />
+          <Image src={Logo} />
         </div>
         <ul className={classes.menu}>
           <li className={classes.menuItem}>
