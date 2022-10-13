@@ -9,7 +9,7 @@ import classes from './Arhivs.module.scss'
 
 
 
-export const Arhivs: FC<ArhivsProps> = ({ arhivs, totalArhivs, totalMaterials, arhivTitle, arhivLink }): JSX.Element => {
+export const Arhivs: FC<ArhivsProps> = ({ full = true, arhivs, totalArhivs, totalMaterials, arhivTitle, arhivLink }): JSX.Element => {
   return (
     <div className={classes.arhivs}>
       <Title type='h3'>{arhivTitle}</Title>
@@ -25,14 +25,14 @@ export const Arhivs: FC<ArhivsProps> = ({ arhivs, totalArhivs, totalMaterials, a
         <div className={classes.arhivsWrapp}>
           {arhivs.map(arhiv => (
             <div className={classes.arhivsLinks} key={arhiv.id}>
-              <Link href={`/${arhivLink}/arhivs/${arhiv.alias}`}>
+              <Link href={`/${arhivLink}/arhiv/${arhiv.alias}`}>
                 <a>{arhiv.name}</a>
               </Link>
             </div>
           ))}
         </div>
       </div>
-      <Button orientation='right'>Показать больше архивов</Button>
+      {full && <Link href={`/${arhivLink}/arhivs`}><a><Button orientation='right'>Показать больше архивов</Button></a></Link>}
     </div>
   )
 }

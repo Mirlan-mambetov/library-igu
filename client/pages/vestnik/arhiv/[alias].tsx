@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { NextSeo } from 'next-seo'
-import { ArhivsCategory, FileFields, Hero } from '../../../components'
+import { ArhivsCategory, FileFields, Hero, Title } from '../../../components'
 import { withLayout } from '../../../Layout/WithLayout'
 import { HeroProps } from '../../../components/Hero/Hero.props'
 import { VestnikCategoryInterface } from '../../../interfaces/Vestnik.interface'
@@ -8,9 +8,9 @@ import { BooksI } from '../../../interfaces/Books.interface'
 
 
 // STYLES 
-import classes from './Arhivs.module.scss'
+import classes from './Arhiv.module.scss'
 
-const Arhivs: FC = (): JSX.Element => {
+const Arhiv: FC = (): JSX.Element => {
   // Hero data
   const heroData: HeroProps[] = [
     {
@@ -27,7 +27,6 @@ const Arhivs: FC = (): JSX.Element => {
     { id: 4, alias: '№11999', name: '№ 1 / 1999' },
     { id: 5, alias: '№11999', name: '№ 1 / 1999' },
     { id: 6, alias: '№11999', name: '№ 1 / 1999' },
-    { id: 7, alias: '№11999', name: '№ 1 / 1999' }
   ]
   // arhivsFiles
   const arhivsFiles: BooksI[] = [
@@ -59,14 +58,16 @@ const Arhivs: FC = (): JSX.Element => {
         {/* Content */}
         <div className={classes.content}>
           <div className={classes.files}>
-            <FileFields books={arhivsFiles} position='row' />
+            <FileFields books={arhivsFiles} position='row' button />
           </div>
           <div className={classes.categories}>
-            <ArhivsCategory arhivs={arhivsData} />
+            <Title type='h3'>Категории</Title>
+            <ArhivsCategory arhivs={arhivsData} link="vestnik" />
           </div>
         </div>
+
       </div>
     </>
   )
 }
-export default withLayout(Arhivs)
+export default withLayout(Arhiv)

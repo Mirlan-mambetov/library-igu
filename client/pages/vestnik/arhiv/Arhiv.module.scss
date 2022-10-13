@@ -1,0 +1,35 @@
+@use '../../../styles/media/media-queres';
+@import '../../../styles/varriables/varriables';
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  @include media-queres.mediaOnly768px {
+    flex-direction: column;
+  }
+}
+
+.files {
+  width: 70%;
+
+  & div {
+    max-width: 100%;
+  }
+
+  @include media-queres.mediaOnly768px {
+    width: 100%;
+  }
+}
+
+.categories {
+  position: sticky;
+  top: 150px;
+  width: 45%;
+
+  @include media-queres.mediaOnly768px {
+    position: unset;
+    width: 100%;
+  }
+}

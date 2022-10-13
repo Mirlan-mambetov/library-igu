@@ -3,4 +3,5 @@ import { VestnikCategoryInterface } from "../../../interfaces/Vestnik.interface"
 
 export interface CategoriesProps extends DetailsHTMLAttributes<HTMLDivElement> {
   arhivs: VestnikCategoryInterface[]
+  link: string
 }

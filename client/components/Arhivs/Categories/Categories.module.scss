@@ -2,18 +2,54 @@
 @import '../../../styles/varriables/varriables';
 
 .categories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   position: sticky;
   top: 150px;
   padding-left: 20px;
-  border: 1px solid #E4E4E4;
+  padding-right: 5px;
+  padding-bottom: 10px;
+  padding-top: 15px;
+
+  @include media-queres.mediaOnly640px {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 12px;
+  }
 }
 
 .category {
+  padding: 10px 16px;
+  border: 1px solid #E4E4E4;
 
   a {
     color: $black;
     font-weight: 400;
     font-size: 16px;
     line-height: 21px;
+  }
+}
+
+.moreBtn {
+  margin: 20px 10px;
+}
+
+.vesnikNumber {
+  padding: 12px 0;
+  color: $primary;
+
+  span {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: rgba(80, 110, 241, 0.3);
+    }
   }
 }

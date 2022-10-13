@@ -6,6 +6,7 @@ export interface ArhivsProps extends linksI {
   totalMaterials: number
   arhivs: ArhivsI[]
   arhivTitle: string
+  full?: boolean
 }
 export interface ArhivsI {
   id: string | number
