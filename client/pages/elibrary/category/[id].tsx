@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { withLayout } from '../../../Layout/WithLayout'
 
 const Category: FC = (): JSX.Element => {
   return (
@@ -6,4 +7,4 @@ const Category: FC = (): JSX.Element => {
   )
 }
 
-export default Category
+export default withLayout(Category)

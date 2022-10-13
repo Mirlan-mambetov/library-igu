@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { CategoriesProps } from './Categories.props'
+import { useRouter } from 'next/router'
 import { Paragraph, Title } from '../'
 import Link from 'next/link'
 import classNames from 'classnames'
@@ -9,12 +10,14 @@ import classNames from 'classnames'
 import classes from './Categories.module.scss'
 
 export const Categories: FC<CategoriesProps> = ({ categories, position = 'default' }): JSX.Element => {
+  const path = useRouter()
+  const pathName = path.pathname.replace('/', '')
   return (
     <div className={classNames(classes.categories, {
       [classes.fixed]: position === 'fixed'
     })}>
       {categories.map(category => (
-        <Link href={`/${category.categoryLink}/category/${category.id}`} key={category.id}>
+        <Link href={`/${pathName}/category/${category.id}`} key={category.id}>
           <a>
             <Title className={classes.categoryName} type='h3'>{category.title}</Title>
             <Paragraph>
