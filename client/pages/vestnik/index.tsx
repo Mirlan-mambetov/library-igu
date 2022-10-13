@@ -106,8 +106,8 @@ const Vestink: FC = (): JSX.Element => {
           key={i}
         />
       ))}
-      {/* vestnik information */}
       <div className="container">
+        {/* vestnik information */}
         {vestnikInformation.map(i => (
           <div className={classes.information} key={i.id}>
             <Title className={classes.informationTitle} type='h3'>{i.title}</Title>
