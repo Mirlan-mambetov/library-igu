@@ -1,9 +1,13 @@
 import { NextSeo } from 'next-seo'
 import { FC } from 'react'
-import { Hero } from '../../../components'
+import { Categories, FileFields, Hero } from '../../../components'
 import { BooksI } from '../../../interfaces/Books.interface'
 import { CategoryI } from '../../../interfaces/Category.interface'
 import { withLayout } from '../../../Layout/WithLayout'
+
+
+// STYLES
+import classes from './Category.module.scss'
 
 const Category: FC = (): JSX.Element => {
   // Categories
@@ -36,6 +40,17 @@ const Category: FC = (): JSX.Element => {
         subTitle='Авторефераты диссертаций'
         arhivInfo={1522}
       />
+      <div className="container">
+          {/* Content */}
+        <div className={classes.content}>
+          <div className={classes.files}>
+            <FileFields books={worksData} position="row" button/>
+          </div>
+          <div className={classes.categories}>
+            <Categories  categories={categoriesData} position="fixed" link='teachers'/>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

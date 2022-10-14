@@ -42,7 +42,7 @@ const Teachers: FC = (): JSX.Element => {
       {/* Categories */}
       <div className="container">
         <div className={classes.categories}>
-          <Categories categories={categoriesData} />
+          <Categories categories={categoriesData} link="teachers" />
         </div>
         {/* Recents */}
         <div className={classes.recents}>
