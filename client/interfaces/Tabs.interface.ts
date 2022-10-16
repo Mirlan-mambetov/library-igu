@@ -10,4 +10,3 @@ export interface TabsInterface {
   description?: string
   isLink?: IsLinkI[]
 }
-

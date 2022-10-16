@@ -20,8 +20,12 @@
       transform: translateX(10px);
     }
   }
-}
 
-.icon {
-  transition: transform .2s ease;
+  .icon {
+    transition: transform .2s ease;
+
+    &.bottom {
+      transform: rotate(90deg);
+    }
+  }
 }

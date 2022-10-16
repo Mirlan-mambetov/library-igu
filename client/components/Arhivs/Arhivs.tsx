@@ -1,38 +1,31 @@
-import { FC } from 'react'
-import { Button, Title } from '../'
-import { ArhivsProps } from './Arhivs.props'
 import Link from 'next/link'
+import { FC } from 'react'
+import { Title } from '../Title/Title'
+import { ArhivsProps } from './Arhivs.props'
 
 
-// STYLES 
-import classes from './Arhivs.module.scss'
+// STYLES
+import styles from './Arhivs.module.scss'
 
-
-
-export const Arhivs: FC<ArhivsProps> = ({ full = true, arhivs, totalArhivs, totalMaterials, arhivTitle, arhivLink }): JSX.Element => {
+export const Arhivs: FC<ArhivsProps> = ({ data, contentLink }): JSX.Element => {
   return (
-    <div className={classes.arhivs}>
-      <Title type='h3'>{arhivTitle}</Title>
-      <div className={classes.arhivsContent} >
-        <div className={classes.arhivsInfo}>
-          <span>количество архивов:</span>
-          <span>{totalArhivs}</span>
-        </div>
-        <div className={classes.arhivsInfo}>
-          <span>материалов в архивах:</span>
-          <span>{totalMaterials}</span>
-        </div>
-        <div className={classes.arhivsWrapp}>
-          {arhivs.map(arhiv => (
-            <div className={classes.arhivsLinks} key={arhiv.id}>
-              <Link href={`/${arhivLink}/arhiv/${arhiv.alias}`}>
-                <a>{arhiv.name}</a>
-              </Link>
-            </div>
-          ))}
+    <div className={styles.arhivs}>
+      <div className={styles.content}>
+        <Title type='h3'>{data.information.title}</Title>
+        <div className={styles.infoItem}>
+          <span>количество архивов: {data.information.totalArhivs}</span>
+          <span>материалов: {data.information.totalMaterials}</span>
         </div>
       </div>
-      {full && <Link href={`/${arhivLink}/arhivs`}><a><Button orientation='right'>Показать больше архивов</Button></a></Link>}
+      <div className={styles.links} >
+        {data.links.map(link => (
+          <Link href={`/${contentLink}/arhiv/${link.alias}`} key={link.id}>
+            <a>
+              {link.name}
+            </a>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }

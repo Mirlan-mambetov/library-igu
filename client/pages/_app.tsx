@@ -4,6 +4,8 @@ import { Swiper, Autoplay, Pagination } from 'swiper'
 
 // STYLES
 import '../styles/global.scss'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   Swiper.use([Autoplay, Pagination])

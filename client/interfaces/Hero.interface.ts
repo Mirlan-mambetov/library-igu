@@ -1,5 +1,5 @@
-export interface HeroInterface {
+export interface SubcontentI {
   id: string | number
   title?: string
-  text?: string[]
+  description?: string[]
 }

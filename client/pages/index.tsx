@@ -1,54 +1,41 @@
 import { FC } from "react"
 import { withLayout } from "../Layout/WithLayout"
 import { NextSeo } from "next-seo"
-import { Hero, ImageCards, News, Tabs, Title } from "../components"
-import { NewsProps } from "../interfaces/News.props"
+import { Bookscard, Button, Cards, Hero, Tabs, Title } from "../components"
+import { NewsI } from "../Interfaces/News.interface"
+import { BookscardI } from "../Interfaces/Bookscard.interface"
+import { TabsInterface } from "../Interfaces/Tabs.interface"
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { ImageCardsIterface } from "../interfaces/ImageCards.props"
-import { TabsInterface } from "../interfaces/Tabs.interface"
-import { PartnersInterface } from "../interfaces/Partners.props"
-import Link from "next/link"
-
 
 
 // STYLES
-import classes from '../styles/Pages/Home.module.scss'
-import 'swiper/css'
-import 'swiper/css/pagination'
+import styles from '../styles/Pages/Home.module.scss'
+import { PartnersI } from "../Interfaces/Partners.interface"
+
 
 const Home: FC = (): JSX.Element => {
-  // Newses
-  const newses: NewsProps[] = [
-    { id: 1, date: 'Май 2022', description: '17 мая 2022 года Научную библиотеку Иссык-Кульского государственного университета посетил министр образования и науки Кыргызской ', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665224754/Library-igu/news/news-1_xuprwf.png', title: 'Международная конференция библиотекарей СНГ' },
-    { id: 2, date: 'Май 2022', description: 'В Научной библиотеке ИГУ им.К.Тыныстанова состоялась встреча библиотекарей СНГ в рамках международной конференции на тему', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665224751/Library-igu/news/news-2_wewje1.png', title: 'Министр образования и науки КР в Научной библиотеке ИГУ...' },
-    { id: 3, date: 'Май 2022', description: '19 мая 2021 года состоялось открытие выставки "Индия в Кыргызской Республике - выставка искусства и жизни Индии", приуроченная году', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665224746/Library-igu/news/news-3_xpheil.png', title: 'Индия в Кыргызской Республике - выставка искусства и жизни Индии' }
+  // NEWSES
+  const NewsData: NewsI[] = [
+    { id: 1, title: 'Международная конференция библиотекарей СНГ', description: 'В Научной библиотеке ИГУ им.К.Тыныстанова состоялась встреча библиотекарей СНГ в рамках международной конференции на тему: "Культурное и природное наследие стран Содружества: роль и место библиотек", посвященной межгосударственной программе "Каракол - культурная столица Содружества Независимых Государств 2022 года"', published: 'Май 2022', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665224754/Library-igu/news/news-1_xuprwf.png' },
+    { id: 2, title: 'Министр образования и науки КР в Научной библиотеке ИГУ им.К.Тыныстанова', description: '17 мая 2022 года Научную библиотеку Иссык-Кульского государственного университета посетил министр образования и науки Кыргызской Республики Бейшеналиев Алмазбек Бейшеналиевич', published: 'Июнь 2021', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665224751/Library-igu/news/news-2_wewje1.png' },
+    { id: 3, title: 'Индия в Кыргызской Республике - выставка искусства и жизни Индии', description: '19 мая 2021 года состоялось открытие выставки "Индия в Кыргызской Республике - выставка искусства и жизни Индии", приуроченная году культуры Индии в Кыргызстане. После церемонии разрезания ленты, господин посол и ректор зажгли лампу по Индийской традиции. Ректор ИГУ им.К.Тыныстанова Иманбаев Аскар Асангазиевич, в своей приветственной речи поблагодарил господина посла за активное сотрудничество с нашим университетом. В свою очередь Чрезвычайный и Полномочный посол Республики Индия в Кыргызстане господин Алок А.Димри в своей речи отметил важность проведения подобных мероприятий в стенах университетов, так как аура и атмосфера которая царит в учебных заведениях удивительна. Далее состоялось знакомство с экпозицией, где было показано культурное наследие Индии.', published: 'Авг 2022', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665224746/Library-igu/news/news-3_xpheil.png' }
   ]
-  // New arrivals
-  const newArrivals: ImageCardsIterface[] = [
-    { id: 1, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232907/Library-igu/news/card1_ymzwfw.png' },
+  // Books card
+  const BookscardData: BookscardI[] = [
+    { id: 1, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232900/Library-igu/news/card2_w16gcf.png' },
     { id: 2, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232904/Library-igu/news/card3_mgwvo1.png' },
-    { id: 3, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232900/Library-igu/news/card2_w16gcf.png' },
+    { id: 3, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232907/Library-igu/news/card1_ymzwfw.png' },
     { id: 4, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232893/Library-igu/news/card4_ji6esk.png' }
   ]
-  // Tabs arrivals
-  const arrivalTabs: TabsInterface[] = [
-    {
-      id: 1, title: 'Книжняя литература', isLink: [
-        { id: 1, link: 'http://nbisu.moy.su/Novinki/sentjabr_2019.pdf', name: 'Сентябрь 2022 - PDF' },
-        { id: 2, link: 'http://nbisu.moy.su/Novinki/oktjabr_2019.pdf', name: 'Октябрь 2022 - PDF' },
-      ]
-    },
-    {
-      id: 2, title: 'Периодические издания ', isLink: [
-        { id: 1, link: 'http://nbisu.moy.su/Novinki/oktjabr_2019.pdf', name: '1 полугодие 2019 года' },
-        { id: 2, link: 'http://nbisu.moy.su/Novinki/oktjabr_2019.pdf', name: '2 полугодие 2019 года' }
-      ]
-    },
+  // Tabs data
+  const Tabsdata: TabsInterface[] = [
+    { id: 1, title: 'Книжняя литература', isLink: [{ id: 1, link: 'http://nbisu.moy.su/_ld/20/2008_IGUSHAKITOV2013.pdf', name: 'Сентябрь 2022 - PDF' }, { id: 2, link: 'http://nbisu.moy.su/_ld/20/2008_IGUSHAKITOV2013.pdf', name: 'Октябрь 2021 - PDF' }] },
+    { id: 2, title: 'Периодические издания - PDF', isLink: [{ id: 1, link: 'http://nbisu.moy.su/_ld/20/2008_IGUSHAKITOV2013.pdf', name: '2 полугодие 2019 года - PDF' }, { id: 2, link: 'http://nbisu.moy.su/_ld/20/2008_IGUSHAKITOV2013.pdf', name: '1 полугодие 2019 года - PDF' }] }
   ]
-  // Partners
-  const partners: PartnersInterface[] = [
-    { id: 1, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665243062/Library-igu/partners/p1_eajtag.png', link: 'toktom' },
-    { id: 2, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665243061/Library-igu/partners/p2_plukjr.png', link: 'eurazian' },
+  // Partners data
+  const PartnersData: PartnersI[] = [
+    { id: 1, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665243061/Library-igu/partners/p2_plukjr.png', link: 'google.com' },
+    { id: 2, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665243062/Library-igu/partners/p1_eajtag.png', link: 'google.com' },
     { id: 3, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665243057/Library-igu/partners/p3_d0eaxd.png', link: 'google.com' }
   ]
   return (
@@ -60,36 +47,56 @@ const Home: FC = (): JSX.Element => {
           { property: 'og:title', content: 'Научная библиотека ИГУ' }
         ]}
       />
-      {/* Hero section */}
-      <Hero
-        title="Научная библиотека ИГУ им. К. Тыныстанова"
-      />
-      {/* News */}
-      <News news={newses} />
-      {/* New arrivals */}
-      <div className={classes.arrivals}>
+      {/* Hero */}
+      <Hero title="Научная библиотека ИГУ" />
+      {/* Newses */}
+      <section className={styles.newses}>
         <div className="container">
-          <Title type="h3">новые поступления</Title>
-          <div className={classes.arrivalsWrapp}>
-            <ImageCards className={classes.books} images={newArrivals} />
-            <div className={classes.content}>
-              {arrivalTabs.map(s => (
-                <Tabs tabs={s} key={s.id} />
+          <div className="sectionTitle">
+            <Title type="h3">Новости</Title>
+          </div>
+          <div className={styles.news}>
+            {NewsData.map(news => (
+              <Cards data={news} key={news.id} />
+            ))}
+          </div>
+          <div className={styles.newsBtn}>
+            <Button orientation="right">Архив новостей</Button>
+          </div>
+        </div>
+      </section>
+      {/* Arrivals */}
+      <section className={styles.arrivals}>
+        <div className="container">
+          <div className="sectionTitle">
+            <Title type="h3">новые поступления</Title>
+          </div>
+          <div className={styles.arrivalsWrapp}>
+            <div className={styles.books}>
+              {BookscardData.map(books => (
+                <Bookscard key={books.id} data={books} />
+              ))}
+            </div>
+            <div className={styles.tabs}>
+              {Tabsdata.map(tabs => (
+                <Tabs tabs={tabs} key={tabs.id} />
               ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
       {/* Partners */}
-      <div className="container">
-        <div className={classes.partners}>
-          <Title type="h3">Партнеры библиотеки</Title>
+      <section className={styles.partners}>
+        <div className="container">
+          <div className="sectionTitle">
+            <Title type="h3">Партнеры библиотеки</Title>
+          </div>
           <Swiper
-            autoplay={{ delay: 1200, pauseOnMouseEnter: true, disableOnInteraction: false }}
+            className={styles.partnersSwiper}
             loop
-            pagination={{ type: 'progressbar', el: `.${classes.slideProgress}` }}
             slidesPerView={3}
-            className={classes.slider}
+            pagination={{ type: 'progressbar', el: `.${styles.slideProgress}` }}
+            autoplay={{ delay: 2000, pauseOnMouseEnter: true, disableOnInteraction: false }}
             breakpoints={{
               320: {
                 slidesPerView: 1.2
@@ -108,19 +115,17 @@ const Home: FC = (): JSX.Element => {
               }
             }}
           >
-            {partners.map(p => (
-              <SwiperSlide key={p.id} className={classes.slide}>
-                <Link href={`${p.link}`}>
-                  <a>
-                    <img src={p.image} alt={p.link} />
-                  </a>
-                </Link>
+            {PartnersData.map(partner => (
+              <SwiperSlide key={partner.id} className={styles.partnersSlide}>
+                <a href={`https://${partner.link}`} target="_blank">
+                  <img src={partner.image} alt={`${partner.id}`} />
+                </a>
               </SwiperSlide>
             ))}
-            <div className={classes.slideProgress}></div>
+            <div className={styles.slideProgress}></div>
           </Swiper>
         </div>
-      </div>
+      </section>
     </>
   )
 }

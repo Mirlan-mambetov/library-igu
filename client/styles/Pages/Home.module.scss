@@ -1,83 +1,68 @@
 @use '../media/media-queres';
 @import '../varriables/varriables';
 
+.newses {
+  padding: 10px 0;
+
+  .news {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .newsBtn {
+    margin-top: 50px;
+  }
+}
+
 .arrivals {
-  padding: 50px 0;
+
 
   .arrivalsWrapp {
     display: flex;
-    padding-top: 68px;
-    gap: 12px;
+    justify-content: space-between;
 
     .books {
-      gap: 10px;
-      transition: all .15s ease;
-
-      @include media-queres.mediaOnly1024px {
-        justify-content: space-around;
-      }
-
-      @include media-queres.mediaOnly720px {
-        justify-content: unset;
-      }
-
-      @include media-queres.mediaOnly535px {
-        justify-content: center;
-      }
-    }
-
-    .content {
       display: flex;
-      gap: 4px;
-      width: 50%;
-
-      @include media-queres.mediaOnly1024px {
-        width: 100%;
-      }
-
-      @include media-queres.mediaOnly535px {
-        flex-direction: column;
-      }
+      gap: 20px;
+      max-width: 45%;
+      width: 100%;
     }
 
-    @include media-queres.mediaOnly1024px {
-      flex-direction: column;
-      gap: 50px;
+    .tabs {
+      display: flex;
+      gap: 5px;
+      max-width: 50%;
+      width: 100%;
     }
   }
 }
 
 .partners {
   padding: 50px 0;
-}
 
-.slider {
-  margin-top: 70px;
+  .partnersSwiper {
+    padding-top: 60px;
 
-  .slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  .slideProgress {
-    position: relative;
-    width: 50px !important;
-    margin-top: 50px;
-    margin-left: 50px;
-
-    @include media-queres.mediaOnly1024px {
-      margin-left: 20px;
+    .partnersSlide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    @include media-queres.mediaOnly720px {
-      margin-left: 5px;
+    .slideProgress {
+      position: relative;
+      width: 50px !important;
+      margin-top: 50px;
+      margin-left: 50px;
+
+      @include media-queres.mediaOnly1024px {
+        margin-left: 20px;
+      }
+
+      @include media-queres.mediaOnly720px {
+        margin-left: 5px;
+      }
     }
   }
 }

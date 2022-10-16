@@ -1,12 +1,7 @@
-import { HeroInterface } from "../../interfaces/Hero.interface"
+import { DetailsHTMLAttributes } from "react";
+import { SubContentProps } from "./SubContent/SubContent.props";
 
-export interface HeroProps {
-  image?: string
-  title: string
-  subTitle?: string
-  content?: HeroInterface[]
-  button?: {
-    name: string
-  }
-  arhivInfo?: number
+export interface HeroProps extends DetailsHTMLAttributes<HTMLDivElement> {
+  background?: string
+  subContent?: SubContentProps
 }

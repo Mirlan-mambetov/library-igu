@@ -1,72 +1,41 @@
 @use '../../styles/media/media-queres';
 @import '../../styles/varriables/varriables';
 
+.jurnalInformation {
+  padding: 60px 0;
+  max-width: 80%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .jurnalAbout {
   display: flex;
-  flex-direction: column;
-  gap: 31px;
-  padding: 50px 0;
-}
-
-.jurnalContent {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.jurnalContentTitle {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-}
-
-.jurnalWrapp {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: 50px 0;
 
-  @include media-queres.mediaOnly859px {
-    flex-direction: column-reverse;
-    gap: 20px;
-  }
-}
-
-.jurnalDescription {
-  max-width: 60%;
-
-  @include media-queres.mediaOnly1024px {
-    max-width: 55%;
-  }
-
-  @include media-queres.mediaOnly859px {
-    max-width: 100%;
-  }
-}
-
-.junralImage {
-  width: 30%;
-
-  img {
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 60%;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+
+    .test {
+      font-size: 14px;
+      line-height: 24px;
+    }
   }
 
-  @include media-queres.mediaOnly1024px {
-    width: 40%;
-  }
+  .image {
+    max-width: 30%;
+    width: 100%;
 
-  @include media-queres.mediaOnly480px {
-    width: 50%;
-  }
-}
-
-.jurnalInformation {
-  display: flex;
-  flex-wrap: wrap;
-
-  a {
-    color: $primary;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 }

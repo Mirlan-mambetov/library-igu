@@ -27,6 +27,14 @@ body {
   }
 }
 
+section {
+  padding: 50px 0;
+}
+
+.sectionTitle {
+  padding: 40px 0;
+}
+
 // RESET STYLES BASIC
 ul,
 a,
@@ -43,5 +51,9 @@ a:focus {
 }
 
 .swiper-pagination-progressbar-fill {
-  background: $black  !important;
+  background: $black !important;
+}
+
+.test {
+  height: 100vh;
 }

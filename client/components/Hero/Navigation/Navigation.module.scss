@@ -1,0 +1,53 @@
+@use '../../../styles/media/media-queres';
+@import '../../../styles/varriables/varriables';
+
+.navigation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: $mainWhite;
+  padding: 26px 20px;
+
+  .navigationItem {
+    font-size: 14px;
+    text-transform: uppercase;
+
+    a {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      color: $skyBlue;
+    }
+
+    svg {
+      fill: $skyBlue;
+    }
+
+    @include media-queres.mediaOnly1024px {
+
+      a,
+      svg {
+        color: $mainWhite;
+        fill: $mainWhite;
+      }
+    }
+  }
+
+  @include media-queres.mediaOnly1024px {
+    flex-direction: column;
+    align-items: flex-start;
+    background: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include media-queres.mediaOnly360px {
+    max-width: 100%;
+  }
+}

@@ -1,31 +1,27 @@
 import { FC } from 'react'
-import { JunralProps } from './Jurnal.props'
-import { Paragraph, Tabs, Title } from '../'
+import { Jurnalinfo } from './Jurnalinfo/Jurnalinfo'
 
 // STYLES
-import classes from './Jurnal.module.scss'
+import styles from './Jurnal.module.scss'
+import { JurnalI } from '../../Interfaces/Jurnal.interface'
+import { Title } from '../Title/Title'
+import { Paragraph } from '../Paragraph/Paragraph'
 
-export const Jurnal: FC<JunralProps> = ({ image, subTitle, text, title, information }): JSX.Element => {
+export const Jurnal: FC<JurnalI> = ({ jurnalAbout, information }): JSX.Element => {
   return (
-    <div className={classes.jurnalAbout}>
-      <div className={classes.jurnalTitle}>
-        <Title type='h3'>{title}</Title>
-      </div>
-      <div className={classes.jurnalContent}>
-        <Title className={classes.jurnalContentTitle} type='h4'>{subTitle}</Title>
-        <div className={classes.jurnalWrapp}>
-          <Paragraph className={classes.jurnalDescription}>
-            {text}
+    <div className={styles.jurnal}>
+      {information && <div className={styles.jurnalInformation}><Jurnalinfo {...information} /></div>}
+      <div className={styles.jurnalAbout}>
+        <div className={styles.content}>
+          <Title type='h3'>{jurnalAbout.title}</Title>
+          <Title className={styles.test} type='h4'>{jurnalAbout.subTitle}</Title>
+          <Paragraph>
+            {jurnalAbout.text}
           </Paragraph>
-          <div className={classes.junralImage}>
-            <img src={image} alt={image} />
-          </div>
         </div>
-      </div>
-      <div className={classes.jurnalInformation}>
-        {information?.map(ji => (
-          <Tabs tabs={ji} key={ji.id} />
-        ))}
+        <div className={styles.image}>
+          <img src={jurnalAbout.image} alt={jurnalAbout.title} />
+        </div>
       </div>
     </div>
   )
