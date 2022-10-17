@@ -35,7 +35,11 @@ export const Navbar: FC = (): JSX.Element => {
         </ul>
         {/* Logo */}
         <div className={classes.logo}>
-          <Image src={Logo} />
+          <Link href="/">
+            <a>
+              <Image src={Logo} />
+            </a>
+          </Link>
         </div>
         <ul className={classes.menu}>
           <li className={classes.menuItem}>

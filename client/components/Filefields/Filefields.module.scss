@@ -3,6 +3,19 @@
 
 .files {
   display: flex;
-  flex-direction: column;
   gap: 50px;
+
+  &.row {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &>div {
+      max-width: 45%;
+      width: 100%;
+    }
+  }
+
+  &.column {
+    flex-direction: column;
+  }
 }
