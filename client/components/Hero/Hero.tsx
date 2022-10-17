@@ -12,7 +12,8 @@ export const Hero: FC<HeroProps> = ({
   subContent,
   title = "Научная библиотека ИГУ",
   subTitle,
-  information
+  information,
+  subContentOrientation
 }): JSX.Element => {
   return (
     <div className={styles.hero} style={{ backgroundImage: `url(${background})` }}>
@@ -22,7 +23,7 @@ export const Hero: FC<HeroProps> = ({
             <Title className={styles.title} type='h1'>{title}</Title>
             {subTitle && <Title className={styles.subTitle} type='h4'>{subTitle}</Title>}
           </div>
-          {subContent && <SubContent data={subContent} />}
+          {subContent && <SubContent data={subContent} orientation={subContentOrientation} />}
           {information && <span className={styles.information}>Количество материалов: {information}</span>}
         </div>
         <div className={styles.navigation}>

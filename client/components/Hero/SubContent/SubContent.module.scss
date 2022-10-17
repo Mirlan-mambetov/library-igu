@@ -33,4 +33,14 @@
       }
     }
   }
+
+  &.row {
+    flex-direction: column;
+    justify-content: unset;
+
+    .subItems {
+      max-width: 100%;
+      margin: 2px 0;
+    }
+  }
 }
