@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo'
 import React from 'react'
 import { Hero, Tabs, Jurnal, Arhivs, Button } from '../../components'
 import { ArhivsI } from '../../Interfaces/Arhivs.interface'
-import { SubcontentI } from '../../Interfaces/Hero.interface'
+import { HeroI, SubcontentI } from '../../Interfaces/Hero.interface'
 import { JurnalI } from '../../Interfaces/Jurnal.interface'
 import { TabsInterface } from '../../Interfaces/Tabs.interface'
 import { withLayout } from '../../Layout/WithLayout'
@@ -12,12 +12,18 @@ import { withLayout } from '../../Layout/WithLayout'
 import styles from './vestnik.module.scss'
 
 const Vestnik = () => {
-  // Hero subContent data
-  const SubcontentData: SubcontentI[] = [
-    { id: 1, description: ['Иссык-Кульский государственный университет им. К Тыныстанова'], title: 'Учредитель' },
-    { id: 2, description: ['ISSN 1561 - 9516 (print)', 'ISSN 1694-8211 (online)'], title: 'Свидетельство о перерегистрации ГРО № 000601 от 26.02.2003г.' },
-    { id: 3, description: ['Журнал издается с 1999 года'] },
-    { id: 4, description: ['Журнал выходит 2-3 раза в год'] }
+  // Hero Data
+  const HeroData: HeroI[] = [
+    {
+      title: 'Вестник Иссык-Кульского государственного университета',
+      backGround: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665412442/Library-igu/vestnik_1_y930dg.png',
+      subContent: [
+        { id: 1, description: ['Иссык-Кульский государственный университет им. К Тыныстанова'], title: 'Учредитель' },
+        { id: 2, description: ['ISSN 1561 - 9516 (print)', 'ISSN 1694-8211 (online)'], title: 'Свидетельство о перерегистрации ГРО № 000601 от 26.02.2003г.' },
+        { id: 3, description: ['Журнал издается с 1999 года'] },
+        { id: 4, description: ['Журнал выходит 2-3 раза в год'] }
+      ],
+    }
   ]
   // Jurnal data
   const JurnalData: JurnalI[] = [
@@ -76,10 +82,14 @@ const Vestnik = () => {
         description="Научная библиотека ИГУ Вестник ИГУ им. К. Тыныстанова"
       />
       {/* Hero */}
-      <Hero
-        title="Вестник Иссык-Кульского государственного университета"
-        subContent={{ data: SubcontentData }}
-      />
+      {HeroData.map((h, i) => (
+        <Hero
+          key={i}
+          title={h.title}
+          subContent={h.subContent}
+          background={h.backGround}
+        />
+      ))}
       {/* Jurnal about */}
       <div className="container">
         <div className={styles.jurnalAbout}>
@@ -89,7 +99,7 @@ const Vestnik = () => {
         </div>
         <div className={styles.aboutVestnik}>
           {AboutVestnik.map(tabs => (
-            <Tabs tabs={tabs} />
+            <Tabs tabs={tabs} key={tabs.id} />
           ))}
         </div>
       </div>

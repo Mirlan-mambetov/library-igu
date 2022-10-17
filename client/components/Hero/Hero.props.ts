@@ -1,7 +1,10 @@
 import { DetailsHTMLAttributes } from "react";
-import { SubContentProps } from "./SubContent/SubContent.props";
+import { SubcontentI } from "../../Interfaces/Hero.interface";
 
 export interface HeroProps extends DetailsHTMLAttributes<HTMLDivElement> {
+  title?: string
   background?: string
-  subContent?: SubContentProps
+  subTitle?: string
+  subContent?: SubcontentI[]
+  information?: number
 }

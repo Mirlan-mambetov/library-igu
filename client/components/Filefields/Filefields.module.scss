@@ -1,0 +1,8 @@
+@use '../../styles/media/media-queres';
+@import '../../styles/varriables/varriables';
+
+.files {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}

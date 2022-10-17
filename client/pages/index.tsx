@@ -11,9 +11,16 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // STYLES
 import styles from '../styles/Pages/Home.module.scss'
 import { PartnersI } from "../Interfaces/Partners.interface"
+import { HeroI } from "../Interfaces/Hero.interface"
 
 
 const Home: FC = (): JSX.Element => {
+  // Hero Data
+  const HeroData: HeroI[] = [
+    {
+      title: 'Научная библиотека ИГУ',
+    }
+  ]
   // NEWSES
   const NewsData: NewsI[] = [
     { id: 1, title: 'Международная конференция библиотекарей СНГ', description: 'В Научной библиотеке ИГУ им.К.Тыныстанова состоялась встреча библиотекарей СНГ в рамках международной конференции на тему: "Культурное и природное наследие стран Содружества: роль и место библиотек", посвященной межгосударственной программе "Каракол - культурная столица Содружества Независимых Государств 2022 года"', published: 'Май 2022', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665224754/Library-igu/news/news-1_xuprwf.png' },
@@ -48,7 +55,13 @@ const Home: FC = (): JSX.Element => {
         ]}
       />
       {/* Hero */}
-      <Hero title="Научная библиотека ИГУ" />
+      {HeroData.map((data, i) => (
+        <Hero
+          key={i}
+          title={data.title}
+          background={data.backGround}
+        />
+      ))}
       {/* Newses */}
       <section className={styles.newses}>
         <div className="container">
