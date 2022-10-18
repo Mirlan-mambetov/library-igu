@@ -48,7 +48,7 @@ export const Navbar: FC = (): JSX.Element => {
             </Link>
           </li>
           <li className={classes.menuItem}>
-            <Link href={"/#"}>
+            <Link href={"/window"}>
               <a>Единое окно</a>
             </Link>
           </li>
