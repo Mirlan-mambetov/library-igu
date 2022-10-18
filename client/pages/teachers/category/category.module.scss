@@ -9,11 +9,24 @@
     .files {
       max-width: 50%;
       width: 100%;
+
+      @include media-queres.mediaOnly992px {
+        max-width: 100%;
+      }
     }
 
     .categories {
       max-width: 45%;
       width: 100%;
+
+      @include media-queres.mediaOnly992px {
+        max-width: 100%;
+      }
+    }
+
+    @include media-queres.mediaOnly992px {
+      flex-direction: column-reverse;
+      gap: 30px;
     }
   }
 }
