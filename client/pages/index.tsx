@@ -70,7 +70,7 @@ const Home: FC = (): JSX.Element => {
           </div>
           <div className={styles.news}>
             {NewsData.map(news => (
-              <Cards data={news} key={news.id} />
+              <Cards data={news} key={news.id} cardsLink='news' />
             ))}
           </div>
           <div className={styles.newsBtn}>
