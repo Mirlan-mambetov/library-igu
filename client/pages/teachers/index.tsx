@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo'
 import { FC } from 'react'
-import { Categories, Filefields, Hero, Title } from '../../components'
+import { TeacherCategories, Filefields, Hero, Title } from '../../components'
 import { CategoryI } from '../../Interfaces/Categories.interface'
 import { FileI } from '../../Interfaces/Files.interface'
 import { HeroI } from '../../Interfaces/Hero.interface'
@@ -107,7 +107,7 @@ const TeachersPage: FC = (): JSX.Element => {
           <div className="sectionTitle">
             <Title type='h3'>Категории</Title>
           </div>
-          <Categories category={CategoriesData} categoryLink="teachers" />
+          <TeacherCategories category={CategoriesData} categoryLink="teachers" />
         </div>
       </section>
       <section className={styles.remainings}>

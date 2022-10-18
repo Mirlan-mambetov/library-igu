@@ -13,6 +13,6 @@ export interface ElibraryCategoryI {
   id: string | number
   title: string
   alias: string
-  totalBooks: number
-  image: string
+  totalBooks?: number
+  image?: string
 }

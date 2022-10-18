@@ -8,7 +8,7 @@ import classNames from 'classnames'
 // STYLES 
 import styles from './Category.module.scss'
 
-export const Categories: FC<CategoryProps> = ({ category, categoryLink, categoryTitle, position = 'default' }): JSX.Element => {
+export const TeacherCategories: FC<CategoryProps> = ({ category, categoryLink, categoryTitle, position = 'default' }): JSX.Element => {
   return (
     <div className={classNames(styles.categories, {
       [styles.fixed]: position === 'fixed',
