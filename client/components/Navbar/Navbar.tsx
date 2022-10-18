@@ -1,17 +1,30 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 import Link from "next/link"
 import Logo from '../../public/logo.png'
+import Image from "next/image"
+import classNames from "classnames"
+import { NavbarProps } from "./Navbar.props"
 
 // STYLES 
 import classes from './Navbar.module.scss'
-import Image from "next/image"
+import { MenuNavigation } from "./mobile/menu/menu"
 
-export const Navbar: FC = (): JSX.Element => {
+export const Navbar: FC<NavbarProps> = (): JSX.Element => {
+  // STATE
+  const [menu, setMenu] = useState<boolean>(false)
+  // Mobile menu handler
+  const menuHandler = () => {
+    if (!menu) {
+      setMenu(true)
+    } else {
+      setMenu(false)
+    }
+  }
   return (
     <div className={classes.navbar}>
       <nav className={classes.navigation}>
         {/* Mobile Btn */}
-        <div className={classes.mobileBtn}>
+        <div className={classNames(classes.mobileBtn, { [classes.active]: menu })} onClick={menuHandler}>
           <span></span>
           <span></span>
           <span></span>
@@ -65,6 +78,7 @@ export const Navbar: FC = (): JSX.Element => {
           </svg>
         </div>
       </nav>
+      <MenuNavigation active={menu} />
     </div>
   )
 }

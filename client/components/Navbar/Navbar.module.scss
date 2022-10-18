@@ -29,6 +29,8 @@
   left: 30px;
   display: none;
   cursor: pointer;
+  overflow: hidden;
+  z-index: 201;
 
   @include media-queres.mediaOnly992px {
     display: flex;
@@ -41,10 +43,30 @@
     width: 16px;
     height: 1px;
     background: $black;
+    transition: all .3s ease-in;
 
     &:nth-child(2) {
       width: 8px;
       margin-left: auto;
+    }
+  }
+
+  &.active {
+    span {
+      background: $mainWhite;
+
+      &:nth-child(1) {
+        transform: matrix(0.7071, 0.7071, -0.7071, 0.7071, 0, 4);
+      }
+
+      &:nth-child(2) {
+        width: 0%;
+        transform: matrix(1, 0, 0, 1, 8, 0);
+      }
+
+      &:nth-child(3) {
+        transform: matrix(0.7071, -0.7071, 0.7071, 0.7071, 0, -4);
+      }
     }
   }
 }
