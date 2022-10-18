@@ -1,25 +1,44 @@
 import { NextSeo } from 'next-seo'
 import { FC } from 'react'
-import { TeacherCategories, Filefields, Hero } from '../../../components'
-import { CategoryI } from '../../../Interfaces/Categories.interface'
+import { Bookscard, ElibraryCategories, Filefields, Hero, Title } from '../../../components'
+import { BookscardI } from '../../../Interfaces/Bookscard.interface'
+import { ElibraryCategoryI } from '../../../Interfaces/Categories.interface'
 import { FileI } from '../../../Interfaces/Files.interface'
 import { HeroI } from '../../../Interfaces/Hero.interface'
 import { withLayout } from '../../../Layout/WithLayout'
 
 
-// STYLES
-import styles from './category.module.scss'
+// STYLES 
+import styles from './books.module.scss'
 
-const CategoryPage: FC = (): JSX.Element => {
+const BooksPage: FC = (): JSX.Element => {
   // Hero Data
   const HeroData: HeroI[] = [
     {
-      title: 'Труды преподавателей ИГУ',
-      subTitle: 'Авторефераты диссертаций',
-      information: 2242
+      title: 'Электронная библиотека ИГУ',
+      subTitle: 'СПО - среднее специальное',
+      subContent: [
+        { id: 1, title: 'Кыргыз тили жана адабияты (магистратура)' },
+      ]
     }
   ]
-  // Remaining Data
+
+  // Books card
+  const BookscardData: BookscardI[] = [
+    { id: 1, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232900/Library-igu/news/card2_w16gcf.png' },
+    { id: 2, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232904/Library-igu/news/card3_mgwvo1.png' },
+    { id: 3, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232907/Library-igu/news/card1_ymzwfw.png' },
+    { id: 4, image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665232893/Library-igu/news/card4_ji6esk.png' }
+  ]
+
+  // Categories Data
+  const CategoriesData: ElibraryCategoryI[] = [
+    { id: 1, alias: 'mastersdegree', title: 'Магистратура', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665475564/Library-igu/categories/c4_m06tly.png', totalBooks: 241 },
+    { id: 2, alias: 'undergraduate', title: 'Бакалавриат', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665475560/Library-igu/categories/c3_vtij8z.png', totalBooks: 21 },
+    { id: 3, alias: 'school', title: 'Школьные', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665475544/Library-igu/categories/c2_yamxmt.png', totalBooks: 342 },
+    { id: 4, alias: 'colledge', title: 'СПО', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665475538/Library-igu/categories/c1_oi9ou2.png', totalBooks: 12 }
+  ]
+  // Content data
   const FilesData: FileI[] = [
     {
       id: 1,
@@ -82,40 +101,50 @@ const CategoryPage: FC = (): JSX.Element => {
       category: '№ 1999 / 2'
     }
   ]
-  // Categories Data
-  const CategoriesData: CategoryI[] = [
-    { id: 1, title: 'Авторефераты диссертаций', subTitle: 'авторефераты диссертаций преподавателй игу', alias: 'referats' },
-    { id: 2, title: 'Научные статьи', subTitle: 'Научные статьи', alias: 'articles' },
-    { id: 3, title: 'Монографии', subTitle: 'Монографии', alias: 'monographs' },
-    { id: 4, title: 'Научно-методические издания', subTitle: 'Научно-методические издания', alias: 'scentific' }
-  ]
   return (
     <>
       <NextSeo
-        title="Труды преподавателей - Научная библиотека ИГУ"
-        description="Научная библиотека ИГУ"
+        title="Электронная библиотека ИГУ - Научная библиотека ИГУ"
+        description="Электронная библиотека ИГУ Научная библиотека ИГУ"
       />
       {/* Hero */}
-      {HeroData.map((data, i) => (
+      {HeroData.map((h, i) => (
         <Hero
           key={i}
-          title={data.title}
-          subTitle={data.subTitle}
-          information={data.information}
+          title={h.title}
+          subContent={h.subContent}
+          subTitle={h.subTitle}
+          subContentOrientation="row"
         />
       ))}
-      <section className={styles.content}>
+      {/* Remainings books */}
+      <section className={styles.remaining}>
         <div className="container">
-          <div className={styles.wrapp}>
-            <div className={styles.files}>
-              <Filefields data={FilesData} orientation="column" />
+          <div className={styles.remainignWrapp}>
+            <div className="sectionTitle">
+              <Title type='h3'>Недавние в электронной библиотеке</Title>
             </div>
-            <div className={styles.categories}>
-              <TeacherCategories
-                category={CategoriesData}
-                categoryLink="teachers"
-                position='fixed'
+            <div className={styles.books}>
+              {BookscardData.map(books => (
+                <Bookscard data={books} key={books.id} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Content */}
+      <section>
+        <div className="container">
+          <div className={styles.content}>
+            <div className={styles.files}>
+              <Filefields data={FilesData} />
+            </div>
+            <div className={styles.category}>
+              <ElibraryCategories
                 categoryTitle='Категории'
+                data={CategoriesData}
+                position="row"
+                categoryLink='elibrary/category'
               />
             </div>
           </div>
@@ -125,4 +154,4 @@ const CategoryPage: FC = (): JSX.Element => {
   )
 }
 
-export default withLayout(CategoryPage)
+export default withLayout(BooksPage)

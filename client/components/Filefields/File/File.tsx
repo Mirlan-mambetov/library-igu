@@ -42,6 +42,9 @@ export const File: FC<FileProps> = ({ file }) => {
           </Link>
         </div>
       </div>
+      <div className={styles.published}>
+        <span>{file.published}</span>
+      </div>
     </div>
   )
 }

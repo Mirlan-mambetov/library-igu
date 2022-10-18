@@ -6,6 +6,21 @@
   flex-direction: column;
   gap: 14px;
 
+  .published {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 80px;
+    width: 100%;
+    background: $primary;
+    padding: 12px 5px;
+    color: $mainWhite;
+    font-weight: 700;
+    font-size: 8px;
+    line-height: 11px;
+    text-transform: uppercase;
+  }
+
   .fileText {
     display: flex;
     flex-direction: column;

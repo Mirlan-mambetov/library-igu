@@ -63,7 +63,7 @@ const Category: FC = (): JSX.Element => {
                 categoryTitle='Категория книг'
                 data={CategoryData}
                 position="row"
-                categoryLink='books'
+                categoryLink='elibrary/books'
               />
             </div>
             <div className={styles.category}>
@@ -71,7 +71,7 @@ const Category: FC = (): JSX.Element => {
                 categoryTitle='Категории'
                 data={CategoriesData}
                 position="row"
-                categoryLink='elibrary'
+                categoryLink='elibrary/category'
               />
             </div>
           </div>

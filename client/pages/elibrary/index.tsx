@@ -72,7 +72,7 @@ const Elibrary: FC = (): JSX.Element => {
           <ElibraryCategories
             categoryTitle='Категории'
             data={CategoriesData}
-            categoryLink="elibrary"
+            categoryLink="elibrary/category"
           />
         </div>
       </section>

@@ -7,6 +7,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      .icon {
+        z-index: 2;
+
+        svg {
+          width: 16px;
+          height: 16px;
+          fill: $mainWhite;
+        }
+      }
     }
 
     &.row {
@@ -69,11 +79,22 @@
           height: 100%;
           background: rgba(49, 100, 244, 0.29);
         }
+
+        .icon {
+          svg {
+            width: 10px;
+            height: 10px;
+            fill: $primary;
+          }
+        }
       }
     }
+
+
   }
 
   .categoty {
+    position: relative;
     max-width: 24%;
     width: 100%;
     overflow: hidden;
@@ -119,6 +140,12 @@
       gap: 12px;
       padding: 22px 12px;
       border: 1px solid #C2C2C2;
+    }
+
+    .icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
   }
 
