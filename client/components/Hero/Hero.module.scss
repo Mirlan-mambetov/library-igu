@@ -25,6 +25,21 @@
     flex-direction: column;
     z-index: 2;
     height: 70vh;
+
+    .button {
+      display: flex;
+      justify-content: center;
+      padding: 16px 30px;
+      background: $primary;
+      color: $mainWhite;
+      max-width: 18%;
+      width: 100%;
+      margin: 20px 0;
+
+      svg {
+        fill: $mainWhite;
+      }
+    }
   }
 
   & .content {

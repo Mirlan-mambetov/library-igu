@@ -8,4 +8,5 @@ export interface HeroProps extends DetailsHTMLAttributes<HTMLDivElement> {
   subContent?: SubcontentI[]
   information?: number
   subContentOrientation?: 'row' | 'column'
+  button?: boolean
 }

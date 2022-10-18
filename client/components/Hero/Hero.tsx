@@ -3,6 +3,7 @@ import { Title } from '../'
 import { HeroProps } from './Hero.props'
 import { Navigation } from './Navigation/Navigation'
 import { SubContent } from './SubContent/SubContent'
+import { Button } from '../'
 
 // STYLE 
 import styles from './Hero.module.scss'
@@ -13,7 +14,8 @@ export const Hero: FC<HeroProps> = ({
   title = "Научная библиотека ИГУ",
   subTitle,
   information,
-  subContentOrientation
+  subContentOrientation,
+  button
 }): JSX.Element => {
   return (
     <div className={styles.hero} style={{ backgroundImage: `url(${background})` }}>
@@ -25,6 +27,7 @@ export const Hero: FC<HeroProps> = ({
           </div>
           {subContent && <SubContent data={subContent} orientation={subContentOrientation} />}
           {information && <span className={styles.information}>Количество материалов: {information}</span>}
+          {button && <Button className={styles.button}>Войти</Button>}
         </div>
         <div className={styles.navigation}>
           <Navigation />
