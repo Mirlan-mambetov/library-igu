@@ -8,6 +8,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include media-queres.mediaOnly859px {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
   }
 
   .newsBtn {
@@ -16,8 +22,6 @@
 }
 
 .arrivals {
-
-
   .arrivalsWrapp {
     display: flex;
     justify-content: space-between;
@@ -27,6 +31,11 @@
       gap: 20px;
       max-width: 45%;
       width: 100%;
+
+      @include media-queres.mediaOnly992px {
+        flex-wrap: wrap;
+        max-width: 100%;
+      }
     }
 
     .tabs {
@@ -34,6 +43,16 @@
       gap: 5px;
       max-width: 50%;
       width: 100%;
+
+      @include media-queres.mediaOnly992px {
+        flex-direction: column;
+        max-width: 100%;
+      }
+    }
+
+    @include media-queres.mediaOnly992px {
+      flex-direction: column;
+      gap: 30px;
     }
   }
 }

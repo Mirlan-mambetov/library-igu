@@ -17,6 +17,12 @@
           fill: $mainWhite;
         }
       }
+
+      @include media-queres.mediaOnly1024px {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
     }
 
     &.row {
@@ -147,10 +153,18 @@
       top: 20px;
       right: 20px;
     }
+
+    @include media-queres.mediaOnly1024px {
+      max-width: 280px;
+      margin-bottom: 20px;
+    }
   }
 
   &.fixed {
     position: sticky;
     top: 70px;
   }
+
+
+
 }

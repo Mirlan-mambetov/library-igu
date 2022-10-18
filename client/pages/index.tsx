@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import styles from '../styles/Pages/Home.module.scss'
 import { PartnersI } from "../Interfaces/Partners.interface"
 import { HeroI } from "../Interfaces/Hero.interface"
+import Link from "next/link"
 
 
 const Home: FC = (): JSX.Element => {
@@ -74,7 +75,11 @@ const Home: FC = (): JSX.Element => {
             ))}
           </div>
           <div className={styles.newsBtn}>
-            <Button orientation="right">Архив новостей</Button>
+            <Link href={"/news/arhiv"}>
+              <a>
+                <Button orientation="right">Архив новостей</Button>
+              </a>
+            </Link>
           </div>
         </div>
       </section>

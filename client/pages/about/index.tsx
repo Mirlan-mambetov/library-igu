@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo'
 import { FC } from 'react'
-import { Hero, Paragraph, Tabs, Title } from '../../components'
+import { Hero, Tabs } from '../../components'
 import { Owner } from '../../components/About/Owner/Owner'
 import { Textbox } from '../../components/About/Textbox/Textbox'
 import { AboutInformationI, AboutTextContentI, OwnerI } from '../../Interfaces/About.interface'

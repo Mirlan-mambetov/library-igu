@@ -75,4 +75,9 @@
     line-height: 15px;
     text-transform: uppercase;
   }
+
+  @include media-queres.mediaOnly859px {
+    max-width: 280px;
+    width: 100%;
+  }
 }

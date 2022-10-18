@@ -27,6 +27,14 @@
       background: #F3E0BA;
       z-index: -1;
     }
+
+    @include media-queres.mediaOnly1024px {
+      max-width: 60%;
+    }
+
+    @include media-queres.mediaOnly535px {
+      max-width: 80%;
+    }
   }
 
   .content {
@@ -46,5 +54,14 @@
       font-size: 16px;
       line-height: 21px;
     }
+
+    @include media-queres.mediaOnly1024px {
+      max-width: 100%;
+    }
+  }
+
+  @include media-queres.mediaOnly1024px {
+    flex-direction: column;
+    gap: 12px;
   }
 }

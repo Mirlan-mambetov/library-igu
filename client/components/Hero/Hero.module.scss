@@ -39,6 +39,18 @@
       svg {
         fill: $mainWhite;
       }
+
+      @include media-queres.mediaOnly768px {
+        max-width: 25%;
+      }
+
+      @include media-queres.mediaOnly535px {
+        max-width: 35%;
+      }
+
+      @include media-queres.mediaOnly440px {
+        max-width: 100%;
+      }
     }
   }
 

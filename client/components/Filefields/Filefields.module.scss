@@ -12,6 +12,18 @@
     &>div {
       max-width: 45%;
       width: 100%;
+
+      @include media-queres.mediaOnly1024px {
+        max-width: 80%;
+      }
+
+      @include media-queres.mediaOnly640px {
+        max-width: 100%;
+      }
+    }
+
+    @include media-queres.mediaOnly1024px {
+      flex-direction: column;
     }
   }
 

@@ -11,4 +11,10 @@
   &>div {
     margin-bottom: 30px;
   }
+
+  @include media-queres.mediaOnly859px {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
 }

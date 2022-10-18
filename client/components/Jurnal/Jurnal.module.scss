@@ -7,6 +7,11 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+
+  @include media-queres.mediaOnly720px {
+    max-width: 100%;
+    margin: unset;
+  }
 }
 
 .jurnalAbout {
@@ -26,6 +31,10 @@
       font-size: 14px;
       line-height: 24px;
     }
+
+    @include media-queres.mediaOnly1024px {
+      max-width: 100%;
+    }
   }
 
   .image {
@@ -37,5 +46,18 @@
       height: 100%;
       object-fit: contain;
     }
+
+    @include media-queres.mediaOnly1024px {
+      max-width: 50%;
+    }
+
+    @include media-queres.mediaOnly535px {
+      max-width: 80%;
+    }
+  }
+
+  @include media-queres.mediaOnly1024px {
+    flex-direction: column-reverse;
+    gap: 20px;
   }
 }

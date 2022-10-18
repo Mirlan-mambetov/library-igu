@@ -11,6 +11,18 @@
     height: 100%;
     object-fit: cover;
   }
+
+  @include media-queres.mediaOnly768px {
+    max-width: 45%;
+  }
+
+  @include media-queres.mediaOnly640px {
+    max-width: 60%;
+  }
+
+  @include media-queres.mediaOnly480px {
+    max-width: 80%;
+  }
 }
 
 .ownerInfo {
@@ -40,5 +52,9 @@
     display: flex;
     gap: 8px;
     align-items: center;
+  }
+
+  @include media-queres.mediaOnly480px {
+    max-width: 100%;
   }
 }

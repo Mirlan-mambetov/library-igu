@@ -14,6 +14,16 @@
   &>div {
     max-width: 45%;
     width: 100%;
+
+    @include media-queres.mediaOnly1024px {
+      max-width: 100%;
+    }
+  }
+
+  @include media-queres.mediaOnly1024px {
+    flex-direction: column;
+    padding: 10px 0;
+    gap: 2px;
   }
 }
 
