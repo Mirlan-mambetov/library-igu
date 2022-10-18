@@ -59,10 +59,20 @@ const Category: FC = (): JSX.Element => {
         <div className="container">
           <div className={styles.contentWrapp}>
             <div className={styles.category}>
-              <ElibraryCategories categoryTitle='Категория книг' data={CategoryData} position="row" categoryLink='books' />
+              <ElibraryCategories
+                categoryTitle='Категория книг'
+                data={CategoryData}
+                position="row"
+                categoryLink='books'
+              />
             </div>
             <div className={styles.category}>
-              <ElibraryCategories categoryTitle='Категории' data={CategoriesData} position="row" categoryLink='elibrary' />
+              <ElibraryCategories
+                categoryTitle='Категории'
+                data={CategoriesData}
+                position="row"
+                categoryLink='elibrary'
+              />
             </div>
           </div>
         </div>

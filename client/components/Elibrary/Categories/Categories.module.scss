@@ -2,8 +2,76 @@
 @import '../../../styles/varriables/varriables';
 
 .categories {
-  display: flex;
-  justify-content: space-between;
+  .wrapp {
+    &.column {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &.row {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .categoty {
+        position: relative;
+        max-width: 100%;
+        width: 100%;
+        padding: 18px 20px;
+        background: rgba(49, 100, 244, 0.11);
+        padding-left: 50px;
+        display: flex;
+        align-items: center;
+
+        .image {
+          img {
+            display: none;
+          }
+
+          .title {
+            position: unset;
+            color: $black;
+            padding: 0;
+
+            h4 {
+              font-weight: 400;
+              font-size: 18px;
+              line-height: 23px;
+            }
+          }
+
+          &::after {
+            display: none;
+          }
+        }
+
+        .information {
+          display: none;
+        }
+
+        a {
+          color: $black;
+
+          h4 {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 18px;
+          }
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 30px;
+          height: 100%;
+          background: rgba(49, 100, 244, 0.29);
+        }
+      }
+    }
+  }
 
   .categoty {
     max-width: 24%;
@@ -54,68 +122,8 @@
     }
   }
 
-  &.row {
+  &.fixed {
     position: sticky;
     top: 70px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    .categoty {
-      position: relative;
-      max-width: 100%;
-      width: 100%;
-      padding: 18px 20px;
-      background: rgba(49, 100, 244, 0.11);
-      padding-left: 50px;
-      display: flex;
-      align-items: center;
-
-      .image {
-        img {
-          display: none;
-        }
-
-        .title {
-          position: unset;
-          color: $black;
-          padding: 0;
-
-          h4 {
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 23px;
-          }
-        }
-
-        &::after {
-          display: none;
-        }
-      }
-
-      .information {
-        display: none;
-      }
-
-      a {
-        color: $black;
-
-        h4 {
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 18px;
-        }
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 30px;
-        height: 100%;
-        background: rgba(49, 100, 244, 0.29);
-      }
-    }
   }
 }

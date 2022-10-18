@@ -69,9 +69,11 @@ const Elibrary: FC = (): JSX.Element => {
       {/* Categories */}
       <section className={styles.categories}>
         <div className="container">
-          <div className={styles.category}>
-            <ElibraryCategories categoryTitle='Категории' data={CategoriesData} categoryLink="elibrary" />
-          </div>
+          <ElibraryCategories
+            categoryTitle='Категории'
+            data={CategoriesData}
+            categoryLink="elibrary"
+          />
         </div>
       </section>
     </>
