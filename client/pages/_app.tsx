@@ -1,11 +1,13 @@
-import { NextSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
+import { NextSeo } from 'next-seo'
 import { Swiper, Autoplay, Pagination } from 'swiper'
+import { Preloader } from '../components'
 
 // STYLES
 import '../styles/global.scss'
 import 'swiper/css'
 import 'swiper/css/pagination'
+
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   Swiper.use([Autoplay, Pagination])
@@ -36,7 +38,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           }
         ]}
       />
-      <Component {...pageProps} />
+      < Preloader /> <Component {...pageProps} />
     </>
   )
 }
