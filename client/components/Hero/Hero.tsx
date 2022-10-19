@@ -7,6 +7,7 @@ import { Button } from '../'
 
 // STYLE 
 import styles from './Hero.module.scss'
+import { useRouter } from 'next/router'
 
 export const Hero: FC<HeroProps> = ({
   background = "https://res.cloudinary.com/djzubalr7/image/upload/v1665219599/Library-igu/background-default_z6g7u1.png",
@@ -17,6 +18,7 @@ export const Hero: FC<HeroProps> = ({
   subContentOrientation,
   button
 }): JSX.Element => {
+  const router = useRouter()
   return (
     <div className={styles.hero} style={{ backgroundImage: `url(${background})` }}>
       <div className="container">
@@ -27,7 +29,7 @@ export const Hero: FC<HeroProps> = ({
           </div>
           {subContent && <SubContent data={subContent} orientation={subContentOrientation} />}
           {information && <span className={styles.information}>Количество материалов: {information}</span>}
-          {button && <Button className={styles.button}>Войти</Button>}
+          {button && <Button className={styles.button} onClick={() => router.push({ pathname: '/login' })}>Войти</Button>}
         </div>
         <div className={styles.navigation}>
           <Navigation />
