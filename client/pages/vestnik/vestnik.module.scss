@@ -3,6 +3,10 @@
 
 .jurnalAbout {
   padding: 50px 0;
+
+  @include media-queres.mediaOnly768px {
+    padding: 20px 0;
+  }
 }
 
 .aboutVestnik {
@@ -32,5 +36,9 @@
 
   .arhivsBtn {
     margin-top: 30px;
+  }
+
+  @include media-queres.mediaOnly768px {
+    padding: 20px 0;
   }
 }

@@ -15,7 +15,17 @@
       max-width: 60%;
       width: 100%;
       padding: 40px 0;
+
+      @include media-queres.mediaOnly768px {
+        max-width: 100%;
+        flex-wrap: wrap;
+        padding: 10px 0;
+      }
     }
+  }
+
+  @include media-queres.mediaOnly768px {
+    padding: 12px 0;
   }
 }
 
@@ -26,10 +36,22 @@
   .files {
     max-width: 50%;
     width: 100%;
+
+    @include media-queres.mediaOnly768px {
+      max-width: 100%;
+    }
   }
 
   .category {
     max-width: 45%;
     width: 100%;
+
+    @include media-queres.mediaOnly768px {
+      max-width: 100%;
+    }
+  }
+
+  @include media-queres.mediaOnly768px {
+    flex-direction: column;
   }
 }

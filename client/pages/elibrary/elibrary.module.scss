@@ -26,10 +26,13 @@
         flex-wrap: wrap;
       }
     }
-
   }
 }
 
 .categories {
   padding: 50px 0;
+
+  @include media-queres.mediaOnly720px {
+    padding: 20px 0;
+  }
 }

@@ -29,10 +29,18 @@ body {
 
 section {
   padding: 50px 0;
+
+  @include media-queres.mediaOnly1024px {
+    padding: 30px 0;
+  }
 }
 
 .sectionTitle {
   padding: 40px 0;
+
+  @include media-queres.mediaOnly1024px {
+    padding: 15px 0;
+  }
 }
 
 // RESET STYLES BASIC
@@ -51,7 +59,7 @@ a:focus {
 }
 
 .swiper-pagination-progressbar-fill {
-  background: $black !important;
+  background: $black  !important;
 }
 
 .test {

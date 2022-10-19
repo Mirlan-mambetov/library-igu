@@ -11,6 +11,19 @@
     .category {
       max-width: 45%;
       width: 100%;
+
+      @include media-queres.mediaOnly768px {
+        max-width: 100%;
+      }
     }
+
+    @include media-queres.mediaOnly768px {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  @include media-queres.mediaOnly768px {
+    padding: 20px 0;
   }
 }
