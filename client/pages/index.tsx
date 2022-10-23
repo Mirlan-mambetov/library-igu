@@ -6,13 +6,13 @@ import { NewsI } from "../Interfaces/News.interface"
 import { BookscardI } from "../Interfaces/Bookscard.interface"
 import { TabsInterface } from "../Interfaces/Tabs.interface"
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { PartnersI } from "../Interfaces/Partners.interface"
+import { HeroI } from "../Interfaces/Hero.interface"
+import Link from "next/link"
 
 
 // STYLES
 import styles from '../styles/Pages/Home.module.scss'
-import { PartnersI } from "../Interfaces/Partners.interface"
-import { HeroI } from "../Interfaces/Hero.interface"
-import Link from "next/link"
 
 
 const Home: FC = (): JSX.Element => {
