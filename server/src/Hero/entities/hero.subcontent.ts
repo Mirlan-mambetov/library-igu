@@ -1,4 +1,3 @@
-import { PageE } from "src/pages/entities/page";
 import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { HeroE } from "./hero";
 

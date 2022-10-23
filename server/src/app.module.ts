@@ -4,8 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm/dist';
 import { HeroE } from './Hero/entities/hero';
 import { HerosubcontentE } from './Hero/entities/hero.subcontent';
 import { HeroModule } from './Hero/hero.module';
-import { PageE } from './pages/entities/page';
-import { MainpageModule } from './pages/mainpage/mainpage.module';
+import { NewsE } from './News/entities/news';
+import { NewsModule } from './News/news.module';
 
 @Module({
   imports: [
@@ -22,13 +22,13 @@ import { MainpageModule } from './pages/mainpage/mainpage.module';
       entities: [
         HeroE,
         HerosubcontentE,
-        PageE
+        NewsE
       ],
       autoLoadEntities: true,
       synchronize: true,
     }),
-    MainpageModule,
-    HeroModule
+    HeroModule,
+    NewsModule
   ],
   controllers: [],
   providers: [],
