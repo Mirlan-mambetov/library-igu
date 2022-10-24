@@ -5,6 +5,7 @@ import { ArrivalsModule } from './arrivals/arrivals.module';
 import { HeroE } from './Hero/entities/hero';
 import { HerosubcontentE } from './Hero/entities/hero.subcontent';
 import { HeroModule } from './Hero/hero.module';
+import { ImageboxModule } from './Imagebox/imagebox.module';
 import { NewsE } from './News/entities/news';
 import { NewsModule } from './News/news.module';
 import { PartnersModule } from './partners/partners.module';
@@ -21,18 +22,15 @@ import { PartnersModule } from './partners/partners.module';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE,
-      entities: [
-        HeroE,
-        HerosubcontentE,
-        NewsE
-      ],
+      entities: [],
       autoLoadEntities: true,
       synchronize: true,
     }),
     HeroModule,
     NewsModule,
     ArrivalsModule,
-    PartnersModule
+    PartnersModule,
+    ImageboxModule
   ],
   controllers: [],
   providers: [],
