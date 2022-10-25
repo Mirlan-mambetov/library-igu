@@ -2,7 +2,9 @@ import { Injectable } from '@nestjs/common'
 import { HttpStatus } from '@nestjs/common/enums';
 import { HttpException } from '@nestjs/common/exceptions';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PageEntity } from 'src/pages/entities/Page';
 import { Repository } from 'typeorm';
+import { PAGES_NOT_FOUND } from '../constans/message.constans';
 import { HeroE } from '../entities/hero';
 import { HerosubcontentE } from '../entities/hero.subcontent';
 import { HeroI, HeroSubContentI } from '../interfaces/hero';
@@ -13,7 +15,8 @@ export class HeroSerivce {
 
   constructor(
     @InjectRepository(HeroE) private readonly heroModel: Repository<HeroE>,
-    @InjectRepository(HerosubcontentE) private readonly heroSubcontentModel: Repository<HerosubcontentE>
+    @InjectRepository(HerosubcontentE) private readonly heroSubcontentModel: Repository<HerosubcontentE>,
+    @InjectRepository(PageEntity) private readonly pageModel: Repository<PageEntity>
   ) { }
 
   /**
@@ -33,9 +36,14 @@ export class HeroSerivce {
   /**
    * @param hero 
    */
-  createHero(hero: HeroI) {
-    const heroSave = this.heroModel.create(hero)
-    return this.heroModel.save(heroSave)
+  async createHero(id: number, hero: HeroI) {
+    const page = await this.pageModel.findOne({ where: { id } })
+    if (!page) throw new HttpException(PAGES_NOT_FOUND, HttpStatus.BAD_REQUEST)
+    const heroSave = this.heroModel.create({
+      ...hero,
+      page
+    })
+    return await this.heroModel.save(heroSave)
   }
 
   /**
@@ -74,5 +82,9 @@ export class HeroSerivce {
    */
   deleteSubContent(id: number) {
     return this.heroSubcontentModel.delete(id)
+  }
+
+  deleteHero(id: number) {
+    return this.heroModel.delete(id)
   }
 }

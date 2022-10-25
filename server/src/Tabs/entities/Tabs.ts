@@ -1,4 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { PageEntity } from "src/pages/entities/Page";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { IslinkEntity } from "./Islink";
 
 @Entity({ name: 'tabs' })
@@ -14,5 +15,10 @@ export class TabsEntity {
   description: string
 
   @OneToMany(() => IslinkEntity, (tabs) => tabs.tabs)
+  @JoinColumn()
   isLink: IslinkEntity[]
+
+  @ManyToOne(() => PageEntity, (page) => page.tabs)
+  @JoinColumn()
+  page: PageEntity
 }

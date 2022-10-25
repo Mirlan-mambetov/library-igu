@@ -1,4 +1,5 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { PageEntity } from "src/pages/entities/Page";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { HerosubcontentE } from "./hero.subcontent";
 
 @Entity({ name: 'hero' })
@@ -22,4 +23,8 @@ export class HeroE {
   @OneToMany(() => HerosubcontentE, (s) => s.hero)
   @JoinColumn()
   subcontent: HerosubcontentE[]
+
+  @ManyToOne(() => PageEntity, (page) => page.hero)
+  @JoinColumn()
+  page: PageEntity
 }

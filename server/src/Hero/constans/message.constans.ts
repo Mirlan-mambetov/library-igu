@@ -1,0 +1,1 @@
+export const PAGES_NOT_FOUND: string = 'Страница с таким идентификатором не найден'

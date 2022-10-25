@@ -8,7 +8,9 @@ import { HeroModule } from './Hero/hero.module';
 import { ImageboxModule } from './Imagebox/imagebox.module';
 import { NewsE } from './News/entities/news';
 import { NewsModule } from './News/news.module';
+import { PagesModule } from './pages/pages.module';
 import { PartnersModule } from './partners/partners.module';
+import { TabsModule } from './Tabs/tabs.module';
 
 @Module({
   imports: [
@@ -30,7 +32,9 @@ import { PartnersModule } from './partners/partners.module';
     NewsModule,
     ArrivalsModule,
     PartnersModule,
-    ImageboxModule
+    ImageboxModule,
+    TabsModule,
+    PagesModule
   ],
   controllers: [],
   providers: [],

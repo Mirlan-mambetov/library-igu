@@ -26,9 +26,9 @@ export class HeroController {
   /**
    * @param hero 
    */
-  @Post()
-  createHero(@Body() hero: HeroI) {
-    return this.heroService.createHero(hero)
+  @Post(':id')
+  createHero(@Param('id', ParseIntPipe) id: number, @Body() hero: HeroI) {
+    return this.heroService.createHero(id, hero)
   }
 
   /**
@@ -70,9 +70,16 @@ export class HeroController {
   /**
    * @param id 
    */
+  @Delete('/delete/:id')
+  deleteHero(@Param('id', ParseIntPipe) id: number) {
+    return this.heroService.deleteHero(id)
+  }
+
+  /**
+   * @param id 
+   */
   @Delete('subcontent/delete/:id')
   deleteSubcontent(@Param('id', ParseIntPipe) id: number) {
     return this.heroService.deleteSubContent(id)
   }
-
 }
