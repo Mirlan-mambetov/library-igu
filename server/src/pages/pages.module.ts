@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { AboutEntity } from "src/about/entities/About";
 import { HeroE } from "src/Hero/entities/hero";
 import { IslinkEntity } from "src/Tabs/entities/Islink";
 import { TabsEntity } from "src/Tabs/entities/Tabs";
@@ -9,7 +10,11 @@ import { PagesService } from "./service/pages.service";
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([PageEntity, HeroE, TabsEntity, IslinkEntity])
+    TypeOrmModule.forFeature([
+      PageEntity, HeroE,
+      TabsEntity, IslinkEntity,
+      AboutEntity
+    ])
   ],
   controllers: [PagesController],
   providers: [PagesService]

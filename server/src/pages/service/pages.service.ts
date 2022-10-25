@@ -11,20 +11,24 @@ export class PagesService {
     @InjectRepository(PageEntity) private readonly PageModel: Repository<PageEntity>
   ) { }
 
-  create(page: PageI) {
+  async create(page: PageI) {
     const data = this.PageModel.create(page)
-    return this.PageModel.save(data)
+    return await this.PageModel.save(data)
   }
-  update(id: number, page: PageI) {
-    return this.PageModel.update(id, page)
+
+  async update(id: number, page: PageI) {
+    return await this.PageModel.update(id, page)
   }
-  delete(id: number) {
-    return this.PageModel.delete(id)
+
+  async delete(id: number) {
+    return await this.PageModel.delete(id)
   }
-  find() {
-    return this.PageModel.find({ relations: ['hero', 'hero.subcontent', 'tabs', 'tabs.isLink'] })
+
+  async find() {
+    return await this.PageModel.find({ relations: ['hero', 'hero.subcontent', 'tabs', 'tabs.isLink', 'about'] })
   }
-  findOne(id: number) {
-    return this.PageModel.findOne({ where: { id }, relations: ['hero', 'hero.subcontent'] })
+
+  async findOne(id: number) {
+    return await this.PageModel.findOne({ where: { id }, relations: ['hero', 'hero.subcontent', 'tabs', 'tabs.isLink', 'about'] })
   }
 }
