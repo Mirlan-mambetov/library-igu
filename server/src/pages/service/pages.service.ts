@@ -25,10 +25,10 @@ export class PagesService {
   }
 
   async find() {
-    return await this.PageModel.find({ relations: ['hero', 'hero.subcontent', 'tabs', 'tabs.isLink', 'about', 'owner'] })
+    return await this.PageModel.find({ relations: ['hero', 'hero.subcontent', 'tabs', 'tabs.isLink', 'about', 'owner', 'aboutInformation'] })
   }
 
   async findOne(id: number) {
-    return await this.PageModel.findOne({ where: { id }, relations: ['hero', 'hero.subcontent', 'tabs', 'tabs.isLink', 'about', 'owner'] })
+    return await this.PageModel.findOne({ where: { id }, relations: ['hero', 'hero.subcontent', 'tabs', 'tabs.isLink', 'about', 'owner', 'aboutInformation'] })
   }
 }
