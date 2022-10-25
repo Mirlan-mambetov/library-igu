@@ -11,7 +11,7 @@ export class TabsEntity {
   @Column()
   title: string
 
-  @Column()
+  @Column({ nullable: true })
   description: string
 
   @OneToMany(() => IslinkEntity, (tabs) => tabs.tabs)

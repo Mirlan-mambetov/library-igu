@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { TabsEntity } from "./Tabs";
 
 @Entity({ name: 'is_link' })
@@ -14,5 +14,6 @@ export class IslinkEntity {
   link: string
 
   @ManyToOne(() => TabsEntity, (tabs) => tabs.isLink)
+  @JoinColumn()
   tabs: TabsEntity
 }

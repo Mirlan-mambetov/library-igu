@@ -17,5 +17,5 @@ export class PageEntity {
 
   @OneToMany(() => TabsEntity, (tabs) => tabs.page)
   @JoinColumn()
-  tabs: TabsEntity
+  tabs: TabsEntity[]
 } 

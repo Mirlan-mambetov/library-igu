@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
-import { TabsI } from "../interface/tabs.interface";
+import { TabsI, IsLinkI } from "../interface/tabs.interface";
 import { TabsService } from "../service/tabs.service";
 
 @Controller('tabs')
@@ -36,5 +36,26 @@ export class TabsController {
   @Get()
   find() {
     return this.tabsService.find()
+  }
+
+  @Post('/link/create/:id')
+  createLink(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() tabsLink: IsLinkI
+  ) {
+    return this.tabsService.createLinkTabs(id, tabsLink)
+  }
+
+  @Put('/link/update/:id')
+  updateLink(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() tabsLink: IsLinkI
+  ) {
+    return this.tabsService.updateLinkTabs(id, tabsLink)
+  }
+
+  @Delete('/link/delete/:id')
+  deleteLink(@Param('id', ParseIntPipe) id: number) {
+    return this.tabsService.deleteTabsLink(id)
   }
 }

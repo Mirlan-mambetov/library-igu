@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { HeroE } from "./hero";
 
 @Entity({ name: 'hero_subcontent' })
@@ -14,5 +14,6 @@ export class HerosubcontentE {
   description: string
 
   @ManyToOne(() => HeroE, (hero) => hero.subcontent)
+  @JoinColumn()
   hero: HeroE
 }

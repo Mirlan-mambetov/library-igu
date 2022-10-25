@@ -3,7 +3,6 @@ export interface TabsI {
   description?: string
 }
 export interface IsLinkI {
-  id: string | number
   name: string
   link: string
 }

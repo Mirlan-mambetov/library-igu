@@ -22,7 +22,7 @@ export class PagesService {
     return this.PageModel.delete(id)
   }
   find() {
-    return this.PageModel.find({ relations: ['hero', 'hero.subcontent', 'tabs'] })
+    return this.PageModel.find({ relations: ['hero', 'hero.subcontent', 'tabs', 'tabs.isLink'] })
   }
   findOne(id: number) {
     return this.PageModel.findOne({ where: { id }, relations: ['hero', 'hero.subcontent'] })
