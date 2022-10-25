@@ -1,5 +1,6 @@
 import { AboutEntity } from "src/about/entities/About";
 import { HeroE } from "src/Hero/entities/hero";
+import { OwnerEntity } from "src/Owner/entities/Owner";
 import { TabsEntity } from "src/Tabs/entities/Tabs";
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -22,4 +23,8 @@ export class PageEntity {
 
   @OneToMany(() => AboutEntity, (about) => about.page)
   about: AboutEntity[]
+
+  @OneToOne(() => OwnerEntity)
+  @JoinColumn()
+  owner: OwnerEntity
 } 

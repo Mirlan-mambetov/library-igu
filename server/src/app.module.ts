@@ -10,6 +10,7 @@ import { ImageboxModule } from './Imagebox/imagebox.module';
 import { JurnalModule } from './Jurnal/jurnal.module';
 import { NewsE } from './News/entities/news';
 import { NewsModule } from './News/news.module';
+import { OwnerModule } from './Owner/owner.module';
 import { PagesModule } from './pages/pages.module';
 import { PartnersModule } from './partners/partners.module';
 import { TabsModule } from './Tabs/tabs.module';
@@ -38,6 +39,7 @@ import { TabsModule } from './Tabs/tabs.module';
     TabsModule,
     JurnalModule,
     AboutModule,
+    OwnerModule,
     PagesModule
   ],
   controllers: [],
