@@ -1,0 +1,1 @@
+export const JURNAL_NOT_FOUND: string = 'Журнал с таким ID не найден'

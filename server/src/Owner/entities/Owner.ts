@@ -1,5 +1,4 @@
-import { PageEntity } from "src/pages/entities/Page";
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: 'owner' })
 export class OwnerEntity {

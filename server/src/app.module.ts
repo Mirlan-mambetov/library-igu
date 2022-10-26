@@ -14,6 +14,7 @@ import { OwnerModule } from './Owner/owner.module';
 import { PagesModule } from './pages/pages.module';
 import { PartnersModule } from './partners/partners.module';
 import { TabsModule } from './Tabs/tabs.module';
+import { VestnikModule } from './vestnik/vestnik.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { TabsModule } from './Tabs/tabs.module';
     JurnalModule,
     AboutModule,
     OwnerModule,
+    VestnikModule,
     PagesModule
   ],
   controllers: [],
