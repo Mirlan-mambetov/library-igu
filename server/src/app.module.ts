@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config';
+import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm/dist';
 import { AboutModule } from './about/about.module';
 import { ArrivalsModule } from './arrivals/arrivals.module';
@@ -18,6 +19,10 @@ import { VestnikModule } from './vestnik/vestnik.module';
 
 @Module({
   imports: [
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: './config/.env'

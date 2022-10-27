@@ -32,7 +32,10 @@ export class PagesService {
         'owner', 'aboutInformation',
         'jurnal', 'jurnal.jurnalabout',
         'jurnal.jurnalabout.address', 'vestnik'
-      ]
+      ],
+      order: {
+        id: 'ASC'
+      }
     })
   }
 
