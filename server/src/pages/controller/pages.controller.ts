@@ -1,4 +1,4 @@
-import { Body, UsePipes, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, UsePipes, Controller, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { ValidationPipe } from "@nestjs/common/pipes";
 import { PageI } from "../interface/page.interface";
 import { PagesService } from "../service/pages.service";

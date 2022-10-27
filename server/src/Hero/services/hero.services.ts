@@ -1,13 +1,15 @@
-import { Injectable } from '@nestjs/common'
-import { HttpStatus } from '@nestjs/common/enums';
-import { HttpException } from '@nestjs/common/exceptions';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm';
+import { PAGE_NOT_FOUND } from 'src/pages/constants/pages.constans';
 import { PageEntity } from 'src/pages/entities/Page';
 import { Repository } from 'typeorm';
-import { PAGES_NOT_FOUND } from '../constans/message.constans';
+import { HERO_NOT_FOUND } from '../constans/message.constans';
+import { CreateHeroDto } from '../dto/create.hero.dto';
+import { CreateSubcontentDto } from '../dto/create.subcontent.dto';
+import { UpdateHeroDto } from '../dto/update.hero.dto';
+import { UpdateSubcontentDto } from '../dto/update.subcontent.dto';
 import { HeroE } from '../entities/hero';
 import { HerosubcontentE } from '../entities/hero.subcontent';
-import { HeroI, HeroSubContentI } from '../interfaces/hero';
 
 
 @Injectable()
@@ -36,9 +38,9 @@ export class HeroSerivce {
   /**
    * @param hero 
    */
-  async createHero(id: number, hero: HeroI) {
+  async createHero(id: number, hero: CreateHeroDto) {
     const page = await this.pageModel.findOne({ where: { id } })
-    if (!page) throw new HttpException(PAGES_NOT_FOUND, HttpStatus.BAD_REQUEST)
+    if (!page) throw new HttpException(PAGE_NOT_FOUND, HttpStatus.BAD_REQUEST)
     const heroSave = this.heroModel.create({
       ...hero,
       page
@@ -50,7 +52,7 @@ export class HeroSerivce {
    * @param id 
    * @param hero 
    */
-  updateHero(id: number, hero: HeroI) {
+  updateHero(id: number, hero: UpdateHeroDto) {
     return this.heroModel.update({ id }, hero)
   }
 
@@ -58,9 +60,9 @@ export class HeroSerivce {
    * @param id 
    * @param content 
    */
-  async createSubcontent(id: number, content: HeroSubContentI) {
+  async createSubcontent(id: number, content: CreateSubcontentDto) {
     const hero = await this.heroModel.findOne({ where: { id } })
-    if (!hero) throw new HttpException('Hero с таким id не найден', HttpStatus.BAD_REQUEST)
+    if (!hero) throw new HttpException(HERO_NOT_FOUND, HttpStatus.BAD_REQUEST)
     const newContent = this.heroSubcontentModel.create({
       ...content,
       hero
@@ -72,7 +74,7 @@ export class HeroSerivce {
    * @param id 
    * @param content 
    */
-  async updateSubContent(id: number, content: HeroSubContentI) {
+  async updateSubContent(id: number, content: UpdateSubcontentDto) {
     const newContent = this.heroSubcontentModel.update({ id }, content)
     return newContent
   }
@@ -84,7 +86,4 @@ export class HeroSerivce {
     return this.heroSubcontentModel.delete(id)
   }
 
-  deleteHero(id: number) {
-    return this.heroModel.delete(id)
-  }
 }

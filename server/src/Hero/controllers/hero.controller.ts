@@ -1,5 +1,7 @@
 import { Controller, Body, Post, Param, Get, Put, ParseIntPipe, Delete, UsePipes, ValidationPipe } from '@nestjs/common'
-import { HeroI, HeroSubContentI } from '../interfaces/hero';
+import { CreateHeroDto } from '../dto/create.hero.dto';
+import { CreateSubcontentDto } from '../dto/create.subcontent.dto';
+import { UpdateHeroDto } from '../dto/update.hero.dto';
 import { HeroSerivce } from '../services/hero.services';
 
 @Controller('hero')
@@ -8,6 +10,7 @@ export class HeroController {
   constructor(private readonly heroService: HeroSerivce) { }
 
   /**
+   * @description find all hero data
    * @returns Hero[]
    */
   @Get()
@@ -16,6 +19,7 @@ export class HeroController {
   }
 
   /**
+   * @description Find Hero by id
    * @returns Hero
    */
   @Get(':id')
@@ -24,28 +28,37 @@ export class HeroController {
   }
 
   /**
+   * @description create hero
    * @param hero 
    */
   @Post(':id')
-  @UsePipes(new ValidationPipe({ skipNullProperties: true }))
-  createHero(@Param('id', ParseIntPipe) id: number, @Body() hero: HeroI) {
-    return this.heroService.createHero(id, hero)
+  @UsePipes(new ValidationPipe({
+    skipMissingProperties: true
+  }))
+  createHero(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() heroDto: CreateHeroDto) {
+    return this.heroService.createHero(id, heroDto)
   }
 
   /**
+   * @description update hero
    * @param id
    * @param hero
    */
   @Put('update/:id')
-  @UsePipes(new ValidationPipe())
+  @UsePipes(new ValidationPipe({
+    skipMissingProperties: true
+  }))
   updateHero(
     @Param('id', ParseIntPipe) id: number,
-    @Body() hero: HeroI
+    @Body() heroDtoUpdate: UpdateHeroDto
   ) {
-    return this.heroService.updateHero(id, hero)
+    return this.heroService.updateHero(id, heroDtoUpdate)
   }
 
   /**
+   * @description create subcontent to hero
    * @param id 
    * @param hero 
    */
@@ -53,12 +66,13 @@ export class HeroController {
   @UsePipes(new ValidationPipe())
   createSubcontent(
     @Param('id', ParseIntPipe) id: number,
-    @Body() hero: HeroSubContentI
+    @Body() subcontentDto: CreateSubcontentDto
   ) {
-    return this.heroService.createSubcontent(id, hero)
+    return this.heroService.createSubcontent(id, subcontentDto)
   }
 
   /**
+   * @description update subcontent to hero
    * @param id 
    * @param content 
    */
@@ -66,20 +80,13 @@ export class HeroController {
   @UsePipes(new ValidationPipe())
   updateSubcontent(
     @Param('id', ParseIntPipe) id: number,
-    @Body() content: HeroSubContentI
+    @Body() content: CreateSubcontentDto
   ) {
     return this.heroService.updateSubContent(id, content)
   }
 
   /**
-   * @param id 
-   */
-  @Delete('/delete/:id')
-  deleteHero(@Param('id', ParseIntPipe) id: number) {
-    return this.heroService.deleteHero(id)
-  }
-
-  /**
+   * @description delete subcontent in hero
    * @param id 
    */
   @Delete('subcontent/delete/:id')

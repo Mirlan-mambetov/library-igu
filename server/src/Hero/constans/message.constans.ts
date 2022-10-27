@@ -1,1 +1,1 @@
-export const PAGES_NOT_FOUND: string = 'Страница с таким идентификатором не найден'
+export const HERO_NOT_FOUND: string = 'Ошибка сервера. Hero с таким ID не найден'
