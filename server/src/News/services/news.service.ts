@@ -1,8 +1,10 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { NEWS_NOT_FOUND } from '../constans/messages.constans';
+import { CreateNewsDto } from '../dto/create.news.dto';
+import { UpdateNewsDto } from '../dto/update.news.dto';
 import { NewsE } from '../entities/news';
-import { NewsI } from '../interfaces/news.interface';
 
 
 @Injectable()
@@ -14,36 +16,46 @@ export class NewsService {
    * @returns news []
    */
   findAll() {
-    return this.newsModel.find()
+    return this.newsModel.find({
+      order: {
+        id: 'ASC'
+      }
+    })
   }
 
   /**
    * @param id 
    * @returns news
    */
-  findOne(id: number) {
-    return this.newsModel.findOne({ where: { id } })
+  async findOne(id: number) {
+    const findNews = await this.newsModel.findOne({ where: { id } })
+    if (!findNews) throw new HttpException(NEWS_NOT_FOUND, HttpStatus.BAD_REQUEST)
+    return findNews
   }
 
   /**
    * @param news 
    */
-  create(news: NewsI) {
-    return this.newsModel.save(news)
+  async create(newsDto: CreateNewsDto) {
+    return await this.newsModel.save(newsDto)
   }
 
   /**
    * @param id 
    * @param news 
    */
-  updateNews(id: number, news: NewsI) {
-    return this.newsModel.update({ id }, news)
+  async updateNews(id: number, newsDto: UpdateNewsDto) {
+    const news = await this.newsModel.findOne({ where: { id } })
+    if (!news) throw new HttpException(NEWS_NOT_FOUND, HttpStatus.BAD_REQUEST)
+    return await this.newsModel.update({ id }, newsDto)
   }
 
   /**
    * @param id 
    */
-  deleteNews(id: number) {
-    return this.newsModel.delete({ id })
+  async deleteNews(id: number) {
+    const news = await this.newsModel.findOne({ where: { id } })
+    if (!news) throw new HttpException(NEWS_NOT_FOUND, HttpStatus.BAD_REQUEST)
+    return await this.newsModel.delete({ id })
   }
 }

@@ -1,5 +1,7 @@
-import { Controller, Get, Param, Post, Body, ParseIntPipe, Put, Delete } from "@nestjs/common";
-import { NewsI } from "../interfaces/news.interface";
+import { Controller, UsePipes, ValidationPipe, Get, Param, Post, Body, ParseIntPipe, Put, Delete } from "@nestjs/common";
+import { CREATED_NEWS, DELETED_NEWS, UPDATED_NEWS } from "../constans/messages.constans";
+import { CreateNewsDto } from "../dto/create.news.dto";
+import { UpdateNewsDto } from "../dto/update.news.dto";
 import { NewsService } from "../services/news.service";
 
 @Controller('news')
@@ -29,8 +31,10 @@ export class NewsController {
    * @returns 
    */
   @Post('create')
-  createNews(@Body() news: NewsI) {
-    return this.newsService.create(news)
+  @UsePipes(new ValidationPipe())
+  createNews(@Body() newsDto: CreateNewsDto) {
+    this.newsService.create(newsDto)
+    return { message: CREATED_NEWS }
   }
 
 
@@ -39,11 +43,16 @@ export class NewsController {
    * @param news 
    */
   @Put('update/:id')
-  update(
-    @Param('id') id: number,
-    @Body() news: NewsI
+  async update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() newsDto: UpdateNewsDto
   ) {
-    return this.newsService.updateNews(id, news)
+    const news = await this.newsService.updateNews(id, newsDto)
+    if (!news) {
+      return news
+    } else {
+      return { message: UPDATED_NEWS }
+    }
   }
 
 
@@ -51,7 +60,8 @@ export class NewsController {
    * @param id 
    */
   @Delete('delete/:id')
-  delete(@Param('id') id: number) {
-    return this.newsService.deleteNews(id)
+  delete(@Param('id', ParseIntPipe) id: number) {
+    this.newsService.deleteNews(id)
+    return { message: DELETED_NEWS }
   }
 }
