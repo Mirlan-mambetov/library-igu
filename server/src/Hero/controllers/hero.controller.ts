@@ -1,4 +1,4 @@
-import { Controller, Body, Post, Param, Get, Put, ParseIntPipe, Delete } from '@nestjs/common'
+import { Controller, Body, Post, Param, Get, Put, ParseIntPipe, Delete, UsePipes, ValidationPipe } from '@nestjs/common'
 import { HeroI, HeroSubContentI } from '../interfaces/hero';
 import { HeroSerivce } from '../services/hero.services';
 
@@ -27,15 +27,17 @@ export class HeroController {
    * @param hero 
    */
   @Post(':id')
+  @UsePipes(new ValidationPipe({ skipNullProperties: true }))
   createHero(@Param('id', ParseIntPipe) id: number, @Body() hero: HeroI) {
     return this.heroService.createHero(id, hero)
   }
 
   /**
-   * @param id 
-   * @param hero 
+   * @param id
+   * @param hero
    */
   @Put('update/:id')
+  @UsePipes(new ValidationPipe())
   updateHero(
     @Param('id', ParseIntPipe) id: number,
     @Body() hero: HeroI
@@ -48,9 +50,10 @@ export class HeroController {
    * @param hero 
    */
   @Post('subcontent/:id')
+  @UsePipes(new ValidationPipe())
   createSubcontent(
     @Param('id', ParseIntPipe) id: number,
-    @Body() hero: HeroSubContentI[]
+    @Body() hero: HeroSubContentI
   ) {
     return this.heroService.createSubcontent(id, hero)
   }
@@ -60,6 +63,7 @@ export class HeroController {
    * @param content 
    */
   @Put('subcontent/update/:id')
+  @UsePipes(new ValidationPipe())
   updateSubcontent(
     @Param('id', ParseIntPipe) id: number,
     @Body() content: HeroSubContentI

@@ -58,7 +58,7 @@ export class HeroSerivce {
    * @param id 
    * @param content 
    */
-  async createSubcontent(id: number, content: HeroSubContentI[]) {
+  async createSubcontent(id: number, content: HeroSubContentI) {
     const hero = await this.heroModel.findOne({ where: { id } })
     if (!hero) throw new HttpException('Hero с таким id не найден', HttpStatus.BAD_REQUEST)
     const newContent = this.heroSubcontentModel.create({

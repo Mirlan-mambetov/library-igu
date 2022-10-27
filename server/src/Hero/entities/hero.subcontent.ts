@@ -7,10 +7,10 @@ export class HerosubcontentE {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column({ nullable: true })
+  @Column()
   title: string
 
-  @Column({ nullable: true })
+  @Column()
   description: string
 
   @ManyToOne(() => HeroE, (hero) => hero.subcontent)
