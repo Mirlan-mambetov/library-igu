@@ -2,6 +2,7 @@ import { Controller, Body, Post, Param, Get, Put, ParseIntPipe, Delete, UsePipes
 import { CreateHeroDto } from '../dto/create.hero.dto';
 import { CreateSubcontentDto } from '../dto/create.subcontent.dto';
 import { UpdateHeroDto } from '../dto/update.hero.dto';
+import { UpdateSubcontentDto } from '../dto/update.subcontent.dto';
 import { HeroSerivce } from '../services/hero.services';
 
 @Controller('hero')
@@ -60,10 +61,11 @@ export class HeroController {
   /**
    * @description create subcontent to hero
    * @param id 
-   * @param hero 
    */
   @Post('subcontent/:id')
-  @UsePipes(new ValidationPipe())
+  @UsePipes(new ValidationPipe({
+    skipUndefinedProperties: true
+  }))
   createSubcontent(
     @Param('id', ParseIntPipe) id: number,
     @Body() subcontentDto: CreateSubcontentDto
@@ -77,12 +79,12 @@ export class HeroController {
    * @param content 
    */
   @Put('subcontent/update/:id')
-  @UsePipes(new ValidationPipe())
+  @UsePipes(new ValidationPipe({ skipUndefinedProperties: true }))
   updateSubcontent(
     @Param('id', ParseIntPipe) id: number,
-    @Body() content: CreateSubcontentDto
+    @Body() contentDto: UpdateSubcontentDto
   ) {
-    return this.heroService.updateSubContent(id, content)
+    return this.heroService.updateSubContent(id, contentDto)
   }
 
   /**

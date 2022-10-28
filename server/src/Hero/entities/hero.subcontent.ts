@@ -10,7 +10,7 @@ export class HerosubcontentE {
   @Column()
   title: string
 
-  @Column()
+  @Column({ nullable: true })
   description: string
 
   @ManyToOne(() => HeroE, (hero) => hero.subcontent)

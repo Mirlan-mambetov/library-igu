@@ -8,5 +8,5 @@ export class CreateSubcontentDto {
 
   @IsString({ message: 'Описание может быть только в строковом формате, без содержания чисел,и знаков!' })
   @IsNotEmpty({ message: 'Описание не может быть пустым!' })
-  description: string
+  description?: string
 }
