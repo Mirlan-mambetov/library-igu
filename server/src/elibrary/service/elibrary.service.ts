@@ -6,6 +6,7 @@ import { Repository } from "typeorm";
 import { CreateBookDto } from "../dto/create.book.dto";
 import { CreateCategoryDto } from "../dto/create.category.dto";
 import { CreateMainDto } from "../dto/createMaincategory.dto";
+import { UpdateBookDto } from "../dto/update.book.dto";
 import { UpdateCategoryDto } from "../dto/update.category.dto";
 import { UpdateMainDto } from "../dto/updateMainCategory.dto";
 import { ElibraryEntity } from "../entities/Elibrary";
@@ -36,11 +37,10 @@ export class ElibraryService {
     const page = await this.pageModel.findOne({ where: { id } })
     if (!page) throw new HttpException(PAGE_NOT_FOUND,
       HttpStatus.BAD_REQUEST)
+    const check = await this.elibraryModel.findOne({ where: { name: createDto.name } })
+    if (check) throw new HttpException('Категория уже существует!', HttpStatus.BAD_REQUEST)
     const mainCategory = this.elibraryModel.create(
       { ...createDto, page })
-    if (mainCategory)
-      throw new HttpException('Категория уже существует!',
-        HttpStatus.BAD_REQUEST)
     return await this.elibraryModel.save(mainCategory)
   }
 
@@ -58,6 +58,23 @@ export class ElibraryService {
   }
 
   /**
+   */
+  async findAllMainCategory() {
+    return await this.elibraryModel.find()
+  }
+
+  /**
+   * @param id 
+   */
+  async findOneMainCategory(id: number) {
+    const book = await this.elibraryModel.findOne({ where: { id } })
+    if (!book)
+      throw new HttpException('Категория не существует по такому ID',
+        HttpStatus.BAD_REQUEST)
+    return book
+  }
+
+  /**
    * @param id Page ID
    * @param categoryDto 
    * @returns Category
@@ -66,6 +83,10 @@ export class ElibraryService {
     const mainCategory = await this.elibraryModel.findOne({ where: { id } })
     if (!mainCategory)
       throw new HttpException('Категория не существует по такому ID',
+        HttpStatus.BAD_REQUEST)
+    const check = await this.elibraryCategoriesModel.findOne({ where: { name: categoryDto.name } })
+    if (check)
+      throw new HttpException('Данная подкатегория уже существует',
         HttpStatus.BAD_REQUEST)
     const category = this.elibraryCategoriesModel.create({
       ...categoryDto,
@@ -87,6 +108,11 @@ export class ElibraryService {
     return await this.elibraryCategoriesModel.update(id, categoryDto)
   }
 
+  /**
+   * @param id 
+   * @param bookDto 
+   * @returns 
+   */
   async createBook(id: number, bookDto: CreateBookDto) {
     const category = await this.elibraryCategoriesModel.findOne({ where: { id } })
     if (!category)
@@ -94,5 +120,22 @@ export class ElibraryService {
         HttpStatus.BAD_REQUEST)
     const book = this.elibraryBooksModel.create({ ...bookDto, category })
     return await this.elibraryBooksModel.save(book)
+  }
+
+  /**
+   * @param id 
+   * @param bookDto 
+   */
+  async updateBook(id: number, bookDto: UpdateBookDto) {
+    return await this.elibraryBooksModel.update(id, bookDto)
+  }
+
+
+  /**
+   * @param id 
+   * @returns 
+   */
+  async deleteBook(id: number) {
+    return await this.elibraryBooksModel.delete(id)
   }
 }

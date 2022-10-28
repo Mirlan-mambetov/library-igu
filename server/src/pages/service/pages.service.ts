@@ -70,7 +70,8 @@ export class PagesService {
         'hero', 'hero.subcontent', 'tabs', 'tabs.isLink',
         'about', 'owner', 'aboutInformation', 'jurnal', 'jurnal.jurnalabout',
         'jurnal.jurnalabout.address', 'vestnik',
-        'elibrary'
+        'elibrary', 'elibrary.categories', 'elibrary.categories.books',
+        'elibrary.categories.books.category'
       ],
       order: {
         id: 'ASC',

@@ -1,7 +1,8 @@
-import { Body, Controller, Param, ParseIntPipe, Post, Put, UsePipes, ValidationPipe } from "@nestjs/common";
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Put, UsePipes, ValidationPipe, Delete } from "@nestjs/common";
 import { CreateBookDto } from "../dto/create.book.dto";
 import { CreateCategoryDto } from "../dto/create.category.dto";
 import { CreateMainDto } from "../dto/createMaincategory.dto";
+import { UpdateBookDto } from "../dto/update.book.dto";
 import { UpdateCategoryDto } from "../dto/update.category.dto";
 import { UpdateMainDto } from "../dto/updateMainCategory.dto";
 import { ElibraryService } from "../service/elibrary.service";
@@ -25,6 +26,10 @@ export class ElibraryController {
     return this.elibraryService.createMainCategory(id, createMainDto)
   }
 
+  /**
+   * @param id 
+   * @param updateMainDto 
+   */
   @Put('/update/:id')
   @UsePipes(new ValidationPipe({ skipUndefinedProperties: true }))
   updateMainCategory(
@@ -34,6 +39,27 @@ export class ElibraryController {
     return this.elibraryService.updateMainCategory(id, updateMainDto)
   }
 
+  /**
+   * @returns Books []
+   */
+  @Get()
+  findMainCategory() {
+    return this.elibraryService.findAllMainCategory()
+  }
+
+  /**
+   * @param id 
+   * @returns Book
+   */
+  @Get(':id')
+  findOneMainCategory(@Param('id', ParseIntPipe) id: number) {
+    return this.elibraryService.findOneMainCategory(id)
+  }
+
+  /**
+   * @param id 
+   * @param categoryDto 
+   */
   @Post('/category/create/:id')
   @UsePipes(new ValidationPipe())
   createCategories(
@@ -51,11 +77,39 @@ export class ElibraryController {
     return this.elibraryService.updateCategories(id, categoryUpdateDto)
   }
 
+  /**
+   * @param id 
+   * @param createBookDto 
+   */
   @Post('/books/create/:id')
+  @UsePipes(new ValidationPipe({ skipUndefinedProperties: true }))
   createBook(
     @Param('id', ParseIntPipe) id: number,
     @Body() createBookDto: CreateBookDto
   ) {
     return this.elibraryService.createBook(id, createBookDto)
+  }
+
+  /**
+   * @param id 
+   * @param updateBookDto 
+   * @returns 
+   */
+  @Put('/books/update/:id')
+  @UsePipes(new ValidationPipe({ skipUndefinedProperties: true }))
+  updateBook(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateBookDto: UpdateBookDto
+  ) {
+    return this.elibraryService.updateBook(id, updateBookDto)
+  }
+
+  /**
+   * @param id 
+   * @returns 
+   */
+  @Delete('/books/delete/:id')
+  deleteBook(@Param('id', ParseIntPipe) id: number) {
+    return this.elibraryService.deleteBook(id)
   }
 }
