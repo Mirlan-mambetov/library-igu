@@ -2,6 +2,9 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AboutEntity } from "src/about/entities/About";
 import { AboutInfoEntity } from "src/about/entities/aboutInformation";
+import { ElibraryEntity } from "src/elibrary/entities/Elibrary";
+import { ElibraryBooksEntity } from "src/elibrary/entities/Elibrary.books";
+import { ElibraryCategoriesEntity } from "src/elibrary/entities/elibrary.categories";
 import { HeroE } from "src/Hero/entities/hero";
 import { JurnalEntity } from "src/Jurnal/entities/Jurnal";
 import { IslinkEntity } from "src/Tabs/entities/Islink";
@@ -15,7 +18,9 @@ import { PagesService } from "./service/pages.service";
     TypeOrmModule.forFeature([
       PageEntity, HeroE,
       TabsEntity, IslinkEntity,
-      AboutEntity, AboutInfoEntity
+      AboutEntity, AboutInfoEntity,
+      ElibraryEntity, ElibraryCategoriesEntity,
+      ElibraryBooksEntity
     ])
   ],
   controllers: [PagesController],

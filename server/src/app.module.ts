@@ -4,12 +4,10 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm/dist';
 import { AboutModule } from './about/about.module';
 import { ArrivalsModule } from './arrivals/arrivals.module';
-import { HeroE } from './Hero/entities/hero';
-import { HerosubcontentE } from './Hero/entities/hero.subcontent';
+import { ElibraryModule } from './elibrary/elibrary.module';
 import { HeroModule } from './Hero/hero.module';
 import { ImageboxModule } from './Imagebox/imagebox.module';
 import { JurnalModule } from './Jurnal/jurnal.module';
-import { NewsE } from './News/entities/news';
 import { NewsModule } from './News/news.module';
 import { OwnerModule } from './Owner/owner.module';
 import { PagesModule } from './pages/pages.module';
@@ -47,6 +45,7 @@ import { VestnikModule } from './vestnik/vestnik.module';
     AboutModule,
     OwnerModule,
     VestnikModule,
+    ElibraryModule,
     PagesModule
   ],
   controllers: [],

@@ -47,7 +47,8 @@ export class PagesService {
         'tabs', 'tabs.isLink', 'about',
         'owner', 'aboutInformation',
         'jurnal', 'jurnal.jurnalabout',
-        'jurnal.jurnalabout.address', 'vestnik'
+        'jurnal.jurnalabout.address', 'vestnik',
+        'elibrary'
       ],
       order: {
         id: 'ASC',
@@ -68,7 +69,8 @@ export class PagesService {
       relations: [
         'hero', 'hero.subcontent', 'tabs', 'tabs.isLink',
         'about', 'owner', 'aboutInformation', 'jurnal', 'jurnal.jurnalabout',
-        'jurnal.jurnalabout.address', 'vestnik'
+        'jurnal.jurnalabout.address', 'vestnik',
+        'elibrary'
       ],
       order: {
         id: 'ASC',

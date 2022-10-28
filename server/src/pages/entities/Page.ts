@@ -1,5 +1,6 @@
 import { AboutEntity } from "src/about/entities/About";
 import { AboutInfoEntity } from "src/about/entities/aboutInformation";
+import { ElibraryEntity } from "src/elibrary/entities/Elibrary";
 import { HeroE } from "src/Hero/entities/hero";
 import { JurnalEntity } from "src/Jurnal/entities/Jurnal";
 import { OwnerEntity } from "src/Owner/entities/Owner";
@@ -13,7 +14,7 @@ export class PageEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({ unique: true })
   name: string
 
   @OneToMany(() => HeroE, (hero) => hero.page)
@@ -42,4 +43,8 @@ export class PageEntity {
   @OneToMany(() => VestnikEntity, (vestnik) => vestnik.page)
   @JoinColumn()
   vestnik: VestnikEntity
+
+  @OneToMany(() => ElibraryEntity, (elib) => elib.page)
+  @JoinColumn()
+  elibrary: ElibraryEntity
 } 
