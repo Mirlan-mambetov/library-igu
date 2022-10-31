@@ -26,10 +26,34 @@ const Topbar = () => {
         display="flex"
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
+        width={300}
       >
-        <InputBase sx={{ ml: 2, flex: 1 }} placeholder="search" />
+        <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Поиск" />
+        <IconButton type="button" sx={{ p: 1 }}>
+          <SearchOutlined />
+        </IconButton>
       </Box>
-      <IconButton></IconButton>
+
+      {/* LINKS AND ICONS */}
+      <Box
+        display="flex"
+      >
+        <IconButton>
+          <LightModeOutlined />
+        </IconButton>
+
+        <IconButton>
+          <NotificationsOutlined />
+        </IconButton>
+
+        <IconButton>
+          <SettingsOutlined />
+        </IconButton>
+
+        <IconButton>
+          <PersonOutlined />
+        </IconButton>
+      </Box>
     </Box>
   )
 }
