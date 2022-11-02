@@ -23,7 +23,6 @@ const App = () => {
             <div className="subcontent">
               <Routes>
                 <Route path='/' element={<Dashboard />} />
-                <Route path='/pie' element={<Pie />} />
                 <Route path='/geography' element={<Geography />} />
                 <Route path='/bar' element={<Bar />} />
                 <Route path='/invoices' element={<Invoices />} />
