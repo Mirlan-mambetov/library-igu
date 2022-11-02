@@ -1,6 +1,6 @@
 export { default as Topbar } from './global/Topbar'
 export { default as SidebarApp } from './global/Sidebar'
-export { default as Dashboard } from './dashboard/index'
+export { default as Dashboard } from './home/index'
 export { default as Pie } from './pie/pie'
 export { default as Bar } from './bar/bar'
 export { default as Faq } from './faq/faq'

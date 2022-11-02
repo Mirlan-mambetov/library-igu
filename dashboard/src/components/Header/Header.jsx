@@ -7,7 +7,7 @@ const Header = ({ title, subtitle }) => {
   const colors = tokens(theme.palette.mode)
 
   return (
-    <Box mb={"30px"}>
+    <Box mb={"30px"} mt={"40px"}>
       <Typography
         variant='h3'
         sx={{ mb: "5px" }}
@@ -16,7 +16,13 @@ const Header = ({ title, subtitle }) => {
       >
         {title}
       </Typography>
-      <Typography variant='h6' color={colors.greenAccent[400]}>{subtitle}</Typography>
+      <Typography
+        variant='h6'
+        color={colors.greenAccent[400]}
+        sx={{ maxWidth: "650px" }}
+      >
+        {subtitle}
+      </Typography>
     </Box>
   )
 }
