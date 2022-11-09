@@ -5,6 +5,7 @@ const Input = ({ ...props }) => {
   return (
     <TextField
       {...props}
+      sx={{ width: "100%" }}
     />
   )
 }
