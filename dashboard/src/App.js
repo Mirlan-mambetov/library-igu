@@ -27,7 +27,7 @@ import { fetchPages } from './store/pages/actions/pageActions'
 
 const App = () => {
   const dispatch = useDispatch()
-  const { pages, errors, isLoading } = useSelector(state => state.pages)
+  const { pages, isLoading } = useSelector(state => state.pages)
   const [theme, colorMode] = useMode()
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const App = () => {
             <SidebarApp />
             <main className='content'>
               <Topbar />
-              <Box pl={"30px"}>
+              <Box pl={"30px"} pb={"40px"}>
                 <Routes>
                   {/* INNER PAGES (DASHBOARD PAGES) */}
                   <Route path='/' element={<Dashboard />} />

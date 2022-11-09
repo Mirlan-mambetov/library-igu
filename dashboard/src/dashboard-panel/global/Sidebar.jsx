@@ -19,12 +19,20 @@ const SidebarApp = () => {
   return (
     <Box
       sx={SideBarSX}
+      height="100vh"
       backgroundColor={colors.primary[600]}
+      style={{
+        position: "sticky",
+        top: "0"
+      }}
     >
       <Sidebar
         backgroundColor={colors.primary[600]}
         collapsedWidth="80px"
-        style={{ border: 'none' }}
+        width="320px"
+        style={{
+          border: 'none'
+        }}
       >
         <Menu >
           <MenuApp />

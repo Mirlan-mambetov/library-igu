@@ -43,7 +43,6 @@ const Dashboard = () => {
               type='plus'
               content="Создать страницу"
               title="Создать или обновить страницу, может только администратор"
-              color="info"
               onClick={() => {
                 dispatch(openModal())
                 dispatch(createContent("createPage"))

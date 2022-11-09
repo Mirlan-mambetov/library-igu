@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOnePage } from '../../../store/pages/reducers/pageSlice'
-
+import { Box } from '@mui/system'
+import { Typography, useTheme } from '@mui/material'
+import { tokens } from '../../../theme'
 
 // COMPONENTS
 import {
   Header, Hero, TabsComponent
 } from '../../../components'
-import { Box } from '@mui/system'
-import { Typography, useTheme } from '@mui/material'
-import { tokens } from '../../../theme'
 
 
 const MainPage = () => {
@@ -55,9 +54,9 @@ const MainPage = () => {
             ))}
           </Box>
           <Box
-            display="flex"
-            gap="6px"
+            p="10px 20px 0px 20px"
           >
+
             {page.map(p => (
               p.arrivals.map(arrival => (
                 <TabsComponent {...arrival} key={arrival.id} />

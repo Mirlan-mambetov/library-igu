@@ -8,13 +8,13 @@ const ButtonComponent = ({ type = "plus", content, ...props }) => {
   return (
     <Button
       {...props}
+      style={{ display: "flex", gap: "5px", aliginItems: "center" }}
+      color="info"
     >
       {
-        type === "update" && <CreateOutlinedIcon />
-        &&
-        type === "plus" && <AddCircleOutlinedIcon />
+        type === "update" ? <CreateOutlinedIcon /> : <AddCircleOutlinedIcon />
       }
-      <span>{content}</span>
+      {content && <span>{content}</span>}
     </Button>
   )
 }
