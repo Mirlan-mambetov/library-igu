@@ -9,20 +9,17 @@ import { useTheme } from '@emotion/react'
 // COMPONENTS
 import {
   ButtonComponent,
-  Header,
-  Modal
+  Header
 } from '../../components'
 
 const Dashboard = () => {
   const { pages } = useSelector(state => state.pages)
-  const { isOpen } = useSelector(state => state.modal)
   const dispatch = useDispatch()
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   return (
     <>
-      {isOpen && <Modal open={isOpen} />}
       <Header title="Главная страница" subtitle="панель управления сайта Научной библиотеки ИГУ" />
       <Box sx={{ display: "flex" }}>
         {/* Pages info */}

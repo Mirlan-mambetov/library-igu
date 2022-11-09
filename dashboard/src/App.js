@@ -6,7 +6,10 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 // Components
-import { Loader } from './components'
+import {
+  Loader,
+  Modal
+} from './components'
 
 // DASHBOARD PANEL PAGES
 import {
@@ -28,6 +31,7 @@ import { fetchPages } from './store/pages/actions/pageActions'
 const App = () => {
   const dispatch = useDispatch()
   const { pages, isLoading } = useSelector(state => state.pages)
+  const { isOpen } = useSelector(state => state.modal)
   const [theme, colorMode] = useMode()
 
   useEffect(() => {
@@ -36,6 +40,7 @@ const App = () => {
   console.log(pages)
   return (
     <>
+      {isOpen && <Modal open={isOpen} />}
       {isLoading && <Loader />}
       <ColorModeContext.Provider value={colorMode}>
         {/* THEME PROVIDER */}

@@ -16,6 +16,12 @@ const UpdateComponent = () => {
           <PageForm />
         </FormComponent>
       )
+    case "updateHeroImage":
+      return (
+        <FormComponent>
+          <PageForm />
+        </FormComponent>
+      )
     default:
       return <h1>Update Component</h1>
   }
