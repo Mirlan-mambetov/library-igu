@@ -19,7 +19,7 @@ import { VestnikModule } from './vestnik/vestnik.module';
   imports: [
     ThrottlerModule.forRoot({
       ttl: 60,
-      limit: 10
+      limit: 20
     }),
     ConfigModule.forRoot({
       isGlobal: true,

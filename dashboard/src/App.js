@@ -45,7 +45,7 @@ const App = () => {
           <div className='app'>
             {/* SIDEBAR */}
             <SidebarApp />
-            <main className="content">
+            <main className='content'>
               <Topbar />
               <Box pl={"30px"}>
                 <Routes>

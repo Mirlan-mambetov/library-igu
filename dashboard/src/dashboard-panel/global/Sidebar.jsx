@@ -18,8 +18,8 @@ const SidebarApp = () => {
 
   return (
     <Box
-      style={{ display: 'flex', height: '100%' }}
       sx={SideBarSX}
+      backgroundColor={colors.primary[600]}
     >
       <Sidebar
         backgroundColor={colors.primary[600]}

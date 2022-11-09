@@ -43,12 +43,12 @@ export class PagesService {
   async find() {
     return await this.PageModel.find({
       relations: [
-        'hero', 'hero.subcontent',
-        'tabs', 'tabs.isLink', 'about',
-        'owner', 'aboutInformation',
-        'jurnal', 'jurnal.jurnalabout',
+        'hero', 'hero.subcontent', 'tabs', 'tabs.isLink',
+        'about', 'owner', 'aboutInformation', 'jurnal', 'jurnal.jurnalabout',
         'jurnal.jurnalabout.address', 'vestnik',
-        'elibrary'
+        'elibrary', 'elibrary.categories', 'elibrary.categories.books',
+        'elibrary.categories.books.category', "arrivals", "arrivals.link",
+        "arrivalImage"
       ],
       order: {
         id: 'ASC',

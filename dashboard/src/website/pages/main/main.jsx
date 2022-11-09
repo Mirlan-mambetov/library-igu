@@ -16,12 +16,11 @@ const MainPage = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const dispatch = useDispatch()
-  const { page } = useSelector(state => state.pages)
+  const { page, isLoading } = useSelector(state => state.pages)
 
   useEffect(() => {
     dispatch(getOnePage(1))
-  }, [])
-  console.log(page);
+  }, [isLoading])
   return (
     <>
       <Header
@@ -38,12 +37,36 @@ const MainPage = () => {
         <Typography variant='h4' color={colors.greenAccent[400]}>
           Новые поступления
         </Typography>
-        {page.map(p => (
-          p.tabs.map(t => (
-            <TabsComponent key={t.id} tabs={t} />
-          ))
-        ))}
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap="10px"
+        >
+          <Box
+            display="flex"
+            gap="10px"
+            mt="10px"
+            mb="12px"
+          >
+            {page.map(p => (
+              p.arrivalImage.map(a => (
+                <img src={a.image} alt="" key={a.id} />
+              ))
+            ))}
+          </Box>
+          <Box
+            display="flex"
+            gap="6px"
+          >
+            {page.map(p => (
+              p.arrivals.map(arrival => (
+                <TabsComponent {...arrival} key={arrival.id} />
+              ))
+            ))}
+          </Box>
+        </Box>
       </Box>
+
     </>
   )
 }
