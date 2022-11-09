@@ -11,7 +11,9 @@ const Hero = ({
         display: "flex",
         width: "45%"
       }}>
-        <img style={{ width: "100%" }} src="https://res.cloudinary.com/djzubalr7/image/upload/v1665219599/Library-igu/background-default_z6g7u1.png" alt="" />
+        <img
+          style={{ width: "100%" }}
+          src="https://res.cloudinary.com/djzubalr7/image/upload/v1665219599/Library-igu/background-default_z6g7u1.png" alt="" />
       </Box>
       <Typography
         variant='h1'
