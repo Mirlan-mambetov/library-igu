@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import { useDispatch, useSelector } from 'react-redux'
-import { createContent, openModal, updateContent } from '../../store/modal/reducers/modalSlice'
+import { createContent, openModal } from '../../store/modal/reducers/modalSlice'
 import { tokens } from '../../theme'
 import { useTheme } from '@emotion/react'
 
@@ -47,16 +47,6 @@ const Dashboard = () => {
               onClick={() => {
                 dispatch(openModal())
                 dispatch(createContent("createPage"))
-              }}
-            />
-            <ButtonComponent
-              type='update'
-              content="Обновить страницу"
-              title="Создать или обновить страницу, может только администратор"
-              color="info"
-              onClick={() => {
-                dispatch(openModal())
-                dispatch(updateContent("updatePage"))
               }}
             />
           </Box>

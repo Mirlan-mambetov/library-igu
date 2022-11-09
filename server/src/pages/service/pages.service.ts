@@ -71,7 +71,8 @@ export class PagesService {
         'about', 'owner', 'aboutInformation', 'jurnal', 'jurnal.jurnalabout',
         'jurnal.jurnalabout.address', 'vestnik',
         'elibrary', 'elibrary.categories', 'elibrary.categories.books',
-        'elibrary.categories.books.category'
+        'elibrary.categories.books.category', "arrivals", "arrivals.link",
+        "arrivalImage"
       ],
       order: {
         id: 'ASC',

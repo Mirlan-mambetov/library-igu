@@ -7,6 +7,8 @@ import { ArrivalI } from "../interfaces/arrival.interface";
 import { ImageI } from "../interfaces/image.interface";
 import { ArrivalsLinkI } from '../interfaces/arrivalsLink.interface'
 import { ArrivalsLinkE } from "../entities/arrivals.link";
+import { PageEntity } from "src/pages/entities/Page";
+import { PAGE_NOT_FOUND } from "src/pages/constants/pages.constans";
 
 @Injectable()
 export class ArrivalsServices {
@@ -14,17 +16,26 @@ export class ArrivalsServices {
   constructor(
     @InjectRepository(ArrivalsImageE) private readonly arrivalsImageModel: Repository<ArrivalsImageE>,
     @InjectRepository(ArrivalsE) private readonly arrivalsModel: Repository<ArrivalsE>,
-    @InjectRepository(ArrivalsLinkE) private readonly arrivalsLinkModel: Repository<ArrivalsLinkE>
+    @InjectRepository(ArrivalsLinkE) private readonly arrivalsLinkModel: Repository<ArrivalsLinkE>,
+    @InjectRepository(PageEntity) private readonly pageModel: Repository<PageEntity>,
   ) { }
 
   /**
    * @param data 
    */
-  createImage(data: ImageI) {
-    const image = this.arrivalsImageModel.create(data)
-    return this.arrivalsImageModel.save(image)
+  async createImage(id: number, data: ImageI) {
+    const page = await this.pageModel.findOne({ where: { id } })
+    if (!page) throw new HttpException(PAGE_NOT_FOUND, HttpStatus.BAD_REQUEST)
+    const image = this.arrivalsImageModel.create({
+      ...data,
+      page
+    })
+    return await this.arrivalsImageModel.save(image)
   }
 
+  async updateArrivalImage(id: number, data: ImageI) {
+    return await this.arrivalsImageModel.update(id, data)
+  }
   /**
    * @returns 
    */
@@ -43,9 +54,18 @@ export class ArrivalsServices {
    * @param data 
    * @returns 
    */
-  createArrival(data: ArrivalI) {
-    const arrival = this.arrivalsModel.create(data)
-    return this.arrivalsModel.save(arrival)
+  async createArrival(id: number, data: ArrivalI) {
+    const page = await this.pageModel.findOne({ where: { id } })
+    if (!page) throw new HttpException(PAGE_NOT_FOUND, HttpStatus.BAD_REQUEST)
+    const saveData = this.arrivalsModel.create({
+      ...data,
+      page
+    })
+    return await this.arrivalsModel.save(saveData)
+  }
+
+  async updateArrival(id: number, data: ArrivalI) {
+    return await this.arrivalsModel.update(id, data)
   }
 
   /**
@@ -63,5 +83,9 @@ export class ArrivalsServices {
       arrivals: arrival
     })
     return await this.arrivalsLinkModel.save(link)
+  }
+
+  async updateArrivalLink(id: number, data: ArrivalsLinkI) {
+    return await this.arrivalsLinkModel.update(id, data)
   }
 }

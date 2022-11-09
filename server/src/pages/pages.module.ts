@@ -6,7 +6,6 @@ import { ElibraryEntity } from "src/elibrary/entities/Elibrary";
 import { ElibraryBooksEntity } from "src/elibrary/entities/Elibrary.books";
 import { ElibraryCategoriesEntity } from "src/elibrary/entities/elibrary.categories";
 import { HeroE } from "src/Hero/entities/hero";
-import { JurnalEntity } from "src/Jurnal/entities/Jurnal";
 import { IslinkEntity } from "src/Tabs/entities/Islink";
 import { TabsEntity } from "src/Tabs/entities/Tabs";
 import { PagesController } from "./controller/pages.controller";

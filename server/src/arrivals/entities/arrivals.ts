@@ -1,4 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { PageEntity } from "src/pages/entities/Page";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ArrivalsLinkE } from "./arrivals.link";
 
 @Entity({ name: 'arrivals' })
@@ -12,4 +13,8 @@ export class ArrivalsE {
 
   @OneToMany(() => ArrivalsLinkE, (l) => l.arrivals)
   link: ArrivalsLinkE[]
+
+  @ManyToOne(() => PageEntity, (page) => page.arrivals)
+  @JoinColumn()
+  page: PageEntity
 }

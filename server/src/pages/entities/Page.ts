@@ -1,5 +1,7 @@
 import { AboutEntity } from "src/about/entities/About";
 import { AboutInfoEntity } from "src/about/entities/aboutInformation";
+import { ArrivalsE } from "src/arrivals/entities/arrivals";
+import { ArrivalsImageE } from "src/arrivals/entities/arrivals.image";
 import { ElibraryEntity } from "src/elibrary/entities/Elibrary";
 import { HeroE } from "src/Hero/entities/hero";
 import { JurnalEntity } from "src/Jurnal/entities/Jurnal";
@@ -47,4 +49,12 @@ export class PageEntity {
   @OneToMany(() => ElibraryEntity, (elib) => elib.page)
   @JoinColumn()
   elibrary: ElibraryEntity
+
+  @OneToMany(() => ArrivalsE, (arrivals) => arrivals.page)
+  @JoinColumn()
+  arrivals: ArrivalsE[]
+
+  @OneToMany(() => ArrivalsImageE, (arrivalImage) => arrivalImage.page)
+  @JoinColumn()
+  arrivalImage: ArrivalsImageE[]
 } 

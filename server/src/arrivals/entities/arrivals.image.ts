@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { PageEntity } from "src/pages/entities/Page";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: 'arrivals_image' })
 export class ArrivalsImageE {
@@ -11,4 +12,8 @@ export class ArrivalsImageE {
 
   @Column({ default: new Date() })
   createdAt: Date
+
+  @ManyToOne(() => PageEntity, (page) => page.arrivalImage)
+  @JoinColumn()
+  page: PageEntity
 }

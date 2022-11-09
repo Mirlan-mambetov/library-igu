@@ -5,13 +5,18 @@ import { getOnePage } from '../../../store/pages/reducers/pageSlice'
 
 // COMPONENTS
 import {
-  Header, Hero
+  Header, Hero, TabsComponent
 } from '../../../components'
+import { Box } from '@mui/system'
+import { Typography, useTheme } from '@mui/material'
+import { tokens } from '../../../theme'
 
 
 const MainPage = () => {
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
   const dispatch = useDispatch()
-  const { isLoading, pages, page, errors } = useSelector(state => state.pages)
+  const { page } = useSelector(state => state.pages)
 
   useEffect(() => {
     dispatch(getOnePage(1))
@@ -28,6 +33,17 @@ const MainPage = () => {
           <Hero {...h} key={h.id} />
         ))
       ))}
+      {/* TABS */}
+      <Box mt="20px">
+        <Typography variant='h4' color={colors.greenAccent[400]}>
+          Новые поступления
+        </Typography>
+        {page.map(p => (
+          p.tabs.map(t => (
+            <TabsComponent key={t.id} tabs={t} />
+          ))
+        ))}
+      </Box>
     </>
   )
 }
