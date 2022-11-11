@@ -1,4 +1,10 @@
-import { Controller, Body, Post, Param, Get, Put, ParseIntPipe, Delete, UsePipes, ValidationPipe } from '@nestjs/common'
+import {
+  Controller, Body, Post, Put,
+  Delete, Param, Get, ParseIntPipe,
+  UploadedFile, UsePipes, ValidationPipe,
+  UseInterceptors, ParseFilePipe
+} from '@nestjs/common'
+import { FileInterceptor } from '@nestjs/platform-express';
 import { CreateHeroDto } from '../dto/create.hero.dto';
 import { CreateSubcontentDto } from '../dto/create.subcontent.dto';
 import { UpdateHeroDto } from '../dto/update.hero.dto';
@@ -36,10 +42,16 @@ export class HeroController {
   @UsePipes(new ValidationPipe({
     skipMissingProperties: true
   }))
+  @UseInterceptors(FileInterceptor('background', {
+    dest: "./uploads/heroimages"
+  }))
   createHero(
     @Param('id', ParseIntPipe) id: number,
-    @Body() heroDto: CreateHeroDto) {
-    return this.heroService.createHero(id, heroDto)
+    @Body() heroDto: CreateHeroDto,
+    @UploadedFile() background: Express.Multer.File
+  ) {
+    return console.log(background.originalname)
+    // return this.heroService.createHero(id, heroDto)
   }
 
   /**

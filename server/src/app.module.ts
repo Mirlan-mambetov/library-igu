@@ -13,7 +13,10 @@ import { OwnerModule } from './Owner/owner.module';
 import { PagesModule } from './pages/pages.module';
 import { PartnersModule } from './partners/partners.module';
 import { TabsModule } from './Tabs/tabs.module';
+import { UloaderModule } from './uploader/uploader.module';
 import { VestnikModule } from './vestnik/vestnik.module';
+import { FilesModule } from './files/files.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -24,6 +27,9 @@ import { VestnikModule } from './vestnik/vestnik.module';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: './config/.env'
+    }),
+    MulterModule.register({
+      dest: './uploads',
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -46,7 +52,9 @@ import { VestnikModule } from './vestnik/vestnik.module';
     OwnerModule,
     VestnikModule,
     ElibraryModule,
-    PagesModule
+    UloaderModule,
+    PagesModule,
+    FilesModule
   ],
   controllers: [],
   providers: [],
