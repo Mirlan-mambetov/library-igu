@@ -13,7 +13,6 @@ import { OwnerModule } from './Owner/owner.module';
 import { PagesModule } from './pages/pages.module';
 import { PartnersModule } from './partners/partners.module';
 import { TabsModule } from './Tabs/tabs.module';
-import { UloaderModule } from './uploader/uploader.module';
 import { VestnikModule } from './vestnik/vestnik.module';
 import { FilesModule } from './files/files.module';
 import { MulterModule } from '@nestjs/platform-express';
@@ -52,7 +51,6 @@ import { MulterModule } from '@nestjs/platform-express';
     OwnerModule,
     VestnikModule,
     ElibraryModule,
-    UloaderModule,
     PagesModule,
     FilesModule
   ],
