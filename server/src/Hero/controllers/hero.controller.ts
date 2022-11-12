@@ -7,6 +7,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { imageFileFilter, renameFIleName } from 'src/utils/fileuploads.utils';
+import { HERO_IMG_DIST, HERO_UPLOADS_IMAGE } from '../constans/destination.constans';
 import { CreateHeroDto } from '../dto/create.hero.dto';
 import { CreateSubcontentDto } from '../dto/create.subcontent.dto';
 import { UpdateHeroDto } from '../dto/update.hero.dto';
@@ -42,11 +43,11 @@ export class HeroController {
    */
   @Post(':id')
   @UsePipes(new ValidationPipe({
-    skipMissingProperties: true
+    skipUndefinedProperties: true
   }))
   @UseInterceptors(FileInterceptor('background', {
     storage: diskStorage({
-      destination: "./uploads/heroimages",
+      destination: HERO_UPLOADS_IMAGE,
       filename: (req, file, cb) => renameFIleName(req, file, cb)
     }),
     fileFilter: imageFileFilter
@@ -66,11 +67,13 @@ export class HeroController {
    */
   @Put('update/:id')
   @UsePipes(new ValidationPipe({
-    skipMissingProperties: true
+    skipMissingProperties: true,
+    skipNullProperties: true,
+    skipUndefinedProperties: true
   }))
   @UseInterceptors(FileInterceptor('background', {
     storage: diskStorage({
-      destination: "./uploads/heroimages",
+      destination: HERO_UPLOADS_IMAGE,
       filename: (req, file, cb) => renameFIleName(req, file, cb)
     }),
     fileFilter: imageFileFilter
@@ -80,7 +83,8 @@ export class HeroController {
     @Body() heroDtoUpdate: UpdateHeroDto,
     @UploadedFile() background: Express.Multer.File
   ) {
-    return this.heroService.updateHero(id, heroDtoUpdate, background.filename)
+    this.heroService.updateHero(id, heroDtoUpdate, background?.filename)
+    return { msg: "Успешно обновлено!" }
   }
 
   /**

@@ -8,13 +8,14 @@ import { useDispatch, useSelector } from 'react-redux'
 // Components
 import {
   Loader,
-  Modal
+  Modal,
+  Notification
 } from './components'
 
 // DASHBOARD PANEL PAGES
 import {
   Dashboard, SidebarApp, Topbar, Bar, Faq,
-  Form, Geography, Invoices, Line, Calendar
+  Geography, Invoices, Line, Calendar
 } from './dashboard-panel'
 
 // WEBSITE PAGES
@@ -31,6 +32,7 @@ import { fetchPages } from './store/pages/actions/pageActions'
 const App = () => {
   const dispatch = useDispatch()
   const { pages, isLoading } = useSelector(state => state.pages)
+  const { isActive } = useSelector(state => state.notification)
   const { isOpen } = useSelector(state => state.modal)
   const [theme, colorMode] = useMode()
 
@@ -40,6 +42,7 @@ const App = () => {
   console.log(pages)
   return (
     <>
+      {isActive && <Notification />}
       {isOpen && <Modal open={isOpen} />}
       {isLoading && <Loader />}
       <ColorModeContext.Provider value={colorMode}>
@@ -61,7 +64,6 @@ const App = () => {
                   <Route path='/invoices' element={<Invoices />} />
                   <Route path='/line' element={<Line />} />
                   <Route path='/faq' element={<Faq />} />
-                  <Route path='/form' element={<Form />} />
                   <Route path='/calendar' element={<Calendar />} />
                   {/* PAGES (WEBSITE PAGES)*/}
                   <Route path='/main-page' element={<MainPage />} />

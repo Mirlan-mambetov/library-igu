@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Header title="Главная страница" subtitle="панель управления сайта Научной библиотеки ИГУ" />
+      <Header title="Панель администратора" subtitle="панель управления сайта Научной библиотеки ИГУ" />
       <Box sx={{ display: "flex" }}>
         {/* Pages info */}
         <Box sx={{ boxShadow: "1px 2px 4px rgba(0, 0, 0, .3)", padding: "10px" }}>

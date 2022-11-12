@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography, useTheme } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { Box } from '@mui/system'
-import { openModal, updateContent } from '../../../store/modal/reducers/modalSlice'
+import { openModal, updateContent, updateContentId } from '../../../store/modal/reducers/modalSlice'
 import { tokens } from '../../../theme'
 
 
@@ -12,6 +12,7 @@ import {
 } from '../../'
 
 const Hero = ({
+  id,
   background,
   title }) => {
   const theme = useTheme()
@@ -27,7 +28,9 @@ const Hero = ({
         }}>
         <img
           style={{ width: "100%", zIndex: "1" }}
-          src={!background && "https://res.cloudinary.com/djzubalr7/image/upload/v1665219599/Library-igu/background-default_z6g7u1.png"} alt="" />
+          src={background ? process.env.REACT_APP_STATIC_FILES + background
+            : "https://res.cloudinary.com/djzubalr7/image/upload/v1665219599/Library-igu/background-default_z6g7u1.png"
+          } alt="" />
         <Box
           position="absolute"
           top="10px"
@@ -39,7 +42,8 @@ const Hero = ({
             type="update"
             onClick={() => {
               dispatch(openModal())
-              dispatch(updateContent("updateHeroImage"))
+              dispatch(updateContent("updateHero"))
+              dispatch(updateContentId(id))
             }}
           >
             Редактировать
@@ -54,11 +58,6 @@ const Hero = ({
           variant='h3'
         >
           {title}
-          <ButtonComponent
-            type="update"
-          >
-            Редактировать
-          </ButtonComponent>
         </Typography>
         <span style={{ marginTop: "10px", color: `${colors.primary[300]}` }}>Заголовок на главном экране</span>
       </Box>

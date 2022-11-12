@@ -5,7 +5,8 @@ const modalinitialState = {
   update: false,
   create: false,
   updateName: "",
-  createName: ""
+  createName: "",
+  updateId: ""
 }
 const modalSlice = createSlice({
   name: "modal",
@@ -32,6 +33,9 @@ const modalSlice = createSlice({
       state.create = true
       state.createName = action.payload
       state.updateName = ""
+    },
+    updateContentId(state, action) {
+      state.updateId = action.payload
     }
   }
 })
@@ -40,6 +44,7 @@ export const {
   openModal,
   closeModal,
   createContent,
-  updateContent
+  updateContent,
+  updateContentId
 } = modalSlice.actions
 export default modalSlice.reducer

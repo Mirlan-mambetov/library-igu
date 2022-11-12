@@ -4,6 +4,7 @@ import { PAGE_NOT_FOUND } from 'src/pages/constants/pages.constans';
 import { PageEntity } from 'src/pages/entities/Page';
 import { deleteFileWithName } from 'src/utils/fileuploads.utils';
 import { Repository } from 'typeorm';
+import { HERO_IMG_DIST } from '../constans/destination.constans';
 import { HERO_NOT_FOUND } from '../constans/message.constans';
 import { CreateHeroDto } from '../dto/create.hero.dto';
 import { CreateSubcontentDto } from '../dto/create.subcontent.dto';
@@ -44,7 +45,7 @@ export class HeroSerivce {
     if (!page) throw new HttpException(PAGE_NOT_FOUND, HttpStatus.BAD_REQUEST)
     const heroSave = this.heroModel.create({
       ...hero,
-      background: fileName,
+      background: `${HERO_IMG_DIST}/${fileName}`,
       page
     })
     return await this.heroModel.save(heroSave)
@@ -55,12 +56,18 @@ export class HeroSerivce {
    * @param hero 
    */
   async updateHero(id: number, hero: UpdateHeroDto, file: string) {
-    const { background } = await this.heroModel.findOne({ where: { id } })
-    if (background) deleteFileWithName(`heroimages/${background}`)
-    return await this.heroModel.update({ id }, {
-      ...hero,
-      background: file
-    })
+    if (file) {
+      const { background } = await this.heroModel.findOne({ where: { id } })
+      if (background) deleteFileWithName(background)
+      await this.heroModel.update({ id }, {
+        ...hero,
+        background: `${HERO_IMG_DIST}/${file}`
+      })
+    } else {
+      await this.heroModel.update({ id }, {
+        ...hero
+      })
+    }
   }
 
   /**

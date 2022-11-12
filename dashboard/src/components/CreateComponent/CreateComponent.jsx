@@ -12,7 +12,7 @@ const CreateComponent = () => {
   switch (createName) {
     case "createPage":
       return (
-        <FormComponent>
+        <FormComponent btnContent='Создать'>
           <PageForm />
         </FormComponent>
       )
