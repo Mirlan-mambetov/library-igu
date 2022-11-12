@@ -2,6 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm';
 import { PAGE_NOT_FOUND } from 'src/pages/constants/pages.constans';
 import { PageEntity } from 'src/pages/entities/Page';
+import { deleteFileWithName } from 'src/utils/fileuploads.utils';
 import { Repository } from 'typeorm';
 import { HERO_NOT_FOUND } from '../constans/message.constans';
 import { CreateHeroDto } from '../dto/create.hero.dto';
@@ -38,11 +39,12 @@ export class HeroSerivce {
   /**
    * @param hero 
    */
-  async createHero(id: number, hero: CreateHeroDto) {
+  async createHero(id: number, hero: CreateHeroDto, fileName: string) {
     const page = await this.pageModel.findOne({ where: { id } })
     if (!page) throw new HttpException(PAGE_NOT_FOUND, HttpStatus.BAD_REQUEST)
     const heroSave = this.heroModel.create({
       ...hero,
+      background: fileName,
       page
     })
     return await this.heroModel.save(heroSave)
@@ -52,8 +54,13 @@ export class HeroSerivce {
    * @param id 
    * @param hero 
    */
-  updateHero(id: number, hero: UpdateHeroDto) {
-    return this.heroModel.update({ id }, hero)
+  async updateHero(id: number, hero: UpdateHeroDto, file: string) {
+    const { background } = await this.heroModel.findOne({ where: { id } })
+    if (background) deleteFileWithName(`heroimages/${background}`)
+    return await this.heroModel.update({ id }, {
+      ...hero,
+      background: file
+    })
   }
 
   /**
@@ -85,5 +92,4 @@ export class HeroSerivce {
   deleteSubContent(id: number) {
     return this.heroSubcontentModel.delete(id)
   }
-
 }

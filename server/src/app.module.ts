@@ -14,8 +14,9 @@ import { PagesModule } from './pages/pages.module';
 import { PartnersModule } from './partners/partners.module';
 import { TabsModule } from './Tabs/tabs.module';
 import { VestnikModule } from './vestnik/vestnik.module';
-import { FilesModule } from './files/files.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { MulterModule } from '@nestjs/platform-express';
       ttl: 60,
       limit: 20
     }),
+    ServeStaticModule.forRoot({ rootPath: join(__dirname, '..', 'uploads') }),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: './config/.env'
@@ -51,8 +53,7 @@ import { MulterModule } from '@nestjs/platform-express';
     OwnerModule,
     VestnikModule,
     ElibraryModule,
-    PagesModule,
-    FilesModule
+    PagesModule
   ],
   controllers: [],
   providers: [],

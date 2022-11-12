@@ -1,3 +1,4 @@
+import * as fs from 'fs'
 import { extname } from 'path'
 import { HttpException, HttpStatus, Request } from "@nestjs/common"
 
@@ -19,4 +20,12 @@ export const renameFIleName = (req, file, cb) => {
     .map(() => Math.round(Math.random() * 10).toString(10))
     .join('')
   cb(null, `${name}${randomName}${fileExtName}`)
+}
+
+export const deleteFileWithName = async (fileName: string) => {
+  try {
+    fs.unlink(`./uploads/${fileName}`, (err) => new HttpException("Файл не найден", HttpStatus.NOT_FOUND))
+  } catch (e) {
+    return new HttpException(`Произошла ошибка при удаление файла ${fileName}`, HttpStatus.SERVICE_UNAVAILABLE)
+  }
 }
