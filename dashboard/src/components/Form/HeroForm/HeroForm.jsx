@@ -33,7 +33,7 @@ const HeroForm = () => {
         sx={{ marginTop: "10px" }}
         onClick={() => {
           dispatch(updateHero(data))
-          dispatch(activeNotification(success.msg))
+          // dispatch(activeNotification(success.msg))
         }}
       // onClick={() => console.log(data)}
       />
