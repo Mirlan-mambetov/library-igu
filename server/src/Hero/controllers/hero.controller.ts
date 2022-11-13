@@ -2,12 +2,15 @@ import {
   Controller, Body, Post, Put,
   Delete, Param, Get, ParseIntPipe,
   UploadedFile, UsePipes, ValidationPipe,
-  UseInterceptors, ParseFilePipe
+  UseInterceptors,
+  HttpException,
+  HttpStatus
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { imageFileFilter, renameFIleName } from 'src/utils/fileuploads.utils';
-import { HERO_IMG_DIST, HERO_UPLOADS_IMAGE } from '../constans/destination.constans';
+import { HERO_UPLOADS_IMAGE } from '../constans/destination.constans';
+import { IMAGE_NOT_FOUND } from '../constans/message.constans';
 import { CreateHeroDto } from '../dto/create.hero.dto';
 import { CreateSubcontentDto } from '../dto/create.subcontent.dto';
 import { UpdateHeroDto } from '../dto/update.hero.dto';
@@ -67,8 +70,8 @@ export class HeroController {
    */
   @Put('update/:id')
   @UsePipes(new ValidationPipe({
-    skipMissingProperties: true,
     skipNullProperties: true,
+    skipMissingProperties: true,
     skipUndefinedProperties: true
   }))
   @UseInterceptors(FileInterceptor('background', {
@@ -83,8 +86,9 @@ export class HeroController {
     @Body() heroDtoUpdate: UpdateHeroDto,
     @UploadedFile() background: Express.Multer.File
   ) {
-    this.heroService.updateHero(id, heroDtoUpdate, background?.filename)
-    return { msg: "Успешно обновлено!" }
+    // console.log(`ID: ${id} BOdy: ${heroDtoUpdate.title} image: ${background}`)
+    // return
+    return this.heroService.updateHero(id, heroDtoUpdate, background?.filename)
   }
 
   /**

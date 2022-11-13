@@ -1,8 +1,6 @@
 import React from 'react'
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import { useDispatch, useSelector } from 'react-redux'
-import { createContent, openModal } from '../../store/modal/reducers/modalSlice'
 import { tokens } from '../../theme'
 import { useTheme } from '@emotion/react'
 
@@ -13,8 +11,6 @@ import {
 } from '../../components'
 
 const Dashboard = () => {
-  const { pages } = useSelector(state => state.pages)
-  const dispatch = useDispatch()
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
@@ -30,7 +26,7 @@ const Dashboard = () => {
             color={colors.greenAccent[500]}
           >
             Общее количество страниц сайта:
-            <span>{pages.length}</span>
+            <span></span>
           </Typography>
           <Box
             sx={{ display: "flex", gap: "12px", marginTop: "12px" }}
@@ -41,8 +37,8 @@ const Dashboard = () => {
               content="Создать страницу"
               title="Создать или обновить страницу, может только администратор"
               onClick={() => {
-                dispatch(openModal())
-                dispatch(createContent("createPage"))
+                // dispatch(openModal())
+                // dispatch(createContent("createPage"))
               }}
             />
           </Box>

@@ -11,7 +11,7 @@ import {
   CreateComponent
 } from '../'
 
-const Modalscreate = ({ open, content = "create" }) => {
+const Modalscreate = ({ open }) => {
   const dispatch = useDispatch()
   const { update } = useSelector(state => state.modal)
   const handleClose = () => dispatch(closeModal())
@@ -22,16 +22,10 @@ const Modalscreate = ({ open, content = "create" }) => {
       open={open}
       onClose={handleClose}
       closeAfterTransition
-      BackdropProps={{
-        timeout: 500,
-      }}
     >
       <Fade in={open}>
         <Box sx={style}>
-          {/* <Input /> */}
-          {
-            update ? <UpdateComponent /> : <CreateComponent />
-          }
+          {update ? <UpdateComponent /> : <CreateComponent />}
         </Box>
       </Fade>
     </Modal>

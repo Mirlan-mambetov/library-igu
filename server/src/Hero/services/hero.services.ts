@@ -5,7 +5,7 @@ import { PageEntity } from 'src/pages/entities/Page';
 import { deleteFileWithName } from 'src/utils/fileuploads.utils';
 import { Repository } from 'typeorm';
 import { HERO_IMG_DIST } from '../constans/destination.constans';
-import { HERO_NOT_FOUND } from '../constans/message.constans';
+import { HERO_NOT_FOUND, IMAGE_NOT_FOUND } from '../constans/message.constans';
 import { CreateHeroDto } from '../dto/create.hero.dto';
 import { CreateSubcontentDto } from '../dto/create.subcontent.dto';
 import { UpdateHeroDto } from '../dto/update.hero.dto';
@@ -55,20 +55,20 @@ export class HeroSerivce {
    * @param id 
    * @param hero 
    */
-  async updateHero(id: number, hero: UpdateHeroDto, file: string) {
-    if (file) {
-      const { background } = await this.heroModel.findOne({ where: { id } })
-      if (background) deleteFileWithName(background)
-      await this.heroModel.update({ id }, {
-        ...hero,
-        background: `${HERO_IMG_DIST}/${file}`
-      })
+  async updateHero(id: number, hero?: UpdateHeroDto, file?: string) {
+    const { background } = await this.heroModel.findOne({ where: { id } })
+    if (file === undefined) {
+      await this.heroModel.update(id, hero)
+    } else if (file !== undefined && hero.title !== undefined) {
+      deleteFileWithName(background)
+      await this.heroModel.update(id, { ...hero, background: `${HERO_IMG_DIST}/${file}` })
     } else {
-      await this.heroModel.update({ id }, {
-        ...hero
-      })
+      deleteFileWithName(background)
+      await this.heroModel.update(id, { background: `${HERO_IMG_DIST}/${file}` })
     }
+    return { message: "updated..." }
   }
+
 
   /**
    * @param id 

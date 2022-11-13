@@ -6,7 +6,7 @@ const modalinitialState = {
   create: false,
   updateName: "",
   createName: "",
-  updateId: ""
+  id: ""
 }
 const modalSlice = createSlice({
   name: "modal",
@@ -35,7 +35,7 @@ const modalSlice = createSlice({
       state.updateName = ""
     },
     updateContentId(state, action) {
-      state.updateId = action.payload
+      state.id = action.payload
     }
   }
 })

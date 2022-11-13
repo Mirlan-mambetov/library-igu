@@ -6,14 +6,14 @@ import { noneActiveNotification } from '../../store/notififcation/notificationSl
 const Notification = () => {
   const dispatch = useDispatch()
   const { isActive, message } = useSelector(state => state.notification)
-  const handleClose = () => {
-    dispatch(noneActiveNotification())
-  }
+  // const handleClose = () => {
+  //   dispatch(noneActiveNotification())
+  // }
   return (
     <Snackbar
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
       open={isActive}
-      onClose={handleClose}
+      // onClose={handleClose}
       message={message}
     />
   )

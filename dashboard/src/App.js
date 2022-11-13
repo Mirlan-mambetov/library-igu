@@ -2,15 +2,11 @@ import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ColorModeContext, useMode } from './theme'
 import { Box, CssBaseline, ThemeProvider } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'
+import { fetchPages } from './store/pages/actions/pageActions'
 
 
 // Components
-import {
-  Loader,
-  Modal,
-  Notification
-} from './components'
+import { Modal, Notification } from './components'
 
 // DASHBOARD PANEL PAGES
 import {
@@ -26,25 +22,26 @@ import {
   MainPage,
   VestnikPage
 } from './website/pages'
-import { fetchPages } from './store/pages/actions/pageActions'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 const App = () => {
   const dispatch = useDispatch()
-  const { pages, isLoading } = useSelector(state => state.pages)
-  const { isActive } = useSelector(state => state.notification)
+  const { pages } = useSelector(state => state.pages)
   const { isOpen } = useSelector(state => state.modal)
+  const { isActive } = useSelector(state => state.notification)
   const [theme, colorMode] = useMode()
 
   useEffect(() => {
     dispatch(fetchPages())
-  }, [])
+  }, [dispatch])
   console.log(pages)
   return (
     <>
-      {isActive && <Notification />}
+      {/* MODAL */}
       {isOpen && <Modal open={isOpen} />}
-      {isLoading && <Loader />}
+      {isActive && <Notification />}
+      {/* {isLoading && <Loader />} */}
       <ColorModeContext.Provider value={colorMode}>
         {/* THEME PROVIDER */}
         <ThemeProvider theme={theme}>

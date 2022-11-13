@@ -11,10 +11,7 @@ export class HeroE {
   @Column()
   title: string
 
-  @Column({
-    default: '',
-    nullable: true
-  })
+  @Column({ default: '', nullable: true })
   background: string
 
   @Column({ nullable: true })

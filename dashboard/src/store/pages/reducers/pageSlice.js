@@ -5,7 +5,7 @@ const initialPagesState = {
   pages: [],
   page: [],
   isLoading: false,
-  errors: null
+  errors: ""
 }
 
 const pageSlice = createSlice({
@@ -13,7 +13,7 @@ const pageSlice = createSlice({
   initialState: initialPagesState,
   reducers: {
     getOnePage(state, action) {
-      state.page = state.pages.filter(page => page.id === action.payload)
+      state.page = state.pages.filter(p => p.id === action.payload)
     }
   },
   extraReducers: {
@@ -31,5 +31,4 @@ const pageSlice = createSlice({
 })
 
 export const { getOnePage } = pageSlice.actions
-
 export default pageSlice.reducer

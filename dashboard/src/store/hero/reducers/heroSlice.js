@@ -1,17 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { updateHero } from "../actions/hero.action";
+import { createSlice } from "@reduxjs/toolkit"
+import { updateHero } from '../actions/hero-actions'
 
 
-const initialState = {
-  success: "",
-  errors: "",
-  isLoading: false
-}
-
-export const HeroSlice = createSlice({
+export const heroSlice = createSlice({
   name: "hero",
-  initialState,
-  reducers: {},
+  initialState: {
+    isLoading: false,
+    errors: "",
+    success: ""
+  },
   extraReducers: {
     [updateHero.pending]: (state) => {
       state.isLoading = true
@@ -26,5 +23,4 @@ export const HeroSlice = createSlice({
     }
   }
 })
-
-export default HeroSlice.reducer
+export default heroSlice.reducer
