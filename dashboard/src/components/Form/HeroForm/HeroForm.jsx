@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { updateHero } from '../../../store/hero/actions/hero-actions'
+import { useDispatch, useSelector } from 'react-redux'
+import SnackbarContext from '../../../contexts/snackbar.context'
+import { closeModal } from '../../../store/modal/reducers/modalSlice'
 import { Box } from '@mui/material'
 import { fetchPages } from '../../../store/pages/actions/pageActions'
-// import { activeNotification } from '../../../store/notififcation/notificationSlice'
-import { useDispatch, useSelector } from 'react-redux'
 
 // COMPONENTS
 import { ButtonComponent, Input } from '../../'
-import { closeModal } from '../../../store/modal/reducers/modalSlice'
 
 
 const HeroForm = () => {
+  const snackbarCtx = useContext(SnackbarContext)
   const dispatch = useDispatch()
   const { id } = useSelector(state => state.modal)
   const { errors, success } = useSelector(state => state.hero)
@@ -21,12 +22,10 @@ const HeroForm = () => {
     const data = { id, title, background }
     dispatch(updateHero(data))
     dispatch(fetchPages())
-    dispatch(closeModal())
-    console.log(data)
+    // dispatch(closeModal())
   }
   return (
     <Box sx={{ display: "flex", gap: "12px", flexDirection: "column" }}>
-
       <Input
         type="file"
         onChange={(e) => setBackground(e.target.files[0])}

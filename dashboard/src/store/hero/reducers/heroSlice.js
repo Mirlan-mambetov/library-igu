@@ -6,8 +6,8 @@ export const heroSlice = createSlice({
   name: "hero",
   initialState: {
     isLoading: false,
-    errors: "",
-    success: ""
+    errors: null,
+    success: null
   },
   extraReducers: {
     [updateHero.pending]: (state) => {

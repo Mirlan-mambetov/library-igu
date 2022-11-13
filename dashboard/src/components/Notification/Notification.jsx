@@ -1,21 +1,19 @@
-import React from 'react'
-import { Snackbar } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'
-import { noneActiveNotification } from '../../store/notififcation/notificationSlice'
+import React, { useContext } from 'react'
+import SnackbarContext from '../../contexts/snackbar.context'
+
+// STYLE
+import './Notification.css'
 
 const Notification = () => {
-  const dispatch = useDispatch()
-  const { isActive, message } = useSelector(state => state.notification)
-  // const handleClose = () => {
-  //   dispatch(noneActiveNotification())
-  // }
+  const snackbarCtx = useContext(SnackbarContext)
+
   return (
-    <Snackbar
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isActive}
-      // onClose={handleClose}
-      message={message}
-    />
+    <div className="snackbar__container">
+      <div className="snackbar__label">{snackbarCtx.msg}</div>
+      <div className="snackbar__dismiss" onClick={snackbarCtx.onClose}>
+        &times;
+      </div>
+    </div>
   )
 }
 

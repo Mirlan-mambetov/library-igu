@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ColorModeContext, useMode } from './theme'
 import { Box, CssBaseline, ThemeProvider } from '@mui/material'
 import { fetchPages } from './store/pages/actions/pageActions'
+import SnackbarContext from './contexts/snackbar.context'
 
 
 // Components
-import { Modal, Notification } from './components'
+import {
+  Modal, Notification,
+  // Notification 
+} from './components'
 
 // DASHBOARD PANEL PAGES
 import {
@@ -26,10 +30,10 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 const App = () => {
+  const snackbarCtx = useContext(SnackbarContext)
   const dispatch = useDispatch()
   const { pages } = useSelector(state => state.pages)
   const { isOpen } = useSelector(state => state.modal)
-  const { isActive } = useSelector(state => state.notification)
   const [theme, colorMode] = useMode()
 
   useEffect(() => {
@@ -40,7 +44,7 @@ const App = () => {
     <>
       {/* MODAL */}
       {isOpen && <Modal open={isOpen} />}
-      {isActive && <Notification />}
+      {snackbarCtx.isDisplayed && <Notification />}
       {/* {isLoading && <Loader />} */}
       <ColorModeContext.Provider value={colorMode}>
         {/* THEME PROVIDER */}

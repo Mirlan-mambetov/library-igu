@@ -5,7 +5,7 @@ const initialPagesState = {
   pages: [],
   page: [],
   isLoading: false,
-  errors: ""
+  errors: null
 }
 
 const pageSlice = createSlice({

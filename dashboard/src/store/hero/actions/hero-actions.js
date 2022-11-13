@@ -10,7 +10,7 @@ export const updateHero = createAsyncThunk("hero/updateHero",
             title: data.title
           }
         )
-        return response.data
+        return response.data.message
       } else if (data.background !== null && data.title === "") {
         const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/hero/update/${data.id}`,
           {
@@ -22,7 +22,7 @@ export const updateHero = createAsyncThunk("hero/updateHero",
             }
           }
         )
-        return response.data
+        return response.data.message
       } else {
         const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/hero/update/${data.id}`,
           {
@@ -35,10 +35,10 @@ export const updateHero = createAsyncThunk("hero/updateHero",
             }
           }
         )
-        return response.data
+        return response.data.message
       }
     } catch (e) {
-      return new thunkApi.rejectWithValue(`${e.response.data.message}`)
+      return new thunkApi.rejectWithValue(`${e.response.data.message.toString()}`)
     }
   }
 )
