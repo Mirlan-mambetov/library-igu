@@ -1,8 +1,7 @@
 import React from 'react'
 import { Typography, useTheme } from '@mui/material'
-import { useDispatch } from 'react-redux'
+import { useActions } from '../../../hooks/redux'
 import { Box } from '@mui/system'
-import { openModal, updateContent, updateContentId } from '../../../store/modal/reducers/modalSlice'
 import { tokens } from '../../../theme'
 
 
@@ -17,7 +16,8 @@ const Hero = ({
   title }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-  const dispatch = useDispatch()
+  const { openModal, updateContentId, updateContent } = useActions()
+
   return (
     <Box sx={{ display: "flex", gap: "10px" }}>
       <Box
@@ -41,9 +41,9 @@ const Hero = ({
           <ButtonComponent
             type="update"
             onClick={() => {
-              dispatch(openModal())
-              dispatch(updateContent("updateHero"))
-              dispatch(updateContentId(id))
+              openModal()
+              updateContent("updateHero")
+              updateContentId(id)
             }}
           >
             Редактировать

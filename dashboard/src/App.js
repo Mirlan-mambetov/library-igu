@@ -1,13 +1,15 @@
 import React, { useContext, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { ColorModeContext, useMode } from './theme'
 import { Box, CssBaseline, ThemeProvider } from '@mui/material'
-import { fetchPages } from './store/pages/actions/pageActions'
+import { useActions } from './hooks/redux'
 import SnackbarContext from './contexts/snackbar.context'
 
 
 // Components
 import {
+  Loader,
   Modal, Notification,
   // Notification 
 } from './components'
@@ -26,20 +28,17 @@ import {
   MainPage,
   VestnikPage
 } from './website/pages'
-import { useDispatch, useSelector } from 'react-redux'
 
 
 const App = () => {
-  const snackbarCtx = useContext(SnackbarContext)
-  const dispatch = useDispatch()
-  const { pages } = useSelector(state => state.pages)
+  const { fetchPages } = useActions()
   const { isOpen } = useSelector(state => state.modal)
   const [theme, colorMode] = useMode()
+  const snackbarCtx = useContext(SnackbarContext)
 
   useEffect(() => {
-    dispatch(fetchPages())
-  }, [dispatch])
-  console.log(pages)
+    fetchPages()
+  }, [fetchPages])
   return (
     <>
       {/* MODAL */}

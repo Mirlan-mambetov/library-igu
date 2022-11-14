@@ -1,29 +1,28 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { updateHero } from '../../../store/hero/actions/hero-actions'
-import { useDispatch, useSelector } from 'react-redux'
-import SnackbarContext from '../../../contexts/snackbar.context'
-import { closeModal } from '../../../store/modal/reducers/modalSlice'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Box } from '@mui/material'
-import { fetchPages } from '../../../store/pages/actions/pageActions'
+// import SnackbarContext from '../../../contexts/snackbar.context'
 
 // COMPONENTS
 import { ButtonComponent, Input } from '../../'
+import { useActions } from '../../../hooks/redux'
 
 
 const HeroForm = () => {
-  const snackbarCtx = useContext(SnackbarContext)
-  const dispatch = useDispatch()
+  const { updateHero, fetchPages } = useActions()
+  // const snackbarCtx = useContext(SnackbarContext)
   const { id } = useSelector(state => state.modal)
-  const { errors, success } = useSelector(state => state.hero)
+  // const { errors, success } = useSelector(state => state.hero)
   const [title, setTitle] = useState("")
   const [background, setBackground] = useState(null)
 
   const formHandler = () => {
     const data = { id, title, background }
-    dispatch(updateHero(data))
-    dispatch(fetchPages())
+    updateHero(data)
+    fetchPages()
     // dispatch(closeModal())
   }
+
   return (
     <Box sx={{ display: "flex", gap: "12px", flexDirection: "column" }}>
       <Input

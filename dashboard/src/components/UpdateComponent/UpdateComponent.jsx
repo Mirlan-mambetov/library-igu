@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 // Components
 import {
+  BookscardForm,
   FormComponent,
   HeroForm,
   PageForm,
@@ -13,14 +14,20 @@ const UpdateComponent = () => {
   switch (updateName) {
     case "updatePage":
       return (
-        <FormComponent btnContent='Обновить'>
+        <FormComponent>
           <PageForm />
         </FormComponent>
       )
     case "updateHero":
       return (
-        <FormComponent btnContent='Обновить'>
+        <FormComponent>
           <HeroForm />
+        </FormComponent>
+      )
+    case "updateImageCards":
+      return (
+        <FormComponent>
+          <BookscardForm />
         </FormComponent>
       )
     default:

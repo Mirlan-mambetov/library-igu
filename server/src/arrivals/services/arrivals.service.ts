@@ -9,6 +9,8 @@ import { ArrivalsLinkI } from '../interfaces/arrivalsLink.interface'
 import { ArrivalsLinkE } from "../entities/arrivals.link";
 import { PageEntity } from "src/pages/entities/Page";
 import { PAGE_NOT_FOUND } from "src/pages/constants/pages.constans";
+import { deleteFileWithName } from "src/utils/fileuploads.utils";
+import { BOOKS_CARDS_DIST } from "../constans/destination.constance";
 
 @Injectable()
 export class ArrivalsServices {
@@ -33,8 +35,12 @@ export class ArrivalsServices {
     return await this.arrivalsImageModel.save(image)
   }
 
-  async updateArrivalImage(id: number, data: ImageI) {
-    return await this.arrivalsImageModel.update(id, data)
+  async updateArrivalImage(id: number, file: string) {
+    const { image } = await this.arrivalsImageModel.findOne({ where: { id } })
+    deleteFileWithName(image)
+    return await this.arrivalsImageModel.update(id, {
+      image: `${BOOKS_CARDS_DIST}/${file}`
+    })
   }
   /**
    * @returns 

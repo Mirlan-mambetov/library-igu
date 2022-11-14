@@ -1,6 +1,10 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common'
-import { Put } from '@nestjs/common/decorators';
+import { Put, UploadedFile, UseInterceptors } from '@nestjs/common/decorators';
 import { ParseIntPipe } from '@nestjs/common/pipes';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { imageFileFilter, renameFIleName } from 'src/utils/fileuploads.utils';
+import { BOOKS_CARDS_UPLOAD } from '../constans/destination.constance';
 import { ArrivalI } from '../interfaces/arrival.interface';
 import { ArrivalsLinkI } from '../interfaces/arrivalsLink.interface';
 import { ImageI } from '../interfaces/image.interface';
@@ -31,11 +35,18 @@ export class ArrivalsController {
   }
 
   @Put('/image/update/:id')
+  @UseInterceptors(FileInterceptor("image", {
+    storage: diskStorage({
+      destination: BOOKS_CARDS_UPLOAD,
+      filename: (req, file, cb) => renameFIleName(req, file, cb)
+    }),
+    fileFilter: imageFileFilter
+  }))
   updateArrivalImage(
     @Param('id', ParseIntPipe) id: number,
-    @Body() image: ImageI
+    @UploadedFile() image: Express.Multer.File
   ) {
-    return this.arrivalsService.updateArrivalImage(id, image)
+    return this.arrivalsService.updateArrivalImage(id, image.filename)
   }
 
   /**
