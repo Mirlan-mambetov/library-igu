@@ -5,11 +5,13 @@ import { getTypeOrmConfig } from './config/typeorm.config';
 import { HeroModule } from './hero/hero.module';
 import { PageModule } from './page/page.module';
 import { TabsModule } from './tabs/tabs.module';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ envFilePath: './src/config/.env'}),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -17,7 +19,9 @@ import { TabsModule } from './tabs/tabs.module';
     }),
     HeroModule,
     PageModule,
-    TabsModule
+    TabsModule,
+    UsersModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],

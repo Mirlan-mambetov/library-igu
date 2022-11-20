@@ -12,11 +12,11 @@ export class HeroEntity extends BaseEntity {
 
   @Column({ name: "hero_image", default: HERO_DEFAULT_IMAGE })
   background: string
-
+  
+  @OneToMany(() => HeroSubcontentEntity, subcontent => subcontent.hero)
+  subcontent: HeroSubcontentEntity[]
+  
   @ManyToOne(() => PageEntity, page => page.hero)
   @JoinColumn({ name: "page_id" })
   page: PageEntity
-
-  @OneToMany(() => HeroSubcontentEntity, subcontent => subcontent.hero)
-  subcontent: HeroSubcontentEntity[]
 }

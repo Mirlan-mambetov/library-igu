@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne } from "typeorm"
+import { BaseEntity } from "src/utils/base.entity.utils"
+import { Column, Entity, JoinColumn, ManyToOne } from "typeorm"
 import { HeroEntity } from "./Hero.entity"
 
 @Entity({ name: 'hero_subcontent' })
