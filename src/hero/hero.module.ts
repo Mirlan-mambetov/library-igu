@@ -4,10 +4,11 @@ import { HeroController } from './hero.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HeroEntity } from './entity/Hero.entity';
 import { HeroSubcontentEntity } from './entity/hero.subcontent.entity';
+import { PageEntity } from 'src/page/entity/page.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([HeroEntity, HeroSubcontentEntity])
+    TypeOrmModule.forFeature([HeroEntity, HeroSubcontentEntity, PageEntity])
   ],
   controllers: [HeroController],
   providers: [HeroService]

@@ -4,3 +4,5 @@ export const USER_NOT_FOUND: string = 'Пользователь не найде�
 export const USER_WRONG_PASSWORD: string = 'Не правильный пароль'
 export const USER_ALREADY_EXIST: string =
 	'Пользователь с такми E-mail уже существует'
+export const USER_MIN_MAX_LENGTH_PASSWORD: string =
+	'Минимальная длина пароля 5 символа и максимальная 40'

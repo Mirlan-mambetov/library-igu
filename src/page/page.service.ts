@@ -58,7 +58,7 @@ export class PageService {
         }
       },
       order: {
-        createdAt: "DESC"
+        updatedAt: "ASC"
       }
     })
   }

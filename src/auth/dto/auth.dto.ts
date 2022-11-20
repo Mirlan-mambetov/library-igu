@@ -1,5 +1,5 @@
 import { IsEmail, IsString, Length } from "class-validator"
-import { USER_MIN_MAX_LENGTH } from "../constance/auth.message.constance"
+import { USER_MIN_MAX_LENGTH, USER_MIN_MAX_LENGTH_PASSWORD } from "../constance/auth.message.constance"
 
 export class AuthDto{
 
@@ -11,5 +11,6 @@ export class AuthDto{
   email: string
 
   @IsString()
+  @Length(5, 40, {message: USER_MIN_MAX_LENGTH_PASSWORD})
   password: string
 }

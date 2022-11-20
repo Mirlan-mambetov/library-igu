@@ -11,7 +11,7 @@ export class HeroEntity extends BaseEntity {
   title: string
 
   @Column({ name: "hero_image", default: HERO_DEFAULT_IMAGE })
-  background: string
+  background?: string
   
   @OneToMany(() => HeroSubcontentEntity, subcontent => subcontent.hero)
   subcontent: HeroSubcontentEntity[]
