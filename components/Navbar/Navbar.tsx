@@ -1,5 +1,5 @@
 import { DrawerContext } from '../../contexts/DrawerContext'
-import { ColorModeContext, tokens } from '../../theme'
+import { ColorModeContext } from '../../theme'
 import {
 	DarkModeOutlined,
 	LightModeOutlined,
@@ -21,7 +21,6 @@ export const Navbar: FC = () => {
 	const { toggleColorMode } = useContext(ColorModeContext)
 
 	const theme = useTheme()
-	const colors = tokens(theme.palette.mode)
 
 	return (
 		<AppBar

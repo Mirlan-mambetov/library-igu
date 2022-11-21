@@ -1,8 +1,25 @@
-import { Homepage } from '../panel'
+import { Dashboard } from './dashboard/dashboard'
 import { NextPage } from 'next'
 
-const HomePage: NextPage = () => {
-	return <Homepage />
+const DashboardPage: NextPage = () => {
+	return <Dashboard />
 }
 
-export default HomePage
+// export const getStaticProps: GetStaticProps = async () => {
+// 	try {
+// 		const { data: pages } = await pageService.fetchAllPages()
+// 		return {
+// 			props: {
+// 				pages
+// 			}
+// 		}
+// 	} catch (e) {
+// 		return {
+// 			props: {
+// 				pages: [] as IPage[]
+// 			}
+// 		}
+// 	}
+// }
+
+export default DashboardPage

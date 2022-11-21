@@ -1,14 +1,5 @@
-import { tokens } from '../../../theme'
-import {
-	DarkModeOutlined,
-	LightModeOutlined,
-	SearchOutlined
-} from '@mui/icons-material'
-import { useTheme } from '@mui/material'
+import { FC } from 'react'
 
-export const WHome = () => {
-	const theme = useTheme()
-	const colors = tokens(theme.palette.mode)
-
+export const WHome: FC = () => {
 	return <>Website home</>
 }
