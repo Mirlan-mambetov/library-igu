@@ -11,13 +11,13 @@ import { Provider } from 'react-redux'
 
 export default function App({ Component, pageProps }: AppProps) {
 	const { colorMode, theme } = useMode()
-	const { isOpen, onOpen, onClose } = MyModalContextProvider()
+	const modalProvider = MyModalContextProvider()
 
 	return (
 		<Provider store={store}>
 			<ColorModeContext.Provider value={colorMode}>
 				<ThemeProvider theme={theme}>
-					<MyModalContext.Provider value={{ isOpen, onOpen, onClose }}>
+					<MyModalContext.Provider value={{ ...modalProvider }}>
 						<Component {...pageProps} />
 					</MyModalContext.Provider>
 				</ThemeProvider>

@@ -1,0 +1,16 @@
+.input {
+	width: 100%;
+	padding: 10px 4px;
+	border: none;
+	border-radius: 3px;
+	background: none;
+	outline: none;
+	color: #fff;
+	&:focus {
+		outline: none;
+	}
+	&::placeholder {
+		font-size: inherit;
+		color: #fff;
+	}
+}

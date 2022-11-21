@@ -1,4 +1,5 @@
 import { MyModalContext } from '../../../contexts/MyModal.context'
+import { Form } from '../../Form/Form'
 import { Fade } from './Fade'
 import { Box, Modal, Typography } from '@mui/material'
 import Backdrop from '@mui/material/Backdrop'
@@ -17,7 +18,7 @@ const style = {
 }
 
 export const MyModal: FC = () => {
-	const { isOpen, onClose } = useContext(MyModalContext)
+	const { isOpen, onClose, updateId, updateName } = useContext(MyModalContext)
 
 	return (
 		<Modal
@@ -33,12 +34,7 @@ export const MyModal: FC = () => {
 		>
 			<Fade in={isOpen}>
 				<Box sx={style}>
-					<Typography id='spring-modal-title' variant='h6' component='h2'>
-						Text in a modal
-					</Typography>
-					<Typography id='spring-modal-description' sx={{ mt: 2 }}>
-						Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-					</Typography>
+					<Form />
 				</Box>
 			</Fade>
 		</Modal>

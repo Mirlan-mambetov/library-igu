@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import { FC, useContext } from 'react'
 
-const Hero: FC<IHero> = ({ background, title }) => {
+const Hero: FC<IHero> = ({ id, background, title }) => {
 	const { onOpen } = useContext(MyModalContext)
 	return (
 		<Box>
@@ -21,7 +21,11 @@ const Hero: FC<IHero> = ({ background, title }) => {
 					<Typography variant='h3'>{title}</Typography>
 				</CardContent>
 				<CardActions>
-					<Button color='success' size='small' onClick={() => onOpen()}>
+					<Button
+						color='success'
+						size='small'
+						onClick={() => onOpen('UpdateHero', id)}
+					>
 						Редактировать
 					</Button>
 				</CardActions>

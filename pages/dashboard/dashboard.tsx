@@ -10,16 +10,10 @@ export const Dashboard: FC = () => {
 		<Layout title='Главная. Панель администратора'>
 			<Box
 				sx={{
-					display: 'flex',
-					flexWrap: 'wrap',
-					'& > :not(style)': {
-						m: 1,
-						width: 128,
-						height: 128
-					}
+					display: 'flex'
 				}}
 			>
-				<Card sx={{ maxWidth: 345 }}>
+				<Card sx={{ maxWidth: 345, width: '100%' }}>
 					<CardContent sx={{ display: 'flex', gap: '10px' }}>
 						<Typography variant='h6'>Количество страниц сайта</Typography>
 						<span>{pages?.length}</span>
