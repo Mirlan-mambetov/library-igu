@@ -5,6 +5,4 @@ export class HeroDto {
 	@IsString()
 	@Length(10, 300, {message: HERO_TITLE_LENGTH})
 	title: string
-	
-	background?: string
 }

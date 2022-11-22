@@ -7,10 +7,15 @@ import { PageModule } from './page/page.module';
 import { TabsModule } from './tabs/tabs.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+     rootPath: join(__dirname, '..', 'uploads')
+    }),
     ConfigModule.forRoot({ envFilePath: './src/config/.env'}),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
