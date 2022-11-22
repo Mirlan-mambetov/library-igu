@@ -4,7 +4,9 @@ import { heroApi } from '../../../store/api/hero/hero.api'
 import { Field } from '../../UI'
 import { IHeroDto } from './Hero.dto'
 import { FC, useContext } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm, Controller } from 'react-hook-form'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
 
 export const HeroForm: FC = () => {
 	const { updateId } = useContext(MyModalContext)
@@ -15,15 +17,17 @@ export const HeroForm: FC = () => {
 		formState: { errors },
 		handleSubmit,
 		reset,
-		watch
+		watch,
+		control
 	} = useForm<IHeroDto>({ mode: 'onChange' })
 
 	const backGroundPath = watch('background')
 
 	const onSubmit: SubmitHandler<IHeroDto> = data => {
-		updateHero({ ...data, id: updateId })
-			.unwrap()
-			.then(() => reset())
+		// updateHero({ ...data, id: updateId })
+		// 	.unwrap()
+		// 	.then(() => reset())
+		console.log(data)		
 	}
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
@@ -31,8 +35,24 @@ export const HeroForm: FC = () => {
 				{...register('title', {
 					required: 'Название обязательно'
 				})}
-				placeholder='Name'
+				placeholder='Заголовок HERO'
+				error={errors.title}
 			/>
+			<Box sx={{my: "10px", px: "12px"}}>
+			<Field
+				{...register('background')}
+				type="file"
+				error={errors.background}
+				placeholder="Выберите файл"
+			/>
+			</Box>
+			<Button
+					color='success'
+					size='small'
+					type='submit'
+					>
+						Редактировать
+			</Button>
 		</form>
 	)
 }

@@ -10,7 +10,7 @@ export const heroApi = api.injectEndpoints({
 				method: 'PUT',
 				body
 			}),
-			invalidatesTags: (result, error, { id }) => [{ type: 'Hero', id }]
+			invalidatesTags: (result, error, { id }) => [{ type: 'Hero', id }, {type: "Pages"}]
 		})
 	})
 })

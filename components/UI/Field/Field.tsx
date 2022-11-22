@@ -8,7 +8,7 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(
 		return (
 			<Box sx={{ my: '10px', border: '1px solid #fefefe' }}>
 				<input className={styles.input} type={type} ref={ref} {...rest} />
-				{error && <span>{error.message}</span>}
+				{error && <span className={styles.errors}>{error.message}</span>}
 			</Box>
 		)
 	}
