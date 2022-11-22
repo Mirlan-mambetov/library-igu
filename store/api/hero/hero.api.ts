@@ -3,9 +3,9 @@ import { IHero } from '../../../interfaces/hero.interface'
 import { api } from '../api'
 
 export const heroApi = api.injectEndpoints({
-	endpoints: build => ({
-		updateHero: build.mutation<IHero, IHeroDto>({
-			query: ({ id, ...body }) => ({
+	endpoints: (builder) => ({
+		updateHero: builder.mutation<IHero, IHeroDto>({
+			query: ({id, ...body}) => ({
 				url: `/hero/${id}`,
 				method: 'PUT',
 				body
@@ -14,3 +14,15 @@ export const heroApi = api.injectEndpoints({
 		})
 	})
 })
+
+// build => ({
+// 	updateHero: build.mutation<IHero, IHeroDto>({
+// 		query: ({ id, ...body }) => ({
+// 			url: `/hero/${id}`,
+// 			method: 'PUT',
+// 			credentials: "include",
+// 			body
+// 		}),
+// 		invalidatesTags: (result, error, { id }) => [{ type: 'Hero', id }, {type: "Pages"}]
+// 	})
+// })
