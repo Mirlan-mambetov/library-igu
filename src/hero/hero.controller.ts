@@ -1,4 +1,4 @@
-import { Controller,ValidationPipe, HttpCode, Post, Put, Delete, Body, Param, ParseIntPipe, UseInterceptors } from '@nestjs/common';
+import { Controller,ValidationPipe, HttpCode, Post, Put, Delete, Body, Param, ParseIntPipe, UseInterceptors, BadRequestException } from '@nestjs/common';
 import { UploadedFile } from '@nestjs/common/decorators';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
@@ -32,6 +32,16 @@ export class HeroController {
 
   @Put(':id')
   @HttpCode(200)
+  updateHero(
+    @Param('id', ParseIntPipe) id: number,
+    @Body(new ValidationPipe()) dto: HeroDto,
+  ) {
+    console.log(id, dto)
+    return this.heroService.updateHero(id, dto)
+  }
+
+  @Put('image/:id')
+  @HttpCode(200)
   @UseInterceptors(FileInterceptor("background", {
     storage: diskStorage({
       destination: HERO_UPLOADS_IMAGE,
@@ -39,14 +49,11 @@ export class HeroController {
     }),
     fileFilter: imageFileFilter
   }))
-  updateHero(
-    @Param('id', ParseIntPipe) id: number,
-    @Body(new ValidationPipe()) dto: HeroDto,
-    @UploadedFile() background: Express.Multer.File
-  ) {
-    console.log(id, dto, background)
-    return    
-    // return this.heroService.updateHero(id, {...dto, background: background.filename})
+  updateHeroImage(
+    @Param('id') id: number,
+    @UploadedFile() background: Express.Multer.File) {
+    if (!background) throw new BadRequestException("Выберите файл")
+    return this.heroService.updateHeroImage(id, background.filename)
   }
 
   @Post('subcontent/:heroId')

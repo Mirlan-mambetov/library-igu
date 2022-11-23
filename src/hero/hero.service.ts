@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PAGE_NOT_FOUND } from 'src/page/constance/page.message.constance';
 import { PageEntity } from 'src/page/entity/page.entity';
@@ -50,28 +50,33 @@ export class HeroService {
     return subcontent
   }
 
-  async createHero(pageId: number, dto: HeroDto, file?: string) {
+  async createHero(pageId: number, dto: HeroDto) {
     const page = await this.pageRepository.findOne({where: {id: pageId}})
     if (!page) throw new NotFoundException(PAGE_NOT_FOUND)
     const newData = this.heroRepository.create({
       ...dto,
-      background: `${HERO_GET_UPLOADS_IMAGE}/${file}`,
+      // background: `${HERO_GET_UPLOADS_IMAGE}/${file}`,
       page: page
     })
     return await this.heroRepository.save(newData)
   }
+  // `${HERO_GET_UPLOADS_IMAGE}/${file}`
+  async updateHero(id: number, dto: HeroDto) {
+    const hero = await this.getHeroById(id)
+    return await this.heroRepository.save({
+      ...hero,
+      title: dto.title
+      // background: `${HERO_GET_UPLOADS_IMAGE}/${dto.background}`
+    })
+  }
 
-  async updateHero(id: number, dto: HeroDto, file?: string) {
-    if (file.length) {
-      const hero = await this.getHeroById(id)
-      await deleteFileWithName(hero.background)
-      await this.heroRepository.save({
-        ...hero,
-        ...dto,
-        background: `${HERO_GET_UPLOADS_IMAGE}/${file}`
-      })
-    }
-    return await this.heroRepository.save({...dto})
+  async updateHeroImage(id: number, file: string) {
+    const hero = await this.getHeroById(id)
+     deleteFileWithName(hero.background)
+    return await this.heroRepository.save({
+      ...hero,
+      background: `${HERO_GET_UPLOADS_IMAGE}/${file}`
+    })
   }
 
   async createHeroSubcontent(id: number, dto: HeroSubcontentDto) {
