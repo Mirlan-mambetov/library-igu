@@ -1,20 +1,15 @@
-import Box from '@mui/material/Box'
-import {FC} from 'react'
-import { useForm } from 'react-hook-form'
-import { Field } from '../Field'
-import { IUploadFieldProps } from './UploadField.props'
+import { IUpload } from '../../../../services/uploadService/media.interface'
+import { useUpload } from './UseUpload'
+import { FC } from 'react'
 
-export const UploadField: FC<IUploadFieldProps> = ({folder, name}) => {
-	const {register} = useForm()
-  return (
-    <Box>
+export const UploadField: FC<IUpload> = ({ id, url, onChange }) => {
+	const { uploadFile } = useUpload(id, url, onChange)
+	return (
+		<div>
 			<label>
-				<span className='sr-only'>Выбери файл</span>
-				<Field
-					{...register(name)}
-					accept='image/jpg, image/png, image/jpeg'
-				/>
+				<span>Выбери файл</span>
+				<input type='file' onChange={uploadFile} />
 			</label>
-		</Box>
-  )
+		</div>
+	)
 }

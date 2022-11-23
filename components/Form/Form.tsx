@@ -1,5 +1,6 @@
 import { MyModalContext } from '../../contexts/MyModal.context'
 import { HeroForm } from './HeroForm/HeroForm'
+import { UpdateHeroImageForm } from './HeroForm/UpdateHeroImageForm'
 import { FC, useContext } from 'react'
 
 export const Form: FC = () => {
@@ -7,6 +8,8 @@ export const Form: FC = () => {
 	switch (updateName) {
 		case 'UpdateHero':
 			return <HeroForm />
+		case 'UpdateHeroImage':
+			return <UpdateHeroImageForm />
 		default:
 			return <h1>Неккоретный путь обновления</h1>
 	}

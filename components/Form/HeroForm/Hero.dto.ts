@@ -1,5 +1,8 @@
 export interface IHeroDto {
 	id: number
-	title?: string
-	background?: any
+	title: string
+}
+export interface IHeroImageDto {
+	id: number
+	background: any
 }
