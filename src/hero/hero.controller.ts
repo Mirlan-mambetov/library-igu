@@ -1,16 +1,16 @@
-import { Controller,ValidationPipe, HttpCode, Post, Put, Delete, Body, Param, ParseIntPipe, UseInterceptors, BadRequestException } from '@nestjs/common';
+import { Controller, ValidationPipe, HttpCode, Post, Put, Delete, Body, Param, ParseIntPipe, UseInterceptors, BadRequestException } from '@nestjs/common';
 import { UploadedFile } from '@nestjs/common/decorators';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { imageFileFilter, renameFIleName } from 'src/utils/fileupload.utils';
 import { HERO_UPLOADS_IMAGE } from './constance/hero.constance';
 import { HeroDto } from './dto/hero.dto';
-import {HeroSubcontentDto} from './dto/HeroSubcontentDto'
+import { HeroSubcontentDto } from './dto/HeroSubcontentDto'
 import { HeroService } from './hero.service';
 
 @Controller('hero')
 export class HeroController {
-  constructor(private readonly heroService: HeroService) {}
+  constructor(private readonly heroService: HeroService) { }
 
 
   @Post(':pageId')
@@ -26,7 +26,7 @@ export class HeroController {
     @Param('pageId', ParseIntPipe) pageId: number,
     @Body(new ValidationPipe()) dto: HeroDto,
     @UploadedFile() background: Express.Multer.File
-    ) {
+  ) {
     // return this.heroService.createHero(pageId, {...dto, background: background.filename})
   }
 
@@ -36,7 +36,6 @@ export class HeroController {
     @Param('id', ParseIntPipe) id: number,
     @Body(new ValidationPipe()) dto: HeroDto,
   ) {
-    console.log(id, dto)
     return this.heroService.updateHero(id, dto)
   }
 
@@ -53,6 +52,7 @@ export class HeroController {
     @Param('id') id: number,
     @UploadedFile() background: Express.Multer.File) {
     if (!background) throw new BadRequestException("Выберите файл")
+    console.log(id, background)
     return this.heroService.updateHeroImage(id, background.filename)
   }
 
