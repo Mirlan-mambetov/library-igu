@@ -6,6 +6,7 @@ import { deleteFileWithName } from 'src/utils/fileupload.utils';
 import { Repository } from 'typeorm';
 import { HERO_GET_UPLOADS_IMAGE, HERO_NOT_FOUND } from './constance/hero.constance';
 import { HERO_SUBCONTENT_NOT_FOUND } from './constance/hero.subcontent.constace';
+import { IHeroCreateDto } from './dto/hero.create.dto';
 import { HeroDto } from './dto/hero.dto';
 import { HeroSubcontentDto } from './dto/HeroSubcontentDto';
 import { HeroEntity } from './entity/Hero.entity';
@@ -23,7 +24,8 @@ export class HeroService {
     const hero = await this.heroRepository.findOne({
       where: {id},
       relations: {
-        subcontent: true
+        subcontent: true,
+        page: true
       },
       select: {
         subcontent: {
@@ -50,12 +52,12 @@ export class HeroService {
     return subcontent
   }
 
-  async createHero(pageId: number, dto: HeroDto) {
+  async createHero(pageId: number, dto: IHeroCreateDto) {
     const page = await this.pageRepository.findOne({where: {id: pageId}})
     if (!page) throw new NotFoundException(PAGE_NOT_FOUND)
     const newData = this.heroRepository.create({
       ...dto,
-      // background: `${HERO_GET_UPLOADS_IMAGE}/${file}`,
+      background: `${HERO_GET_UPLOADS_IMAGE}/${dto.background}`,
       page: page
     })
     return await this.heroRepository.save(newData)
@@ -63,16 +65,17 @@ export class HeroService {
   // `${HERO_GET_UPLOADS_IMAGE}/${file}`
   async updateHero(id: number, dto: HeroDto) {
     const hero = await this.getHeroById(id)
+    if (!hero) throw new NotFoundException(HERO_NOT_FOUND)
     return await this.heroRepository.save({
       ...hero,
-      title: dto.title
-      // background: `${HERO_GET_UPLOADS_IMAGE}/${dto.background}`
+      ...dto
     })
   }
 
   async updateHeroImage(id: number, file: string) {
     const hero = await this.getHeroById(id)
-     deleteFileWithName(hero.background)
+    if (!hero) throw new NotFoundException(HERO_NOT_FOUND)
+    await deleteFileWithName(hero.background)
     return await this.heroRepository.save({
       ...hero,
       background: `${HERO_GET_UPLOADS_IMAGE}/${file}`

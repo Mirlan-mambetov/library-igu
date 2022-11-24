@@ -5,3 +5,4 @@ export const HERO_TITLE_LENGTH: string =
 export const HERO_NOT_FOUND: string = 'HERO по такому ключу (ID) не найден'
 export const HERO_UPLOADS_IMAGE: string = './uploads/heroimages'
 export const HERO_GET_UPLOADS_IMAGE: string = '/heroimages'
+export const HERO_NOT_FILE_IMAGE: string = 'Выберите файл'

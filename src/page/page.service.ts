@@ -22,7 +22,8 @@ export class PageService {
       where: { id },
       relations: {
         hero: {
-          subcontent: true
+          subcontent: true,
+          page: true
         }
       },
       order: {
