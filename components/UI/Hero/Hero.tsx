@@ -32,26 +32,13 @@ const Hero: FC<{ hero: IHero[] }> = ({ hero }) => {
 		<Box>
 			{hero.length ? (
 				hero.map((hero) => (
-					<Card key={hero.id} sx={{ border: '1px solid red', width: '400px' }}>
+					<Card key={hero.id} sx={{ width: '400px' }}>
 						<Box sx={{ position: 'relative' }}>
 							<CardMedia
 								component='img'
 								height={200}
 								image={`${process.env.NEXT_PUBLIC_APP_STATIC}${hero.background}`}
 							/>
-							{/* <Button
-								style={{
-									position: 'absolute',
-									top: '5px',
-									right: '5px',
-									background: 'rgba(0, 0, 0, .6)',
-									padding: '15px 12px',
-									color: '#fff'
-								}}
-								onClick={() => onOpen('UpdateHeroImage', hero.id)}
-							>
-								<FaPencilAlt />
-							</Button> */}
 						</Box>
 						<CardContent>
 							<Typography variant='h3'>{hero.title}</Typography>
