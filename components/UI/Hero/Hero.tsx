@@ -21,7 +21,7 @@ const Hero: FC<IHero> = ({ id, background, title }) => {
 					<CardMedia
 						component='img'
 						height={200}
-						image={`${process.env.NEXT_PUBLIC_APP_STATIC}/${background}`}
+						image={`${process.env.NEXT_PUBLIC_APP_STATIC}${background}`}
 					/>
 					<Button
 						style={{

@@ -4,5 +4,5 @@ export interface IHeroDto {
 }
 export interface IHeroImageDto {
 	id: number
-	background: any
+	background: File
 }

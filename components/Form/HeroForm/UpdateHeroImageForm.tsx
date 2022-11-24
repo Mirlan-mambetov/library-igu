@@ -1,26 +1,27 @@
 import { MyModalContext } from '../../../contexts/MyModal.context'
 import { UploadService } from '../../../services/uploadService/uploadService'
-import { heroApi } from '../../../store/api/hero/hero.api'
 import { Field } from '../../UI'
 import { IHeroImageDto } from './Hero.dto'
 import Button from '@mui/material/Button'
 import { Box } from '@mui/system'
-import { useContext, FC, useState, ChangeEvent } from 'react'
+import { useContext, FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { BsCloudUpload } from 'react-icons/bs'
 
 export const UpdateHeroImageForm: FC = () => {
 	const { updateId, onClose } = useContext(MyModalContext)
 	const { handleSubmit, register } = useForm<IHeroImageDto>()
-	const [updateHeroImage, { isSuccess }] = heroApi.useUpdateHeroImageMutation()
-	// const [file, setFile] = useState<File>()
 
 	const submitHandler: SubmitHandler<IHeroImageDto> = async (data) => {
-		// const file = data.background
-		// const formData = new FormData()
-		// formData.append('background', file[0])
+		const formData = new FormData()
 		// @ts-ignore
-		updateHeroImage({ id: updateId, background: data.background })
+		formData.append("background", data.background[0])
+		await UploadService.upload({
+			id: updateId,
+			url: "hero/image",
+			file: formData
+		})
+		onClose()
 	}
 
 	return (

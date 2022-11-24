@@ -18,7 +18,7 @@ const style = {
 }
 
 export const MyModal: FC = () => {
-	const { isOpen, onClose, updateId, updateName } = useContext(MyModalContext)
+	const { isOpen, onClose } = useContext(MyModalContext)
 
 	return (
 		<Modal

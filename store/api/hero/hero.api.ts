@@ -19,21 +19,11 @@ export const heroApi = api.injectEndpoints({
 			]
 		}),
 		updateHeroImage: builder.mutation<null, IHeroImageDto>({
-			async queryFn({ id, background }, api, extraOptions, baseQuery) {
-				const formData = new FormData()
-				formData.append('background', background)
-				const response = await baseQuery({
-					url: `/hero/image/${id}`,
-					body: formData
-				})
-				return {
-					error: {
-						status: 500,
-						statusText: 'Internal Server Error',
-						data: response.data
-					}
-				}
-			},
+			query: ({ id, background }) => ({
+				url: `/hero/image/${id}`,
+				method: 'PUT',
+				body: background
+			}),
 			invalidatesTags: (result, error, { id }) => [
 				{ type: 'Hero', id },
 				{ type: 'Pages' }

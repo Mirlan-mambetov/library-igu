@@ -1,11 +1,13 @@
 import { Layout } from '../../components/Layout/Layout'
 import { pageApi } from '../../store/api/page/page.api'
-import { Box, Card, CardContent, Typography } from '@mui/material'
-import { FC } from 'react'
+import { Box, Button, Card, CardContent, Typography } from '@mui/material'
+import { FC, useContext } from 'react'
+import { MyModalContext } from '../../contexts/MyModal.context'
 
 export const Dashboard: FC = () => {
 	const { data: pages } = pageApi.useFetchAllPagesQuery(null)
 	console.log(pages)
+	const { onOpen } = useContext(MyModalContext)
 	return (
 		<Layout title='Главная. Панель администратора'>
 			<Box
@@ -18,6 +20,13 @@ export const Dashboard: FC = () => {
 						<Typography variant='h6'>Количество страниц сайта</Typography>
 						<span>{pages?.length}</span>
 					</CardContent>
+					<Button
+						color='success'
+						sx={{ fontSize: "10px" }}
+						onClick={() => onOpen("CreatePage")}
+					>
+						Создать страницу
+					</Button>
 				</Card>
 			</Box>
 		</Layout>
