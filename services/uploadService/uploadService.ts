@@ -1,13 +1,39 @@
 import { axiosBase } from '../../api/axios'
 import { IHero } from '../../interfaces/hero.interface'
-import { IUpload } from './media.interface'
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 // import { IMediaResponse } from './media.interface'
 
 export const UploadService = {
-	async upload({ id, file, url }: IUpload) {
-		return axiosBase.put<IHero>(`/${url}/${id}`, file, {
-			headers: { 'Content-Type': 'multipart/form-data' }
+	async upload(
+		id: number,
+		url: string,
+		setValue: (val: number) => void,
+		file: FormData,
+		method: string
+	) {
+		return await axiosBase({
+			method: `${method}`,
+			url: `/${url}/${id}`,
+			data: file,
+			headers: { 'Content-Type': 'multipart/form-data' },
+			onUploadProgress: (ProgressEvent) => {
+				if (setValue) {
+					const progress = (ProgressEvent.loaded / ProgressEvent.total) * 100
+					setValue(Math.ceil(progress))
+				}
+			}
 		})
 	}
 }
+
+// post<IHero>(`/${url}/${id}`, file, {
+// 	headers: { 'Content-Type': 'multipart/form-data' },
+// 	onUploadProgress: (ProgressEvent) => {
+// 		if (setValue) {
+// 			// @ts-ignore
+// 			const progress = (ProgressEvent.loaded / ProgressEvent.total) * 100
+// 			setValue(Math.ceil(progress))
+// 		}
+// 	}
+// })

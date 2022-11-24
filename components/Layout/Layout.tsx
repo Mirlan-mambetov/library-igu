@@ -1,5 +1,6 @@
 import { Navbar } from '../Navbar/Navbar'
 import { Sidebar } from '../Sidebar/Sidebar'
+import { MyModal } from '../UI/Modal/Modal'
 import styles from './Layout.module.scss'
 import { CssBaseline } from '@mui/material'
 import Head from 'next/head'
@@ -11,6 +12,7 @@ export const Layout: FC<PropsWithChildren<{ title: string }>> = ({
 }): JSX.Element => {
 	return (
 		<>
+			<MyModal />
 			<Head>
 				<title>{title}</title>
 			</Head>

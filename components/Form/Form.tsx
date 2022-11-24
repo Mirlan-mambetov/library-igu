@@ -1,16 +1,19 @@
 import { MyModalContext } from '../../contexts/MyModal.context'
+import { CreateHero } from './HeroForm/CreateHero/CreateHero'
 import { HeroForm } from './HeroForm/HeroForm'
 import { UpdateHeroImageForm } from './HeroForm/UpdateHeroImageForm'
-import { FC, useContext } from 'react'
 import { PageForm } from './PageForm/PageForm'
+import { FC, useContext } from 'react'
 
 export const Form: FC = () => {
 	const { updateName } = useContext(MyModalContext)
 	switch (updateName) {
 		case 'UpdateHero':
-			return <HeroForm />
-		case 'UpdateHeroImage':
-			return <UpdateHeroImageForm />
+			return <CreateHero />
+		// case 'UpdateHero':
+		// 	return <HeroForm />
+		// case 'UpdateHeroImage':
+		// 	return <UpdateHeroImageForm />
 		case 'CreatePage':
 			return <PageForm />
 		default:
