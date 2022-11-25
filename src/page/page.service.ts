@@ -22,7 +22,9 @@ export class PageService {
       where: { id },
       relations: {
         hero: {
-          subcontent: true,
+          subcontent: {
+            hero: true,
+          },
           page: true
         }
       },
@@ -30,12 +32,7 @@ export class PageService {
         createdAt: 'DESC'
       },
       select: {
-        hero: {
-          id: true,
-          title: true,
-          background: true,
-          subcontent: true
-        }
+        hero: true
       }
     })
     if (!page) throw new NotFoundException(PAGE_NOT_FOUND)
@@ -46,7 +43,9 @@ export class PageService {
     return await this.pageRepository.find({
       relations: {
         hero: {
-          subcontent: true
+          subcontent: {
+            hero: true
+          }
         }
       },
       select: {
@@ -55,6 +54,11 @@ export class PageService {
           title: true,
           page: {
             name: true
+          },
+          subcontent: {
+            hero: {
+              id: true
+            }
           }
         }
       },

@@ -24,14 +24,16 @@ export class HeroService {
     const hero = await this.heroRepository.findOne({
       where: {id},
       relations: {
-        subcontent: true,
+        subcontent: {
+          hero: true
+        },
         page: true
       },
       select: {
         subcontent: {
           id: true,
           title: true,
-          description: true
+          description: true,
         }
       }
     })
