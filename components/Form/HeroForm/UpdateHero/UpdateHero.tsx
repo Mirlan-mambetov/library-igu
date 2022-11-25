@@ -17,7 +17,7 @@ export interface IHeroTestDto {
 	background: string
 }
 
-export const CreateHero: FC = () => {
+export const UpdateHero: FC = () => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
 	const { updateId, onClose } = useContext(MyModalContext)

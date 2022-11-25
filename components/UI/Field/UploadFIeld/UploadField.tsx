@@ -47,6 +47,7 @@ export const UploadField: FC<IUploadFieldProps> = ({
 					style={{ display: 'none' }}
 					type='file'
 					id='file-input'
+					required
 				/>
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 					<Button

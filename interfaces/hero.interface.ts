@@ -11,4 +11,5 @@ export interface IHero extends IBase {
 export interface IHeroSubcontent extends IBase {
 	title: string
 	description: string
+	hero?: Pick<IHero, 'background' | 'createdAt' | 'id'>
 }

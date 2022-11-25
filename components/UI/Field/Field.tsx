@@ -2,6 +2,7 @@ import { tokens } from '../../../theme'
 import { FieldProps } from './Fiedl.props'
 import styles from './Field.module.scss'
 import { useTheme } from '@mui/material'
+import TextField from '@mui/material/TextField'
 import { Box } from '@mui/system'
 import cn from 'classnames'
 import { forwardRef } from 'react'
@@ -15,7 +16,8 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(
 				style={{ ...style }}
 				sx={{ my: '10px', border: `1px solid ${colors.primary[500]}` }}
 			>
-				<input
+				{/* @ts-ignore */}
+				<TextField
 					className={cn(styles.input)}
 					style={{ color: `${colors.primary[500]}` }}
 					type={type}

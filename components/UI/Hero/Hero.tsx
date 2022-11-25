@@ -1,70 +1,61 @@
-import { MyModalContext } from '../../../contexts/MyModal.context'
 import { IHero } from '../../../interfaces/hero.interface'
 import { tokens } from '../../../theme'
+import { CreateFragment } from '../../Form/CreateFragment/CreateFragment'
+import { UpdateFragment } from '../../Form/UpdateFragment/UpdateFragment'
+import { HeroSubContent } from './Subcontent/Subcontent'
 import {
 	Box,
-	Button,
 	Card,
-	CardActions,
 	CardContent,
 	CardMedia,
 	Typography,
 	useTheme
 } from '@mui/material'
-import { FC, useContext, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { FaPencilAlt } from 'react-icons/fa'
 
 const Hero: FC<{ hero: IHero[] }> = ({ hero }) => {
-	const { onOpen } = useContext(MyModalContext)
-	const [id, setId] = useState<number>(0)
+	const [pageId, setPageId] = useState<number>(0)
+	const [heroId, setHeroId] = useState<number>(0)
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
 
 	useEffect(() => {
 		hero.map((h) => {
-			if (h.page) setId(h.page.id)
+			setHeroId(h.id)
+			if (h.page) setPageId(h.page.id)
 			return
 		})
 	}, [hero])
-	console.log(id)
+	console.log(`Page ID: ${pageId}`)
+	console.log(`Hero ID: ${heroId}`)
 
 	return (
 		<Box>
 			{hero.length ? (
 				hero.map((hero) => (
-					<Card key={hero.id} sx={{ width: '400px' }}>
-						<Box sx={{ position: 'relative' }}>
-							<CardMedia
-								component='img'
-								height={200}
-								image={`${process.env.NEXT_PUBLIC_APP_STATIC}${hero.background}`}
-							/>
-						</Box>
-						<CardContent>
-							<Typography variant='h3'>{hero.title}</Typography>
-						</CardContent>
-						<CardActions>
-							<Button
-								color='success'
-								size='small'
-								onClick={() => onOpen('UpdateHero', hero.id)}
-							>
-								Редактировать
-							</Button>
-						</CardActions>
-					</Card>
+					<Box key={hero.id}>
+						<Card sx={{ width: '400px' }}>
+							<Box sx={{ position: 'relative' }}>
+								<CardMedia
+									component='img'
+									height={200}
+									image={`${process.env.NEXT_PUBLIC_APP_STATIC}${hero.background}`}
+								/>
+							</Box>
+							<CardContent>
+								<Typography variant='h3'>{hero.title}</Typography>
+							</CardContent>
+							{/* UPDATE BUTTON */}
+							<UpdateFragment fragmentUpdate='UpdateHero' id={hero.id} />
+						</Card>
+						{hero.subcontent?.length ? (
+							<HeroSubContent subContent={hero.subcontent} />
+						) : null}
+					</Box>
 				))
 			) : (
-				<Box sx={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-					<span
-						style={{ color: `${colors.blueAccent[600]}`, fontSize: '18px' }}
-					>
-						данных нет
-					</span>
-					<Button color='success' onClick={() => onOpen('CreateHero', id)}>
-						Создать
-					</Button>
-				</Box>
+				<CreateFragment id={pageId} fragmentCreate='UpdateHero' />
 			)}
 		</Box>
 	)
