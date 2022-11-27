@@ -11,4 +11,5 @@ export interface IUploadFieldProps {
 	method: string
 	typeFile: string
 	percent: number
+	error: any
 }

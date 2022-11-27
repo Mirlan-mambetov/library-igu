@@ -82,6 +82,7 @@ export const UpdateJournal: FC = () => {
 								method='PUT'
 								typeFile='image'
 								percent={percent}
+								error={errors.image}
 							/>
 						)}
 					/>

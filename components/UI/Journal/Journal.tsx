@@ -1,6 +1,7 @@
 import { MyModalContext } from '../../../contexts/MyModal.context'
 import { IJournal } from '../../../interfaces/journal.interface'
 import { tokens } from '../../../theme'
+import { UpdateFragment } from '../../Form/UpdateFragment/UpdateFragment'
 import { useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -25,7 +26,15 @@ export const Journal: FC<{ journal: IJournal[] }> = ({ journal }) => {
 							</Typography>
 							{j.journalHead?.map((jH) => (
 								<Box key={jH.id} sx={{ my: '20px' }}>
-									<Typography variant='h5'>{jH.title}</Typography>
+									<Box
+										sx={{ display: 'flex', gap: '12px', alignItems: 'center' }}
+									>
+										<Typography variant='h5'>{jH.title}</Typography>
+										<UpdateFragment
+											fragmentUpdate='UpdateJournalHead'
+											id={jH.id}
+										/>
+									</Box>
 									{jH.items.map((item) => (
 										<Box
 											key={item.id}
@@ -40,9 +49,10 @@ export const Journal: FC<{ journal: IJournal[] }> = ({ journal }) => {
 										>
 											<span>{item.title}</span>
 											<span>{item.description}</span>
-											<Button color='success' sx={{ fontSize: '10px' }}>
-												Редактировать
-											</Button>
+											<UpdateFragment
+												fragmentUpdate='UpdateJournalHeadItems'
+												id={item.id}
+											/>
 										</Box>
 									))}
 								</Box>

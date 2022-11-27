@@ -4,8 +4,8 @@ export const MyModalContext = createContext({
 	isOpen: false,
 	updateName: '',
 	updateId: 0,
-	onOpen: (value: string, id?: number) => { },
-	onClose: () => { }
+	onOpen: (value: string, id?: number) => {},
+	onClose: () => {}
 })
 
 export const MyModalContextProvider = () => {
@@ -19,9 +19,9 @@ export const MyModalContextProvider = () => {
 		if (id) setUpdateId(id)
 	}
 	const onClose = () => {
-		setIsOpen(false)
-		setUpdateId(0)
 		setUpdateName('')
+		setUpdateId(0)
+		setIsOpen(false)
 	}
 
 	return { isOpen, updateName, updateId, onOpen, onClose }

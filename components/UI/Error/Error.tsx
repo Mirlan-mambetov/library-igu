@@ -5,10 +5,19 @@ export const ErrorDisplayed: FC<{ error: unknown }> = ({ error }) => {
 	return (
 		<>
 			{isFetchBaseQueryError(error) && (
-				<span style={{ fontSize: '20px', color: 'red' }}>
-					{/* @ts-ignore */}
-					{error.data.message}
-				</span>
+				<div
+					style={{
+						display: 'flex',
+						maxWidth: '80%',
+						marginLeft: 'auto',
+						marginRight: 'auto'
+					}}
+				>
+					<span style={{ fontSize: '16px', color: 'red', lineHeight: '21px' }}>
+						{/* @ts-ignore */}
+						{error.data.message}
+					</span>
+				</div>
 			)}
 		</>
 	)

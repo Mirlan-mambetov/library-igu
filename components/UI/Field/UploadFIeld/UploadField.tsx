@@ -16,7 +16,8 @@ export const UploadField: FC<IUploadFieldProps> = ({
 	isUploaded,
 	method,
 	typeFile,
-	percent
+	percent,
+	error
 }) => {
 	const { mutateAsync } = useMutation(
 		'upload file',
@@ -49,6 +50,7 @@ export const UploadField: FC<IUploadFieldProps> = ({
 					type='file'
 					id='file-input'
 					required
+					error={error}
 				/>
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 					<Button
@@ -75,6 +77,7 @@ export const UploadField: FC<IUploadFieldProps> = ({
 					</Button>
 				</Box>
 			</label>
+			{error && <span>{error.message}</span>}
 			{/* <Box sx={{ mt: '20px', px: '12px' }}>
 				<span>{isUploaded ? 'Видео загружено' : `Загрузка ${percent}%`}</span>
 			</Box> */}

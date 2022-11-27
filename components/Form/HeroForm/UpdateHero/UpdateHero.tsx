@@ -1,7 +1,7 @@
 import { MyModalContext } from '../../../../contexts/MyModal.context'
 import { heroApi } from '../../../../store/api/hero/hero.api'
 import { tokens } from '../../../../theme'
-import { Field, UploadField } from '../../../UI'
+import { ErrorDisplayed, Field, UploadField } from '../../../UI'
 import { useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -20,7 +20,7 @@ export const UpdateHero: FC = () => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
 	const { updateId, onClose } = useContext(MyModalContext)
-	const [updateHero, { isSuccess }] = heroApi.useUpdateHeroMutation()
+	const [updateHero, { isSuccess, error }] = heroApi.useUpdateHeroMutation()
 	const {
 		register,
 		control,
@@ -57,10 +57,23 @@ export const UpdateHero: FC = () => {
 			{!isChosen ? (
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 					<Typography variant='h5' color={colors.grey[100]}>
-						Давайте создадим Компонент Hero для страницы
+						Обновление компонента Hero
 					</Typography>
-					<Typography variant='h6' color={colors.greenAccent[100]}>
-						Начните с файла
+					<Typography
+						variant='subtitle2'
+						sx={{ my: '12px' }}
+						color={colors.greenAccent[100]}
+					>
+						Начните с файла файл обязателен, без загрузки невозможно обновить
+						компонент.
+					</Typography>
+					<Typography
+						variant='subtitle2'
+						sx={{ my: '12px' }}
+						color={colors.redAccent[500]}
+					>
+						Внимание: размер изображение должен быть не меньше 1600 х 1080
+						пикселей
 					</Typography>
 					<Controller
 						control={control}
@@ -75,6 +88,8 @@ export const UpdateHero: FC = () => {
 								url='hero/image'
 								method='PUT'
 								typeFile='background'
+								percent={percent}
+								error={errors.background}
 							/>
 						)}
 					/>
@@ -96,6 +111,7 @@ export const UpdateHero: FC = () => {
 					</Button>
 				</Box>
 			)}
+			<ErrorDisplayed error={error} />
 		</form>
 	)
 }

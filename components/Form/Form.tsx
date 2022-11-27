@@ -4,6 +4,8 @@ import { UpdateHero } from './HeroForm/UpdateHero/UpdateHero'
 import { UpdateHeroSubcontent } from './HeroForm/UpdateHeroSubcontent/UpdateHeroSubcontent'
 import { PageForm } from './PageForm/PageForm'
 import { UpdateJournal } from './UpdateJournalForm/UpdateJournalForm'
+import { UpdateJournalHead } from './UpdateJournalHead/UpdateJournalHead'
+import { UpdateJournalHeadItems } from './UpdateJournalHeadItems/UpdateJournalHeadItems'
 import { FC, useContext } from 'react'
 
 export const Form: FC = () => {
@@ -17,9 +19,18 @@ export const Form: FC = () => {
 			return <CreateHeroSubcontent />
 		case 'UpdateJournal':
 			return <UpdateJournal />
+		case 'UpdateJournalHead':
+			return <UpdateJournalHead />
+		case 'UpdateJournalHeadItems':
+			return <UpdateJournalHeadItems />
 		case 'CreatePage':
 			return <PageForm />
 		default:
-			return <h1>Неккоретный путь обновления</h1>
+			return (
+				<h1>
+					Ошибка в стейтменеджменте приложения я не знаю как исправить ошибку.
+					Нужно обратится к создателям..
+				</h1>
+			)
 	}
 }
