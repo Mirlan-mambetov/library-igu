@@ -20,17 +20,6 @@ export const heroApi = api.injectEndpoints({
 				{ type: 'Pages' }
 			]
 		}),
-		updateHeroImage: builder.mutation<null, IHeroImageDto>({
-			query: ({ id, background }) => ({
-				url: `/hero/image/${id}`,
-				method: 'PUT',
-				body: background
-			}),
-			invalidatesTags: (result, error, { id }) => [
-				{ type: 'Hero', id },
-				{ type: 'Pages' }
-			]
-		}),
 		updateSubContent: builder.mutation<null, ISubcontentDto>({
 			query: ({ id, ...body }) => ({
 				url: `/hero/subcontent/${id}`,

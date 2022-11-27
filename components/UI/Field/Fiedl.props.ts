@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from 'react'
 import { FieldError } from 'react-hook-form'
 
-interface IField {
+export interface IField {
 	error?: FieldError
 }
 

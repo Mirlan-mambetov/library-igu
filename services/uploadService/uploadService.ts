@@ -1,8 +1,4 @@
 import { axiosBase } from '../../api/axios'
-import { IHero } from '../../interfaces/hero.interface'
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-
-// import { IMediaResponse } from './media.interface'
 
 export const UploadService = {
 	async upload(

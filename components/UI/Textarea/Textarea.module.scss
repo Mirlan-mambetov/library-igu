@@ -1,0 +1,13 @@
+.textarea {
+	width: 100%;
+	min-height: 200px;
+	color: #fff;
+	background: none;
+	&:focus {
+		outline: none;
+	}
+	&::placeholder {
+		font-size: inherit;
+		color: #fff;
+	}
+}

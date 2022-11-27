@@ -1,10 +1,9 @@
-import { IUpload } from '../../../../services/uploadService/media.interface'
 import { UploadService } from '../../../../services/uploadService/uploadService'
 import { Field } from '../Field'
 import { IUploadFieldProps } from './UploadField.props'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import { FC, ChangeEvent, Dispatch, SetStateAction } from 'react'
+import { FC, ChangeEvent } from 'react'
 import { BsCloudUpload } from 'react-icons/bs'
 import { useMutation } from 'react-query'
 
@@ -15,7 +14,9 @@ export const UploadField: FC<IUploadFieldProps> = ({
 	setValue,
 	setIsChosen,
 	isUploaded,
-	method
+	method,
+	typeFile,
+	percent
 }) => {
 	const { mutateAsync } = useMutation(
 		'upload file',
@@ -35,7 +36,7 @@ export const UploadField: FC<IUploadFieldProps> = ({
 		setIsChosen && setIsChosen(true)
 
 		const formData = new FormData()
-		formData.append('background', file[0])
+		formData.append(typeFile, file[0])
 
 		await mutateAsync(formData)
 	}
@@ -74,7 +75,9 @@ export const UploadField: FC<IUploadFieldProps> = ({
 					</Button>
 				</Box>
 			</label>
-			{!isUploaded ? 'Идет загрузка файла' : 'Файл не выбран!'}
+			{/* <Box sx={{ mt: '20px', px: '12px' }}>
+				<span>{isUploaded ? 'Видео загружено' : `Загрузка ${percent}%`}</span>
+			</Box> */}
 		</Box>
 	)
 }

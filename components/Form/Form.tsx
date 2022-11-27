@@ -3,6 +3,7 @@ import { CreateHeroSubcontent } from './HeroForm/CreateSubContent/CreateSubConte
 import { UpdateHero } from './HeroForm/UpdateHero/UpdateHero'
 import { UpdateHeroSubcontent } from './HeroForm/UpdateHeroSubcontent/UpdateHeroSubcontent'
 import { PageForm } from './PageForm/PageForm'
+import { UpdateJournal } from './UpdateJournalForm/UpdateJournalForm'
 import { FC, useContext } from 'react'
 
 export const Form: FC = () => {
@@ -14,6 +15,8 @@ export const Form: FC = () => {
 			return <UpdateHeroSubcontent />
 		case 'CreateHeroSubcontent':
 			return <CreateHeroSubcontent />
+		case 'UpdateJournal':
+			return <UpdateJournal />
 		case 'CreatePage':
 			return <PageForm />
 		default:

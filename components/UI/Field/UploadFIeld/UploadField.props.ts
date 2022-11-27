@@ -9,4 +9,6 @@ export interface IUploadFieldProps {
 	setValue: (val: number) => void
 	isUploaded: boolean
 	method: string
+	typeFile: string
+	percent: number
 }

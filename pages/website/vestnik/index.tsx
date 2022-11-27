@@ -1,7 +1,8 @@
 import { Layout } from '../../../components/Layout/Layout'
-import { ErrorDisplayed } from '../../../components/UI'
+import { ErrorDisplayed, Journal } from '../../../components/UI'
 import Hero from '../../../components/UI/Hero/Hero'
 import { pageApi } from '../../../store/api/page/page.api'
+import Box from '@mui/material/Box'
 import { NextPage } from 'next'
 
 const WebsiteVestnikPage: NextPage = () => {
@@ -12,8 +13,12 @@ const WebsiteVestnikPage: NextPage = () => {
 		<Layout title='Страница вестник'>
 			{/* @ts-ignore */}
 			<ErrorDisplayed error={error} />
-			{/* Hero */}
-			{page?.hero.length && <Hero hero={page.hero} />}
+			<Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+				{/* Hero */}
+				{page?.hero.length && <Hero hero={page.hero} />}
+				{/* Journal */}
+				{page?.journal.length && <Journal journal={page.journal} />}
+			</Box>
 		</Layout>
 	)
 }
