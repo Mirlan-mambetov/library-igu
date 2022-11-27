@@ -3,6 +3,5 @@ export class TabsDto {
 	description?: string
 }
 export class TabsLinkDto {
-	name: string
-	link: string
+	name?: string
 }

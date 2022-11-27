@@ -34,24 +34,26 @@ export class TabsController {
   @Post('tablink/:id')
   @HttpCode(201)
   @UsePipes(new ValidationPipe())
-  @UseInterceptors(FileInterceptor("file", {
-    storage: diskStorage({
-      destination: TABS_UPLOADS_FILES,
-      filename: (req, file, cb) => renameFIleName(req, file, cb)
-    }),
-    fileFilter: filesFileFilter
-  }))
   createTabLink(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: TabsLinkDto,
-    @UploadedFile() file: Express.Multer.File
   ) {
-    return this.tabsService.createTabLink(id, {...dto, link: file.filename})
+    return this.tabsService.createTabLink(id, {...dto})
   }
   
   @Put('tablink/:id')
   @HttpCode(201)
   @UsePipes(new ValidationPipe())
+  updateTabLink(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: TabsLinkDto,
+    
+  ) {
+    return this.tabsService.updateTabLink(id, {...dto})
+  }
+
+  @Put('tablink/image/:id')
+  @HttpCode(201)
   @UseInterceptors(FileInterceptor("file", {
     storage: diskStorage({
       destination: TABS_UPLOADS_FILES,
@@ -59,13 +61,12 @@ export class TabsController {
     }),
     fileFilter: filesFileFilter
   }))
-  updateTabLink(
+  updateTabLinkFile(
     @Param('id', ParseIntPipe) id: number,
-    @Body() dto: TabsLinkDto,
     @UploadedFile() file: Express.Multer.File
   ) {
-    console.log(dto.name, file)    
-    return this.tabsService.updateTabLink(id, {...dto, link: file.filename})
+    console.log(file)   
+    return this.tabsService.uploadTabLinkFile(id, file.filename)
   }
 
   @Delete('tablink/:id')

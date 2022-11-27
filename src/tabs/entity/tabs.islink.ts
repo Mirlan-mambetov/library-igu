@@ -9,7 +9,7 @@ export class TabsLinkEntity extends BaseEntity{
   name: string
 
   @Column()
-  link: string
+  link?: string
 
   @ManyToOne(() => TabsEntity, tabs => tabs.isLink)
   @JoinColumn({name: "tabs_id"})

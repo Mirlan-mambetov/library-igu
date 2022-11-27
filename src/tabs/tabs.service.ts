@@ -71,7 +71,6 @@ export class TabsService {
     const tab = await this.findTabById(tabId)
     const newData = this.tabsLinkRepository.create({
       ...dto,
-      link: `${TABS_GET_UPLOADS_FILES}/${dto.link}`,
       tabs: tab
     })
     return await this.tabsLinkRepository.save(newData)
@@ -79,11 +78,18 @@ export class TabsService {
 
   async updateTabLink(id: number, dto: TabsLinkDto) {
     const tabLink = await this.findTabLinkById(id)
-    await deleteFileWithName(tabLink.link)
     return await this.tabsLinkRepository.save({
       ...tabLink,
-      ...dto,
-      link: `${TABS_GET_UPLOADS_FILES}/${dto.link}`
+      ...dto
+    })
+  }
+
+  async uploadTabLinkFile(id: number, file: string) {
+    const tabLink = await this.findTabLinkById(id)
+    await deleteFileWithName(tabLink.link)
+    await this.tabsLinkRepository.save({
+      ...tabLink,
+      link: `${TABS_GET_UPLOADS_FILES}/${file}`
     })
   }
 
