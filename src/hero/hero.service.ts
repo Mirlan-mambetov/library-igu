@@ -64,10 +64,8 @@ export class HeroService {
     })
     return await this.heroRepository.save(newData)
   }
-  // `${HERO_GET_UPLOADS_IMAGE}/${file}`
   async updateHero(id: number, dto: HeroDto) {
     const hero = await this.getHeroById(id)
-    if (!hero) throw new NotFoundException(HERO_NOT_FOUND)
     return await this.heroRepository.save({
       ...hero,
       ...dto
@@ -76,7 +74,6 @@ export class HeroService {
 
   async updateHeroImage(id: number, file: string) {
     const hero = await this.getHeroById(id)
-    if (!hero) throw new NotFoundException(HERO_NOT_FOUND)
     await deleteFileWithName(hero.background)
     return await this.heroRepository.save({
       ...hero,

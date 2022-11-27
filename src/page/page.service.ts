@@ -26,13 +26,27 @@ export class PageService {
             hero: true,
           },
           page: true
+        },
+        journal: {
+          journalHead: {
+            items: true
+          }
         }
       },
       order: {
-        createdAt: 'DESC'
+        createdAt: 'DESC',
+        journal: {
+          journalHead: {
+            id: "ASC",
+            items: {
+              id: "ASC"
+            }
+          }
+        }
       },
       select: {
-        hero: true
+        hero: true,
+        journal: true
       }
     })
     if (!page) throw new NotFoundException(PAGE_NOT_FOUND)
@@ -46,7 +60,8 @@ export class PageService {
           subcontent: {
             hero: true
           }
-        }
+        },
+        journal: true
       },
       select: {
         hero: {

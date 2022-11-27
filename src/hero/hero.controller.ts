@@ -7,7 +7,6 @@ import { HERO_NOT_FILE_IMAGE, HERO_UPLOADS_IMAGE } from './constance/hero.consta
 import { HeroDto } from './dto/hero.dto';
 import { HeroSubcontentDto } from './dto/HeroSubcontentDto'
 import { HeroService } from './hero.service';
-import {IHeroCreateDto} from './dto/hero.create.dto'
 
 @Controller('hero')
 export class HeroController {
