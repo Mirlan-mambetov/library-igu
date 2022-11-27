@@ -6,6 +6,8 @@ import { PageForm } from './PageForm/PageForm'
 import { UpdateJournal } from './UpdateJournalForm/UpdateJournalForm'
 import { UpdateJournalHead } from './UpdateJournalHead/UpdateJournalHead'
 import { UpdateJournalHeadItems } from './UpdateJournalHeadItems/UpdateJournalHeadItems'
+import { UpdateTab } from './UpdateTab/UpdateTab'
+import { UpdateTabLink } from './UpdateTabLink/UpdateTabLink'
 import { FC, useContext } from 'react'
 
 export const Form: FC = () => {
@@ -23,6 +25,10 @@ export const Form: FC = () => {
 			return <UpdateJournalHead />
 		case 'UpdateJournalHeadItems':
 			return <UpdateJournalHeadItems />
+		case 'UpdateTab':
+			return <UpdateTab />
+		case 'UpdateTabLink':
+			return <UpdateTabLink />
 		case 'CreatePage':
 			return <PageForm />
 		default:

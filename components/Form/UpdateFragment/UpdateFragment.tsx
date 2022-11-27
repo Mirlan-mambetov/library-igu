@@ -14,8 +14,8 @@ export const UpdateFragment: FC<{ id: number; fragmentUpdate: string }> = ({
 			<Button
 				color='success'
 				size='small'
-				onClick={() => onOpen(fragmentUpdate, id)}
 				sx={{ fontSize: '10px' }}
+				onClick={() => onOpen(fragmentUpdate, id)}
 			>
 				Редактировать
 			</Button>

@@ -1,6 +1,7 @@
 import { Layout } from '../../../components/Layout/Layout'
 import { ErrorDisplayed, Journal } from '../../../components/UI'
 import Hero from '../../../components/UI/Hero/Hero'
+import { Tabs } from '../../../components/UI/Tabs/Tabs'
 import { pageApi } from '../../../store/api/page/page.api'
 import Box from '@mui/material/Box'
 import { NextPage } from 'next'
@@ -18,6 +19,7 @@ const WebsiteVestnikPage: NextPage = () => {
 				{page?.hero.length && <Hero hero={page.hero} />}
 				{/* Journal */}
 				{page?.journal.length && <Journal journal={page.journal} />}
+				{page?.tabs.length && <Tabs tabs={page.tabs} />}
 			</Box>
 		</Layout>
 	)

@@ -41,7 +41,7 @@ export const UpdateJournalHead: FC = () => {
 					})}
 					error={errors.title}
 					type='text'
-					placeholder='К публикации принимаются статьи на кыргызском, русском, казахском,турецком и английском языках'
+					placeholder='Заголовок, наверное самое назойливое слово...'
 				/>
 				<Button
 					sx={{ my: '15px' }}
