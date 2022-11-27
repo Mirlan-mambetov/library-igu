@@ -31,6 +31,9 @@ export class PageService {
           journalHead: {
             items: true
           }
+        },
+        tabs: {
+          isLink: true
         }
       },
       order: {
