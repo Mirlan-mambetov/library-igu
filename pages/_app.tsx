@@ -7,6 +7,7 @@ import '../styles/globals.css'
 import { ColorModeContext, useMode } from '../theme'
 import { ThemeProvider } from '@mui/material'
 import type { AppProps } from 'next/app'
+import { SnackbarProvider } from 'notistack'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
 
@@ -22,7 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
 				<ColorModeContext.Provider value={colorMode}>
 					<ThemeProvider theme={theme}>
 						<MyModalContext.Provider value={{ ...modalProvider }}>
-							<Component {...pageProps} />
+							<SnackbarProvider>
+								<Component {...pageProps} />
+							</SnackbarProvider>
 						</MyModalContext.Provider>
 					</ThemeProvider>
 				</ColorModeContext.Provider>

@@ -8,7 +8,7 @@ import { NextPage } from 'next'
 
 const WebsiteVestnikPage: NextPage = () => {
 	const id = 29
-	const { data: page, error } = pageApi.useFetchOnePageQuery(id)
+	const { data: page, error, isLoading } = pageApi.useFetchOnePageQuery(id)
 	console.log(page)
 	return (
 		<Layout title='Страница вестник'>

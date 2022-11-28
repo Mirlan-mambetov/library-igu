@@ -1,27 +1,23 @@
 import { ICreateHeroSubcontentDto } from '../../../components/Form/HeroForm/CreateSubContent/CreateSubContent.dto'
-import {
-	IHeroDto,
-	IHeroImageDto
-} from '../../../components/Form/HeroForm/Hero.dto'
+import { IHeroDto } from '../../../components/Form/HeroForm/Hero.dto'
 import { ISubcontentDto } from '../../../components/Form/HeroForm/UpdateHeroSubcontent/Subcontent.dto'
 import { IHero } from '../../../interfaces/hero.interface'
 import { api } from '../api'
 
-interface testId {
+interface testI {
 	id: number
+	title: any
+	background: any
 }
 export const heroApi = api.injectEndpoints({
 	endpoints: (builder) => ({
-		updateHero: builder.mutation<IHero, FormData & testId>({
-			query: (data) => ({
-				// @ts-ignore
-				url: `/hero/${data.id}`,
+		updateHero: builder.mutation<IHero, { data: FormData; id: number }>({
+			query: ({ data, id }) => ({
+				url: `/hero/${id}`,
 				method: 'PUT',
 				body: data
 			}),
-			invalidatesTags: (result, error) => [
-				{ type: 'Pages' }
-			]
+			invalidatesTags: (result, error) => [{ type: 'Pages' }]
 		}),
 		updateSubContent: builder.mutation<null, ISubcontentDto>({
 			query: ({ id, ...body }) => ({
