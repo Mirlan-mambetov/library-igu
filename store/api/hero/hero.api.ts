@@ -7,16 +7,19 @@ import { ISubcontentDto } from '../../../components/Form/HeroForm/UpdateHeroSubc
 import { IHero } from '../../../interfaces/hero.interface'
 import { api } from '../api'
 
+interface testId {
+	id: number
+}
 export const heroApi = api.injectEndpoints({
 	endpoints: (builder) => ({
-		updateHero: builder.mutation<IHero, IHeroDto>({
-			query: ({ id, ...body }) => ({
-				url: `/hero/${id}`,
+		updateHero: builder.mutation<IHero, FormData & testId>({
+			query: (data) => ({
+				// @ts-ignore
+				url: `/hero/${data.id}`,
 				method: 'PUT',
-				body
+				body: data
 			}),
-			invalidatesTags: (result, error, { id }) => [
-				{ type: 'Hero', id },
+			invalidatesTags: (result, error) => [
 				{ type: 'Pages' }
 			]
 		}),
