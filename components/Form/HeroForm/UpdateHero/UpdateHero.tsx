@@ -11,9 +11,9 @@ import { useContext } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
 export interface IHeroTestDto {
-	id: number
+	id: number | string
 	title: string
-	background: string
+	background: any
 }
 
 export const UpdateHero: FC = () => {
@@ -29,15 +29,14 @@ export const UpdateHero: FC = () => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm<IHeroTestDto>({ mode: 'onChange' })
-	console.log(updateId)
 
 	const filePath = watch('background')
 	const [file, setFile] = useState('')
 	// END
-	const handleUpload = (background: string) => {
-		setValue('background', background)
-		setFile(filePath)
-	}
+	// const handleUpload = (background: string) => {
+	// 	setValue('background', background)
+	// 	setFile(filePath)
+	// }
 
 	const [isChosen, setIsChosen] = useState(false)
 	const [percent, setIsPercent] = useState(0)
@@ -47,14 +46,42 @@ export const UpdateHero: FC = () => {
 		if (val === 100) setIsUploaded(true)
 	}
 
-	const submitHanlder: SubmitHandler<IHeroTestDto> = (data) => {
-		updateHero({ id: updateId, title: data.title })
+	const submitHanlder: SubmitHandler<IHeroTestDto> = async (data) => {
+		console.log(updateId)
+
+		let formData = new FormData()
+		// @ts-ignore
+		formData.append("title", data.title)
+		formData.append("background", data.background[0])
+		await updateHero({ ...formData, id: updateId })
 			.unwrap()
 			.then(() => onClose())
 	}
 	return (
 		<form onSubmit={handleSubmit(submitHanlder)}>
-			{!isChosen ? (
+			<Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+				{/* <Typography variant='h5' color={colors.grey[100]}>
+					Теперь введите заголовок
+				</Typography> */}
+				<Field
+					{...register('title', {
+						required: 'Заголовок обязателен'
+					})}
+					type='text'
+					error={errors.title}
+				/>
+				<Field
+					{...register('background', {
+						required: 'Выберите файл'
+					})}
+					type='file'
+				// error={errors.background}
+				/>
+				<Button color='success' type='submit' onClick={() => submitHanlder}>
+					Отправить
+				</Button>
+			</Box>
+			{/* {!isChosen ? (
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 					<Typography variant='h5' color={colors.grey[100]}>
 						Обновление компонента Hero
@@ -110,7 +137,7 @@ export const UpdateHero: FC = () => {
 						Отправить
 					</Button>
 				</Box>
-			)}
+			)} */}
 			<ErrorDisplayed error={error} />
 		</form>
 	)
