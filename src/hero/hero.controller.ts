@@ -48,14 +48,14 @@ export class HeroController {
     fileFilter: imageFileFilter
   }))
   updateHero(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: number,
     @Body(new ValidationPipe()) dto: TestDTO,
     @UploadedFile() background: Express.Multer.File
   ) {
-    console.log(id, dto, background)
-    return
-
-    return this.heroService.updateHero(+id, dto, background.filename)
+    console.log(id)
+    console.log(background)
+    console.log(dto)
+    return this.heroService.updateHero(id, dto, background.filename)
   }
 
   @Put('image/:id')
