@@ -18,11 +18,11 @@ export class HeroService {
     @InjectRepository(HeroEntity) private readonly heroRepository: Repository<HeroEntity>,
     @InjectRepository(PageEntity) private readonly pageRepository: Repository<PageEntity>,
     @InjectRepository(HeroSubcontentEntity) private readonly heroSubcontentRepository: Repository<HeroSubcontentEntity>
-  ) {}
+  ) { }
 
   async getHeroById(id: number) {
     const hero = await this.heroRepository.findOne({
-      where: {id},
+      where: { id },
       relations: {
         subcontent: {
           hero: true
@@ -43,7 +43,7 @@ export class HeroService {
 
   async getHeroSubcontentById(id: number) {
     const subcontent = await this.heroSubcontentRepository.findOne({
-      where: {id},
+      where: { id },
       select: {
         id: true,
         title: true,
@@ -55,7 +55,7 @@ export class HeroService {
   }
 
   async createHero(pageId: number, dto: IHeroCreateDto) {
-    const page = await this.pageRepository.findOne({where: {id: pageId}})
+    const page = await this.pageRepository.findOne({ where: { id: pageId } })
     if (!page) throw new NotFoundException(PAGE_NOT_FOUND)
     const newData = this.heroRepository.create({
       ...dto,
@@ -64,11 +64,13 @@ export class HeroService {
     })
     return await this.heroRepository.save(newData)
   }
-  async updateHero(id: number, dto: HeroDto) {
+  async updateHero(id: number, dto: HeroDto, file: string) {
     const hero = await this.getHeroById(id)
+    await deleteFileWithName(hero.background)
     return await this.heroRepository.save({
       ...hero,
-      ...dto
+      title: dto.title,
+      background: `${HERO_GET_UPLOADS_IMAGE}/${file}`
     })
   }
 

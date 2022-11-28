@@ -8,6 +8,10 @@ import { HeroDto } from './dto/hero.dto';
 import { HeroSubcontentDto } from './dto/HeroSubcontentDto'
 import { HeroService } from './hero.service';
 
+interface TestDTO {
+  title: string
+}
+
 @Controller('hero')
 export class HeroController {
   constructor(private readonly heroService: HeroService) { }
@@ -29,18 +33,29 @@ export class HeroController {
     @UploadedFile() background: Express.Multer.File
   ) {
     if (!background) throw new BadRequestException(HERO_NOT_FILE_IMAGE)
-    console.log(pageId, dto, background)    
-    return this.heroService.createHero(pageId, {...dto, background: background.filename})
+    console.log(pageId, dto, background)
+    return this.heroService.createHero(pageId, { ...dto, background: background.filename })
   }
 
   @Put(':id')
   @HttpCode(200)
   @UsePipes(new ValidationPipe())
+  @UseInterceptors(FileInterceptor("background", {
+    storage: diskStorage({
+      destination: HERO_UPLOADS_IMAGE,
+      filename: (req, file, cb) => renameFIleName(req, file, cb)
+    }),
+    fileFilter: imageFileFilter
+  }))
   updateHero(
-    @Param('id', ParseIntPipe) id: number,
-    @Body(new ValidationPipe()) dto: HeroDto,
+    @Param('id') id: string,
+    @Body(new ValidationPipe()) dto: TestDTO,
+    @UploadedFile() background: Express.Multer.File
   ) {
-    return this.heroService.updateHero(id, {...dto})
+    console.log(id, dto, background)
+    return
+
+    return this.heroService.updateHero(+id, dto, background.filename)
   }
 
   @Put('image/:id')
