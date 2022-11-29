@@ -38,7 +38,10 @@ export const Tabs: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
 					<AccordionDetails sx={{ position: 'relative' }}>
 						{tab.description && <Typography>{tab.description}</Typography>}
 						{tab.isLink?.map((link) => (
-							<Box sx={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+							<Box
+								key={link.id}
+								sx={{ display: 'flex', gap: '12px', alignItems: 'center' }}
+							>
 								<a
 									href={`${process.env.NEXT_PUBLIC_APP_STATIC}/${link.link}`}
 									style={{

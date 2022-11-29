@@ -16,14 +16,13 @@ const queryClient = new QueryClient()
 export default function App({ Component, pageProps }: AppProps) {
 	const { colorMode, theme } = useMode()
 	const modalProvider = MyModalContextProvider()
-
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Provider store={store}>
 				<ColorModeContext.Provider value={colorMode}>
 					<ThemeProvider theme={theme}>
 						<MyModalContext.Provider value={{ ...modalProvider }}>
-							<SnackbarProvider>
+							<SnackbarProvider autoHideDuration={3000}>
 								<Component {...pageProps} />
 							</SnackbarProvider>
 						</MyModalContext.Provider>

@@ -1,7 +1,7 @@
-import { IJournalDto } from '../../../components/Form/UpdateJournalForm/UpdateJournal.dto'
-import { IUpdateJournalDto } from '../../../components/Form/UpdateJournalForm/UpdateJournal.field.dto'
-import { IUpdateJournalHeadDto } from '../../../components/Form/UpdateJournalHead/UpdateJournalHead.dto'
-import { IUpdateJournalHeadItemsDto } from '../../../components/Form/UpdateJournalHeadItems/UpdateJournalHeadItems.dto'
+import { IJournalDto } from '../../../components/Form/JournalForm/UpdateJournalForm/UpdateJournal.dto'
+import { IUpdateJournalDto } from '../../../components/Form/JournalForm/UpdateJournalForm/UpdateJournal.field.dto'
+import { IUpdateJournalHeadDto } from '../../../components/Form/JournalForm/UpdateJournalHead/UpdateJournalHead.dto'
+import { IUpdateJournalHeadItemsDto } from '../../../components/Form/JournalForm/UpdateJournalHeadItems/UpdateJournalHeadItems.dto'
 import { api } from '../api'
 
 export const journalApi = api.injectEndpoints({

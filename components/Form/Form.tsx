@@ -2,12 +2,12 @@ import { MyModalContext } from '../../contexts/MyModal.context'
 import { CreateHeroSubcontent } from './HeroForm/CreateSubContent/CreateSubContent'
 import { UpdateHero } from './HeroForm/UpdateHero/UpdateHero'
 import { UpdateHeroSubcontent } from './HeroForm/UpdateHeroSubcontent/UpdateHeroSubcontent'
+import { UpdateJournal } from './JournalForm/UpdateJournalForm/UpdateJournalForm'
+import { UpdateJournalHead } from './JournalForm/UpdateJournalHead/UpdateJournalHead'
+import { UpdateJournalHeadItems } from './JournalForm/UpdateJournalHeadItems/UpdateJournalHeadItems'
 import { PageForm } from './PageForm/PageForm'
-import { UpdateJournal } from './UpdateJournalForm/UpdateJournalForm'
-import { UpdateJournalHead } from './UpdateJournalHead/UpdateJournalHead'
-import { UpdateJournalHeadItems } from './UpdateJournalHeadItems/UpdateJournalHeadItems'
-import { UpdateTab } from './UpdateTab/UpdateTab'
-import { UpdateTabLink } from './UpdateTabLink/UpdateTabLink'
+import { UpdateTab } from './TabForm/UpdateTab/UpdateTab'
+import { UpdateTabLink } from './TabForm/UpdateTabLink/UpdateTabLink'
 import { FC, useContext } from 'react'
 
 export const Form: FC = () => {
@@ -32,11 +32,6 @@ export const Form: FC = () => {
 		case 'CreatePage':
 			return <PageForm />
 		default:
-			return (
-				<h1>
-					Ошибка в стейтменеджменте приложения я не знаю как исправить ошибку.
-					Нужно обратится к создателям..
-				</h1>
-			)
+			return <></>
 	}
 }

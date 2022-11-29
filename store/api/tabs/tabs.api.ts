@@ -1,5 +1,5 @@
-import { IUpdateTabDto } from '../../../components/Form/UpdateTab/UpdateTab.dto'
-import { IUpdateTabLinkDtoApi } from '../../../components/Form/UpdateTabLink/UpdateTabLink.dto'
+import { IUpdateTabDto } from '../../../components/Form/TabForm/UpdateTab/UpdateTab.dto'
+import { IUpdateTabLinkDtoApi } from '../../../components/Form/TabForm/UpdateTabLink/UpdateTabLink.dto'
 import { api } from '../api'
 
 export const tabsApi = api.injectEndpoints({

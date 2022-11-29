@@ -5,14 +5,7 @@ import { api } from '../api'
 export const pageApi = api.injectEndpoints({
 	endpoints: (build) => ({
 		fetchAllPages: build.query<IPage[], null>({
-			query: () => ({ url: '/page' }),
-			providesTags: (result) =>
-				result
-					? [
-							...result.map(({ id }) => ({ type: 'Pages' as const, id })),
-							{ type: 'Pages', id: 'LIST' }
-					  ]
-					: [{ type: 'Pages', id: 'LIST' }]
+			query: () => ({ url: '/page' })
 		}),
 		fetchOnePage: build.query<IPage, number>({
 			query: (id) => ({ url: `/page/${id}` }),
