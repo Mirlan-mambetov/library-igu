@@ -65,7 +65,6 @@ export class TabsController {
     @Param('id', ParseIntPipe) id: number,
     @UploadedFile() file: Express.Multer.File
   ) {
-    console.log(file)   
     return this.tabsService.uploadTabLinkFile(id, file.filename)
   }
 

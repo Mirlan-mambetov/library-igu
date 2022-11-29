@@ -57,7 +57,6 @@ export class JournalController {
     @Param('id', ParseIntPipe) id: number,
     @UploadedFile() image: Express.Multer.File
   ) {
-    console.log(image.filename)
     return this.journalService.updateJournalImage(id, image.filename)
   }
 

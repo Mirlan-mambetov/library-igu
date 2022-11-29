@@ -45,6 +45,12 @@ export class PageService {
               id: "ASC"
             }
           }
+        },
+        tabs: {
+          id: "DESC",
+          isLink: {
+            updatedAt: "DESC"
+          }
         }
       },
       select: {

@@ -33,7 +33,6 @@ export class HeroController {
     @UploadedFile() background: Express.Multer.File
   ) {
     if (!background) throw new BadRequestException(HERO_NOT_FILE_IMAGE)
-    console.log(pageId, dto, background)
     return this.heroService.createHero(pageId, { ...dto, background: background.filename })
   }
 
@@ -52,9 +51,6 @@ export class HeroController {
     @Body(new ValidationPipe()) dto: TestDTO,
     @UploadedFile() background: Express.Multer.File
   ) {
-    console.log(id)
-    console.log(background)
-    console.log(dto)
     return this.heroService.updateHero(id, dto, background.filename)
   }
 
@@ -71,7 +67,6 @@ export class HeroController {
     @Param('id') id: number,
     @UploadedFile() background: Express.Multer.File) {
     if (!background) throw new BadRequestException(HERO_NOT_FILE_IMAGE)
-    console.log(id, background)
     return this.heroService.updateHeroImage(id, background.filename)
   }
 
