@@ -14,6 +14,18 @@ export const imageFileFilter = (req, file: Express.Multer.File, callback) => {
 	}
 	callback(null, true)
 }
+export const fileFileFilter = (req, file: Express.Multer.File, callback) => {
+	if (!file.originalname.match(/\.(pdf|word)$/)) {
+		return callback(
+			new HttpException(
+				'Поддерживаемые форматы файлов .pdf, .word',
+				HttpStatus.BAD_REQUEST
+			),
+			false
+		)
+	}
+	callback(null, true)
+}
 export const filesFileFilter = (req, file: Express.Multer.File, callback) => {
 	if (!file.originalname.match(/\.(pdf)$/)) {
 		return callback(

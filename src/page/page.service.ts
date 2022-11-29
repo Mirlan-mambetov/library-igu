@@ -34,6 +34,9 @@ export class PageService {
         },
         tabs: {
           isLink: true
+        },
+        vestnik: {
+          materials: true
         }
       },
       order: {
@@ -55,7 +58,8 @@ export class PageService {
       },
       select: {
         hero: true,
-        journal: true
+        journal: true,
+        vestnik: true
       }
     })
     if (!page) throw new NotFoundException(PAGE_NOT_FOUND)
