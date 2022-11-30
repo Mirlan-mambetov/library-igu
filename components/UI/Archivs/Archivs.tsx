@@ -68,7 +68,7 @@ export const Archivs: FC<{ archiv: IArhivs[]; title: string }> = ({
 					>
 						<Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
 							<Link
-								href={`/vestnik/${item.id}`}
+								href={`/website/vestnik/${item.id}`}
 								style={{ color: colors.blueAccent[500] }}
 							>
 								<Typography variant='subtitle1'>{item.name}</Typography>
