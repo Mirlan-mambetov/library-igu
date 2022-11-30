@@ -65,7 +65,7 @@ export const UpdateHero: FC = () => {
 						required: 'Выберите файл'
 					})}
 					type='file'
-					// error={errors.background}
+					error={errors.background}
 				/>
 				<Button
 					disabled={isLoading}
