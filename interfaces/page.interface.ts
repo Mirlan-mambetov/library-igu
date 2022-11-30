@@ -1,3 +1,4 @@
+import { IArhivs } from './arhivs.interface'
 import { IBase } from './base.interface'
 import { IHero } from './hero.interface'
 import { IJournal } from './journal.interface'
@@ -8,4 +9,5 @@ export interface IPage extends IBase {
 	hero: IHero[]
 	journal: IJournal[]
 	tabs: ITabs[]
+	vestnik: IArhivs[]
 }

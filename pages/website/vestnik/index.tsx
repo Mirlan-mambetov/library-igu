@@ -1,5 +1,5 @@
 import { Layout } from '../../../components/Layout/Layout'
-import { ErrorDisplayed, Journal } from '../../../components/UI'
+import { Archivs, ErrorDisplayed, Journal } from '../../../components/UI'
 import Hero from '../../../components/UI/Hero/Hero'
 import { Tabs } from '../../../components/UI/Tabs/Tabs'
 import { pageApi } from '../../../store/api/page/page.api'
@@ -10,6 +10,7 @@ const WebsiteVestnikPage: NextPage = () => {
 	const id = 29
 	const { data: page, error, isLoading } = pageApi.useFetchOnePageQuery(id)
 	console.log(page)
+
 	return (
 		<Layout title='Страница вестник'>
 			{/* @ts-ignore */}
@@ -20,6 +21,9 @@ const WebsiteVestnikPage: NextPage = () => {
 				{/* Journal */}
 				{page?.journal.length && <Journal journal={page.journal} />}
 				{page?.tabs.length && <Tabs tabs={page.tabs} />}
+				{page?.vestnik.length && (
+					<Archivs archiv={page.vestnik} title='Архивы вестника' />
+				)}
 			</Box>
 		</Layout>
 	)
