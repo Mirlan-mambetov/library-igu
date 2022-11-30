@@ -12,7 +12,8 @@ import {
   UseInterceptors,
   UploadedFile,
   NotFoundException,
-  Req
+  Req,
+  HttpCode
  } from '@nestjs/common';
 import { VestnikService } from './vestnik.service';
 import {IVestnikDto} from './dto/vestnik.dto'
@@ -29,6 +30,7 @@ export class VestnikController {
 
   @Post(':pageId')
   @UsePipes(new ValidationPipe())
+  @HttpCode(200)
   create(
     @Param('pageId', ParseIntPipe) pageId: number,
     @Body() dto: IVestnikDto
@@ -38,11 +40,34 @@ export class VestnikController {
 
   @Put(':id')
   @UsePipes(new ValidationPipe())
+  @HttpCode(200)
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: IVestnikDto
   ) {
     return this.vestnikService.update(id, dto)
+  }
+
+  @Get(':id')
+  @HttpCode(200)
+  findVestnikById(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.vestnikService.findVestnikById(id)
+  }
+
+  @Get('materials')
+  @HttpCode(200)
+  findAllMaterials() {
+    return this.vestnikService.findVestnikMaterials()
+  }
+
+  @Get('material/:id')
+  @HttpCode(200)
+  findAllMaterialById(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.vestnikService.findVestnikMaterialsById(id)
   }
 
   @Post('material/:id')
@@ -54,6 +79,7 @@ export class VestnikController {
     }),
     fileFilter: fileFileFilter
   }))
+  @HttpCode(200)
   createMaterial(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: IVestnikMaterialDto,
@@ -61,7 +87,6 @@ export class VestnikController {
     @UploadedFile() file: Express.Multer.File
   ) {
     if (!req.file) throw new NotFoundException("Файл не выбран")
-    console.log(dto, file)
     return this.vestnikService.createMaterial(id, dto, file.filename)
   }
 
@@ -74,6 +99,7 @@ export class VestnikController {
     }),
     fileFilter: fileFileFilter
   }))
+  @HttpCode(200)
   updateMaterial(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: IVestnikMaterialDto,
@@ -81,11 +107,11 @@ export class VestnikController {
     @UploadedFile() file: Express.Multer.File
   ) {
     if (!req.file) throw new NotFoundException("Файл не выбран")
-    console.log(dto, file)
     return this.vestnikService.updateMaterial(id, dto, file.filename)
   }
 
   @Delete('material/:id')
+  @HttpCode(204)
   deleteMaterial(@Param('id', ParseIntPipe) id: number) {
     return this.vestnikService.deleteMaterial(id)
   }

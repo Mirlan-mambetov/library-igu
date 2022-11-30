@@ -22,9 +22,7 @@ export class PageService {
       where: { id },
       relations: {
         hero: {
-          subcontent: {
-            hero: true,
-          },
+          subcontent: true,
           page: true
         },
         journal: {
@@ -36,7 +34,8 @@ export class PageService {
           isLink: true
         },
         vestnik: {
-          materials: true
+          materials: true,
+          page: true
         }
       },
       order: {

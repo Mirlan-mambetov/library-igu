@@ -36,6 +36,37 @@ export class VestnikService {
     return vestnik
   }
 
+  async findVestnikMaterialsById(id: number) {
+    const material = await this.vestnikMaterialRepository.findOne({
+      where: {id},
+      relations: {
+        category: true
+      },
+      select: {
+        category: {
+          id: true,
+          name: true
+        }
+      }
+    })
+    if (!material) throw new NotFoundException("Материал не найден по такому ID")
+    return material
+  }
+
+  async findVestnikMaterials() {
+    return await this.vestnikMaterialRepository.find({
+      relations: {
+        category: true
+      },
+      select: {
+        category: {
+          id: true,
+          name: true
+        }
+      }
+    })
+  }
+
   async create(pageId: number, dto: IVestnikDto) {
     const page = await this.pageRepository.findOne({where: {id: pageId}})
     if (!page) throw new NotFoundException(PAGE_NOT_FOUND)
@@ -65,9 +96,7 @@ export class VestnikService {
   }
 
   async updateMaterial(id: number, dto: IVestnikMaterialDto, file: string) {
-    const material = await this.vestnikMaterialRepository.findOne({
-      where: {id}
-    })
+    const material = await this.findVestnikMaterialsById(id)
     await deleteFileWithName(material.file)
     return await this.vestnikMaterialRepository.save({
       ...material,
