@@ -1,5 +1,6 @@
 import { MyModalContext } from '../../contexts/MyModal.context'
 import { CreateArhiv } from './ArchivForm/CreateArhiv'
+import { UpdateArhiv } from './ArchivForm/UpdateArchiv'
 import { CreateHeroSubcontent } from './HeroForm/CreateSubContent/CreateSubContent'
 import { UpdateHero } from './HeroForm/UpdateHero/UpdateHero'
 import { UpdateHeroSubcontent } from './HeroForm/UpdateHeroSubcontent/UpdateHeroSubcontent'
@@ -32,6 +33,8 @@ export const Form: FC = () => {
 			return <UpdateTabLink />
 		case 'CreateArhiv':
 			return <CreateArhiv />
+		case 'UpdateArchiv':
+			return <UpdateArhiv />
 		case 'CreatePage':
 			return <PageForm />
 		default:
