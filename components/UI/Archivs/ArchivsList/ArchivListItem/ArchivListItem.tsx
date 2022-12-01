@@ -1,7 +1,7 @@
-import { IArhivsMaterials } from '../../../../../interfaces/arhivs.interface'
 import { archivApi } from '../../../../../store/api/archiv/archiv.api'
 import { tokens } from '../../../../../theme'
 import { UpdateFragment } from '../../../../Form/UpdateFragment/UpdateFragment'
+import { IMaterialItems } from '../ArchivsList'
 import { Button, useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -9,22 +9,24 @@ import dayjs from 'dayjs'
 import Link from 'next/link'
 import { FC } from 'react'
 
-export const ArchivListItem: FC<{ data: IArhivsMaterials[] }> = ({ data }) => {
+export const ArchivListItem: FC<IMaterialItems> = ({ items }) => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
 	const [deleteMaterial, { isSuccess }] =
 		archivApi.useDeleteArchivMaterialMutation()
+
 	return (
 		<Box
 			sx={{ display: 'flex', flexDirection: 'column', gap: '40px', mt: '20px' }}
 		>
-			{data.map((archiv) => (
+			{items.map((archiv) => (
 				<Box key={archiv.id}>
 					<Typography
 						sx={{ display: 'flex', gap: '20px', alignItems: 'center' }}
 						color={colors.primary[700]}
 						variant='h5'
 					>
+						<span>Идентификатор: {archiv.id}</span>
 						{archiv.authors}
 						<UpdateFragment
 							fragmentUpdate='UpdateArchivMaterial'

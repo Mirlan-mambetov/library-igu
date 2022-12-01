@@ -3,6 +3,7 @@ import { IPage } from './page.interface'
 
 export interface IArhivs extends IBase {
 	name: string
+	materials: testIn
 	page?: IPage
 }
 export interface IArhivsMaterials extends IBase {
@@ -12,11 +13,7 @@ export interface IArhivsMaterials extends IBase {
 	downloaded?: number
 	views?: number
 	category: IArhivs
-	meta: {
-		totalItems: number
-		itemCount: number
-		itemsPerPage: number
-		totalPages: number
-		currentPage: number
-	}
+}
+interface testIn {
+	id: number
 }
