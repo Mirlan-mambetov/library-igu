@@ -34,8 +34,8 @@ export class PageService {
           isLink: true
         },
         vestnik: {
-          materials: true,
-          page: true
+          page: true,
+          materials: true
         }
       },
       order: {
@@ -58,7 +58,16 @@ export class PageService {
       select: {
         hero: true,
         journal: true,
-        vestnik: true
+        vestnik: {
+          id: true,
+          name: true,
+          page: {
+            id: true
+          },
+          materials: {
+            id: true
+          }
+        }
       }
     })
     if (!page) throw new NotFoundException(PAGE_NOT_FOUND)

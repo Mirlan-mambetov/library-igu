@@ -10,6 +10,12 @@ import { IVestnikDto } from './dto/vestnik.dto';
 import { IVestnikMaterialDto } from './dto/vestnik.material.dto';
 import { VestnikEntity } from './entity/vestnik.entity';
 import { VestnikMaterialEntity } from './entity/vestnik.material.entity';
+import {
+  paginate,
+  Pagination,
+  IPaginationOptions,
+} from 'nestjs-typeorm-paginate'
+import { PaginationParams } from './dto/pagination.dto';
 
 @Injectable()
 export class VestnikService {
@@ -23,11 +29,6 @@ export class VestnikService {
   async findVestnikById(id: number) {
     const vestnik = await this.vestnikRepository.findOne({
       where: {id},
-      relations: {
-        materials: {
-          category: true
-        }
-      },
       order: {
         createdAt: "DESC"
       }
@@ -66,6 +67,33 @@ export class VestnikService {
       }
     })
   }
+
+  async findVestnikMaterialsByCategory(id: number, query: PaginationParams) {
+    const limit = query.limit || 3
+    const perPage = (query.page - 1) * limit
+    const [result, total] = await this.vestnikMaterialRepository.findAndCount({
+      where: {category: {id}},
+      relations: {
+        category: true
+      },
+      select: {
+        category: {
+          id: true,
+          name: true
+        }
+      },
+      order: {
+        id: "ASC"
+      },
+      take: limit,
+      skip: perPage
+    })
+    return {
+      items: result,
+      total: total
+    }
+  }
+
 
   async create(pageId: number, dto: IVestnikDto) {
     const page = await this.pageRepository.findOne({where: {id: pageId}})
@@ -111,5 +139,23 @@ export class VestnikService {
     })
     await deleteFileWithName(material.file)
     return await this.vestnikMaterialRepository.delete(id)
+  }
+
+  async paginateMaterials(options: IPaginationOptions, id: number): Promise<Pagination<VestnikMaterialEntity>> {
+    return paginate<VestnikMaterialEntity>(this.vestnikMaterialRepository, options, {
+      where: {category: {id}},
+      relations: {
+        category: true
+      },
+      select: {
+        category: {
+          id: true,
+          name: true
+        }
+      },
+      order: {
+        id: "ASC"
+      }
+    })
   }
 }

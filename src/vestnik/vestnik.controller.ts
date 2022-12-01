@@ -13,7 +13,9 @@ import {
   UploadedFile,
   NotFoundException,
   Req,
-  HttpCode
+  HttpCode,
+  Query,
+  DefaultValuePipe
  } from '@nestjs/common';
 import { VestnikService } from './vestnik.service';
 import {IVestnikDto} from './dto/vestnik.dto'
@@ -22,6 +24,7 @@ import { FileInterceptor } from '@nestjs/platform-express'
 import { diskStorage } from 'multer';
 import { fileFileFilter, renameFIleName } from 'src/utils/fileupload.utils';
 import { VESTNIK_UPLOADS_IMAGE } from './constance/destination.constance';
+import { PaginationParams } from './dto/pagination.dto';
 
 @Controller('vestnik')
 export class VestnikController {
@@ -48,6 +51,22 @@ export class VestnikController {
     return this.vestnikService.update(id, dto)
   }
 
+
+  @Get('materials')
+  @HttpCode(200)
+  findAllMaterials() {
+    return this.vestnikService.findVestnikMaterials()
+  }
+
+  // @Get('materials/category/:id')
+  // findMaterialsByCategory(
+  //   @Param('id', ParseIntPipe) id: number,
+  //   @Query() query: PaginationParams
+  // ) {
+  //   return this.vestnikService.findVestnikMaterialsByCategory(id, query)
+  // }
+
+
   @Get(':id')
   @HttpCode(200)
   findVestnikById(
@@ -56,19 +75,15 @@ export class VestnikController {
     return this.vestnikService.findVestnikById(id)
   }
 
-  @Get('materials')
-  @HttpCode(200)
-  findAllMaterials() {
-    return this.vestnikService.findVestnikMaterials()
-  }
 
   @Get('material/:id')
   @HttpCode(200)
-  findAllMaterialById(
+  findMaterialById(
     @Param('id', ParseIntPipe) id: number
   ) {
     return this.vestnikService.findVestnikMaterialsById(id)
   }
+
 
   @Post('material/:id')
   @UsePipes(new ValidationPipe())
@@ -114,5 +129,18 @@ export class VestnikController {
   @HttpCode(204)
   deleteMaterial(@Param('id', ParseIntPipe) id: number) {
     return this.vestnikService.deleteMaterial(id)
+  }
+
+  @Get('materials/category/:id')
+  async findMaterialsByCategory(
+    @Param('id', ParseIntPipe) id: number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
+    @Query('limit', new DefaultValuePipe(3), ParseIntPipe) limit: number = 3
+  ) {
+    limit = limit > 100 ? 100: limit
+    return await this.vestnikService.paginateMaterials({
+      page,
+      limit
+    }, id)
   }
 }
