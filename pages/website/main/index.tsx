@@ -7,7 +7,7 @@ import { pageApi } from '../../../store/api/page/page.api'
 import { NextPage } from 'next'
 
 const WebsiteMainPage: NextPage = () => {
-	const id = 1
+	const id = 30
 	const { data: page, error } = pageApi.useFetchOnePageQuery(id)
 	console.log(page)
 	return (

@@ -16,7 +16,7 @@ export const Archivs: FC<{ archiv: IArhivs[]; title: string }> = ({
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
 	const [pageId, setPageId] = useState<number>(0)
-	let materials = archiv.flatMap((material) => material.materials)
+	// let materials = archiv.flatMap((material) => material.items)
 
 	useEffect(() => {
 		archiv.map((a) => {
@@ -48,7 +48,7 @@ export const Archivs: FC<{ archiv: IArhivs[]; title: string }> = ({
 					<span
 						style={{ fontSize: '12px', display: 'block', marginTop: '2px' }}
 					>
-						Всего материалов: {materials.length}
+						Всего материалов:
 					</span>
 				</Typography>
 				<CreateFragment fragmentCreate='CreateArhiv' id={pageId} />

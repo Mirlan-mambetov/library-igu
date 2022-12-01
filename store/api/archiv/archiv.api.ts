@@ -2,7 +2,7 @@ import {
 	IArchivDto,
 	IArchivMaterialDto
 } from '../../../components/Form/ArchivForm/Archiv.dto'
-import { IArhivs } from '../../../interfaces/arhivs.interface'
+import { IArhivs, IArhivsMaterials } from '../../../interfaces/arhivs.interface'
 import { api } from '../api'
 
 export const archivApi = api.injectEndpoints({
@@ -25,6 +25,15 @@ export const archivApi = api.injectEndpoints({
 		}),
 		getArchivById: builder.query<IArhivs, number>({
 			query: (id) => ({ url: `/vestnik/${id}` }),
+			providesTags: ['Pages']
+		}),
+		getMaterialsByCategory: builder.query<
+			{ items: IArhivsMaterials[] },
+			number
+		>({
+			query: (id) => ({
+				url: `/vestnik/materials/category/${id}`
+			}),
 			providesTags: ['Pages']
 		}),
 		createArchivMaterial: builder.mutation<
