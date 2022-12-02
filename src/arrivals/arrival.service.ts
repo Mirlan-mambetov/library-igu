@@ -44,6 +44,8 @@ export class ArrivalService {
   }
 
   async deleteImage(id: number) {
+    const data = await this.findImageById(id)
+    await deleteFileWithName(data.image)
     return await this.arrivalRepository.delete(id)
   }
 }

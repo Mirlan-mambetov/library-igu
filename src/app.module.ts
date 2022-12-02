@@ -12,6 +12,7 @@ import { join } from 'path';
 import { JournalModule } from './journal/journal.module';
 import { VestnikModule } from './vestnik/vestnik.module';
 import { ArrivalModule } from './arrivals/arrival.module';
+import { PartnersModule } from './partners/partners.module';
 
 
 @Module({
@@ -32,7 +33,8 @@ import { ArrivalModule } from './arrivals/arrival.module';
     AuthModule,
     JournalModule,
     VestnikModule,
-    ArrivalModule
+    ArrivalModule,
+    PartnersModule
   ],
   controllers: [],
   providers: [],

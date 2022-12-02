@@ -1,5 +1,5 @@
 import { Controller, NotFoundException, ParseIntPipe, ValidationPipe } from "@nestjs/common";
-import { Body, Delete, Get, HttpCode, Param, Post, Req, UploadedFile, UseInterceptors, UsePipes } from "@nestjs/common/decorators";
+import { Body, Delete, Get, HttpCode, Param, Post, Put, Req, UploadedFile, UseInterceptors, UsePipes } from "@nestjs/common/decorators";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
 import { imageFileFilter, renameFIleName } from "src/utils/fileupload.utils";
@@ -34,7 +34,7 @@ export class ArrivalController {
   }
 
 
-  @Post()
+  @Put(':id')
   @UsePipes(new ValidationPipe())
   @UseInterceptors(FileInterceptor("file", {
     storage: diskStorage({
