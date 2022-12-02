@@ -11,6 +11,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { JournalModule } from './journal/journal.module';
 import { VestnikModule } from './vestnik/vestnik.module';
+import { ArrivalModule } from './arrivals/arrival.module';
 
 
 @Module({
@@ -30,7 +31,8 @@ import { VestnikModule } from './vestnik/vestnik.module';
     UsersModule,
     AuthModule,
     JournalModule,
-    VestnikModule
+    VestnikModule,
+    ArrivalModule
   ],
   controllers: [],
   providers: [],
