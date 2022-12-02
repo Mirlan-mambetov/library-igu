@@ -15,7 +15,6 @@ export class ArrivalController {
   ) {}
 
   @Post()
-  @UsePipes(new ValidationPipe())
   @UseInterceptors(FileInterceptor("file", {
     storage: diskStorage({
       destination: ARRIVAL_UPLOADS_FILES,
@@ -25,7 +24,6 @@ export class ArrivalController {
   }))
   @HttpCode(200)
   createImage(
-    @Body() dto: ArrivalDto,
     @Req() req: Express.Request,
     @UploadedFile() file: Express.Multer.File
   ) {
@@ -35,7 +33,6 @@ export class ArrivalController {
 
 
   @Put(':id')
-  @UsePipes(new ValidationPipe())
   @UseInterceptors(FileInterceptor("file", {
     storage: diskStorage({
       destination: ARRIVAL_UPLOADS_FILES,
@@ -45,7 +42,6 @@ export class ArrivalController {
   }))
   @HttpCode(200)
   updateImage(
-    @Body() dto: ArrivalDto,
     @Req() req: Express.Request,
     @UploadedFile() file: Express.Multer.File,
     @Param('id', ParseIntPipe) id: number

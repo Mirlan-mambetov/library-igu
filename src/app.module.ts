@@ -13,6 +13,7 @@ import { JournalModule } from './journal/journal.module';
 import { VestnikModule } from './vestnik/vestnik.module';
 import { ArrivalModule } from './arrivals/arrival.module';
 import { PartnersModule } from './partners/partners.module';
+import { NewsModule } from './news/news.module';
 
 
 @Module({
@@ -34,7 +35,8 @@ import { PartnersModule } from './partners/partners.module';
     JournalModule,
     VestnikModule,
     ArrivalModule,
-    PartnersModule
+    PartnersModule,
+    NewsModule
   ],
   controllers: [],
   providers: [],
