@@ -36,8 +36,8 @@ export const ArchivsList: FC<{ data: IArhivs }> = ({ data }) => {
 
 	const paginateHandler = async (e: ChangeEvent<unknown>, page: number) => {
 		setPage(page)
-		console.log(page)
 	}
+	console.log(materials.items)
 
 	return (
 		<Box sx={{ py: '10px', pl: '12px' }}>
@@ -49,9 +49,9 @@ export const ArchivsList: FC<{ data: IArhivs }> = ({ data }) => {
 					<Typography
 						variant='subtitle2'
 						sx={{ my: '12px' }}
-						color={colors.greenAccent[500]}
+						color={colors.grey[500]}
 					>
-						материалов в категории: {materials.items?.length}
+						материалов на {page} странице: {materials.items?.length}
 					</Typography>
 				</Box>
 				<CreateFragment fragmentCreate='CreateArchivMaterial' id={data.id} />
@@ -61,7 +61,7 @@ export const ArchivsList: FC<{ data: IArhivs }> = ({ data }) => {
 			) : (
 				<ArchivListItem items={materials.items} />
 			)}
-			<Box>
+			<Box sx={{ my: '20px' }}>
 				{/* <ReactPaginate pageCount={meta.totalPages} /> */}
 				<Stack spacing={2} sx={{ py: '10px' }} bgcolor={colors.grey[400]}>
 					<Pagination

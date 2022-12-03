@@ -9,6 +9,8 @@ import { UpdateHeroSubcontent } from './HeroForm/UpdateHeroSubcontent/UpdateHero
 import { UpdateJournal } from './JournalForm/UpdateJournalForm/UpdateJournalForm'
 import { UpdateJournalHead } from './JournalForm/UpdateJournalHead/UpdateJournalHead'
 import { UpdateJournalHeadItems } from './JournalForm/UpdateJournalHeadItems/UpdateJournalHeadItems'
+import { CreateNews } from './NewsForm/CreateNews'
+import { UpdateNews } from './NewsForm/UpdateNews'
 import { PageForm } from './PageForm/PageForm'
 import { UpdateTab } from './TabForm/UpdateTab/UpdateTab'
 import { UpdateTabLink } from './TabForm/UpdateTabLink/UpdateTabLink'
@@ -41,6 +43,10 @@ export const Form: FC = () => {
 			return <ArchivCreateMaterial />
 		case 'UpdateArchivMaterial':
 			return <ArchivUpdateMaterial />
+		case 'CreateNews':
+			return <CreateNews />
+		case 'UpdateNews':
+			return <UpdateNews />
 		case 'CreatePage':
 			return <PageForm />
 		default:

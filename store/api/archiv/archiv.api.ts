@@ -29,6 +29,9 @@ export const archivApi = api.injectEndpoints({
 			query: (id) => ({ url: `/vestnik/${id}` }),
 			providesTags: ['Pages']
 		}),
+		getArchivs: builder.query<IArhivs[], null>({
+			query: () => ({ url: `/vestnik` })
+		}),
 		getMaterialsByCategory: builder.query<
 			IMaterialItems,
 			{ id: number; query?: IArchivMaterialPagination }

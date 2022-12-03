@@ -5,7 +5,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { FC, useContext } from 'react'
 
-export const CreateFragment: FC<{ id: number; fragmentCreate: string }> = ({
+export const CreateFragment: FC<{ id?: number; fragmentCreate: string }> = ({
 	id,
 	fragmentCreate
 }) => {

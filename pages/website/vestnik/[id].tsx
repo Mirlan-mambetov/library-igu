@@ -17,5 +17,4 @@ const VestnikArchiv: FC = () => {
 		</Layout>
 	)
 }
-
 export default VestnikArchiv
