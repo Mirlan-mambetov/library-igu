@@ -5,7 +5,7 @@ import { PageEntity } from 'src/page/entity/page.entity';
 import { deleteFileWithName } from 'src/utils/fileupload.utils';
 import { Repository } from 'typeorm';
 import { VESTNIK_GET_UPLOADS_IMAGE } from './constance/destination.constance';
-import { VESTNIK_NOT_FOUND } from './constance/message.constance';
+import { VESTNIK_ALL_NOT_FOUND, VESTNIK_NOT_FOUND } from './constance/message.constance';
 import { IVestnikDto } from './dto/vestnik.dto';
 import { IVestnikMaterialDto } from './dto/vestnik.material.dto';
 import { VestnikEntity } from './entity/vestnik.entity';
@@ -34,6 +34,11 @@ export class VestnikService {
       }
     })
     if (!vestnik) throw new NotFoundException(VESTNIK_NOT_FOUND)
+    return vestnik
+  }
+  async findAllVestnik() {
+    const vestnik = await this.vestnikRepository.find()
+    if (!vestnik) throw new NotFoundException(VESTNIK_ALL_NOT_FOUND)
     return vestnik
   }
 
@@ -68,10 +73,8 @@ export class VestnikService {
     })
   }
 
-  async findVestnikMaterialsByCategory(id: number, query: PaginationParams) {
-    const limit = query.limit || 3
-    const perPage = (query.page - 1) * limit
-    const [result, total] = await this.vestnikMaterialRepository.findAndCount({
+  async findMaterialsByCategory(options: IPaginationOptions, id: number): Promise<Pagination<VestnikMaterialEntity>> {
+    return paginate<VestnikMaterialEntity>(this.vestnikMaterialRepository, options, {
       where: {category: {id}},
       relations: {
         category: true
@@ -84,16 +87,9 @@ export class VestnikService {
       },
       order: {
         id: "ASC"
-      },
-      take: limit,
-      skip: perPage
+      }
     })
-    return {
-      items: result,
-      total: total
-    }
   }
-
 
   async create(pageId: number, dto: IVestnikDto) {
     const page = await this.pageRepository.findOne({where: {id: pageId}})
@@ -141,21 +137,5 @@ export class VestnikService {
     return await this.vestnikMaterialRepository.delete(id)
   }
 
-  async paginateMaterials(options: IPaginationOptions, id: number): Promise<Pagination<VestnikMaterialEntity>> {
-    return paginate<VestnikMaterialEntity>(this.vestnikMaterialRepository, options, {
-      where: {category: {id}},
-      relations: {
-        category: true
-      },
-      select: {
-        category: {
-          id: true,
-          name: true
-        }
-      },
-      order: {
-        id: "ASC"
-      }
-    })
-  }
+ 
 }

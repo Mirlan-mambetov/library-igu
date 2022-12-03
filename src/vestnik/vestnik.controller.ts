@@ -58,15 +58,12 @@ export class VestnikController {
     return this.vestnikService.findVestnikMaterials()
   }
 
-  // @Get('materials/category/:id')
-  // findMaterialsByCategory(
-  //   @Param('id', ParseIntPipe) id: number,
-  //   @Query() query: PaginationParams
-  // ) {
-  //   return this.vestnikService.findVestnikMaterialsByCategory(id, query)
-  // }
-
-
+  @Get()
+  @HttpCode(200)
+  findAllVestnik() {
+    return this.vestnikService.findAllVestnik()
+  }
+  
   @Get(':id')
   @HttpCode(200)
   findVestnikById(
@@ -74,7 +71,6 @@ export class VestnikController {
   ) {
     return this.vestnikService.findVestnikById(id)
   }
-
 
   @Get('material/:id')
   @HttpCode(200)
@@ -84,6 +80,18 @@ export class VestnikController {
     return this.vestnikService.findVestnikMaterialsById(id)
   }
 
+  @Get('materials/category/:id')
+  async findMaterialsByCategory(
+    @Param('id', ParseIntPipe) id: number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
+    @Query('limit', new DefaultValuePipe(3), ParseIntPipe) limit: number = 3
+  ) {
+    limit = limit > 100 ? 100: limit
+    return await this.vestnikService.findMaterialsByCategory({
+      page,
+      limit
+    }, id)
+  }
 
   @Post('material/:id')
   @UsePipes(new ValidationPipe())
@@ -131,16 +139,5 @@ export class VestnikController {
     return this.vestnikService.deleteMaterial(id)
   }
 
-  @Get('materials/category/:id')
-  async findMaterialsByCategory(
-    @Param('id', ParseIntPipe) id: number,
-    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
-    @Query('limit', new DefaultValuePipe(3), ParseIntPipe) limit: number = 3
-  ) {
-    limit = limit > 100 ? 100: limit
-    return await this.vestnikService.paginateMaterials({
-      page,
-      limit
-    }, id)
-  }
+
 }
