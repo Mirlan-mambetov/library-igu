@@ -63,26 +63,12 @@ export const UpdateTabLink: FC = () => {
 					type='text'
 					placeholder='Название'
 				/>
-				{!isUploaded && (
-					<Controller
-						control={control}
-						name='link'
-						render={() => (
-							<UploadField
-								onChange={handleUpload}
-								setValue={setProgressPercent}
-								id={updateId}
-								isUploaded={isUploaded}
-								setIsChosen={setIsChosen}
-								url='tabs/tablink/image'
-								method='PUT'
-								typeFile='file'
-								percent={percent}
-								error={errors.link}
-							/>
-						)}
-					/>
-				)}
+				<Field
+					{...register('link', {
+						required: 'Выберите файл'
+					})}
+					type='file'
+				/>
 				<Button
 					sx={{ my: '15px' }}
 					color='success'

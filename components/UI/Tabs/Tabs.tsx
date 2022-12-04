@@ -11,7 +11,10 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { FC } from 'react'
 
-export const Tabs: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
+export const Tabs: FC<{ tabs: ITabs[]; title?: string }> = ({
+	tabs,
+	title
+}) => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
 	return (
@@ -21,7 +24,7 @@ export const Tabs: FC<{ tabs: ITabs[] }> = ({ tabs }) => {
 				color={colors.blueAccent[700]}
 				sx={{ my: '20px' }}
 			>
-				Информация о журнале в табах
+				{title}
 			</Typography>
 			{tabs.map((tab) => (
 				<Accordion key={tab.id}>

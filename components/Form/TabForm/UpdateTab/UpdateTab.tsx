@@ -50,7 +50,7 @@ export const UpdateTab: FC = () => {
 				{!hidden && (
 					<Box sx={{ px: '30px' }}>
 						<Typography variant='subtitle2'>
-							Для табов, которые имеют ссылки, нельзя обновить описание. Есть ли
+							Для табов которые имеют ссылки, нельзя обновить описание. Есть ли
 							описание тут?
 							<Typography variant='subtitle2' color={colors.redAccent[700]}>
 								Внимание: после нажатия Да(есть), вам будет необходимо обновить
@@ -58,7 +58,8 @@ export const UpdateTab: FC = () => {
 							</Typography>
 						</Typography>
 						<Button
-							sx={{ my: '15px' }}
+							sx={{ my: '15px', mx: '10px' }}
+							size={'small'}
 							color='success'
 							type='submit'
 							onClick={() => {
@@ -72,6 +73,7 @@ export const UpdateTab: FC = () => {
 							color='success'
 							type='submit'
 							onClick={() => setHidden(true)}
+							size={'small'}
 						>
 							Нет, я пас.. сам разбирайся..
 						</Button>

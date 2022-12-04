@@ -20,7 +20,9 @@ const WebsiteVestnikPage: NextPage = () => {
 				{page?.hero.length && <Hero hero={page.hero} />}
 				{/* Journal */}
 				{page?.journal.length && <Journal journal={page.journal} />}
-				{page?.tabs.length && <Tabs tabs={page.tabs} />}
+				{page?.tabs.length && (
+					<Tabs tabs={page.tabs} title='Информация о журнале в табах' />
+				)}
 				{page?.vestnik.length && (
 					<Archivs archiv={page.vestnik} title='Архивы вестника' />
 				)}
