@@ -1,5 +1,5 @@
 import { BaseEntity } from "src/utils/base.entity.utils";
-import { Column, Entity, OneToMany } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany } from "typeorm";
 import { TeachersWorksEntity } from "./teachers.works.entity";
 
 @Entity({name: "teachers"})

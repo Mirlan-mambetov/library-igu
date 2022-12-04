@@ -1,6 +1,7 @@
 import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { Injectable } from "@nestjs/common/decorators";
 import { InjectRepository } from "@nestjs/typeorm";
+import { IPaginationOptions, paginate } from "nestjs-typeorm-paginate";
 import { deleteFileWithName } from "src/utils/fileupload.utils";
 import { Repository } from "typeorm";
 import { WORK_GET_UPLOADS_FILES } from "./constance/destination.constance";
@@ -111,6 +112,24 @@ export class TeachersService {
     })
     if (!work) throw new NotFoundException("Статья с таким ID не найден")
     return work
+  }
+
+  async findWorkByCategory(options: IPaginationOptions, categoryId: number) {
+    return paginate<TeachersWorksEntity>(this.teachersWorksRepository, options, {
+      where: {category: {id: categoryId}},
+      relations: {
+        category: true
+      },
+      select: {
+        category:{
+          id: true,
+          name: true
+        }
+      },
+      order: {
+        createdAt: "ASC"
+      }
+    })
   }
 
   async findAllWork() {

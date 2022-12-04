@@ -1,5 +1,5 @@
-import { BadRequestException, ParseIntPipe, ValidationPipe } from "@nestjs/common";
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Req, UploadedFile, UseInterceptors, UsePipes } from "@nestjs/common/decorators";
+import { BadRequestException, DefaultValuePipe, ParseIntPipe, ValidationPipe } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Query, Req, UploadedFile, UseInterceptors, UsePipes } from "@nestjs/common/decorators";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
 import { fileFileFilter, renameFIleName } from "src/utils/fileupload.utils";
@@ -19,6 +19,29 @@ export class TeachersController {
     return this.teachersService.findAllWork()
   }
 
+  @Get('works/:id')
+  @HttpCode(200)
+  findOneWork(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.teachersService.findOneWork(id)
+  }
+
+  @Get('works/category/:id')
+  findWorkByCategory(
+    @Param('id', ParseIntPipe) id: number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
+    @Query('limit', new DefaultValuePipe(3), ParseIntPipe) limit: number = 3
+  ) {
+    limit = limit > 100 ? 100: limit
+    return this.teachersService.findWorkByCategory(
+      {
+        page,
+        limit
+      }, 
+    id)
+  }
+
   @Get()
   @HttpCode(200)
   findAll() {
@@ -31,14 +54,6 @@ export class TeachersController {
     @Param('id', ParseIntPipe) id: number
   ) {
     return this.teachersService.findOne(id)
-  }
-
-  @Get('works/:id')
-  @HttpCode(200)
-  findOneWork(
-    @Param('id', ParseIntPipe) id: number
-  ) {
-    return this.teachersService.findOneWork(id)
   }
 
   @Post()
