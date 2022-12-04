@@ -14,6 +14,7 @@ import { VestnikModule } from './vestnik/vestnik.module';
 import { ArrivalModule } from './arrivals/arrival.module';
 import { PartnersModule } from './partners/partners.module';
 import { NewsModule } from './news/news.module';
+import { TeachersModule } from './teachers/teachers.module';
 
 
 @Module({
@@ -36,7 +37,8 @@ import { NewsModule } from './news/news.module';
     VestnikModule,
     ArrivalModule,
     PartnersModule,
-    NewsModule
+    NewsModule,
+    TeachersModule
   ],
   controllers: [],
   providers: [],

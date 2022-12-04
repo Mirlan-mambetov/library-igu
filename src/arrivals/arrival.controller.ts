@@ -5,7 +5,6 @@ import { diskStorage } from "multer";
 import { imageFileFilter, renameFIleName } from "src/utils/fileupload.utils";
 import { ArrivalService } from "./arrival.service";
 import {  ARRIVAL_UPLOADS_FILES } from "./constance/destination.constance";
-import { ArrivalDto } from "./dto/arrival.dto";
 
 @Controller("arrival")
 export class ArrivalController {
