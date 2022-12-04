@@ -10,4 +10,17 @@ export interface ITeachersWork extends IBase {
 	description: string
 	file: string
 	category: ITeachers
+	downloaded?: number
+	views?: number
+}
+
+export interface ITeachersWorkByCategory {
+	items: ITeachersWork[]
+	meta?: {
+		totalItems: number
+		itemCount: number
+		itemsPerPage: number
+		totalPages: number
+		currentPage: number
+	}
 }

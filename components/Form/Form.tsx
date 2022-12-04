@@ -16,7 +16,9 @@ import { PageForm } from './PageForm/PageForm'
 import { UpdateTab } from './TabForm/UpdateTab/UpdateTab'
 import { UpdateTabLink } from './TabForm/UpdateTabLink/UpdateTabLink'
 import { CreateTeachersCategory } from './TeachersForm/CreateTeachersCategory'
+import { CreateTeachersWork } from './TeachersForm/CreateTeachersWork'
 import { UpdateTeachersCategory } from './TeachersForm/UpdateTeachersCategory'
+import { UpdateTeachersWork } from './TeachersForm/UpdateTeachersWork'
 import { FC, useContext } from 'react'
 
 export const Form: FC = () => {
@@ -56,6 +58,10 @@ export const Form: FC = () => {
 			return <CreateTeachersCategory />
 		case 'UpdateTeachersCategory':
 			return <UpdateTeachersCategory />
+		case 'CreateTeachersWork':
+			return <CreateTeachersWork />
+		case 'UpdateTeachersWork':
+			return <UpdateTeachersWork />
 		case 'CreatePage':
 			return <PageForm />
 		default:

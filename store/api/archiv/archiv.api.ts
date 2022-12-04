@@ -1,11 +1,8 @@
-import {
-	IArchivDto,
-	IArchivMaterialDto
-} from '../../../components/Form/ArchivForm/Archiv.dto'
+import { IArchivDto } from '../../../components/Form/ArchivForm/Archiv.dto'
 import { IMaterialItems } from '../../../components/UI'
 import { IArhivs, IArhivsMaterials } from '../../../interfaces/arhivs.interface'
 import { api } from '../api'
-import { IArchivMaterialPagination } from './archiv.material.pagination.dto'
+import { IPaginationDto } from '../pagination.dto'
 
 export const archivApi = api.injectEndpoints({
 	endpoints: (builder) => ({
@@ -34,7 +31,7 @@ export const archivApi = api.injectEndpoints({
 		}),
 		getMaterialsByCategory: builder.query<
 			IMaterialItems,
-			{ id: number; query?: IArchivMaterialPagination }
+			{ id: number; query?: IPaginationDto }
 		>({
 			query: ({ id, query }) => ({
 				url: `/vestnik/materials/category/${id}?page=${query?.page}`
