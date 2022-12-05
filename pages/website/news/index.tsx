@@ -39,7 +39,7 @@ const NewsPage: NextPage = () => {
 					<Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
 						<Typography variant='h5'>Новости</Typography>
 						<Typography variant='subtitle2'>
-							Всего новостей: {news.items?.length}
+							Всего новостей: {news.meta?.totalItems}
 						</Typography>
 					</Box>
 					<CreateFragment fragmentCreate='CreateNews' />
