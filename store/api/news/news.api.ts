@@ -1,11 +1,20 @@
 import { INews } from '../../../interfaces/news.interface'
+import {
+	IPaginationDtoI,
+	IPaginationI
+} from '../../../interfaces/pagination.meta.interface'
 import { api } from '../api'
+
+export interface INewsPaginationI {
+	items: INews[]
+	meta?: IPaginationI
+}
 
 export const newsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
-		fetchAllNews: builder.query<INews[], null>({
-			query: () => ({
-				url: '/news'
+		fetchAllNews: builder.query<INewsPaginationI, { query?: IPaginationDtoI }>({
+			query: ({ query }) => ({
+				url: `/news?page=${query?.page}`
 			}),
 			providesTags: ['Pages']
 		}),

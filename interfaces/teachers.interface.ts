@@ -1,4 +1,5 @@
 import { IBase } from './base.interface'
+import { IPaginationI } from './pagination.meta.interface'
 
 export interface ITeachers extends IBase {
 	name: string
@@ -16,11 +17,5 @@ export interface ITeachersWork extends IBase {
 
 export interface ITeachersWorkByCategory {
 	items: ITeachersWork[]
-	meta?: {
-		totalItems: number
-		itemCount: number
-		itemsPerPage: number
-		totalPages: number
-		currentPage: number
-	}
+	meta?: IPaginationI
 }

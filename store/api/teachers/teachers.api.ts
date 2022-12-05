@@ -1,4 +1,5 @@
 import { TeachersDto } from '../../../components/Form/TeachersForm/UpdateTeachersCategory.dto'
+import { IPaginationDtoI } from '../../../interfaces/pagination.meta.interface'
 import {
 	ITeachers,
 	ITeachersWork,
@@ -19,7 +20,7 @@ export const teachersApi = api.injectEndpoints({
 		}),
 		fetchWorksByCategory: builder.query<
 			ITeachersWorkByCategory,
-			{ id: number; query?: IPaginationDto }
+			{ id: number; query?: IPaginationDtoI }
 		>({
 			query: ({ id, query }) => ({
 				url: `/teachers/works/category/${id}?page=${query?.page}`
