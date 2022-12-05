@@ -15,6 +15,7 @@ import { ArrivalModule } from './arrivals/arrival.module';
 import { PartnersModule } from './partners/partners.module';
 import { NewsModule } from './news/news.module';
 import { TeachersModule } from './teachers/teachers.module';
+import { AboutModule } from './about/about.module';
 
 
 @Module({
@@ -38,7 +39,8 @@ import { TeachersModule } from './teachers/teachers.module';
     ArrivalModule,
     PartnersModule,
     NewsModule,
-    TeachersModule
+    TeachersModule,
+    AboutModule
   ],
   controllers: [],
   providers: [],
