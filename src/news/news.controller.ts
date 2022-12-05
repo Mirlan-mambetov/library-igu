@@ -1,4 +1,6 @@
 import { BadRequestException, Body, Controller, Delete, Get, HttpCode, Param, ParseIntPipe, Post, Put, Req, UploadedFile, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Query } from '@nestjs/common/decorators';
+import { DefaultValuePipe } from '@nestjs/common/pipes';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { imageFileFilter, renameFIleName } from 'src/utils/fileupload.utils';
@@ -60,7 +62,11 @@ export class NewsController {
   }
 
   @Get()
-  findAll() {
-    return this.newsService.findAll()
+  findAll(
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
+    @Query('limit', new DefaultValuePipe(3), ParseIntPipe) limit: number = 6
+  ) {
+    limit = limit > 100 ? 100: limit
+    return this.newsService.findAll({limit, page})
   }
 }

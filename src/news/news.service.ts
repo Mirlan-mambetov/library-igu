@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { paginate, IPaginationOptions } from 'nestjs-typeorm-paginate';
 import { deleteFileWithName } from 'src/utils/fileupload.utils';
 import { Repository } from 'typeorm';
 import { NEWS_GET_UPLOADS_FILES } from './constance/destination.constance';
@@ -41,7 +42,11 @@ export class NewsService {
     return news
   }
 
-  async findAll() {
-    return await this.newsRepository.find()
+  async findAll(options: IPaginationOptions) {
+    return paginate<NewsEntity>(this.newsRepository, options, {
+      order: {
+        createdAt: "ASC"
+      }
+    })
   }
 }
