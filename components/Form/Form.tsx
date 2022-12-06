@@ -13,6 +13,8 @@ import { UpdateJournalHeadItems } from './JournalForm/UpdateJournalHeadItems/Upd
 import { CreateNews } from './NewsForm/CreateNews'
 import { UpdateNews } from './NewsForm/UpdateNews'
 import { PageForm } from './PageForm/PageForm'
+import { CreatePartnerLink } from './PartnerForm/CreatePartnerLink'
+import { UpdatePartnerLink } from './PartnerForm/UpdatePartnerLink'
 import { UpdateTab } from './TabForm/UpdateTab/UpdateTab'
 import { UpdateTabLink } from './TabForm/UpdateTabLink/UpdateTabLink'
 import { CreateTeachersCategory } from './TeachersForm/CreateTeachersCategory'
@@ -62,6 +64,10 @@ export const Form: FC = () => {
 			return <CreateTeachersWork />
 		case 'UpdateTeachersWork':
 			return <UpdateTeachersWork />
+		case 'CreatePartnerLink':
+			return <CreatePartnerLink />
+		case 'UpdatePartnerLink':
+			return <UpdatePartnerLink />
 		case 'CreatePage':
 			return <PageForm />
 		default:
