@@ -38,6 +38,14 @@ export class AboutController {
     return this.aboutService.findAboutInfo()
   }
 
+  @Get('info/:id')
+  @HttpCode(200)
+  findInfoById(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.aboutService.findAboutInfoById(id)
+  }
+
   @Get('tablo')
   @HttpCode(200)
   findTablo() {

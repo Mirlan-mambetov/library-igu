@@ -45,6 +45,14 @@ export class AboutService {
     return await this.aboutInformationRepository.find()
   }
 
+  async findAboutInfoById(id: number) {
+    const info = await this.aboutInformationRepository.findOne({
+      where: {id}
+    })
+    if (!info) throw new NotFoundException("Информация по такому ID не найден")
+    return info
+  }
+
   async createAboutInfo(dto: AboutInfoDto, file?: string) {
     if (!file?.length) {
       const newData = this.aboutInformationRepository.create({
