@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography'
 import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { MdDeleteForever } from 'react-icons/md'
 
 const WebsiteMainPage: NextPage = () => {
 	const theme = useTheme()
@@ -25,6 +26,7 @@ const WebsiteMainPage: NextPage = () => {
 	const { data: arrivalImages } = arrivalApi.useFetchAllArrivalImagesQuery(null)
 	const { data: partners = [] as IPartnersI[] } =
 		partnersApi.useFetchAllPartnersQuery(null)
+	const [deletePartnerLink] = partnersApi.useDeletePartnerLinkMutation()
 	console.log(page)
 	console.log(arrivalImages)
 	console.log(partners)
@@ -57,6 +59,7 @@ const WebsiteMainPage: NextPage = () => {
 						display: 'flex',
 						alignItems: 'center',
 						gap: '10px',
+						flexWrap: 'wrap',
 						my: '20px'
 					}}
 				>
@@ -78,6 +81,12 @@ const WebsiteMainPage: NextPage = () => {
 									fragmentUpdate='UpdatePartnerLink'
 									id={partner.id}
 								/>
+								<Button
+									color='warning'
+									onClick={() => deletePartnerLink(partner.id)}
+								>
+									<MdDeleteForever />
+								</Button>
 							</Box>
 						))}
 				</Box>

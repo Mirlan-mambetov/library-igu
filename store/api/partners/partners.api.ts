@@ -24,6 +24,10 @@ export const partnersApi = api.injectEndpoints({
 				body: data
 			}),
 			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
+		deletePartnerLink: builder.mutation<null, number>({
+			query: (id) => ({ url: `/partners/${id}`, method: 'Delete' }),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
 		})
 	})
 })

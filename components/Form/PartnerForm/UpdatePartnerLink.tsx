@@ -44,6 +44,8 @@ export const UpdatePartnerLink = () => {
 			formData.append('link', data.link)
 			formData.append('file', file)
 			await updatePartnerLink({ id: updateId, data: formData })
+				.unwrap()
+				.then(() => onClose())
 		} catch (err) {
 			if (isFetchBaseQueryError(err)) {
 				const errMsg =

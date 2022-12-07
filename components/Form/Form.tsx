@@ -1,4 +1,5 @@
 import { MyModalContext } from '../../contexts/MyModal.context'
+import UpdateAboutInfo from './About/AboutInfo/UpdateAboutInfo'
 import { ArchivCreateMaterial } from './ArchivForm/ArchivCreateMaterials/ArchivCreateMaterial'
 import { ArchivUpdateMaterial } from './ArchivForm/ArchivUpdateMaterials/ArchivUpdateMaterials'
 import { CreateArhiv } from './ArchivForm/CreateArhiv'
@@ -68,6 +69,8 @@ export const Form: FC = () => {
 			return <CreatePartnerLink />
 		case 'UpdatePartnerLink':
 			return <UpdatePartnerLink />
+		case 'UpdateAboutInfo':
+			return <UpdateAboutInfo />
 		case 'CreatePage':
 			return <PageForm />
 		default:
