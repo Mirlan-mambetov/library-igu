@@ -42,7 +42,11 @@ export class AboutService {
   }
 
   async findAboutInfo() {
-    return await this.aboutInformationRepository.find()
+    return await this.aboutInformationRepository.find({
+      order: {
+        id: "ASC"
+      }
+    })
   }
 
   async findAboutInfoById(id: number) {

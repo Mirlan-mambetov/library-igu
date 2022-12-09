@@ -16,12 +16,8 @@ export class AboutOwnerDto {
 }
 export class AboutInfoDto {
 
-  @IsString({message: "Заголовок должен быть в строковом формате."})
-  @Length(4, 255, {message: "Длина заголовка не может быть меньше 4 символов. И не может быть больше 255"})
-  title: string
+  title?: string
 
-  @IsString({message: "Описание должен быть в строковом формате."})
-  @Length(4, 255, {message: "Длина описание не может быть меньше 4 символов. И не может быть больше 255"})
   description?: string
 }
 export class AboutTabloDto {
