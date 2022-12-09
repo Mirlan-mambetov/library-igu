@@ -56,7 +56,7 @@ const WebsiteAboutPage: NextPage = () => {
 								width={270}
 								height={90}
 								src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${info.image}`}
-								alt={info.title}
+								alt='image'
 							/>
 						)}
 						<UpdateFragment fragmentUpdate='UpdateAboutInfo' id={info.id} />

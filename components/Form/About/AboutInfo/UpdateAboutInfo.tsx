@@ -7,12 +7,14 @@ import { AboutInfoDto } from './AboutInfo.dto'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { useSnackbar } from 'notistack'
-import { FC, useContext, useState, useEffect } from 'react'
+import { FC, useContext, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 const UpdateAboutInfo: FC = () => {
 	const { updateId, onClose } = useContext(MyModalContext)
 	const { enqueueSnackbar } = useSnackbar()
+	const [title, setTitle] = useState('')
+	const [description, setDescription] = useState('')
 	const { data: infoData = {} as IAboutInfo, isLoading: isLoadingData } =
 		aboutApi.useFetchAboutInfoByIdQuery({ id: updateId }, { skip: !updateId })
 	const [updateAboutInfo, { isLoading }] = aboutApi.useUpdateAboutInfoMutation()
@@ -25,8 +27,8 @@ const UpdateAboutInfo: FC = () => {
 	const submitHandler: SubmitHandler<AboutInfoDto> = async (data) => {
 		try {
 			const formData = new FormData()
-			if (data.image) {
-				const file = data.image[0]
+			if (data.file) {
+				const file = data.file[0]
 				if (!file.name.match(/\.(png|jpeg|jpg|gif)$/)) {
 					return enqueueSnackbar(
 						'Поддерживаемые форматы изображений png, jpeg, jpg, gif.',
@@ -35,8 +37,10 @@ const UpdateAboutInfo: FC = () => {
 				}
 				formData.append('file', file)
 			}
-			formData.append('title', data.title)
-			formData.append('description', data.description)
+			if (data.title) formData.append('title', data.title)
+			else if (data.description)
+				formData.append('description', data.description)
+
 			await updateAboutInfo({ id: updateId, data: formData })
 				.unwrap()
 				.then(() => onClose())
@@ -60,26 +64,27 @@ const UpdateAboutInfo: FC = () => {
 			) : (
 				<form onSubmit={handleSubmit(submitHandler)}>
 					<Box>
-						<Field
-							{...register('title', {
-								value: infoData.title,
-								required: 'Введите заголовок'
-							})}
-							type='text'
-							placeholder='Введите заголовок'
-							error={errors.title}
-						/>
+						{infoData.title && (
+							<Field
+								{...register('title', {
+									required: 'Введите заголовок'
+								})}
+								type='text'
+								placeholder='Введите заголовок'
+								error={errors.title}
+							/>
+						)}
+
 						{infoData.description && (
 							<Textarea
 								{...register('description', {
-									value: infoData.description,
 									required: 'Описание обязательно'
 								})}
 								placeholder='Опишите описание одинм словом..'
 								error={errors.description}
 							/>
 						)}
-						{infoData.image && <Field {...register('title')} type='file' />}
+						{infoData.image && <Field {...register('file')} type='file' />}
 						<Button disabled={isLoading} color='success' type='submit'>
 							Отправить
 						</Button>
