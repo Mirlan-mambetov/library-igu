@@ -2,7 +2,6 @@ import { UpdateFragment } from '../../../components/Form/UpdateFragment/UpdateFr
 import { Layout } from '../../../components/Layout/Layout'
 import { ErrorDisplayed } from '../../../components/UI'
 import Hero from '../../../components/UI/Hero/Hero'
-import { MyModalContext } from '../../../contexts/MyModal.context'
 import { IAboutInfo, IAboutOwner } from '../../../interfaces/about.inteface'
 import { aboutApi } from '../../../store/api/about/about.api'
 import { pageApi } from '../../../store/api/page/page.api'
@@ -13,7 +12,6 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { NextPage } from 'next'
 import Image from 'next/image'
-import { useContext } from 'react'
 
 const WebsiteAboutPage: NextPage = () => {
 	const id = 33
@@ -22,8 +20,10 @@ const WebsiteAboutPage: NextPage = () => {
 	const { data: page, error } = pageApi.useFetchOnePageQuery(id)
 	const { data: aboutInfo = [] as IAboutInfo[], error: aboutInfoError } =
 		aboutApi.useFetchAboutInfoQuery(null)
-	const { onOpen } = useContext(MyModalContext)
+	const { data: aboutOwner = [] as IAboutOwner[] } =
+		aboutApi.useFetchAboutOwnerQuery(null)
 	console.log(aboutInfo)
+	console.log(aboutOwner)
 	return (
 		<Layout title='Страница О библиотеке'>
 			{/* @ts-ignore */}
@@ -60,6 +60,31 @@ const WebsiteAboutPage: NextPage = () => {
 							/>
 						)}
 						<UpdateFragment fragmentUpdate='UpdateAboutInfo' id={info.id} />
+					</Box>
+				))}
+			</Box>
+			{/* About owner */}
+			<Box color={colors.blueAccent[900]}>
+				<Typography variant='h4' sx={{ mb: '20px' }}>
+					Директор
+				</Typography>
+				{aboutOwner.map((owner) => (
+					<Box
+						key={owner.id}
+						sx={{ display: 'flex', gap: '20px', alignItems: 'center' }}
+					>
+						<Image
+							width={240}
+							height={120}
+							src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${owner.image}`}
+							alt={owner.name}
+						/>
+						<Box>
+							<Typography variant='h6'>Имя: {owner.name}</Typography>
+							<Typography variant='h6'>E-mail: {owner.email}</Typography>
+							<Typography variant='h6'>Телефон: {owner.phone}</Typography>
+						</Box>
+						<UpdateFragment fragmentUpdate='UpdateAboutOwner' id={owner.id} />
 					</Box>
 				))}
 			</Box>
