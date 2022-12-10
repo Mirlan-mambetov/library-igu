@@ -17,6 +17,7 @@ import { NewsModule } from './news/news.module';
 import { TeachersModule } from './teachers/teachers.module';
 import { AboutModule } from './about/about.module';
 import { ImageCardModule } from './imageCard/imageCard.module';
+import { ElibraryModule } from './elibrary/elibrary.module';
 
 
 @Module({
@@ -42,7 +43,8 @@ import { ImageCardModule } from './imageCard/imageCard.module';
     NewsModule,
     TeachersModule,
     AboutModule,
-    ImageCardModule
+    ImageCardModule,
+    ElibraryModule
   ],
   controllers: [],
   providers: [],

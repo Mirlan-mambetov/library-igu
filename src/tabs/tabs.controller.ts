@@ -1,8 +1,9 @@
 import { Controller, ValidationPipe, ParseIntPipe } from '@nestjs/common';
-import { Body, Delete, HttpCode, Param, Post, Put, UploadedFile, UseInterceptors, UsePipes } from '@nestjs/common/decorators';
+import { Body, Delete, HttpCode, Param, Post, Put, Req, UploadedFile, UseInterceptors, UsePipes } from '@nestjs/common/decorators';
+import { BadRequestException } from '@nestjs/common/exceptions';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { filesFileFilter, renameFIleName } from 'src/utils/fileupload.utils';
+import { fileFileFilter, filesFileFilter, renameFIleName } from 'src/utils/fileupload.utils';
 import { TABS_UPLOADS_FILES } from './constance/destination.constance';
 import { TabsDto, TabsLinkDto } from './dto/tabs.dto';
 import { TabsService } from './tabs.service';
@@ -32,25 +33,46 @@ export class TabsController {
   }
 
   @Post('tablink/:id')
-  @HttpCode(201)
   @UsePipes(new ValidationPipe())
+  @UseInterceptors(FileInterceptor("file", {
+    storage: diskStorage({
+      destination: `${TABS_UPLOADS_FILES}`,
+      filename: (req, file, cb) => renameFIleName(req, file, cb)
+    }),
+    fileFilter: fileFileFilter
+  }))
+  @HttpCode(201)
   createTabLink(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: TabsLinkDto,
+    @UploadedFile() file: Express.Multer.File,
+    @Req() req: Express.Request
   ) {
-    return this.tabsService.createTabLink(id, {...dto})
+    if (!req.file) throw new BadRequestException("Выберите файл")
+    return this.tabsService.createTabLink(id, dto, file.filename)
   }
   
   @Put('tablink/:id')
-  @HttpCode(201)
   @UsePipes(new ValidationPipe())
+  @UseInterceptors(FileInterceptor("file", {
+    storage: diskStorage({
+      destination: `${TABS_UPLOADS_FILES}`,
+      filename: (req, file, cb) => renameFIleName(req, file, cb)
+    }),
+    fileFilter: fileFileFilter
+  }))
+  @HttpCode(201)
   updateTabLink(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: TabsLinkDto,
-    
+    @UploadedFile() file: Express.Multer.File,
+    @Req() req: Express.Request
   ) {
-    return this.tabsService.updateTabLink(id, {...dto})
+    if (!req.file) throw new BadRequestException("Выберите файл")
+    return this.tabsService.updateTabLink(id, dto, file.filename)
   }
+
+
 
   @Put('tablink/image/:id')
   @HttpCode(201)
@@ -63,7 +85,7 @@ export class TabsController {
   }))
   updateTabLinkFile(
     @Param('id', ParseIntPipe) id: number,
-    @UploadedFile() file: Express.Multer.File
+    @UploadedFile() file: Express.Multer.File,
   ) {
     return this.tabsService.uploadTabLinkFile(id, file.filename)
   }
@@ -73,5 +95,12 @@ export class TabsController {
     @Param('id') id: number
   ) {
     return this.tabsService.deleteTabLink(id)
+  }
+  
+  @Delete(':id')
+  deleteTab(
+    @Param('id') id: number
+  ) {
+    return this.tabsService.deleteTab(id)
   }
 }

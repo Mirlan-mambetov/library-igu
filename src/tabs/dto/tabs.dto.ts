@@ -4,4 +4,5 @@ export class TabsDto {
 }
 export class TabsLinkDto {
 	name?: string
+	link: string
 }
