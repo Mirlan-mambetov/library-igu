@@ -1,3 +1,4 @@
+import { AboutTabloDto } from '../../../components/Form/About/AboutTablo/UpdateAboutTablo.dto'
 import {
 	IAboutInfo,
 	IAboutOwner,
@@ -42,6 +43,17 @@ export const aboutApi = api.injectEndpoints({
 		updateAboutOwner: builder.mutation<null, { id: number; data: FormData }>({
 			query: ({ id, data }) => ({
 				url: `/about/owner/${id}`,
+				method: 'Put',
+				body: data
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
+		updateAboutTablo: builder.mutation<
+			null,
+			{ id: number; data: AboutTabloDto }
+		>({
+			query: ({ id, data }) => ({
+				url: `/about/tablo/${id}`,
 				method: 'Put',
 				body: data
 			}),

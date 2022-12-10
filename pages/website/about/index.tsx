@@ -2,7 +2,11 @@ import { UpdateFragment } from '../../../components/Form/UpdateFragment/UpdateFr
 import { Layout } from '../../../components/Layout/Layout'
 import { ErrorDisplayed } from '../../../components/UI'
 import Hero from '../../../components/UI/Hero/Hero'
-import { IAboutInfo, IAboutOwner } from '../../../interfaces/about.inteface'
+import {
+	IAboutInfo,
+	IAboutOwner,
+	IAboutTablo
+} from '../../../interfaces/about.inteface'
 import { aboutApi } from '../../../store/api/about/about.api'
 import { pageApi } from '../../../store/api/page/page.api'
 import { tokens } from '../../../theme'
@@ -22,8 +26,11 @@ const WebsiteAboutPage: NextPage = () => {
 		aboutApi.useFetchAboutInfoQuery(null)
 	const { data: aboutOwner = [] as IAboutOwner[] } =
 		aboutApi.useFetchAboutOwnerQuery(null)
+	const { data: aboutTablo = [] as IAboutTablo[] } =
+		aboutApi.useFetchAboutTabloQuery(null)
 	console.log(aboutInfo)
 	console.log(aboutOwner)
+	console.log(aboutTablo)
 	return (
 		<Layout title='Страница О библиотеке'>
 			{/* @ts-ignore */}
@@ -87,6 +94,28 @@ const WebsiteAboutPage: NextPage = () => {
 						<UpdateFragment fragmentUpdate='UpdateAboutOwner' id={owner.id} />
 					</Box>
 				))}
+			</Box>
+			<Box sx={{ my: '20px' }} color={colors.blueAccent[600]}>
+				<Typography variant='h4'>Информация о структуре</Typography>
+				<Box
+					sx={{ my: '20px', display: 'flex', justifyContent: 'space-around' }}
+				>
+					{aboutTablo.map((tablo) => (
+						<Box
+							key={tablo.id}
+							sx={{
+								display: 'flex',
+								gap: '8px',
+								flexDirection: 'column',
+								alignItems: 'baseline'
+							}}
+						>
+							<Typography variant='h5'>{tablo.ceils}</Typography>
+							<Typography variant='h6'>{tablo.description}</Typography>
+							<UpdateFragment fragmentUpdate='UpdateAboutTablo' id={tablo.id} />
+						</Box>
+					))}
+				</Box>
 			</Box>
 		</Layout>
 	)

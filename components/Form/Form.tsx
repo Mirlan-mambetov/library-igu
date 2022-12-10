@@ -1,6 +1,7 @@
 import { MyModalContext } from '../../contexts/MyModal.context'
 import UpdateAboutInfo from './About/AboutInfo/UpdateAboutInfo'
 import UpdateAboutOwner from './About/AboutOwner/UpdateAboutOwner'
+import UpdateAboutTablo from './About/AboutTablo/UpdateAboutTablo'
 import { ArchivCreateMaterial } from './ArchivForm/ArchivCreateMaterials/ArchivCreateMaterial'
 import { ArchivUpdateMaterial } from './ArchivForm/ArchivUpdateMaterials/ArchivUpdateMaterials'
 import { CreateArhiv } from './ArchivForm/CreateArhiv'
@@ -74,6 +75,8 @@ export const Form: FC = () => {
 			return <UpdateAboutInfo />
 		case 'UpdateAboutOwner':
 			return <UpdateAboutOwner />
+		case 'UpdateAboutTablo':
+			return <UpdateAboutTablo />
 		case 'CreatePage':
 			return <PageForm />
 		default:
