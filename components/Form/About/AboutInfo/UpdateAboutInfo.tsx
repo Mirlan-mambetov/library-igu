@@ -37,9 +37,14 @@ const UpdateAboutInfo: FC = () => {
 				}
 				formData.append('file', file)
 			}
-			if (data.title) formData.append('title', data.title)
-			else if (data.description)
+			if (data.title && data.description) {
+				formData.append('title', data.title)
 				formData.append('description', data.description)
+			} else if (!data.title && data.description) {
+				formData.append('description', data.description)
+			} else if (!data.description && data.title) {
+				formData.append('title', data.title)
+			}
 
 			await updateAboutInfo({ id: updateId, data: formData })
 				.unwrap()
@@ -67,7 +72,8 @@ const UpdateAboutInfo: FC = () => {
 						{infoData.title && (
 							<Field
 								{...register('title', {
-									required: 'Введите заголовок'
+									required: 'Введите заголовок',
+									value: infoData.title
 								})}
 								type='text'
 								placeholder='Введите заголовок'
@@ -78,7 +84,8 @@ const UpdateAboutInfo: FC = () => {
 						{infoData.description && (
 							<Textarea
 								{...register('description', {
-									required: 'Описание обязательно'
+									required: 'Описание обязательно',
+									value: infoData.description
 								})}
 								placeholder='Опишите описание одинм словом..'
 								error={errors.description}
