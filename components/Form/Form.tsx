@@ -7,6 +7,7 @@ import { ArchivUpdateMaterial } from './ArchivForm/ArchivUpdateMaterials/ArchivU
 import { CreateArhiv } from './ArchivForm/CreateArhiv'
 import { UpdateArhiv } from './ArchivForm/UpdateArchiv'
 import { UpdateArrivalImage } from './ArrivalForm/UpdateArrivalImage'
+import UpdateElibraryMain from './ElibraryForm/UpdateElibraryMain'
 import { CreateHeroSubcontent } from './HeroForm/CreateSubContent/CreateSubContent'
 import { UpdateHero } from './HeroForm/UpdateHero/UpdateHero'
 import { UpdateHeroSubcontent } from './HeroForm/UpdateHeroSubcontent/UpdateHeroSubcontent'
@@ -80,6 +81,8 @@ export const Form: FC = () => {
 			return <UpdateAboutTablo />
 		case 'UpdateImageCard':
 			return <UpdateImageCard />
+		case 'UpdateElibrary':
+			return <UpdateElibraryMain />
 		case 'CreatePage':
 			return <PageForm />
 		default:

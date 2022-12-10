@@ -1,7 +1,7 @@
 export interface IUpdateTabLinkDto {
 	id: number
 	name: string
-	link: string
+	link: FileList
 }
 export interface IUpdateTabLinkDtoApi {
 	id: number

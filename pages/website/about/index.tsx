@@ -2,6 +2,7 @@ import { UpdateFragment } from '../../../components/Form/UpdateFragment/UpdateFr
 import { Layout } from '../../../components/Layout/Layout'
 import { ErrorDisplayed } from '../../../components/UI'
 import Hero from '../../../components/UI/Hero/Hero'
+import { Tabs } from '../../../components/UI/Tabs/Tabs'
 import {
 	IAboutInfo,
 	IAboutOwner,
@@ -117,6 +118,8 @@ const WebsiteAboutPage: NextPage = () => {
 					))}
 				</Box>
 			</Box>
+			{/* About Tabs */}
+			{page?.tabs && <Tabs tabs={page.tabs} />}
 		</Layout>
 	)
 }

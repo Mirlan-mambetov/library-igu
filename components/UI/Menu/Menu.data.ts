@@ -1,11 +1,11 @@
 import { IMenuItem } from './MenuItem/MenuItem.props'
-import { BiNews } from 'react-icons/bi'
+import { BiLibrary, BiNews } from 'react-icons/bi'
 import { BsFillJournalBookmarkFill } from 'react-icons/bs'
 import { FaQuestionCircle, FaServicestack } from 'react-icons/fa'
 import { GiEarthAmerica } from 'react-icons/gi'
 import { HiHome } from 'react-icons/hi'
 import { ImStatsDots } from 'react-icons/im'
-import { MdAdminPanelSettings } from 'react-icons/md'
+import { MdAdminPanelSettings, MdRule } from 'react-icons/md'
 import { SiAboutdotme, SiVectorworks } from 'react-icons/si'
 
 export const PanelMenu: IMenuItem[] = [
@@ -61,5 +61,15 @@ export const WebsitePageMenu: IMenuItem[] = [
 		name: 'Сервисы',
 		link: '/website/services',
 		icon: FaServicestack
+	},
+	{
+		name: 'Правила пользования',
+		link: '/website/rules',
+		icon: MdRule
+	},
+	{
+		name: 'Электронная библиотека',
+		link: '/website/elibrary',
+		icon: BiLibrary
 	}
 ]

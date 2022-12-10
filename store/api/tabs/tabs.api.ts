@@ -12,11 +12,11 @@ export const tabsApi = api.injectEndpoints({
 			}),
 			invalidatesTags: (res, error, { id }) => [{ type: 'Pages' }]
 		}),
-		updateTabLink: builder.mutation<null, IUpdateTabLinkDtoApi>({
-			query: ({ id, ...body }) => ({
+		updateTabLink: builder.mutation<null, { id: number; data: FormData }>({
+			query: ({ id, data }) => ({
 				url: `/tabs/tablink/${id}`,
 				method: 'Put',
-				body
+				body: data
 			}),
 			invalidatesTags: (res, error, { id }) => [{ type: 'Pages' }]
 		})
