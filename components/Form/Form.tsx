@@ -10,6 +10,7 @@ import { UpdateArrivalImage } from './ArrivalForm/UpdateArrivalImage'
 import { CreateHeroSubcontent } from './HeroForm/CreateSubContent/CreateSubContent'
 import { UpdateHero } from './HeroForm/UpdateHero/UpdateHero'
 import { UpdateHeroSubcontent } from './HeroForm/UpdateHeroSubcontent/UpdateHeroSubcontent'
+import { UpdateImageCard } from './ImageCardForm/UpdateImageCard'
 import { UpdateJournal } from './JournalForm/UpdateJournalForm/UpdateJournalForm'
 import { UpdateJournalHead } from './JournalForm/UpdateJournalHead/UpdateJournalHead'
 import { UpdateJournalHeadItems } from './JournalForm/UpdateJournalHeadItems/UpdateJournalHeadItems'
@@ -77,6 +78,8 @@ export const Form: FC = () => {
 			return <UpdateAboutOwner />
 		case 'UpdateAboutTablo':
 			return <UpdateAboutTablo />
+		case 'UpdateImageCard':
+			return <UpdateImageCard />
 		case 'CreatePage':
 			return <PageForm />
 		default:

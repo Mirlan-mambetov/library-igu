@@ -1,7 +1,7 @@
 import { IMenuItem } from './MenuItem/MenuItem.props'
 import { BiNews } from 'react-icons/bi'
 import { BsFillJournalBookmarkFill } from 'react-icons/bs'
-import { FaQuestionCircle } from 'react-icons/fa'
+import { FaQuestionCircle, FaServicestack } from 'react-icons/fa'
 import { GiEarthAmerica } from 'react-icons/gi'
 import { HiHome } from 'react-icons/hi'
 import { ImStatsDots } from 'react-icons/im'
@@ -56,5 +56,10 @@ export const WebsitePageMenu: IMenuItem[] = [
 		name: 'Новости',
 		link: '/website/news',
 		icon: BiNews
+	},
+	{
+		name: 'Сервисы',
+		link: '/website/services',
+		icon: FaServicestack
 	}
 ]
