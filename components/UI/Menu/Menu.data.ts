@@ -16,17 +16,17 @@ export const PanelMenu: IMenuItem[] = [
 	},
 	{
 		name: 'Статистика в линию',
-		link: '/panel/stats/line',
+		link: '/dashboard/stats/line',
 		icon: ImStatsDots
 	},
 	{
 		name: 'Статистика на карте',
-		link: '/panel/stats/maps',
+		link: '/dashboard/stats/maps',
 		icon: GiEarthAmerica
 	},
 	{
 		name: 'FAQ вопросы',
-		link: '/panel/faq',
+		link: '/dashboard/faq',
 		icon: FaQuestionCircle
 	}
 ]

@@ -1,8 +1,8 @@
 import { Layout } from '../../components/Layout/Layout'
+import { MyModalContext } from '../../contexts/MyModal.context'
 import { pageApi } from '../../store/api/page/page.api'
 import { Box, Button, Card, CardContent, Typography } from '@mui/material'
 import { FC, useContext } from 'react'
-import { MyModalContext } from '../../contexts/MyModal.context'
 
 export const Dashboard: FC = () => {
 	const { data: pages } = pageApi.useFetchAllPagesQuery(null)
@@ -22,8 +22,9 @@ export const Dashboard: FC = () => {
 					</CardContent>
 					<Button
 						color='success'
-						sx={{ fontSize: "10px" }}
-						onClick={() => onOpen("CreatePage")}
+						sx={{ fontSize: '10px' }}
+						onClick={() => onOpen('CreatePage')}
+						disabled
 					>
 						Создать страницу
 					</Button>
