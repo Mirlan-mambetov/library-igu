@@ -7,6 +7,11 @@ import { ArchivUpdateMaterial } from './ArchivForm/ArchivUpdateMaterials/ArchivU
 import { CreateArhiv } from './ArchivForm/CreateArhiv'
 import { UpdateArhiv } from './ArchivForm/UpdateArchiv'
 import { UpdateArrivalImage } from './ArrivalForm/UpdateArrivalImage'
+import CreateElibraryCategory from './ElibraryForm/CreateElibraryCategory'
+import CreateElibraryMain from './ElibraryForm/CreateElibraryMain'
+import CreateElibraryBook from './ElibraryForm/ElibraryBookForm/CreateElibraryBook'
+import UpdateElibraryBook from './ElibraryForm/ElibraryBookForm/UpdateElibraryBook'
+import UpdateElibraryCategory from './ElibraryForm/UpdateElibraryCategory'
 import UpdateElibraryMain from './ElibraryForm/UpdateElibraryMain'
 import { CreateHeroSubcontent } from './HeroForm/CreateSubContent/CreateSubContent'
 import { UpdateHero } from './HeroForm/UpdateHero/UpdateHero'
@@ -83,6 +88,16 @@ export const Form: FC = () => {
 			return <UpdateImageCard />
 		case 'UpdateElibrary':
 			return <UpdateElibraryMain />
+		case 'CreateElibrary':
+			return <CreateElibraryMain />
+		case 'CreateElibraryCategory':
+			return <CreateElibraryCategory />
+		case 'UpdateElibraryCategory':
+			return <UpdateElibraryCategory />
+		case 'CreateElibraryBook':
+			return <CreateElibraryBook />
+		case 'UpdateElibraryBook':
+			return <UpdateElibraryBook />
 		case 'CreatePage':
 			return <PageForm />
 		default:
