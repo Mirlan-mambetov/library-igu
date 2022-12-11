@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { IPaginationOptions, paginate } from 'nestjs-typeorm-paginate';
 import { deleteFileWithName } from 'src/utils/fileupload.utils';
 import { Repository } from 'typeorm';
 import { BOOK_CATEGORY_GET_UPLOADS_FILES, BOOK_GET_UPLOADS_FILES } from './constance/destination';
@@ -54,13 +55,25 @@ export class ElibraryService {
     return category
   }
 
-  async findBooksByCategory(categoryId: number) {
-    return await this.elibraryBooksRepository.find({
+  async findBooksByCategory(options: IPaginationOptions, categoryId: number) {
+    return paginate<ElibraryBooksEntity>(this.elibraryBooksRepository, options, {
       where: {
         category: {id: categoryId}
       },
       relations: {
-        category: true
+        category: {
+          category: true
+        }
+      },
+      select: {
+        category: {
+          id: true,
+          name: true,
+          category: {
+            id: true,
+            name: true
+          }
+        }
       }
     })
   }
@@ -72,8 +85,9 @@ export class ElibraryService {
   async findById(id: number) {
     const category = await this.elibraryRepository.findOne({
       where: {id},
-      relations: {
-        secondCategory: true
+      select: {
+        id: true,
+        name: true
       }
     })
     if (!category) throw new NotFoundException(MAIN_CATEGORY_NOT_FOUND)
@@ -86,8 +100,10 @@ export class ElibraryService {
       relations: {
         books: true
       },
-      order: {
-        id: "ASC"
+      select: {
+        books: {
+          id: true
+        }
       }
     })
     if (!category) throw new NotFoundException(CATEGORY_NOT_FOUND)

@@ -14,7 +14,9 @@ import {
   UploadedFile,
   NotFoundException,
   BadRequestException,
-  ParseIntPipe
+  ParseIntPipe,
+  Query,
+  DefaultValuePipe
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
@@ -39,6 +41,14 @@ export class ElibraryController {
     return this.elibraryService.findAllCategory()
   }
 
+  @Get(':id')
+  @HttpCode(200)
+  findById(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.elibraryService.findById(id)
+  }
+
   @Get('category/:id')
   @HttpCode(200)
   findCategoryByMainCategory(
@@ -47,12 +57,22 @@ export class ElibraryController {
     return this.elibraryService.findCategoryByMainCategory(mainCategoryId)
   }
 
+  @Get('category/category/:id')
+  findCategoryById(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.elibraryService.findCategoryById(id)
+  }
+
   @Get('books/category/:id')
   @HttpCode(200)
   findBooksByCategory(
-    @Param('id', ParseIntPipe) categoryId: number
+    @Param('id', ParseIntPipe) categoryId: number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
+    @Query('limit', new DefaultValuePipe(3), ParseIntPipe) limit: number = 5
   ) {
-    return this.elibraryService.findBooksByCategory(categoryId)
+    limit = limit > 100 ? 100: limit
+    return this.elibraryService.findBooksByCategory({page, limit}, categoryId)
   }
 
   @Get('books')
