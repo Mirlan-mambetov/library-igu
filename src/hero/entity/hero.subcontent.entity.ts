@@ -1,6 +1,6 @@
 import { BaseEntity } from "src/utils/base.entity.utils"
 import { Column, Entity, JoinColumn, ManyToOne } from "typeorm"
-import { HeroEntity } from "./Hero.entity"
+import { HeroEntity } from "./hero.entity"
 
 @Entity({ name: 'hero_subcontent' })
 export class HeroSubcontentEntity extends BaseEntity {
