@@ -1,12 +1,15 @@
-export interface SubcontentI {
-  id: string | number
-  title?: string
-  description?: string[]
+import { IBase } from './base.interface'
+import { IPage } from './page.interface'
+
+export interface IHero extends IBase {
+	title: string
+	background?: string
+	subcontent?: IHeroSubcontent[]
+	page?: IPage
 }
-export interface HeroI {
-  title: string
-  backGround?: string
-  subContent?: SubcontentI[]
-  subTitle?: string
-  information?: number
+
+export interface IHeroSubcontent extends IBase {
+	title: string
+	description: string
+	hero?: Pick<IHero, 'background' | 'createdAt' | 'id'>
 }

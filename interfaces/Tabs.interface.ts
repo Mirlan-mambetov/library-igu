@@ -1,12 +1,12 @@
-interface IsLinkI {
-  id: string | number
-  name: string
-  link: string
+import { IBase } from './base.interface'
+
+export interface ITabs extends IBase {
+	title: string
+	description?: string
+	isLink?: ITabsLink[]
 }
 
-export interface TabsInterface {
-  id: string | number
-  title: string
-  description?: string
-  isLink?: IsLinkI[]
+export interface ITabsLink extends IBase {
+	name: string
+	link: string
 }

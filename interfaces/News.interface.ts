@@ -1,7 +1,7 @@
-export interface NewsI {
-  id: string | number
-  title: string
-  description: string
-  published: string
-  image: string
+import { IBase } from './base.interface'
+
+export interface INews extends IBase {
+	title: string
+	description: string
+	image: string
 }

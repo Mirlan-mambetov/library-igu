@@ -1,6 +1,6 @@
-import { DetailsHTMLAttributes } from "react"
-import { TabsInterface } from "../../Interfaces/Tabs.interface"
+import { TabsInterface } from '../../interfaces/tabs.interface'
+import { DetailsHTMLAttributes } from 'react'
 
 export interface TabsProps extends DetailsHTMLAttributes<HTMLDivElement> {
-  tabs: TabsInterface
+	tabs: TabsInterface
 }
