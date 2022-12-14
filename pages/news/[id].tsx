@@ -1,43 +1,35 @@
-import { HeroI } from '../../Interfaces/Hero.interface'
-import { ImageboxI } from '../../Interfaces/Imagebox.interface'
-import { NewsI } from '../../Interfaces/News.interface'
+import { Layout } from '../../Layout/Layout'
 import { withLayout } from '../../Layout/WithLayout'
 import { Button, Cards, Hero, Imagebox, Title } from '../../components'
-import { newsApi } from '../../store/api/news/news.api'
+import News from '../../components/News/News'
+import { INews } from '../../interfaces/news.interface'
+import { newsService } from '../../services/newsService/newsService'
 // STYLES
 import styles from './news.module.scss'
-import { GetStaticPaths } from 'next'
+import axios from 'axios'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 
-const News: FC = (): JSX.Element => {
-	const { query } = useRouter()
+interface newsI {
+	news: INews
+	newses: INews[]
+}
 
+const NewsPage: FC<newsI> = ({ news, newses }) => {
 	return (
-		<>
+		<Layout>
 			<NextSeo
-				title='Новость - Научная библиотека ИГУ'
-				description='Научная библиотека ИГУ Вестник ИГУ им. К. Тыныстанова'
+				title={`${news.title} - Научная библиотека ИГУ`}
+				description={`Научная библиотека ИГУ Вестник ИГУ им. К. Тыныстанова ${news.title} - ${news.description}`}
 			/>
 			{/* Hero */}
-			{/* {HeroData.map((h, i) => (
-        <Hero
-          key={i}
-          title={h.title}
-          subContent={h.subContent}
-          background={h.backGround}
-          subContentOrientation="row"
-        />
-      ))} */}
+			<Hero data={{ ...news }} />
 			{/* News description */}
 			<section className={styles.description}>
 				<div className='container'>
-					{/* {DetailNewsData.map(news => (
-            <Imagebox data={news} key={news.id} />
-          ))} */}
-					{query.id}
+					<Imagebox data={{ ...news }} />
 				</div>
 			</section>
 			{/* News cards */}
@@ -47,33 +39,60 @@ const News: FC = (): JSX.Element => {
 						<Title type='h3'>Читайте также</Title>
 					</div>
 					<div className={styles.cardsWrapp}>
-						{/* {NewsData.map(news => (
-              <Cards data={news} key={news.id} cardsLink="news" />
-            ))} */}
-						<div className={styles.cardsBtn}>
-							<Link href={'/news/arhiv'}>
-								<a>
-									<Button>Архив новостей</Button>
-								</a>
-							</Link>
-						</div>
+						{newses && <News data={newses} />}
+					</div>
+					<div className={styles.cardsBtn}>
+						<Link href={'/news/arhiv'}>
+							<a>
+								<Button>Архив новостей</Button>
+							</a>
+						</Link>
 					</div>
 				</div>
 			</section>
-		</>
+		</Layout>
 	)
 }
 
-// export const getStaticPaths: GetStaticPaths = () => {
-//   try{
-//     const paths = newsApi.useFetchAllNewsQuery()
+export const getStaticPaths: GetStaticPaths = async () => {
+	try {
+		const { data: newses } = await newsService.findAllNews()
+		const paths = newses.map((news) => ({
+			params: {
+				id: String(news.id)
+			}
+		}))
+		return {
+			paths,
+			fallback: false
+		}
+	} catch (e) {
+		return {
+			paths: [],
+			fallback: false
+		}
+	}
+}
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+	try {
+		// @ts-ignore
+		const { data: news } = await newsService.findNewsById(+params?.id)
+		const { data: newses } = await newsService.findAllNews()
 
-//   }catch(err) {
-//     return {
-//       paths,
-//       fallback: false
-//     }
-//   }
-// }
+		return {
+			props: {
+				news,
+				newses
+			}
+		}
+	} catch (e) {
+		return {
+			props: {
+				news: {} as INews,
+				newses: [] as INews[]
+			} as newsI
+		}
+	}
+}
 
-export default withLayout(News)
+export default NewsPage

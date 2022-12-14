@@ -2,30 +2,29 @@
 @import '../../styles/varriables/varriables';
 
 .description {
-  padding: 50px 0;
+	padding: 50px 0;
 }
 
 .cards {
-  padding: 20px 0;
+	padding: 20px 0;
 
-  .cardsWrapp {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
+	.cardsWrapp {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
 
-    &>div {
-      margin-bottom: 30px;
-    }
+		& > div {
+			margin-bottom: 30px;
+		}
 
-    @include media-queres.mediaOnly859px {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-    }
-  }
+		@include media-queres.mediaOnly859px {
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 40px;
+		}
+	}
 
-  .cardsBtn {
-    margin: 30px 0;
-  }
+	.cardsBtn {
+		margin: 30px 0;
+	}
 }

@@ -22,7 +22,7 @@ const Home: FC = (): JSX.Element => {
 	const limit = 3
 	const { data: page } = pageApi.useFetchPageQuery(id)
 	const { data: newses = {} as IITemsPaginate<INews> } =
-		newsApi.useFetchAllNewsQuery({
+		newsApi.useFetchAllNewsWithPaginateQuery({
 			query: { page: 1, limit }
 		})
 
@@ -146,7 +146,7 @@ const Home: FC = (): JSX.Element => {
 				]}
 			/>
 			{/* Hero */}
-			{page?.hero && <Hero data={page.hero} />}
+			{page?.hero && page.hero.map((h) => <Hero key={h.id} data={{ ...h }} />)}
 			{/* Newses */}
 			<section className={styles.newses}>
 				<div className='container'>

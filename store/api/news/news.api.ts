@@ -7,7 +7,7 @@ import { api } from '../api'
 
 export const newsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
-		fetchAllNews: builder.query<
+		fetchAllNewsWithPaginate: builder.query<
 			IITemsPaginate<INews>,
 			{ query?: IPaginationDtoI }
 		>({

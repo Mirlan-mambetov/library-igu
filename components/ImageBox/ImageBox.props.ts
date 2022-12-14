@@ -1,5 +1,5 @@
-import { ImageboxI } from "../../Interfaces/Imagebox.interface";
+import { IImagebox } from '../../interfaces/imagebox.interface'
 
 export interface ImageboxProps {
-  data: ImageboxI
+	data: IImagebox
 }

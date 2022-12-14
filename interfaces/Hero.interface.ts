@@ -5,6 +5,7 @@ export interface IHero extends IBase {
 	title: string
 	background?: string
 	subcontent?: IHeroSubcontent[]
+	image?: string
 	page?: IPage
 }
 

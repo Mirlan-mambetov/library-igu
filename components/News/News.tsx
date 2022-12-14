@@ -6,7 +6,7 @@ import styles from './News.module.scss'
 import Link from 'next/link'
 import { FC } from 'react'
 
-const News: FC<{ data: INews[] }> = ({ data }) => {
+const News: FC<{ data: INews[] }> = ({ data }): JSX.Element => {
 	return (
 		<>
 			{data?.map((news) => (
