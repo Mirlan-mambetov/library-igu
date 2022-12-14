@@ -1,9 +1,8 @@
-import { HeroEntity } from "src/hero/entity/Hero.entity"
-import { HeroSubcontentEntity } from "src/hero/entity/hero.subcontent.entity"
-import { JournalEntity } from "src/journal/entity/journal.entity"
-import { TabsEntity } from "src/tabs/entity/tabs.entity"
-import { BaseEntity } from "src/utils/base.entity.utils"
-import { VestnikEntity } from "src/vestnik/entity/vestnik.entity"
+import { HeroEntity } from "../../hero/entity/hero.entity"
+import { JournalEntity } from "../../journal/entity/journal.entity"
+import { TabsEntity } from "../../tabs/entity/tabs.entity"
+import { BaseEntity } from "../../utils/base.entity.utils"
+import { VestnikEntity } from "../../vestnik/entity/vestnik.entity"
 import { Column, Entity, OneToMany } from "typeorm"
 
 @Entity({ name: "page" })

@@ -23,9 +23,9 @@ import { ElibraryModule } from './elibrary/elibrary.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-     rootPath: join(__dirname, '..', 'uploads')
+      rootPath: join(__dirname, '..', 'uploads')
     }),
-    ConfigModule.forRoot({ envFilePath: './src/config/.env'}),
+    ConfigModule.forRoot({ envFilePath: './src/config/.env' }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

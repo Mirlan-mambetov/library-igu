@@ -9,7 +9,7 @@ import { HERO_SUBCONTENT_NOT_FOUND } from './constance/hero.subcontent.constace'
 import { IHeroCreateDto } from './dto/hero.create.dto';
 import { HeroDto } from './dto/hero.dto';
 import { HeroSubcontentDto } from './dto/HeroSubcontentDto';
-import { HeroEntity } from './entity/Hero.entity';
+import { HeroEntity } from './entity/hero.entity';
 import { HeroSubcontentEntity } from './entity/hero.subcontent.entity';
 
 @Injectable()
