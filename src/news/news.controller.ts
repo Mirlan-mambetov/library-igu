@@ -66,7 +66,7 @@ export class NewsController {
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
     @Query('limit', new DefaultValuePipe(3), ParseIntPipe) limit: number = 6
   ) {
-    limit = limit > 100 ? 100: limit
+    limit = limit >100 ? 100: limit
     return this.newsService.findAllWithPaginate({limit, page})
   }
 
