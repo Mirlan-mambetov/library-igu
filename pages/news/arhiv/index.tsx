@@ -1,15 +1,28 @@
+import { GetStaticProps, NextPage } from 'next'
 import { NextSeo } from 'next-seo'
-import { FC } from 'react'
+import { useState } from 'react'
 import { Cards, Hero } from '../../../components'
 import { HeroI } from '../../../Interfaces/Hero.interface'
 import { NewsI } from '../../../Interfaces/News.interface'
+import { Layout } from '../../../Layout/Layout'
 import { withLayout } from '../../../Layout/WithLayout'
+import { newsApi } from '../../../store/api/news/news.api'
 
 
 // STYLES
 import styles from './arhiv.module.scss'
 
-const NewsArhiv: FC = (): JSX.Element => {
+const NewsArhiv: NextPage = (): JSX.Element => {
+  const [page, setPage] = useState(1)
+  
+  const {} = newsApi.useLazyFetchAllNewsWithPaginateQuery({
+
+  })
+
+  const paginateHandler = async (e: ChangeEvent<unknown>, page: number) => {
+		setPage(page)
+	}
+
   // Hero Data
   const HeroData: HeroI[] = [
     {
@@ -30,20 +43,20 @@ const NewsArhiv: FC = (): JSX.Element => {
     { id: 9, title: 'Индия в Кыргызской Республике - выставка искусства и жизни Индии', description: '19 мая 2021 года состоялось открытие выставки "Индия в Кыргызской Республике - выставка искусства и жизни Индии", приуроченная году культуры Индии в Кыргызстане. После церемонии разрезания ленты, господин посол и ректор зажгли лампу по Индийской традиции. Ректор ИГУ им.К.Тыныстанова Иманбаев Аскар Асангазиевич, в своей приветственной речи поблагодарил господина посла за активное сотрудничество с нашим университетом. В свою очередь Чрезвычайный и Полномочный посол Республики Индия в Кыргызстане господин Алок А.Димри в своей речи отметил важность проведения подобных мероприятий в стенах университетов, так как аура и атмосфера которая царит в учебных заведениях удивительна. Далее состоялось знакомство с экпозицией, где было показано культурное наследие Индии.', published: 'Авг 2022', image: 'https://res.cloudinary.com/djzubalr7/image/upload/v1665224746/Library-igu/news/news-3_xpheil.png' }
   ]
   return (
-    <>
+    <Layout>
       <NextSeo
         title="Архив новостей - Научная библиотека ИГУ"
         description="Научная библиотека ИГУ Вестник ИГУ им. К. Тыныстанова"
       />
       {/* Hero */}
-      {HeroData.map((h, i) => (
+      {/* {HeroData.map((h, i) => (
         <Hero
           key={i}
           title={h.title}
           subContentOrientation="row"
           information={h.information}
         />
-      ))}
+      ))} */}
       {/* Newses */}
       <section>
         <div className="container">
@@ -54,8 +67,8 @@ const NewsArhiv: FC = (): JSX.Element => {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }
 
-export default withLayout(NewsArhiv)
+export default NewsArhiv
