@@ -1,5 +1,5 @@
-import { BookscardI } from "../../Interfaces/Bookscard.interface";
+import { IArrivalImage } from '../../interfaces/arrival.interface'
 
 export interface BookscardProps {
-  data: BookscardI
+	data: IArrivalImage
 }

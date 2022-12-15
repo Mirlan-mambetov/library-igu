@@ -1,6 +1,6 @@
-import { CardsI } from "../../Interfaces/Cards.interface"
+import { CardsI } from '../../Interfaces/Cards.interface'
 
 export interface CardsProps {
-  data: CardsI
-  cardsLink: string
+	data: CardsI
+	cardsLink: string
 }
