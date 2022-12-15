@@ -7,10 +7,12 @@ export interface IHero extends IBase {
 	subcontent?: IHeroSubcontent[]
 	image?: string
 	page?: IPage
+	totalArticle?: number
+	subContentOrientation?: 'row' | 'column'
+	infoTitle?: string
 }
 
 export interface IHeroSubcontent extends IBase {
 	title: string
 	description: string
-	hero?: Pick<IHero, 'background' | 'createdAt' | 'id'>
 }

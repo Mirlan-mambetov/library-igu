@@ -1,24 +1,23 @@
 import { Title } from '../'
-import { Button } from '../'
 import { IHero } from '../../interfaces/hero.interface'
 // STYLE
 import styles from './Hero.module.scss'
-import { HeroProps } from './Hero.props'
+import { defaultBackground } from './Hero.props'
 import { Navigation } from './Navigation/Navigation'
 import { SubContent } from './SubContent/SubContent'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 export const Hero: FC<{ data: IHero }> = ({ data }): JSX.Element => {
-	const router = useRouter()
 	return (
 		<>
 			<div
 				className={styles.hero}
 				style={{
-					backgroundImage: `url(${process.env.NEXT_PUBLIC_APP_STATIC}/${
-						data.background || data.image
-					})`
+					backgroundImage: data
+						? `url(${process.env.NEXT_PUBLIC_APP_STATIC}/${
+								data.background || data.image
+						  } )`
+						: `url(${defaultBackground})`
 				}}
 			>
 				<div className='container'>
@@ -29,8 +28,17 @@ export const Hero: FC<{ data: IHero }> = ({ data }): JSX.Element => {
 							</Title>
 							{/* {hero.subcontent && <Title className={styles.subTitle} type='h4'>{subTitle}</Title>} */}
 						</div>
-						{/* {subContent && <SubContent data={subContent} orientation={subContentOrientation} />} */}
-						{/* {information && <span className={styles.information}>Количество материалов: {information}</span>} */}
+						{data.subcontent && (
+							<SubContent
+								data={data.subcontent}
+								orientation={data.subContentOrientation}
+							/>
+						)}
+						{data.totalArticle && (
+							<span className={styles.information}>
+								{data.infoTitle}: {data.totalArticle}
+							</span>
+						)}
 						{/* {button && <Button className={styles.button} onClick={() => router.push({ pathname: '/login' })}>Войти</Button>} */}
 					</div>
 					<div className={styles.navigation}>

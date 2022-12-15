@@ -1,6 +1,6 @@
-import { SubcontentI } from "../../../Interfaces/Hero.interface";
+import { IHeroSubcontent } from '../../../interfaces/hero.interface'
 
 export interface SubContentProps {
-  data: SubcontentI[]
-  orientation?: 'row' | 'column'
+	data: IHeroSubcontent[]
+	orientation?: 'row' | 'column'
 }
