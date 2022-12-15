@@ -12,7 +12,7 @@ const News: FC<{ data: INews[] }> = ({ data }): JSX.Element => {
 			{data?.map((news) => (
 				<div className={styles.cards} key={news.id}>
 					<div className={styles.published}>
-						{formatDate(news.createdAt, 'MMM-DDD')}
+						{formatDate(news.createdAt, 'MMM-DD')}
 					</div>
 					<Link href={`/news/${news.id}`}>
 						<a>

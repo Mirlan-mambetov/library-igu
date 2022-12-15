@@ -1,33 +1,31 @@
-import { ChangeEvent, FC, MouseEventHandler, useState } from 'react'
+import styles from './Paginate.module.scss'
+import { PaginateProps } from './Paginate.props'
+import { FC, useState } from 'react'
+import { GrPrevious, GrNext } from 'react-icons/gr'
 import ReactPaginate from 'react-paginate'
 
-const Paginate: FC = () => {
-
-  const [itemOffset, setItemOffset] = useState(0);
-
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
-  const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = items.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(items.length / itemsPerPage);
-
-  // Invoke when user click to request another page.
-  const handlePageClick = (event: MouseEvent) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
-    setItemOffset(newOffset);
-  };
-
-	return <ReactPaginate
-  breakLabel="..."
-  nextLabel="next >"
-  onPageChange={handlePageClick}
-  pageRangeDisplayed={5}
-  pageCount={pageCount}
-  previousLabel="< previous"
-  renderOnZeroPageCount={null}
-/>
+const Paginate: FC<PaginateProps> = ({ totalPage, handler, initialPage }) => {
+	return (
+		<ReactPaginate
+			initialPage={initialPage}
+			breakLabel='...'
+			onPageChange={handler}
+			pageRangeDisplayed={5}
+			pageCount={totalPage}
+			marginPagesDisplayed={2}
+			nextLabel={<GrNext style={{ fontSize: 18, width: 150 }} />}
+			previousLabel={<GrPrevious style={{ fontSize: 18, width: 150 }} />}
+			activeClassName={styles.active}
+			containerClassName={styles.pagination}
+			breakLinkClassName={styles.pageLink}
+			pageClassName={styles.pageIitem}
+			pageLinkClassName={styles.pageLink}
+			previousClassName={styles.pageIitem}
+			previousLinkClassName={styles.pageLink}
+			nextClassName={styles.pageIitem}
+			nextLinkClassName={styles.pageLink}
+		/>
+	)
 }
 
 export default Paginate
