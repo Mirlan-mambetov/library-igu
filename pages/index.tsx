@@ -1,13 +1,14 @@
-import { PartnersI } from '../Interfaces/Partners.interface'
 import { withLayout } from '../Layout/WithLayout'
 import { Bookscard, Button, Hero, Tabs, Title } from '../components'
 import News from '../components/News/News'
 import { IArrivalImage } from '../interfaces/arrival.interface'
 import { INews } from '../interfaces/news.interface'
 import { IITemsPaginate } from '../interfaces/paginate.interface'
+import { IPartners } from '../interfaces/partners.interface'
 import { arrivalApi } from '../store/api/arrival/arrival.api'
 import { newsApi } from '../store/api/news/news.api'
 import { pageApi } from '../store/api/page/page.api'
+import { partnersApi } from '../store/api/partners/partners.api'
 // STYLES
 import styles from '../styles/Pages/Home.module.scss'
 import { NextSeo } from 'next-seo'
@@ -16,6 +17,7 @@ import { FC } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Home: FC = (): JSX.Element => {
+	// STATIC PAGE ID ... so HARD CODING...
 	const id = 30
 	const limit = 3
 	const { data: page } = pageApi.useFetchPageQuery(id)
@@ -25,28 +27,9 @@ const Home: FC = (): JSX.Element => {
 		})
 	const { data: arrivalImages = [] as IArrivalImage[] } =
 		arrivalApi.useFetchArrivalImageQuery(null)
+	const { data: partners = [] as IPartners[] } =
+		partnersApi.useFetchPartnersQuery(null)
 
-	// Partners data
-	const PartnersData: PartnersI[] = [
-		{
-			id: 1,
-			image:
-				'https://res.cloudinary.com/djzubalr7/image/upload/v1665243061/Library-igu/partners/p2_plukjr.png',
-			link: 'google.com'
-		},
-		{
-			id: 2,
-			image:
-				'https://res.cloudinary.com/djzubalr7/image/upload/v1665243062/Library-igu/partners/p1_eajtag.png',
-			link: 'google.com'
-		},
-		{
-			id: 3,
-			image:
-				'https://res.cloudinary.com/djzubalr7/image/upload/v1665243057/Library-igu/partners/p3_d0eaxd.png',
-			link: 'google.com'
-		}
-	]
 	return (
 		<>
 			<NextSeo
@@ -130,13 +113,17 @@ const Home: FC = (): JSX.Element => {
 							}
 						}}
 					>
-						{PartnersData.map((partner) => (
-							<SwiperSlide key={partner.id} className={styles.partnersSlide}>
-								<a href={`https://${partner.link}`} target='_blank'>
-									<img src={partner.image} alt={`${partner.id}`} />
-								</a>
-							</SwiperSlide>
-						))}
+						{partners &&
+							partners.map((partner) => (
+								<SwiperSlide key={partner.id} className={styles.partnersSlide}>
+									<a href={`https://${partner.link}`} target='_blank'>
+										<img
+											src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${partner.image}`}
+											alt={`${partner.id}`}
+										/>
+									</a>
+								</SwiperSlide>
+							))}
 						<div className={styles.slideProgress}></div>
 					</Swiper>
 				</div>
