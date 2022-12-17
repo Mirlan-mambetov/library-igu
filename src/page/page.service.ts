@@ -58,16 +58,7 @@ export class PageService {
       select: {
         hero: true,
         journal: true,
-        vestnik: {
-          id: true,
-          name: true,
-          page: {
-            id: true
-          },
-          materials: {
-            id: true
-          }
-        }
+        vestnik: true
       }
     })
     if (!page) throw new NotFoundException(PAGE_NOT_FOUND)

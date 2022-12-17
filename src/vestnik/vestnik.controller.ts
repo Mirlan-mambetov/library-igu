@@ -140,4 +140,11 @@ export class VestnikController {
   }
 
 
+  @Post('material-views/:materialId')
+  updateMaterialViews(
+    @Param('materialId', ParseIntPipe) materialId: number
+  ) {
+    return this.vestnikService.updateMaterialViews(materialId)
+  }
+
 }

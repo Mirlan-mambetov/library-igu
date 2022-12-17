@@ -53,4 +53,10 @@ export class NewsService {
   async findAllNews() {
     return await this.newsRepository.find()
   }
+
+  async findNewsByLimit(limit: number) {
+    return await this.newsRepository.find({
+      take: limit
+    })
+  }
 }

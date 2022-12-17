@@ -11,6 +11,13 @@ import { NewsService } from './news.service';
 @Controller('news')
 export class NewsController {
   constructor(private readonly newsService: NewsService) {}
+  
+  @Get('news/limit')
+  findNewsOnLimit(
+    @Query('limit', new DefaultValuePipe(3), ParseIntPipe) limit: number = 3
+  ) {
+    return this.newsService.findNewsByLimit(+limit)
+  }
 
   @Post()
   @UsePipes(new ValidationPipe())
@@ -61,6 +68,8 @@ export class NewsController {
     return this.newsService.findOne(id)
   }
 
+
+
   @Get()
   findAllNewsWithPaginate(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
@@ -70,8 +79,11 @@ export class NewsController {
     return this.newsService.findAllWithPaginate({limit, page})
   }
 
+
+
   @Get('newses')
   findAllNews() {
     return this.newsService.findAllNews()
   }
+
 }

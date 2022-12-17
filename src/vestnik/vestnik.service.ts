@@ -15,7 +15,6 @@ import {
   Pagination,
   IPaginationOptions,
 } from 'nestjs-typeorm-paginate'
-import { PaginationParams } from './dto/pagination.dto';
 
 @Injectable()
 export class VestnikService {
@@ -29,6 +28,12 @@ export class VestnikService {
   async findVestnikById(id: number) {
     const vestnik = await this.vestnikRepository.findOne({
       where: {id},
+      relations: {
+        materials: true
+      },
+      select: {
+        materials: {id: true}
+      },
       order: {
         createdAt: "DESC"
       }
@@ -137,5 +142,10 @@ export class VestnikService {
     return await this.vestnikMaterialRepository.delete(id)
   }
 
+  async updateMaterialViews(id: number) {
+    const material = await this.findVestnikMaterialsById(id)
+    material.views++
+    return await this.vestnikMaterialRepository.save(material)
+  }
  
 }
