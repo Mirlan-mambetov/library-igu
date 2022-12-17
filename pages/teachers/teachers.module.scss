@@ -2,12 +2,16 @@
 @import '../../styles/varriables/varriables';
 
 .categories {
-  padding: 50px 0;
+	padding: 50px 0;
 }
 
 .remainings {
-  .files {
-    display: flex;
-    margin-bottom: 50px;
-  }
+	.files {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		& > div {
+			width: 70%;
+		}
+	}
 }

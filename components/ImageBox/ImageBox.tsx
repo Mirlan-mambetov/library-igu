@@ -1,7 +1,7 @@
 import { Paragraph, Title } from '../'
-import { ImageboxProps } from './ImageBox.props'
 // STYLES
 import styles from './Imagebox.module.scss'
+import { ImageboxProps } from './imageBox.props'
 import Image from 'next/image'
 import { FC } from 'react'
 
@@ -19,7 +19,7 @@ export const Imagebox: FC<ImageboxProps> = ({ data }): JSX.Element => {
 			<div className={styles.content}>
 				<Title type='h3'>{data.title}</Title>
 				<Title className={styles.subTitle} type='h4'>
-					{data.subTitle}
+					{data.subtitle}
 				</Title>
 				<Paragraph className={styles.description}>{data.description}</Paragraph>
 			</div>

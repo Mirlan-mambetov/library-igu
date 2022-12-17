@@ -34,7 +34,7 @@ const Home: FC = (): JSX.Element => {
 	return (
 		<Layout>
 			<NextSeo
-				title={`${page && page.name} Научная библиотека ИГУ`}
+				title={`${page ? page.name : ''} Научная библиотека ИГУ`}
 				description='Научная библиотека ИГУ'
 				additionalMetaTags={[
 					{ property: 'og:title', content: 'Научная библиотека ИГУ' }

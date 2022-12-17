@@ -1,8 +1,8 @@
-import { CategoryI } from "../../../Interfaces/Categories.interface";
+import { ITeachersCategory } from '../../../interfaces/teachers.interface'
 
 export interface CategoryProps {
-  category: CategoryI[]
-  categoryLink: string
-  position?: 'fixed' | 'default'
-  categoryTitle?: string
+	category: ITeachersCategory[]
+	categoryLink: string
+	position?: 'fixed' | 'default'
+	categoryTitle?: string
 }
