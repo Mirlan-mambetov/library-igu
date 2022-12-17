@@ -76,9 +76,15 @@ export class TeachersService {
       },
       order: {
         id: "ASC"
+      },
+      select: {
+        works: {
+          id: true
+        }
       }
     })
   }
+
 
   async createWork(id: number, dto: TeachersWorkDto, file: string) {
     const category = await this.findOne(id)
@@ -141,5 +147,23 @@ export class TeachersService {
         id: "ASC"
       }
     })
+  }
+
+  async findWorksLimit(limit: number) {
+    return await this.teachersWorksRepository.find({
+      relations: {
+        category: true
+      },
+      take: limit, 
+      order: {
+        createdAt: "ASC"
+      }
+    })
+  }
+
+  async updateWorksView(id: number) {
+    const work = await this.findOneWork(id)
+    work.views++
+    return await this.teachersWorksRepository.save(work)
   }
 }

@@ -13,6 +13,13 @@ export class TeachersController {
   constructor(
     private readonly teachersService: TeachersService
   ) {}
+  @Get('works/limit')
+  findWorksLimit(
+    @Query('limit', new DefaultValuePipe(3), ParseIntPipe) limit: number = 3
+  ) {
+    return this.teachersService.findWorksLimit(limit)
+  }
+
   @Get('works')
   @HttpCode(200)
   findAllWork() {
@@ -41,6 +48,8 @@ export class TeachersController {
       }, 
     id)
   }
+
+
 
   @Get()
   @HttpCode(200)
@@ -129,4 +138,10 @@ export class TeachersController {
     return this.teachersService.deleteWork(id)
   }
 
+  @Post('works-views/:id') 
+  updateWorkView(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.teachersService.updateWorksView(id)
+  }
 }
