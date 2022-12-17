@@ -41,7 +41,7 @@ export const Tabs: FC<TabsProps> = ({ tabs }): JSX.Element => {
 				<div className={classes.tabsContent}>
 					{tabs.isLink?.map((l) => (
 						<a
-							href={`${process.env.NEXT_PUBLIC_APP_STATIC}/${l.link}`}
+							href={`${process.env.NEXT_PUBLIC_APP_STATIC}${l.link}`}
 							key={l.id}
 							target='_blank'
 						>

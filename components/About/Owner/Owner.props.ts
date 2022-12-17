@@ -1,5 +1,5 @@
-import { OwnerI } from "../../../Interfaces/About.interface";
+import { IAboutOwner } from '../../../interfaces/about.interface'
 
 export interface OwnerProps {
-  data: OwnerI
+	data: IAboutOwner
 }

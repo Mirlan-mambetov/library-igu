@@ -3,7 +3,7 @@ import { IPage } from './page.interface'
 
 export interface IArhivs extends IBase {
 	name: string
-	materials: testIn[]
+	materials: Pick<IArhivsMaterials, 'id'>[]
 	page?: IPage
 }
 export interface IArhivsMaterials extends IBase {
@@ -13,7 +13,4 @@ export interface IArhivsMaterials extends IBase {
 	downloaded?: number
 	views?: number
 	category: IArhivs
-}
-interface testIn {
-	id: number
 }

@@ -1,6 +1,6 @@
-import { FileI } from "../../Interfaces/Files.interface";
+import { IFile } from '../../interfaces/file.interface'
 
 export interface FilefieldsProps {
-  data: FileI[]
-  orientation?: 'row' | 'column'
+	id: number
+	orientation?: 'row' | 'column'
 }

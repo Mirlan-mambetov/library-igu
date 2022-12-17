@@ -1,3 +1,4 @@
+import { Layout } from '../Layout/Layout'
 import { withLayout } from '../Layout/WithLayout'
 import { Bookscard, Button, Hero, Tabs, Title } from '../components'
 import News from '../components/News/News'
@@ -31,9 +32,9 @@ const Home: FC = (): JSX.Element => {
 		partnersApi.useFetchPartnersQuery(null)
 
 	return (
-		<>
+		<Layout>
 			<NextSeo
-				title='Главная - Научная библиотека ИГУ'
+				title={`${page && page.name} Научная библиотека ИГУ`}
 				description='Научная библиотека ИГУ'
 				additionalMetaTags={[
 					{ property: 'og:title', content: 'Научная библиотека ИГУ' }
@@ -128,8 +129,8 @@ const Home: FC = (): JSX.Element => {
 					</Swiper>
 				</div>
 			</section>
-		</>
+		</Layout>
 	)
 }
 
-export default withLayout(Home)
+export default Home

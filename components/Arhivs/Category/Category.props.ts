@@ -1,6 +1,6 @@
-import { ArhivsLink } from "../../../Interfaces/Arhivs.interface";
+import { IArhivs } from '../../../interfaces/archiv.interface'
 
 export interface CategoryProps {
-  data: ArhivsLink[]
-  arhivsLink: string
+	data: IArhivs[]
+	arhivsLink: string
 }

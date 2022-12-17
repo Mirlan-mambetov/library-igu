@@ -2,22 +2,22 @@
 @import '../../../styles/varriables/varriables';
 
 .content {
-  .contentWrapp {
-    display: flex;
-    justify-content: space-between;
+	.contentWrapp {
+		display: flex;
+		justify-content: space-between;
 
-    .files {
-      max-width: 45%;
-      width: 100%;
+		.files {
+			max-width: 55%;
+			width: 100%;
 
-      .filesBtn {
-        margin-top: 60px;
-      }
-    }
+			.filesBtn {
+				margin-top: 60px;
+			}
+		}
 
-    .categories {
-      max-width: 45%;
-      width: 100%;
-    }
-  }
+		.categories {
+			max-width: 35%;
+			width: 100%;
+		}
+	}
 }

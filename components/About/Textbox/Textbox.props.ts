@@ -1,5 +1,5 @@
-import { AboutTextContentI } from "../../../Interfaces/About.interface";
+import { IAboutInfo } from '../../../interfaces/about.interface'
 
 export interface TextboxProps {
-  data: AboutTextContentI
+	data: IAboutInfo
 }

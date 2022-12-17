@@ -13,11 +13,12 @@ export const Hero: FC<{ data: IHero }> = ({ data }): JSX.Element => {
 			<div
 				className={styles.hero}
 				style={{
-					backgroundImage: data
-						? `url(${process.env.NEXT_PUBLIC_APP_STATIC}/${
-								data.background || data.image
-						  } )`
-						: `url(${defaultBackground})`
+					backgroundImage:
+						!data.background && !data.image
+							? `url(${defaultBackground})`
+							: `url(${process.env.NEXT_PUBLIC_APP_STATIC}/${
+									data.background || data.image
+							  } )`
 				}}
 			>
 				<div className='container'>

@@ -7,5 +7,8 @@ export const newsService = {
 	},
 	async findNewsById(id: number) {
 		return await axiosBase.get<INews>(`/news/news/${id}`)
+	},
+	async findNewsOnLimit(limit: number) {
+		return await axiosBase.get<INews[]>(`/news/news/limit?limit=${limit}`)
 	}
 }

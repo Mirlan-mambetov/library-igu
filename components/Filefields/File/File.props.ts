@@ -1,5 +1,5 @@
-import { FileI } from "../../../Interfaces/Files.interface";
+import { IFile } from '../../../interfaces/file.interface'
 
 export interface FileProps {
-  file: FileI
+	file: IFile
 }

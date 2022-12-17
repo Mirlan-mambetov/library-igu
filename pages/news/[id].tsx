@@ -77,7 +77,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	try {
 		// @ts-ignore
 		const { data: news } = await newsService.findNewsById(+params?.id)
-		const { data: newses } = await newsService.findAllNews()
+		const { data: newses } = await newsService.findNewsOnLimit(3)
 
 		return {
 			props: {

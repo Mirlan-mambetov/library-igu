@@ -1,28 +1,41 @@
-import { FC } from 'react'
-import { Jurnalinfo } from './Jurnalinfo/Jurnalinfo'
-
+import { IJournal } from '../../interfaces/journal.interface'
+import { Paragraph } from '../Paragraph/Paragraph'
+import { Title } from '../Title/Title'
 // STYLES
 import styles from './Jurnal.module.scss'
-import { JurnalI } from '../../Interfaces/Jurnal.interface'
-import { Title } from '../Title/Title'
-import { Paragraph } from '../Paragraph/Paragraph'
+import { Jurnalinfo } from './Jurnalinfo/Jurnalinfo'
+import { FC } from 'react'
 
-export const Jurnal: FC<JurnalI> = ({ jurnalAbout, information }): JSX.Element => {
-  return (
-    <div className={styles.jurnal}>
-      {information && <div className={styles.jurnalInformation}><Jurnalinfo {...information} /></div>}
-      <div className={styles.jurnalAbout}>
-        <div className={styles.content}>
-          <Title type='h3'>{jurnalAbout.title}</Title>
-          <Title className={styles.test} type='h4'>{jurnalAbout.subTitle}</Title>
-          <Paragraph>
-            {jurnalAbout.text}
-          </Paragraph>
-        </div>
-        <div className={styles.image}>
-          <img src={jurnalAbout.image} alt={jurnalAbout.title} />
-        </div>
-      </div>
-    </div>
-  )
+export const Jurnal: FC<IJournal> = ({
+	journalHead,
+	image,
+	subtitle,
+	title,
+	description
+}): JSX.Element => {
+	return (
+		<div className={styles.jurnal}>
+			<div className={styles.jurnalInformation}>
+				{journalHead &&
+					journalHead.map((headInfo) => (
+						<Jurnalinfo key={headInfo.id} {...headInfo} />
+					))}
+			</div>
+			<div className={styles.jurnalAbout}>
+				<div className={styles.content}>
+					<Title type='h3'>{title}</Title>
+					<Title className={styles.test} type='h4'>
+						{subtitle}
+					</Title>
+					<Paragraph>{description}</Paragraph>
+				</div>
+				<div className={styles.image}>
+					<img
+						src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${image}`}
+						alt={title}
+					/>
+				</div>
+			</div>
+		</div>
+	)
 }

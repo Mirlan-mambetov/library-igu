@@ -10,7 +10,6 @@ export interface IJournal extends IBase {
 
 export interface IJournalHead extends IBase {
 	title: string
-
 	items: IJournalHeadItems[]
 }
 
