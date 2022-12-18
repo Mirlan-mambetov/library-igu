@@ -28,6 +28,14 @@ export class ElibraryService {
       },
       order: {
         id: "ASC"
+      },
+      select: {
+        secondCategory: {
+          id: true,
+          books: {
+            id: true
+          }
+        }
       }
     })
   }
