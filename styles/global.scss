@@ -1,6 +1,7 @@
 @use '../styles/media/media-queres';
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import './varriables/varriables';
-@import './fonts/font';
 @import './mixins';
 
 * {
@@ -8,10 +9,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-@media print {
-	body {
-		display: none !important;
-	}
+
+body {
+	@include mainFont;
 }
 .btn-download {
 	background: none;
@@ -23,10 +23,6 @@
 	&:hover {
 		cursor: not-allowed;
 	}
-}
-
-body {
-	@include mainFont;
 }
 
 // OPTIONS
