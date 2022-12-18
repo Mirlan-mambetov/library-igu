@@ -1,5 +1,6 @@
 import { Layout } from '../../Layout/Layout'
 import { Hero, Tabs, Jurnal, Arhivs } from '../../components'
+import { IPage } from '../../interfaces/Page.interface'
 import { pageApi } from '../../store/api/page/page.api'
 // STYLES
 import styles from './vestnik.module.scss'
@@ -8,7 +9,7 @@ import React from 'react'
 
 const Vestnik = () => {
 	const pageId = 4
-	const { data: page } = pageApi.useFetchPageQuery(pageId)
+	const { data: page = {} as IPage } = pageApi.useFetchPageQuery(pageId)
 
 	return (
 		<Layout>
