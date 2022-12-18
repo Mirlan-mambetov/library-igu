@@ -30,7 +30,7 @@ export class JournalController {
   @UsePipes(new ValidationPipe())
   @HttpCode(201)
   createJournal(
-    @Param('pageid', ParseIntPipe) pageId: number,
+    @Param('pageId', ParseIntPipe) pageId: number,
     @Body() dto: IJournalCreateDto,
   ) {
     return this.journalService.createJournal(pageId, dto)
