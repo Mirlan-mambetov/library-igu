@@ -12,13 +12,7 @@ export const UploadService = {
 			method: `${method}`,
 			url: `/${url}/${id}`,
 			data: file,
-			headers: { 'Content-Type': 'multipart/form-data' },
-			onUploadProgress: (ProgressEvent) => {
-				if (setValue) {
-					const progress = (ProgressEvent.loaded / ProgressEvent.total) * 100
-					setValue(Math.ceil(progress))
-				}
-			}
+			headers: { 'Content-Type': 'multipart/form-data' }
 		})
 	}
 }
