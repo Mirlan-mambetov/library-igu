@@ -1,4 +1,3 @@
-// STYLES
 import styles from './Owner.module.scss'
 import { OwnerProps } from './Owner.props'
 import { FC } from 'react'
