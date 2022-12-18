@@ -1,9 +1,7 @@
 import { Layout } from '../../Layout/Layout'
-import { Button, Hero, Imagebox, Title } from '../../components'
-import News from '../../components/News/News'
+import { Button, Hero, Imagebox, Title, NewsComponent } from '../../components'
 import { INews } from '../../interfaces/news.interface'
 import { newsService } from '../../services/newsService/newsService'
-// STYLES
 import styles from './news.module.scss'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
@@ -37,7 +35,7 @@ const NewsPage: FC<newsI> = ({ news, newses }) => {
 						<Title type='h3'>Читайте также</Title>
 					</div>
 					<div className={styles.cardsWrapp}>
-						{newses && <News data={newses} />}
+						<NewsComponent data={newses} />
 					</div>
 					<div className={styles.cardsBtn}>
 						<Link href={'/news/arhiv'}>

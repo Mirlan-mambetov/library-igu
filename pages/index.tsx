@@ -1,7 +1,12 @@
 import { Layout } from '../Layout/Layout'
-import { withLayout } from '../Layout/WithLayout'
-import { Bookscard, Button, Hero, Tabs, Title } from '../components'
-import News from '../components/News/News'
+import {
+	Bookscard,
+	Button,
+	Hero,
+	Tabs,
+	Title,
+	NewsComponent
+} from '../components'
 import { IArrivalImage } from '../interfaces/arrival.interface'
 import { INews } from '../interfaces/news.interface'
 import { IPage } from '../interfaces/page.interface'
@@ -11,7 +16,6 @@ import { arrivalApi } from '../store/api/arrival/arrival.api'
 import { newsApi } from '../store/api/news/news.api'
 import { pageApi } from '../store/api/page/page.api'
 import { partnersApi } from '../store/api/partners/partners.api'
-// STYLES
 import styles from '../styles/Pages/Home.module.scss'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -51,7 +55,7 @@ const Home: FC = (): JSX.Element => {
 						<Title type='h3'>Новости</Title>
 					</div>
 					<div className={styles.news}>
-						{newses && <News data={newses.items} />}
+						{newses && <NewsComponent data={newses.items} />}
 					</div>
 					<div className={styles.newsBtn}>
 						<Link href={'/news/arhiv'}>

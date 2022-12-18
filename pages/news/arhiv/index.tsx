@@ -1,14 +1,12 @@
 import { Layout } from '../../../Layout/Layout'
-import { Hero } from '../../../components'
-import News from '../../../components/News/News'
+import { Hero, NewsComponent } from '../../../components'
 import Paginate from '../../../components/Paginate/Paginate'
 import { INews } from '../../../interfaces/news.interface'
 import { IITemsPaginate } from '../../../interfaces/paginate.interface'
 import { newsApi } from '../../../store/api/news/news.api'
 import { pageApi } from '../../../store/api/page/page.api'
-// STYLES
 import styles from './arhiv.module.scss'
-import { GetStaticProps, NextPage } from 'next'
+import { NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import { useState } from 'react'
 
@@ -49,7 +47,7 @@ const NewsArhiv: NextPage = (): JSX.Element => {
 					<div className={styles.news}>
 						{newses ? (
 							<>
-								<News data={newses.items} />
+								<NewsComponent data={newses.items} />
 							</>
 						) : (
 							''
