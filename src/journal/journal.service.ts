@@ -84,6 +84,10 @@ export class JournalService {
     })
   }
 
+  async deleteJournal(id: number) {
+    return await this.journalRepository.delete(id)
+  }
+
   async updateJournalImage(id: number, file: string) {
     const journal = await this.findJournalById(id)
     await deleteFileWithName(journal.image)

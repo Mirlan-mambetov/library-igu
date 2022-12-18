@@ -10,7 +10,8 @@ import {
   UsePipes,
   ValidationPipe,
   HttpCode,
-  UploadedFile
+  UploadedFile,
+  Delete
  } from '@nestjs/common';
 import { JournalDto } from './dto/journal.dto';
 import { JournalHeadDto } from './dto/journal.head.dto';
@@ -60,6 +61,12 @@ export class JournalController {
     return this.journalService.updateJournalImage(id, image.filename)
   }
 
+  @Delete(':id')
+  deleteJournal(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.journalService.deleteJournal(id)
+  }
 
 
   @Post('journalhead/:journalid')
