@@ -7,7 +7,7 @@ import { IAboutInfo } from '../../interfaces/about.interface'
 import { aboutApi } from '../../store/api/about/about.api'
 import { pageApi } from '../../store/api/page/page.api'
 // STYLES
-import styles from './About.module.scss'
+import styles from './about.module.scss'
 import { NextSeo } from 'next-seo'
 import { FC } from 'react'
 

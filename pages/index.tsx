@@ -4,6 +4,7 @@ import { Bookscard, Button, Hero, Tabs, Title } from '../components'
 import News from '../components/News/News'
 import { IArrivalImage } from '../interfaces/arrival.interface'
 import { INews } from '../interfaces/news.interface'
+import { IPage } from '../interfaces/page.interface'
 import { IITemsPaginate } from '../interfaces/paginate.interface'
 import { IPartners } from '../interfaces/partners.interface'
 import { arrivalApi } from '../store/api/arrival/arrival.api'
@@ -22,7 +23,7 @@ const Home: FC = (): JSX.Element => {
 	// STATIC PAGE ID ... so HARD CODING...
 	const id = 1
 	const limit = 3
-	const { data: page } = pageApi.useFetchPageQuery(id)
+	const { data: page = {} as IPage } = pageApi.useFetchPageQuery(id)
 	const { data: newses = {} as IITemsPaginate<INews> } =
 		newsApi.useFetchAllNewsWithPaginateQuery({
 			query: { page: 1, limit }

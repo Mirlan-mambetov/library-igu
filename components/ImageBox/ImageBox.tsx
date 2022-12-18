@@ -1,7 +1,7 @@
 import { Paragraph, Title } from '../'
-import { ImageboxProps } from './ImageBox.props'
 // STYLES
-import styles from './Imagebox.module.scss'
+import styles from './ImageBox.module.scss'
+import { ImageboxProps } from './ImageBox.props'
 import Image from 'next/image'
 import { FC } from 'react'
 
