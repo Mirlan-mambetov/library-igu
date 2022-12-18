@@ -1,4 +1,4 @@
-import { ITeachersCategory } from '../../../interfaces/teachers.interface'
+import { ITeachersCategory } from '../../../interfaces/Teachers.interface'
 
 export interface CategoryProps {
 	category: ITeachersCategory[]

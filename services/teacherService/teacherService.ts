@@ -1,7 +1,7 @@
 import {
 	ITeachersCategory,
 	ITeachersWorks
-} from '../../interfaces/teachers.interface'
+} from '../../interfaces/Teachers.interface'
 import { axiosBase } from '../api.config'
 
 export const teacherService = {

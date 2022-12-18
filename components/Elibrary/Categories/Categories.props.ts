@@ -1,4 +1,4 @@
-import { IElibraryCategory } from '../../../interfaces/elibrary.interface'
+import { IElibraryCategory } from '../../../interfaces/Elibrary.interface'
 
 export interface CategoriesProps {
 	data: IElibraryCategory[]

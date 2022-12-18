@@ -1,4 +1,4 @@
-import { IArhivs } from '../../../interfaces/archiv.interface'
+import { IArhivs } from '../../../interfaces/Archiv.interface'
 
 export interface CategoryProps {
 	data: IArhivs[]

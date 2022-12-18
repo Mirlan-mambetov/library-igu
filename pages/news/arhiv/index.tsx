@@ -3,7 +3,7 @@ import { Hero } from '../../../components'
 import News from '../../../components/News/News'
 import Paginate from '../../../components/Paginate/Paginate'
 import { INews } from '../../../interfaces/News.interface'
-import { IITemsPaginate } from '../../../interfaces/paginate.interface'
+import { IITemsPaginate } from '../../../interfaces/Paginate.interface'
 import { newsApi } from '../../../store/api/news/news.api'
 import { pageApi } from '../../../store/api/page/page.api'
 // STYLES

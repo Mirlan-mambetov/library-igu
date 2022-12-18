@@ -1,6 +1,6 @@
 import { Layout } from '../../../Layout/Layout'
 import { Category, Filefields, Hero } from '../../../components'
-import { IArhivs } from '../../../interfaces/archiv.interface'
+import { IArhivs } from '../../../interfaces/Archiv.interface'
 import { vestnikService } from '../../../services/vestnikService/vestnik.service'
 import { vestnikApi } from '../../../store/api/vestnik/vestnik.api'
 // STYLES

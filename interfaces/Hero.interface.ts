@@ -1,5 +1,5 @@
-import { IBase } from './base.interface'
-import { IPage } from './page.interface'
+import { IBase } from './Base.interface'
+import { IPage } from './Page.interface'
 
 export interface IHero extends IBase {
 	title: string

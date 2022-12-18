@@ -1,6 +1,6 @@
 import { Layout } from '../../../Layout/Layout'
 import { TeacherCategories, Hero, TeachersFileList } from '../../../components'
-import { ITeachersCategory } from '../../../interfaces/teachers.interface'
+import { ITeachersCategory } from '../../../interfaces/Teachers.interface'
 import { teacherService } from '../../../services/teacherService/teacherService'
 // STYLES
 import styles from './category.module.scss'

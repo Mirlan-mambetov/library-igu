@@ -1,4 +1,4 @@
-import { IImagebox } from '../../../interfaces/imagebox.interface'
+import { IImagebox } from '../../../interfaces/Imagebox.interface'
 import { api } from '../api'
 
 export const imageCardApi = api.injectEndpoints({

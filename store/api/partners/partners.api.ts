@@ -1,4 +1,4 @@
-import { IPartners } from '../../../interfaces/partners.interface'
+import { IPartners } from '../../../interfaces/Partners.interface'
 import { api } from '../api'
 
 export const partnersApi = api.injectEndpoints({

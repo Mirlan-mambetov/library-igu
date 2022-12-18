@@ -3,7 +3,7 @@ import { withLayout } from '../../Layout/WithLayout'
 import { Hero, Tabs } from '../../components'
 import { Owner } from '../../components/About/Owner/Owner'
 import { Textbox } from '../../components/About/Textbox/Textbox'
-import { IAboutInfo } from '../../interfaces/about.interface'
+import { IAboutInfo } from '../../interfaces/About.interface'
 import { aboutApi } from '../../store/api/about/about.api'
 import { pageApi } from '../../store/api/page/page.api'
 // STYLES

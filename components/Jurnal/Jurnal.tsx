@@ -1,4 +1,4 @@
-import { IJournal } from '../../interfaces/journal.interface'
+import { IJournal } from '../../interfaces/Journal.interface'
 import { Paragraph } from '../Paragraph/Paragraph'
 import { Title } from '../Title/Title'
 // STYLES

@@ -1,11 +1,11 @@
 import {
 	IITemsPaginate,
 	IPaginationDtoI
-} from '../../../interfaces/paginate.interface'
+} from '../../../interfaces/Paginate.interface'
 import {
 	ITeachersCategory,
 	ITeachersWorks
-} from '../../../interfaces/teachers.interface'
+} from '../../../interfaces/Teachers.interface'
 import { api } from '../api'
 
 export const teachersApi = api.injectEndpoints({

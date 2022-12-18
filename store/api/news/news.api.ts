@@ -2,7 +2,7 @@ import { INews } from '../../../interfaces/News.interface'
 import {
 	IITemsPaginate,
 	IPaginationDtoI
-} from '../../../interfaces/paginate.interface'
+} from '../../../interfaces/Paginate.interface'
 import { api } from '../api'
 
 export const newsApi = api.injectEndpoints({

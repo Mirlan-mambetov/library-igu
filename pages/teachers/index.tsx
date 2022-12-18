@@ -3,7 +3,7 @@ import { TeacherCategories, Hero, Title, TeachersFiles } from '../../components'
 import {
 	ITeachersCategory,
 	ITeachersWorks
-} from '../../interfaces/teachers.interface'
+} from '../../interfaces/Teachers.interface'
 import { pageApi } from '../../store/api/page/page.api'
 import { teachersApi } from '../../store/api/teachers/teachers.api'
 import styles from './teachers.module.scss'

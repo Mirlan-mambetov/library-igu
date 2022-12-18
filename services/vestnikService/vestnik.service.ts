@@ -1,4 +1,4 @@
-import { IArhivs } from '../../interfaces/archiv.interface'
+import { IArhivs } from '../../interfaces/Archiv.interface'
 import { axiosBase } from '../api.config'
 
 export const vestnikService = {

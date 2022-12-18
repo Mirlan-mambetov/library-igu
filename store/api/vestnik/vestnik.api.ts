@@ -1,8 +1,8 @@
-import { IArhivs, IArhivsMaterials } from '../../../interfaces/archiv.interface'
+import { IArhivs, IArhivsMaterials } from '../../../interfaces/Archiv.interface'
 import {
 	IITemsPaginate,
 	IPaginationDtoI
-} from '../../../interfaces/paginate.interface'
+} from '../../../interfaces/Paginate.interface'
 import { api } from '../api'
 
 export const vestnikApi = api.injectEndpoints({

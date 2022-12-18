@@ -1,5 +1,5 @@
 import { Title } from '../../'
-import { IJournalHead } from '../../../interfaces/journal.interface'
+import { IJournalHead } from '../../../interfaces/Journal.interface'
 // STYLES
 import styles from './jurnalinfo.module.scss'
 import { FC } from 'react'
