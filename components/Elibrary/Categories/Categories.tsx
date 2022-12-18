@@ -33,7 +33,12 @@ export const ElibraryCategories: FC<CategoriesProps> = ({
 							<a>
 								{c.image ? (
 									<div className={styles.image}>
-										<Image src={c.image} alt={c.name} />
+										<Image
+											src={`${process.env.NEXT_PUBLIC_APP_STATIC}${c.image}`}
+											alt={c.name}
+											width={320}
+											height={190}
+										/>
 										<div className={styles.title}>
 											<Title type='h4'>{c.name}</Title>
 										</div>
@@ -45,12 +50,12 @@ export const ElibraryCategories: FC<CategoriesProps> = ({
 								)}
 							</a>
 						</Link>
-						{/* {c.totalBooks && (
+						{c.secondCategory && (
 							<div className={styles.information}>
-								книг в данной категории:
-								<span>{c.totalBooks}</span>
+								всего категорий:
+								<span>{c.secondCategory.length}</span>
 							</div>
-						)} */}
+						)}
 						<div className={styles.icon}>
 							<svg
 								width='18'
