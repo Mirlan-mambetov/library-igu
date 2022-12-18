@@ -1,5 +1,4 @@
 import { Paragraph, Title } from '../'
-// STYLES
 import styles from './Cards.module.scss'
 import { CardsProps } from './Cards.props'
 import Image from 'next/image'
