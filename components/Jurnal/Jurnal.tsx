@@ -31,7 +31,7 @@ export const Jurnal: FC<IJournal> = ({
 					<Paragraph>{description}</Paragraph>
 				</div>
 				<div className={styles.image}>
-					<Image
+					<img
 						src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${image}`}
 						alt={title}
 					/>
