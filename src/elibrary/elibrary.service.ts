@@ -32,6 +32,7 @@ export class ElibraryService {
       select: {
         secondCategory: {
           id: true,
+          name: true,
           books: {
             id: true
           }
