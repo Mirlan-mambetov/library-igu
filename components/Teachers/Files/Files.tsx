@@ -71,6 +71,7 @@ export const TeachersFiles: FC<ITeachersWorks> = ({
 						href={`${process.env.NEXT_PUBLIC_APP_STATIC}${file}`}
 						target='_blank'
 						title='Просмотреть'
+						rel='noreferrer'
 						onClick={updateView}
 					>
 						<svg

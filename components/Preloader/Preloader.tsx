@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import { FC } from 'react'
 
-export const Preloader: FC = (): any => {
+export const Preloader: FC = (): JSX.Element => {
 	const router = useRouter()
 	const [loading, setLoading] = useState<boolean>(false)
 	useEffect(() => {
@@ -23,11 +23,13 @@ export const Preloader: FC = (): any => {
 		}
 	})
 	return (
-		loading && (
-			<div className={styles.preloader}>
-				<Image src={Logo} />
-				<span>Загрузка страницы...</span>
-			</div>
-		)
+		<>
+			{loading && (
+				<div className={styles.preloader}>
+					<Image src={Logo} />
+					<span>Загрузка страницы...</span>
+				</div>
+			)}
+		</>
 	)
 }
