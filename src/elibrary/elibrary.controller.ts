@@ -28,6 +28,12 @@ import { ElibraryService } from './elibrary.service';
 @Controller('elibrary')
 export class ElibraryController {
   constructor(private readonly elibraryService: ElibraryService) {}
+  
+  @Get('books')
+  @HttpCode(200)
+  findAllBooks() {
+    return this.elibraryService.findAllBooks()
+  }
 
   @Get()
   @HttpCode(200)
@@ -73,12 +79,6 @@ export class ElibraryController {
   ) {
     limit = limit > 100 ? 100: limit
     return this.elibraryService.findBooksByCategory({page, limit}, categoryId)
-  }
-
-  @Get('books')
-  @HttpCode(200)
-  findAllBooks() {
-    return this.elibraryService.findAllBooks()
   }
 
   @Post()
