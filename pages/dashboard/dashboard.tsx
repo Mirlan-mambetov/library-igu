@@ -4,7 +4,7 @@ import { pageApi } from '../../store/api/page/page.api'
 import { Box, Button, Card, CardContent, Typography } from '@mui/material'
 import { FC, useContext } from 'react'
 
-export const Dashboard: FC = () => {
+const Dashboard: FC = () => {
 	const { data: pages } = pageApi.useFetchAllPagesQuery(null)
 	console.log(pages)
 	const { onOpen } = useContext(MyModalContext)
@@ -33,3 +33,4 @@ export const Dashboard: FC = () => {
 		</Layout>
 	)
 }
+export default Dashboard
