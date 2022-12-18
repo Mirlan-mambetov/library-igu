@@ -12,7 +12,7 @@ import { NextSeo } from 'next-seo'
 import { FC } from 'react'
 
 const About: FC = (): JSX.Element => {
-	const pageId = 33
+	const pageId = 2
 	const { data: page } = pageApi.useFetchPageQuery(pageId)
 	const { data: aboutInfo = [] as IAboutInfo[] } =
 		aboutApi.useFetchAboutInfoQuery(null)

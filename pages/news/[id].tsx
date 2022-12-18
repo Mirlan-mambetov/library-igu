@@ -1,12 +1,10 @@
 import { Layout } from '../../Layout/Layout'
-import { withLayout } from '../../Layout/WithLayout'
-import { Button, Cards, Hero, Imagebox, Title } from '../../components'
+import { Button, Hero, Imagebox, Title } from '../../components'
 import News from '../../components/News/News'
 import { INews } from '../../interfaces/news.interface'
 import { newsService } from '../../services/newsService/newsService'
 // STYLES
 import styles from './news.module.scss'
-import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'

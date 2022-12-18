@@ -8,7 +8,7 @@ import { NextSeo } from 'next-seo'
 import { FC } from 'react'
 
 const Services: FC = (): JSX.Element => {
-	const pageId = 35
+	const pageId = 3
 	const { data: page } = pageApi.useFetchPageQuery(pageId)
 	const { data: imageCards } = imageCardApi.useFetchAllImageCardsQuery(null)
 

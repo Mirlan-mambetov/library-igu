@@ -1,7 +1,5 @@
 import Logo from '../../public/logo.png'
-// STYLES
 import classes from './Navbar.module.scss'
-import { NavbarProps } from './Navbar.props'
 import { MenuNavigation } from './mobile/menu/menu'
 import classNames from 'classnames'
 import Image from 'next/image'
@@ -52,7 +50,7 @@ export const Navbar: FC = (): JSX.Element => {
 				<div className={classes.logo}>
 					<Link href='/'>
 						<a>
-							<Image src={Logo} />
+							<Image src={Logo} alt='Logo' />
 						</a>
 					</Link>
 				</div>

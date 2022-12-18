@@ -3,6 +3,7 @@ import { formatDate } from '../../utils/formatDate.utils'
 import { Paragraph } from '../Paragraph/Paragraph'
 import { Title } from '../Title/Title'
 import styles from './News.module.scss'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
@@ -17,7 +18,7 @@ const News: FC<{ data: INews[] }> = ({ data }): JSX.Element => {
 					<Link href={`/news/${news.id}`}>
 						<a>
 							<div className={styles.cardsImage}>
-								<img
+								<Image
 									src={`${process.env.NEXT_PUBLIC_APP_STATIC}${news.image}`}
 									alt={news.title}
 								/>

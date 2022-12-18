@@ -26,7 +26,7 @@ export const Preloader: FC = (): JSX.Element => {
 		<>
 			{loading && (
 				<div className={styles.preloader}>
-					<Image src={Logo} />
+					<Image src={Logo} alt='preloader' />
 					<span>Загрузка страницы...</span>
 				</div>
 			)}

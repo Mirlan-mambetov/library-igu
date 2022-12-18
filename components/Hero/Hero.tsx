@@ -1,6 +1,5 @@
 import { Title } from '../'
 import { IHero } from '../../interfaces/hero.interface'
-// STYLE
 import styles from './Hero.module.scss'
 import { defaultBackground } from './Hero.props'
 import { Navigation } from './Navigation/Navigation'

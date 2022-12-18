@@ -4,6 +4,7 @@ import { Title } from '../Title/Title'
 // STYLES
 import styles from './Jurnal.module.scss'
 import { Jurnalinfo } from './Jurnalinfo/Jurnalinfo'
+import Image from 'next/image'
 import { FC } from 'react'
 
 export const Jurnal: FC<IJournal> = ({
@@ -30,7 +31,7 @@ export const Jurnal: FC<IJournal> = ({
 					<Paragraph>{description}</Paragraph>
 				</div>
 				<div className={styles.image}>
-					<img
+					<Image
 						src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${image}`}
 						alt={title}
 					/>

@@ -13,13 +13,14 @@ import { partnersApi } from '../store/api/partners/partners.api'
 // STYLES
 import styles from '../styles/Pages/Home.module.scss'
 import { NextSeo } from 'next-seo'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Home: FC = (): JSX.Element => {
 	// STATIC PAGE ID ... so HARD CODING...
-	const id = 30
+	const id = 1
 	const limit = 3
 	const { data: page } = pageApi.useFetchPageQuery(id)
 	const { data: newses = {} as IITemsPaginate<INews> } =
@@ -117,10 +118,16 @@ const Home: FC = (): JSX.Element => {
 						{partners &&
 							partners.map((partner) => (
 								<SwiperSlide key={partner.id} className={styles.partnersSlide}>
-									<a href={`https://${partner.link}`} target='_blank'>
-										<img
+									<a
+										href={`https://${partner.link}`}
+										target='_blank'
+										rel='noreferrer'
+									>
+										<Image
 											src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${partner.image}`}
 											alt={`${partner.id}`}
+											width={200}
+											height={50}
 										/>
 									</a>
 								</SwiperSlide>

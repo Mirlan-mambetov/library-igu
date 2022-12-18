@@ -7,7 +7,7 @@ import { NextSeo } from 'next-seo'
 import React from 'react'
 
 const Vestnik = () => {
-	const pageId = 29
+	const pageId = 4
 	const { data: page } = pageApi.useFetchPageQuery(pageId)
 
 	return (

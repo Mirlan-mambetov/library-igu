@@ -1,8 +1,8 @@
-import { ElibraryCategoryI } from "../../../Interfaces/Categories.interface";
+import { IElibraryCategory } from '../../../interfaces/elibrary.interface'
 
 export interface CategoriesProps {
-  data: ElibraryCategoryI[]
-  categoryLink: string
-  position?: 'row' | 'column'
-  categoryTitle: string
+	data: IElibraryCategory[]
+	categoryLink: string
+	position?: 'row' | 'column'
+	categoryTitle: string
 }

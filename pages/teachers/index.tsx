@@ -11,7 +11,7 @@ import { NextSeo } from 'next-seo'
 import { FC } from 'react'
 
 const TeachersPage: FC = (): JSX.Element => {
-	const pageId = 36
+	const pageId = 5
 	const limit = 4
 	const { data: page } = pageApi.useFetchPageQuery(pageId)
 	const { data: categories = [] as ITeachersCategory[] } =

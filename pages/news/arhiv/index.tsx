@@ -29,7 +29,7 @@ const NewsArhiv: NextPage = (): JSX.Element => {
 	return (
 		<Layout>
 			<NextSeo
-				title={`${onePage && onePage.name} - Научная библиотека ИГУ`}
+				title={`Архив новостей - Научная библиотека ИГУ`}
 				description='Научная библиотека ИГУ Вестник ИГУ им. К. Тыныстанова'
 			/>
 			{/* Hero */}

@@ -61,6 +61,7 @@ export const File: FC<FileProps> = ({ file }) => {
 						href={`${process.env.NEXT_PUBLIC_APP_STATIC}${file.file}`}
 						target='_blank'
 						title='Просмотреть'
+						rel='noreferrer'
 						onClick={updateView}
 					>
 						<svg

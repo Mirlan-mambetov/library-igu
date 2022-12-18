@@ -1,12 +1,12 @@
-import { Layout } from '../../Layout/Layout'
-import { Title } from '../../components'
-import styles from './elibrary.module.scss'
+import { Title } from '../../../components'
+// STYLES
+import styles from './books.module.scss'
 import { NextSeo } from 'next-seo'
 import { FC } from 'react'
 
-const Elibrary: FC = (): JSX.Element => {
+const BooksPage: FC = (): JSX.Element => {
 	return (
-		<Layout>
+		<>
 			<NextSeo
 				title='Электронная библиотека ИГУ - Научная библиотека ИГУ'
 				description='Электронная библиотека ИГУ Научная библиотека ИГУ'
@@ -17,8 +17,8 @@ const Elibrary: FC = (): JSX.Element => {
           key={i}
           title={h.title}
           subContent={h.subContent}
+          subTitle={h.subTitle}
           subContentOrientation="row"
-          button
         />
       ))} */}
 			{/* Remainings books */}
@@ -36,18 +36,26 @@ const Elibrary: FC = (): JSX.Element => {
 					</div>
 				</div>
 			</section>
-			{/* Categories */}
-			<section className={styles.categories}>
+			{/* Content */}
+			<section>
 				<div className='container'>
-					{/* <ElibraryCategories
-            categoryTitle='Категории'
-            data={CategoriesData}
-            categoryLink="elibrary/category"
-          /> */}
+					<div className={styles.content}>
+						<div className={styles.files}>
+							{/* <Filefields data={FilesData} /> */}
+						</div>
+						<div className={styles.category}>
+							{/* <ElibraryCategories
+                categoryTitle='Категории'
+                data={CategoriesData}
+                position="row"
+                categoryLink='elibrary/category'
+              /> */}
+						</div>
+					</div>
 				</div>
 			</section>
-		</Layout>
+		</>
 	)
 }
 
-export default Elibrary
+export default BooksPage
