@@ -1,8 +1,8 @@
+import { IAboutOwner } from '../../../interfaces/about.interface'
 import styles from './Owner.module.scss'
-import { OwnerProps } from './Owner.props'
 import { FC } from 'react'
 
-export const Owner: FC<OwnerProps> = ({ data }): JSX.Element => {
+export const Owner: FC<{ data: IAboutOwner }> = ({ data }): JSX.Element => {
 	return (
 		<>
 			<div className={styles.ownerImage}>
