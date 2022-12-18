@@ -1,4 +1,4 @@
-import { IHeroSubcontent } from '../../../interfaces/Hero.interface'
+import { IHeroSubcontent } from '../../../interfaces/hero.interface'
 
 export interface SubContentProps {
 	data: IHeroSubcontent[]

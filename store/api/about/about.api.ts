@@ -2,7 +2,7 @@ import {
 	IAboutInfo,
 	IAboutOwner,
 	IAboutTablo
-} from '../../../interfaces/About.interface'
+} from '../../../interfaces/about.interface'
 import { api } from '../api'
 
 export const aboutApi = api.injectEndpoints({

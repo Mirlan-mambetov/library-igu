@@ -1,4 +1,4 @@
-import { IArrivalImage } from '../../interfaces/Arrival.interface'
+import { IArrivalImage } from '../../interfaces/arrival.interface'
 
 export interface BookscardProps {
 	data: IArrivalImage

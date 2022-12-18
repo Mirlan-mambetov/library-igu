@@ -1,4 +1,4 @@
-import { IBase } from './Base.interface'
+import { IBase } from './base.interface'
 
 export interface ITabs extends IBase {
 	title: string

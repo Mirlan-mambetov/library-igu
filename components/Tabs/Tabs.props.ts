@@ -1,4 +1,4 @@
-import { ITabs } from '../../interfaces/Tabs.interface'
+import { ITabs } from '../../interfaces/tabs.interface'
 import { DetailsHTMLAttributes } from 'react'
 
 export interface TabsProps extends DetailsHTMLAttributes<HTMLDivElement> {

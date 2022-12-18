@@ -1,4 +1,4 @@
-import { INews } from '../../interfaces/News.interface'
+import { INews } from '../../interfaces/news.interface'
 import { axiosBase } from '../api.config'
 
 export const newsService = {

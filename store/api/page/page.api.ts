@@ -1,4 +1,4 @@
-import { IPage } from '../../../interfaces/Page.interface'
+import { IPage } from '../../../interfaces/page.interface'
 import { api } from '../api'
 
 export const pageApi = api.injectEndpoints({

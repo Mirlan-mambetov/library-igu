@@ -1,6 +1,6 @@
 import { Layout } from '../../Layout/Layout'
 import { Hero, Tabs, Jurnal, Arhivs } from '../../components'
-import { IPage } from '../../interfaces/Page.interface'
+import { IPage } from '../../interfaces/page.interface'
 import { pageApi } from '../../store/api/page/page.api'
 // STYLES
 import styles from './vestnik.module.scss'

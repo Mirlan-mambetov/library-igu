@@ -1,4 +1,4 @@
-import { ITeachersWorks } from '../../../interfaces/Teachers.interface'
+import { ITeachersWorks } from '../../../interfaces/teachers.interface'
 import { teachersApi } from '../../../store/api/teachers/teachers.api'
 import { downloadFiles } from '../../../utils/dowloadFiles'
 import { formatDate } from '../../../utils/formatDate.utils'

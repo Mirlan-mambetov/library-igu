@@ -1,4 +1,4 @@
-import { INews } from '../../interfaces/News.interface'
+import { INews } from '../../interfaces/news.interface'
 import { formatDate } from '../../utils/formatDate.utils'
 import { Paragraph } from '../Paragraph/Paragraph'
 import { Title } from '../Title/Title'

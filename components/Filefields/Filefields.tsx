@@ -1,5 +1,5 @@
-import { IITemsPaginate } from '../../interfaces/Paginate.interface'
 import { IArhivsMaterials } from '../../interfaces/archiv.interface'
+import { IITemsPaginate } from '../../interfaces/paginate.interface'
 import { vestnikApi } from '../../store/api/vestnik/vestnik.api'
 import Paginate from '../Paginate/Paginate'
 import { File } from './File/File'

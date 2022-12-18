@@ -1,5 +1,5 @@
-import { IBase } from './Base.interface'
-import { IPage } from './Page.interface'
+import { IBase } from './base.interface'
+import { IPage } from './page.interface'
 
 export interface IArhivs extends IBase {
 	name: string

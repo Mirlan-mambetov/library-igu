@@ -1,7 +1,7 @@
 import { Layout } from '../../Layout/Layout'
 import { Button, Hero, Imagebox, Title } from '../../components'
 import News from '../../components/News/News'
-import { INews } from '../../interfaces/News.interface'
+import { INews } from '../../interfaces/news.interface'
 import { newsService } from '../../services/newsService/newsService'
 // STYLES
 import styles from './news.module.scss'

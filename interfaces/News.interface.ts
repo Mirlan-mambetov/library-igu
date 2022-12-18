@@ -1,4 +1,4 @@
-import { IBase } from './Base.interface'
+import { IBase } from './base.interface'
 
 export interface INews extends IBase {
 	title: string

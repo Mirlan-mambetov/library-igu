@@ -1,4 +1,4 @@
-import { IFile } from '../../../interfaces/File.interface'
+import { IFile } from '../../../interfaces/file.interface'
 
 export interface FileProps {
 	file: IFile

@@ -1,5 +1,5 @@
-import { IITemsPaginate } from '../../../interfaces/Paginate.interface'
-import { ITeachersWorks } from '../../../interfaces/Teachers.interface'
+import { IITemsPaginate } from '../../../interfaces/paginate.interface'
+import { ITeachersWorks } from '../../../interfaces/teachers.interface'
 import { teachersApi } from '../../../store/api/teachers/teachers.api'
 import Paginate from '../../Paginate/Paginate'
 import { TeachersFiles } from '../Files/Files'
