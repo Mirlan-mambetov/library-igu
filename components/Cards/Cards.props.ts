@@ -1,4 +1,4 @@
-import { INews } from '../../interfaces/news.interface'
+import { INews } from '../../interfaces/News.interface'
 
 export interface CardsProps {
 	data: INews
