@@ -7,7 +7,7 @@ import { pageApi } from '../../../store/api/page/page.api'
 import { NextPage } from 'next'
 
 const WebsiteElibraryPage: NextPage = () => {
-	const id = 38
+	const id = 6
 	const { data: page } = pageApi.useFetchOnePageQuery(id)
 	const { data: mainCategories = [] as IElibrary[] } =
 		elibraryApi.useFetchCategoriesQuery(null)

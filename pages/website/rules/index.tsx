@@ -5,7 +5,7 @@ import { pageApi } from '../../../store/api/page/page.api'
 import { NextPage } from 'next'
 
 const WebsiteRulesPage: NextPage = () => {
-	const id = 37
+	const id = 7
 	const { data: page } = pageApi.useFetchOnePageQuery(id)
 	return (
 		<Layout title='Правила пользования'>

@@ -19,7 +19,7 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 
 const WebsiteAboutPage: NextPage = () => {
-	const id = 33
+	const id = 2
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
 	const { data: page, error } = pageApi.useFetchOnePageQuery(id)

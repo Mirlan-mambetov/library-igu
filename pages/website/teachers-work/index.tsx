@@ -7,7 +7,7 @@ import Box from '@mui/material/Box'
 import { NextPage } from 'next'
 
 const WebsiteTeachersPage: NextPage = () => {
-	const id = 36
+	const id = 5
 	const { data: page, error } = pageApi.useFetchOnePageQuery(id)
 	const { data: categories, error: categoriesError } =
 		teachersApi.useFetchAllCategoryQuery(null)
