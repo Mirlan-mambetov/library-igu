@@ -8,6 +8,7 @@ export interface IElibraryCategory extends IBase {
 export interface IElibrarySecondCategory extends IBase {
 	name: string
 	books: IElibraryBooks[]
+	category: IElibraryCategory
 }
 export interface IElibraryBooks extends IBase {
 	authors: string
@@ -16,4 +17,5 @@ export interface IElibraryBooks extends IBase {
 	downloaded: number
 	views: number
 	file: string
+	category: IElibrarySecondCategory
 }
