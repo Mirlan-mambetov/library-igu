@@ -74,7 +74,7 @@ const FaqQuestions: NextPage = () => {
 								Технические характеристики
 							</Typography>
 							<Typography variant='subtitle1'>
-								API написано на NodeJs в связке с TypeScript.
+								API написан на NodeJs в связке с TypeScript.
 							</Typography>
 							<Typography variant='subtitle1'>
 								В качестве фреймворка был выбран: NestJs
@@ -128,7 +128,7 @@ const FaqQuestions: NextPage = () => {
 								В качестве фреймворка был выбран: NextJs
 							</Typography>
 							<Typography variant='subtitle1'>
-								Стейт менеджмент: Redux @Toolkit
+								Стейт менеджмент: ReduxJs @Toolkit
 							</Typography>
 						</Box>
 					</AccordionDetails>

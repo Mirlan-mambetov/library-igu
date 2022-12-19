@@ -61,7 +61,7 @@ export const UpdateTeachersWork = () => {
 		<form onSubmit={handleSubmit(submitHanlder)}>
 			<Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 				<Typography variant='h5' color={colors.grey[100]}>
-					Добавление материала
+					Обновление материала
 				</Typography>
 				<Field
 					{...register('authors', { required: 'Заполните авторов' })}
