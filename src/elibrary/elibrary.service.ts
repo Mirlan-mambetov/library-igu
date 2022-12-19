@@ -91,6 +91,23 @@ export class ElibraryService {
     return await this.elibraryBooksRepository.find()
   }
 
+  async findBookById(id: number) {
+    const book = await this.elibraryBooksRepository.findOne({
+      where: {id},
+      relations: {
+        category: true
+      },
+      select: {
+        category: {
+          id: true,
+          name: true
+        }
+      }
+    })
+    if (!book) throw new NotFoundException("Книга по такому ID не найден")
+    return book
+  }
+
   async findById(id: number) {
     const category = await this.elibraryRepository.findOne({
       where: {id},
@@ -183,5 +200,11 @@ export class ElibraryService {
     const book = await this.elibraryBooksRepository.findOne({where: {id}})
     await deleteFileWithName(book.file)
     return await this.elibraryBooksRepository.delete(id)
+  }
+
+  async updateBookView(id: number) {
+    const book = await this.findBookById(id)
+    book.views++
+    return await this.elibraryBooksRepository.save(book)
   }
 }

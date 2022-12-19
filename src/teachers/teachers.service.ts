@@ -75,7 +75,7 @@ export class TeachersService {
         works: true
       },
       order: {
-        id: "ASC"
+        createdAt: "ASC"
       },
       select: {
         works: {
@@ -84,7 +84,6 @@ export class TeachersService {
       }
     })
   }
-
 
   async createWork(id: number, dto: TeachersWorkDto, file: string) {
     const category = await this.findOne(id)
@@ -144,7 +143,7 @@ export class TeachersService {
         category: true
       },
       order: {
-        id: "ASC"
+        createdAt: "ASC"
       }
     })
   }

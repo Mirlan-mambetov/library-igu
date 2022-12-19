@@ -51,12 +51,19 @@ export class NewsService {
   }
 
   async findAllNews() {
-    return await this.newsRepository.find()
+    return await this.newsRepository.find({
+      order: {
+        createdAt: "ASC"
+      }
+    })
   }
 
   async findNewsByLimit(limit: number) {
     return await this.newsRepository.find({
-      take: limit
+      take: limit,
+      order: {
+        createdAt: "ASC"
+      }
     })
   }
 }

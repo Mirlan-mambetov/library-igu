@@ -182,9 +182,18 @@ export class ElibraryController {
   }
 
   @Delete('books/:id')
+  @HttpCode(201)
   deleteBooks(
     @Param('id', ParseIntPipe) id: number
   ) {
     return this.elibraryService.deleteBook(id)
+  }
+
+  @Put('book-views/:id')
+  @HttpCode(200)
+  updateBookView(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.elibraryService.updateBookView(id)
   }
 }
