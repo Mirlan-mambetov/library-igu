@@ -11,13 +11,12 @@ import { NextSeo } from 'next-seo'
 import { useState } from 'react'
 
 const NewsArhiv: NextPage = (): JSX.Element => {
-	const pageId = 39
+	const pageId = 8
 	const [page, setPage] = useState(1)
 
+	const { data: onePage } = pageApi.useFetchPageQuery(pageId)
 	const { data: newses = {} as IITemsPaginate<INews> } =
 		newsApi.useFetchAllNewsWithPaginateQuery({ query: { page, limit: 3 } })
-
-	const { data: onePage } = pageApi.useFetchPageQuery(pageId)
 
 	const paginateHandler = ({ selected }: { selected: number }) => {
 		setPage(selected + 1)
