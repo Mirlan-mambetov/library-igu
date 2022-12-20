@@ -1,9 +1,9 @@
 import { MyModalContext } from '../../../contexts/MyModal.context'
 import { Form } from '../../Form/Form'
 import { Fade } from './Fade'
-import { Box, Modal, Typography } from '@mui/material'
+import { Box, Modal } from '@mui/material'
 import Backdrop from '@mui/material/Backdrop'
-import { FC, useContext, useState } from 'react'
+import { FC, useContext } from 'react'
 
 const style = {
 	position: 'absolute' as 'absolute',

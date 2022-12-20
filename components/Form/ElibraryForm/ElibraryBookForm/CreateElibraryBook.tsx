@@ -75,9 +75,9 @@ const CreateElibraryBook: FC = () => {
 				/>
 				<Field
 					{...register('published', {
-						required: 'Дата публикации обязательна'
+						required: 'Год издания обязательна'
 					})}
-					placeholder='Дата публикации'
+					placeholder='Год издания'
 					type='number'
 					error={errors.published}
 				/>

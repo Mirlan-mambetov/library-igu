@@ -1,21 +1,27 @@
+import { CompareContext } from '../../../../contexts/CompareContext'
 import { IElibraryCategory } from '../../../../interfaces/elibrary.interface'
+import { elibraryApi } from '../../../../store/api/elibrary/elibrary.api'
 import { tokens } from '../../../../theme'
 import { CreateFragment } from '../../../Form/CreateFragment/CreateFragment'
 import { UpdateFragment } from '../../../Form/UpdateFragment/UpdateFragment'
 import { useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { FC, useState } from 'react'
+import { FC, useContext } from 'react'
 
 const ElibraryCategory: FC<{ categories: IElibraryCategory[]; id: number }> = ({
 	categories,
 	id
 }) => {
-	// const [categoryId, setCategoryId] = useState
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
+	const [deleteCategory] = elibraryApi.useDeleteSecondCategoryMutation()
+
+	const deleteHandler = async (id: number) => {
+		await deleteCategory(id)
+	}
 	return (
 		<Box
 			color={colors.grey[600]}
@@ -33,10 +39,21 @@ const ElibraryCategory: FC<{ categories: IElibraryCategory[]; id: number }> = ({
 							всего книг: {category.books.length}
 						</span>
 					</Link>
-					<UpdateFragment
-						fragmentUpdate='UpdateElibraryCategory'
-						id={category.id}
-					/>
+					<Box sx={{ display: 'flex' }}>
+						<UpdateFragment
+							fragmentUpdate='UpdateElibraryCategory'
+							id={category.id}
+						/>
+						{!category.books.length && (
+							<Button
+								sx={{ fontSize: '10px' }}
+								color='warning'
+								onClick={() => deleteHandler(category.id)}
+							>
+								Удалить
+							</Button>
+						)}
+					</Box>
 				</Box>
 			))}
 		</Box>

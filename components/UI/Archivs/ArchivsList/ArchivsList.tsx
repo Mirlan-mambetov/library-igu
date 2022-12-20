@@ -51,7 +51,7 @@ export const ArchivsList: FC<{ data: IArhivs }> = ({ data }) => {
 						sx={{ my: '12px' }}
 						color={colors.grey[500]}
 					>
-						материалов на {page} странице: {materials.items?.length}
+						Всего материалов: {materials.items?.length}
 					</Typography>
 				</Box>
 				<CreateFragment fragmentCreate='CreateArchivMaterial' id={data.id} />

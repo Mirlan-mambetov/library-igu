@@ -65,15 +65,7 @@ export const ArchivListItem: FC<IMaterialItems> = ({ items }) => {
 					>
 						<span style={{ display: 'flex', gap: '6px' }}>
 							дата создания:
-							<time>
-								{dayjs(archiv.createdAt).format('YYYY-MMMM HH:mm:ss')}
-							</time>
-						</span>
-						<span style={{ display: 'flex', gap: '6px' }}>
-							дата обновления:
-							<time>
-								{dayjs(archiv.updatedAt).format('YYYY-MMMM HH:mm:ss')}
-							</time>
+							<time>{dayjs(archiv.createdAt).format('YYYY-MM HH:mm:ss')}</time>
 						</span>
 						<Link
 							href={`${process.env.NEXT_PUBLIC_APP_STATIC}${archiv.file}`}

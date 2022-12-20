@@ -109,6 +109,13 @@ export const elibraryApi = api.injectEndpoints({
 				method: 'Delete'
 			}),
 			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
+		deleteSecondCategory: builder.mutation<null, number>({
+			query: (id) => ({
+				url: `/elibrary/category/${id}`,
+				method: 'Delete'
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
 		})
 	})
 })

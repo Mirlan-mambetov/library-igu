@@ -68,13 +68,16 @@ const BooksList: FC<{ category: Pick<IElibraryCategory, 'name' | 'id'> }> = ({
 								категория: {book.category.name}
 							</Typography>
 							<Typography variant='subtitle2'>
+								год издания: {book.published}
+							</Typography>
+							<Typography variant='subtitle2'>
 								главная категория: {book.category.category.name}
 							</Typography>
 						</Box>
 						<Box sx={{ display: 'flex', gap: '20px' }}>
-							<time>
-								дата добавления:
-								{dayjs(book.createdAt).format('YYYY-MMMM HH:mm:ss')}
+							<time style={{ display: 'flex', gap: '10px' }}>
+								<span>дата добавления:</span>
+								{dayjs(book.createdAt).format('YYYY-MM HH:mm:ss')}
 							</time>
 							<Link
 								href={`${process.env.NEXT_PUBLIC_APP_STATIC}${book.file}`}

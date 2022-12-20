@@ -89,9 +89,7 @@ export const Teachers: FC<{ category: ITeachers[] }> = ({ category }) => {
 								<Button
 									color='success'
 									size='large'
-									title={
-										'Можно удалить, контента в нем нету. Но надо ли Вам это? Можно просто обновить..'
-									}
+									title={'Можно удалить'}
 									onClick={() => deleteTeachersCategory(item.id)}
 								>
 									<MdDeleteForever />

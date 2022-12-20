@@ -69,7 +69,7 @@ const WebsiteMainPage: NextPage = () => {
 								key={partner.id}
 								sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
 							>
-								<Link href={`http://${partner.link}`} target='_blank'>
+								<Link href={`${partner.link}`} target='_blank'>
 									<Image
 										width={270}
 										height={50}

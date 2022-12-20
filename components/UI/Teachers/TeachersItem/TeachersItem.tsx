@@ -67,11 +67,7 @@ const TeachersItem: FC<{ works: ITeachersWork[] }> = ({ works }) => {
 					>
 						<span style={{ display: 'flex', gap: '6px' }}>
 							дата создания:
-							<time>{dayjs(work.createdAt).format('YYYY-MMMM HH:mm:ss')}</time>
-						</span>
-						<span style={{ display: 'flex', gap: '6px' }}>
-							дата обновления:
-							<time>{dayjs(work.updatedAt).format('YYYY-MMMM HH:mm:ss')}</time>
+							<time>{dayjs(work.createdAt).format('YYYY-MM HH:mm:ss')}</time>
 						</span>
 						<Link
 							href={`${process.env.NEXT_PUBLIC_APP_STATIC}${work.file}`}
