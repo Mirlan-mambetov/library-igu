@@ -21,12 +21,17 @@ export const elibraryApi = api.injectEndpoints({
 				url: `/elibrary/${id}`
 			})
 		}),
-		fetchCategoryByMainCategory: builder.query<
+		fetchCategoriesByMainCategory: builder.query<
 			IElibrarySecondCategory[],
 			number
 		>({
 			query: (id) => ({
 				url: `/elibrary/category/${id}`
+			})
+		}),
+		fetchCategoryById: builder.query<IElibrarySecondCategory, number>({
+			query: (id) => ({
+				url: `/elibrary/category/category/${id}`
 			})
 		}),
 		fetchBooksByCategory: builder.query<

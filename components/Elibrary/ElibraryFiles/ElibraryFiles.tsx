@@ -14,7 +14,8 @@ export const ElibraryFiles: FC<IElibraryBooks> = ({
 	description,
 	downloaded,
 	file,
-	views
+	views,
+	published
 }) => {
 	const [updateViews] = elibraryApi.useUpdateBookViewMutation()
 
@@ -32,13 +33,28 @@ export const ElibraryFiles: FC<IElibraryBooks> = ({
 			</div>
 			<div className={styles.info}>
 				<div className={styles.infoItem}>
-					<span>Скачано: {downloaded}</span>
+					<strong>
+						скачано:
+						<span>{downloaded}</span>
+					</strong>
 				</div>
 				<div className={styles.infoItem}>
-					<span>Просмотров: {views}</span>
+					<strong>
+						год издания:
+						<span>{published}</span>
+					</strong>
 				</div>
 				<div className={styles.infoItem}>
-					<span>Категория: {category.name}</span>
+					<strong>
+						просмотров:
+						<span>{views}</span>
+					</strong>
+				</div>
+				<div className={styles.infoItem}>
+					<strong>
+						категория:
+						<span>{category.name}</span>
+					</strong>
 				</div>
 				<div className={styles.infoItem}>
 					<button

@@ -7,9 +7,11 @@
 	.contentWrapp {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: baseline;
 
 		.category {
+			position: sticky;
+			top: 120px;
 			max-width: 45%;
 			width: 100%;
 

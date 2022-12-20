@@ -21,7 +21,7 @@ interface ICategory {
 
 const Category: FC<ICategory> = ({ categories, category }): JSX.Element => {
 	const { data: secondCategories } =
-		elibraryApi.useFetchCategoryByMainCategoryQuery(category.id)
+		elibraryApi.useFetchCategoriesByMainCategoryQuery(category.id)
 
 	return (
 		<Layout>

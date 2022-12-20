@@ -31,11 +31,11 @@
 
 .content {
 	display: flex;
-	align-items: center;
+	align-items: baseline;
 	justify-content: space-between;
 
 	.files {
-		max-width: 70%;
+		max-width: 50%;
 		width: 100%;
 
 		@include media-queres.mediaOnly768px {
@@ -44,6 +44,8 @@
 	}
 
 	.category {
+		position: sticky;
+		top: 120px;
 		max-width: 45%;
 		width: 100%;
 
