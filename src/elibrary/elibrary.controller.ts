@@ -140,6 +140,13 @@ export class ElibraryController {
     return this.elibraryService.updateCategory(id, dto)
   }
 
+  @Delete('category/:id')
+  @HttpCode(200)
+  deleteCategory(@Param('id', ParseIntPipe) id: number) {
+    return this.elibraryService.deleteCategory(id)
+  }
+
+
   @Post('book/:id')
   @UsePipes(new ValidationPipe())
   @UseInterceptors(FileInterceptor('file', {

@@ -175,6 +175,12 @@ export class ElibraryService {
     })
   }
 
+  async deleteCategory(id: number) {
+    const category = await this.findCategoryById(id) 
+    if (category.books.length) throw new BadRequestException("Удаление невозможно, так как категория содержит материалы. Это приведет к не стабильной работе API")
+    return await this.elibraryCategoryRepository.delete(id)
+  }
+
   async createBook(categoryId: number, dto: ElibraryBookDto, file: string) {
     const category = await this.findCategoryById(categoryId)
     const newData = this.elibraryBooksRepository.create({
