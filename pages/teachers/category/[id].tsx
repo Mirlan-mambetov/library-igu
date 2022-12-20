@@ -2,7 +2,6 @@ import { Layout } from '../../../Layout/Layout'
 import { TeacherCategories, Hero, TeachersFileList } from '../../../components'
 import { ITeachersCategory } from '../../../interfaces/teachers.interface'
 import { teacherService } from '../../../services/teacherService/teacherService'
-// STYLES
 import styles from './category.module.scss'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
@@ -13,31 +12,32 @@ interface ICategoryPage {
 	categories: ITeachersCategory[]
 }
 
-const CategoryPage: FC<ICategoryPage> = ({
-	category,
-	categories
-}): JSX.Element => {
-	const totalWorks = category.works.flatMap((w) => w.id).length
+const CategoryPage: FC<ICategoryPage> = ({ category, categories }) => {
+	const totalWorks = category?.works.flatMap((w) => w.id).length
 	return (
 		<Layout>
 			<NextSeo
-				title='Труды преподавателей - Научная библиотека ИГУ'
+				title={`${
+					category ? category.name : 'Труды преподавателей'
+				} - Научная библиотека ИГУ`}
 				description='Научная библиотека ИГУ'
 			/>
 			{/* Hero */}
-			<Hero
-				// @ts-ignore
-				data={{
-					title: category.name,
-					infoTitle: 'Всего работ',
-					totalArticle: totalWorks
-				}}
-			/>
+			{category && (
+				<Hero
+					// @ts-ignore
+					data={{
+						title: category.name,
+						infoTitle: 'Всего работ',
+						totalArticle: totalWorks
+					}}
+				/>
+			)}
 			<section className={styles.content}>
 				<div className='container'>
 					<div className={styles.wrapp}>
 						<div className={styles.files}>
-							<TeachersFileList categoryId={category.id} />
+							{category && <TeachersFileList categoryId={category.id} />}
 						</div>
 						<div className={styles.categories}>
 							{categories && (
@@ -64,7 +64,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		}))
 		return {
 			paths,
-			fallback: false
+			fallback: true
 		}
 	} catch (e) {
 		return {

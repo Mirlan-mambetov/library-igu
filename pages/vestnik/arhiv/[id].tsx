@@ -17,7 +17,7 @@ interface ICategory {
 const CategoryPage: FC<ICategory> = ({ archiv }) => {
 	const { data: archivs = [] as IArhivs[] } =
 		vestnikApi.useFetchAllArchivsQuery(null)
-	const totalArticle = archiv.materials.flatMap((m) => m.id).length
+	const totalArticle = archiv?.materials.flatMap((m) => m.id).length
 	return (
 		<Layout>
 			<NextSeo
@@ -26,20 +26,22 @@ const CategoryPage: FC<ICategory> = ({ archiv }) => {
 			/>
 			{/* Hero */}
 
-			<Hero
-				/* @ts-ignore */
-				data={{
-					title: `Архив ${archiv.name}`,
-					infoTitle: 'Всего материалов',
-					totalArticle: totalArticle
-				}}
-			/>
+			{archiv && (
+				<Hero
+					/* @ts-ignore */
+					data={{
+						title: `Архив ${archiv.name}`,
+						infoTitle: 'Всего материалов',
+						totalArticle: totalArticle
+					}}
+				/>
+			)}
 			{/* Content */}
 			<section className={styles.content}>
 				<div className='container'>
 					<div className={styles.contentWrapp}>
 						<div className={styles.files}>
-							<Filefields id={archiv.id} />
+							{archiv && <Filefields id={archiv.id} />}
 						</div>
 						<div className={styles.categories}>
 							{archiv && <Category data={archivs} arhivsLink='vestnik' />}
@@ -59,7 +61,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		}))
 		return {
 			paths,
-			fallback: false
+			fallback: true
 		}
 	} catch (e) {
 		return {

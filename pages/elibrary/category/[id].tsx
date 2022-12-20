@@ -21,7 +21,7 @@ interface ICategory {
 
 const Category: FC<ICategory> = ({ categories, category }): JSX.Element => {
 	const { data: secondCategories } =
-		elibraryApi.useFetchCategoriesByMainCategoryQuery(category.id)
+		elibraryApi.useFetchCategoriesByMainCategoryQuery(category?.id)
 
 	return (
 		<Layout>
@@ -32,13 +32,15 @@ const Category: FC<ICategory> = ({ categories, category }): JSX.Element => {
 				description='Электронная библиотека ИГУ Научная библиотека ИГУ'
 			/>
 			{/* Hero */}
-			<Hero
-				// @ts-ignore
-				data={{
-					title: category.name,
-					background: category.image
-				}}
-			/>
+			{category && (
+				<Hero
+					// @ts-ignore
+					data={{
+						title: category.name,
+						background: category.image
+					}}
+				/>
+			)}
 			{/* Content */}
 			<section className={styles.content}>
 				<div className='container'>
@@ -49,12 +51,14 @@ const Category: FC<ICategory> = ({ categories, category }): JSX.Element => {
 							)}
 						</div>
 						<div className={styles.category}>
-							<ElibraryCategories
-								categoryTitle='Категории'
-								data={categories}
-								position='row'
-								categoryLink='elibrary/category'
-							/>
+							{categories && (
+								<ElibraryCategories
+									categoryTitle='Категории'
+									data={categories}
+									position='row'
+									categoryLink='elibrary/category'
+								/>
+							)}
 						</div>
 					</div>
 				</div>
@@ -71,7 +75,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		}))
 		return {
 			paths,
-			fallback: false
+			fallback: true
 		}
 	} catch (e) {
 		return {
