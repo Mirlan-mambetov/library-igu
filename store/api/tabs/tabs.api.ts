@@ -19,6 +19,21 @@ export const tabsApi = api.injectEndpoints({
 				body: data
 			}),
 			invalidatesTags: (res, error, { id }) => [{ type: 'Pages' }]
+		}),
+		createTabLink: builder.mutation<null, { id: number; data: FormData }>({
+			query: ({ id, data }) => ({
+				url: `/tabs/tablink/${id}`,
+				method: 'Post',
+				body: data
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
+		deleteTabLink: builder.mutation<null, number>({
+			query: (id) => ({
+				url: `/tabs/tablink/${id}`,
+				method: 'Delete'
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
 		})
 	})
 })

@@ -25,6 +25,7 @@ import { UpdateNews } from './NewsForm/UpdateNews'
 import { PageForm } from './PageForm/PageForm'
 import { CreatePartnerLink } from './PartnerForm/CreatePartnerLink'
 import { UpdatePartnerLink } from './PartnerForm/UpdatePartnerLink'
+import { CreateTabLink } from './TabForm/CreateTabLink/CreateTabLink'
 import { UpdateTab } from './TabForm/UpdateTab/UpdateTab'
 import { UpdateTabLink } from './TabForm/UpdateTabLink/UpdateTabLink'
 import { CreateTeachersCategory } from './TeachersForm/CreateTeachersCategory'
@@ -98,6 +99,8 @@ export const Form: FC = () => {
 			return <CreateElibraryBook />
 		case 'UpdateElibraryBook':
 			return <UpdateElibraryBook />
+		case 'CreateTabLink':
+			return <CreateTabLink />
 		case 'CreatePage':
 			return <PageForm />
 		default:

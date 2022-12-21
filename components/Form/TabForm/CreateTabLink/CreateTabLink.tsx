@@ -1,37 +1,34 @@
 import { MyModalContext } from '../../../../contexts/MyModal.context'
 import { tabsApi } from '../../../../store/api/tabs/tabs.api'
-import { tokens } from '../../../../theme'
 import { Field, isErrorWithMessage, isFetchBaseQueryError } from '../../../UI'
-import { ErrorDisplayed } from '../../../UI'
-import { IUpdateTabLinkDto } from './UpdateTabLink.dto'
-import { useTheme } from '@mui/material'
+import { ICreateTabLinkDto } from './CreateTabLink.dto'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { useSnackbar } from 'notistack'
-import { FC } from 'react'
-import { useContext } from 'react'
+import { FC, useContext } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-export const UpdateTabLink: FC = () => {
-	const theme = useTheme()
-	const colors = tokens(theme.palette.mode)
+export const CreateTabLink: FC = () => {
 	const { updateId, onClose } = useContext(MyModalContext)
 	const { enqueueSnackbar } = useSnackbar()
-	const [updateTabLink, { error }] = tabsApi.useUpdateTabLinkMutation()
+	const [createTabLink] = tabsApi.useCreateTabLinkMutation()
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors }
-	} = useForm<IUpdateTabLinkDto>({ mode: 'onChange' })
+	} = useForm<ICreateTabLinkDto>({ mode: 'onChange' })
 
-	const submitHanlder: SubmitHandler<IUpdateTabLinkDto> = async (data) => {
+	const submitHanlder: SubmitHandler<ICreateTabLinkDto> = async (data) => {
 		try {
 			const formData = new FormData()
 			const file = data.link[0]
 			formData.append('name', data.name)
 			formData.append('file', file)
-			await updateTabLink({ id: updateId, data: formData })
+			await createTabLink({
+				id: updateId,
+				data: formData
+			})
 				.unwrap()
 				.then(() => onClose())
 		} catch (err) {
@@ -49,7 +46,6 @@ export const UpdateTabLink: FC = () => {
 
 	return (
 		<form onSubmit={handleSubmit(submitHanlder)}>
-			<ErrorDisplayed error={error} />
 			<Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 				<Field
 					{...register('name', {

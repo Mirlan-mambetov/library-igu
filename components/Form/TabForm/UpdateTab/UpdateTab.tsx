@@ -66,7 +66,7 @@ export const UpdateTab: FC = () => {
 								setIsLink(true), setHidden(true)
 							}}
 						>
-							Да, есть
+							Описание есть
 						</Button>
 						<Button
 							sx={{ my: '15px' }}
@@ -75,7 +75,7 @@ export const UpdateTab: FC = () => {
 							onClick={() => setHidden(true)}
 							size={'small'}
 						>
-							Нет, я пас.. сам разбирайся..
+							Нет описания
 						</Button>
 					</Box>
 				)}

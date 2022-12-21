@@ -1,5 +1,7 @@
 import { ITabs } from '../../../interfaces/tabs.interface'
+import { tabsApi } from '../../../store/api/tabs/tabs.api'
 import { tokens } from '../../../theme'
+import { CreateFragment } from '../../Form/CreateFragment/CreateFragment'
 import { UpdateFragment } from '../../Form/UpdateFragment/UpdateFragment'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { useTheme } from '@mui/material'
@@ -7,8 +9,8 @@ import Accordion from '@mui/material/Accordion'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import Link from 'next/link'
 import { FC } from 'react'
 
 export const Tabs: FC<{ tabs: ITabs[]; title?: string }> = ({
@@ -17,6 +19,8 @@ export const Tabs: FC<{ tabs: ITabs[]; title?: string }> = ({
 }) => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
+	const [deleteTabLink] = tabsApi.useDeleteTabLinkMutation()
+
 	return (
 		<Box>
 			<Typography
@@ -56,8 +60,16 @@ export const Tabs: FC<{ tabs: ITabs[]; title?: string }> = ({
 									<Typography>{link.name}</Typography>
 								</a>
 								<UpdateFragment fragmentUpdate='UpdateTabLink' id={link.id} />
+								<Button
+									sx={{ fontSize: '10px' }}
+									color='warning'
+									onClick={() => deleteTabLink(link.id)}
+								>
+									удалить
+								</Button>
 							</Box>
 						))}
+						<CreateFragment fragmentCreate='CreateTabLink' id={tab.id} />
 					</AccordionDetails>
 				</Accordion>
 			))}

@@ -21,7 +21,7 @@ import { MdDeleteForever } from 'react-icons/md'
 const WebsiteMainPage: NextPage = () => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
-	const id = 1
+	const id = 30
 	const { data: page, error } = pageApi.useFetchOnePageQuery(id)
 	const { data: arrivalImages } = arrivalApi.useFetchAllArrivalImagesQuery(null)
 	const { data: partners = [] as IPartnersI[] } =
