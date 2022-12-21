@@ -1,6 +1,6 @@
 export interface CreateTeachersWorkDto {
 	authors: string
-	name?: string
+	name: string
 	description?: string
 	file: FileList
 }

@@ -37,8 +37,6 @@ export const ArchivsList: FC<{ data: IArhivs }> = ({ data }) => {
 	const paginateHandler = async (e: ChangeEvent<unknown>, page: number) => {
 		setPage(page)
 	}
-	console.log(materials.items)
-
 	return (
 		<Box sx={{ py: '10px', pl: '12px' }}>
 			<Box sx={{ display: 'flex', alignItems: 'baseline', gap: '15px' }}>
@@ -51,7 +49,7 @@ export const ArchivsList: FC<{ data: IArhivs }> = ({ data }) => {
 						sx={{ my: '12px' }}
 						color={colors.grey[500]}
 					>
-						Всего материалов: {materials.items?.length}
+						Всего материалов: {materials.meta?.totalItems}
 					</Typography>
 				</Box>
 				<CreateFragment fragmentCreate='CreateArchivMaterial' id={data.id} />

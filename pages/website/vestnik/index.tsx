@@ -7,9 +7,8 @@ import Box from '@mui/material/Box'
 import { NextPage } from 'next'
 
 const WebsiteVestnikPage: NextPage = () => {
-	const id = 4
-	const { data: page, error, isLoading } = pageApi.useFetchOnePageQuery(id)
-	console.log(page)
+	const id = 29
+	const { data: page, error } = pageApi.useFetchOnePageQuery(id)
 
 	return (
 		<Layout title='Страница вестник'>

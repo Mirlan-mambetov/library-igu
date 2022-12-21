@@ -38,7 +38,8 @@ export const ArchivUpdateMaterial = () => {
 			}
 			const formData = new FormData()
 			formData.append('authors', data.authors)
-			formData.append('description', data.description)
+			formData.append('name', data.name)
+			data.description && formData.append('description', data.description)
 			formData.append('file', file)
 			await updateMaterial({ id: updateId, data: formData })
 				.unwrap()
@@ -71,6 +72,12 @@ export const ArchivUpdateMaterial = () => {
 					error={errors.authors}
 				/>
 				<Field
+					{...register('name', { required: 'Название обязательно' })}
+					error={errors.name}
+					type='text'
+					placeholder='Название'
+				/>
+				<Field
 					{...register('file', {
 						required: 'Выберите файл'
 					})}
@@ -78,11 +85,8 @@ export const ArchivUpdateMaterial = () => {
 					error={errors.file}
 				/>
 				<Textarea
-					{...register('description', {
-						required: 'Описание обязательно'
-					})}
-					placeholder='Описание'
-					error={errors.description}
+					{...register('description')}
+					placeholder='Описание (не обязательное поле)'
 				/>
 				<Button color='success' type='submit'>
 					Отправить

@@ -3,6 +3,7 @@ export interface IArchivDto {
 }
 export interface IArchivMaterialDto {
 	authors: string
-	description: string
+	name: string
+	description?: string
 	file: FileList
 }

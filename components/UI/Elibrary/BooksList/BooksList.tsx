@@ -57,27 +57,71 @@ const BooksList: FC<{ category: Pick<IElibraryCategory, 'name' | 'id'> }> = ({
 						}}
 					>
 						<Box sx={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-							<Typography variant='h5'>{book.authors}</Typography>
-							<Typography variant='subtitle1'>{book.description}</Typography>
+							<Typography
+								variant='h5'
+								sx={{ display: 'flex', gap: '20px', alignItems: 'center' }}
+							>
+								<span style={{ fontSize: '10px' }}>авторы:</span>
+								{book.authors}
+							</Typography>
+						</Box>
+						<Box color={colors.primary[700]}>
+							<Typography
+								sx={{
+									my: '10px',
+									display: 'flex',
+									gap: '20px'
+								}}
+								variant='subtitle1'
+							>
+								<span style={{ fontSize: '10px' }}>название:</span>
+								{!book.name ? (
+									<span style={{ fontSize: '10px' }}>пусто</span>
+								) : (
+									book.name
+								)}
+							</Typography>
+							<Typography
+								sx={{
+									my: '10px',
+									display: 'flex',
+									gap: '20px'
+								}}
+								variant='subtitle1'
+							>
+								<span style={{ fontSize: '10px' }}>описание:</span>
+								{!book.description ? (
+									<span style={{ fontSize: '10px' }}>пусто</span>
+								) : (
+									book.description
+								)}
+							</Typography>
+							<Link
+								style={{ fontSize: '14px', textDecoration: 'underline' }}
+								href={`${process.env.NEXT_PUBLIC_APP_STATIC}${book.file}`}
+								target={'_blank'}
+							>
+								файл
+							</Link>
 						</Box>
 						<Box
-							sx={{ display: 'flex', flexDirection: 'column', gap: '3px' }}
-							color={colors.greenAccent[700]}
+							sx={{
+								display: 'flex',
+								gap: '14px',
+								alignItems: 'center',
+								mt: '10px',
+								fontSize: '10px'
+							}}
+							color={colors.greenAccent[600]}
 						>
-							<Typography variant='subtitle2'>
-								категория: {book.category.name}
-							</Typography>
-							<Typography variant='subtitle2'>
-								год издания: {book.published}
-							</Typography>
-							<Typography variant='subtitle2'>
-								главная категория: {book.category.category.name}
-							</Typography>
+							<span>категория: {book.category.name}</span>
+							<span>скачено: {book.downloaded}</span>
+							<span>просмотров: {book.views}</span>
 						</Box>
-						<Box sx={{ display: 'flex', gap: '20px' }}>
+						<Box sx={{ display: 'flex', gap: '20px', fontSize: '10px' }}>
 							<time style={{ display: 'flex', gap: '10px' }}>
 								<span>дата добавления:</span>
-								{dayjs(book.createdAt).format('YYYY-MM HH:mm:ss')}
+								{dayjs(book.createdAt).format('YYYY-MM-D HH:mm:ss')}
 							</time>
 							<Link
 								href={`${process.env.NEXT_PUBLIC_APP_STATIC}${book.file}`}

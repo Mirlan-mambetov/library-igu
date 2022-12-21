@@ -39,7 +39,8 @@ const CreateElibraryBook: FC = () => {
 
 			const formData = new FormData()
 			formData.append('authors', data.authors)
-			formData.append('description', data.description)
+			formData.append('name', data.name)
+			data.description && formData.append('description', data.description)
 			formData.append('published', data.published)
 			formData.append('file', file)
 
@@ -74,10 +75,18 @@ const CreateElibraryBook: FC = () => {
 					error={errors.authors}
 				/>
 				<Field
+					{...register('name', {
+						required: 'Название обязательно'
+					})}
+					placeholder='Название'
+					type='text'
+					error={errors.name}
+				/>
+				<Field
 					{...register('published', {
 						required: 'Год издания обязательна'
 					})}
-					placeholder='Год издания'
+					placeholder='Год издания (в формате 2022)'
 					type='number'
 					error={errors.published}
 				/>
@@ -89,11 +98,8 @@ const CreateElibraryBook: FC = () => {
 					error={errors.file}
 				/>
 				<Textarea
-					{...register('description', {
-						required: 'Описание обязательно'
-					})}
-					placeholder='Описание'
-					error={errors.description}
+					{...register('description')}
+					placeholder='Описание (не обязательно)'
 				/>
 				<Button color='success' type='submit'>
 					Отправить

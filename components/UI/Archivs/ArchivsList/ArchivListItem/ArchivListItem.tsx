@@ -12,8 +12,7 @@ import { FC } from 'react'
 export const ArchivListItem: FC<IMaterialItems> = ({ items }) => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
-	const [deleteMaterial, { isSuccess }] =
-		archivApi.useDeleteArchivMaterialMutation()
+	const [deleteMaterial] = archivApi.useDeleteArchivMaterialMutation()
 
 	return (
 		<Box
@@ -26,7 +25,7 @@ export const ArchivListItem: FC<IMaterialItems> = ({ items }) => {
 						color={colors.primary[700]}
 						variant='h5'
 					>
-						<span>Идентификатор: {archiv.id}</span>
+						<span style={{ fontSize: '10px' }}>авторы:</span>
 						{archiv.authors}
 						<UpdateFragment
 							fragmentUpdate='UpdateArchivMaterial'
@@ -34,19 +33,52 @@ export const ArchivListItem: FC<IMaterialItems> = ({ items }) => {
 						/>
 						<Button onClick={() => deleteMaterial(archiv.id)}>Удалить</Button>
 					</Typography>
-					<Typography
-						color={colors.primary[700]}
-						sx={{ my: '10px' }}
-						variant='subtitle1'
-					>
-						{archiv.description}
-					</Typography>
+					<Box color={colors.primary[700]}>
+						<Typography
+							sx={{
+								my: '10px',
+								display: 'flex',
+								gap: '20px'
+							}}
+							variant='subtitle1'
+						>
+							<span style={{ fontSize: '10px' }}>название:</span>
+							{!archiv.name ? (
+								<span style={{ fontSize: '10px' }}>пусто</span>
+							) : (
+								archiv.name
+							)}
+						</Typography>
+						<Typography
+							sx={{
+								my: '10px',
+								display: 'flex',
+								gap: '20px'
+							}}
+							variant='subtitle1'
+						>
+							<span style={{ fontSize: '10px' }}>описание:</span>
+							{!archiv.description ? (
+								<span style={{ fontSize: '10px' }}>пусто</span>
+							) : (
+								archiv.description
+							)}
+						</Typography>
+						<Link
+							style={{ fontSize: '14px', textDecoration: 'underline' }}
+							href={`${process.env.NEXT_PUBLIC_APP_STATIC}${archiv.file}`}
+							target={'_blank'}
+						>
+							файл
+						</Link>
+					</Box>
 					<Box
 						sx={{
 							display: 'flex',
 							gap: '14px',
 							alignItems: 'center',
-							mt: '10px'
+							mt: '10px',
+							fontSize: '10px'
 						}}
 						color={colors.greenAccent[600]}
 					>
@@ -59,7 +91,8 @@ export const ArchivListItem: FC<IMaterialItems> = ({ items }) => {
 							my: '4px',
 							display: 'flex',
 							gap: '22px',
-							alignItems: 'center'
+							alignItems: 'center',
+							fontSize: '10px'
 						}}
 						color={colors.greenAccent[600]}
 					>
@@ -67,12 +100,6 @@ export const ArchivListItem: FC<IMaterialItems> = ({ items }) => {
 							дата создания:
 							<time>{dayjs(archiv.createdAt).format('YYYY-MM HH:mm:ss')}</time>
 						</span>
-						<Link
-							href={`${process.env.NEXT_PUBLIC_APP_STATIC}${archiv.file}`}
-							target={'_blank'}
-						>
-							файл
-						</Link>
 					</Box>
 				</Box>
 			))}

@@ -13,9 +13,12 @@ export interface IElibraryCategory extends IBase {
 }
 export interface IElibraryBooks extends IBase {
 	authors: string
+	name: string
 	description: string
 	published: number
 	file: string
+	downloaded?: number
+	views?: number
 	category: Pick<IElibraryCategory, 'id' | 'name' | 'category'>
 }
 export interface IElibraryBooksByCategory {
