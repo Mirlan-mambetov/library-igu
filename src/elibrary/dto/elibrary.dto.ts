@@ -20,8 +20,11 @@ export class ElibraryBookDto {
   @Length(4, 255, {message: "Минимальная длина авторов 4 символа. Макс. 255 "})
   authors: string
 
-  @Length(10, 64500, {message: "Минимальная длина авторов 4 символа"})
-  description: string
+  @IsString({message: "Название должно быть в строковом формате"})
+  @Length(4, 255, {message: "Минимальная длина названия 4 символа. Макс. 255 "})
+  name: string
+
+  description?: string
 
   published: number
 }

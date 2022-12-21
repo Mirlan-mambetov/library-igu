@@ -8,8 +8,11 @@ export class ElibraryBooksEntity extends BaseEntity {
   @Column()
   authors: string
 
-  @Column({type: "text"})
-  description: string
+  @Column({default: null})
+  name: string
+
+  @Column({type: "text", nullable: true})
+  description?: string
 
   @Column()
   published: number

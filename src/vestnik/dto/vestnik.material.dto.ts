@@ -7,7 +7,9 @@ export class IVestnikMaterialDto {
   authors: string
 
   @IsString()
-  @Length(10, 64500)
-  description: string
+  @Length(5, 255)
+  name: string
+
+  description?: string
 
 }
