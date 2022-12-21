@@ -29,26 +29,59 @@ const TeachersItem: FC<{ works: ITeachersWork[] }> = ({ works }) => {
 						color={colors.primary[700]}
 						variant='h5'
 					>
-						<span>Идентификатор: {work.id}</span>
+						<span style={{ fontSize: '10px' }}>авторы:</span>
 						{work.authors}
 						<UpdateFragment fragmentUpdate='UpdateTeachersWork' id={work.id} />
 						<Button color='warning' onClick={() => deleteWork(work.id)}>
 							Удалить
 						</Button>
 					</Typography>
-					<Typography
-						color={colors.primary[700]}
-						sx={{ my: '10px' }}
-						variant='subtitle1'
-					>
-						{work.description}
-					</Typography>
+					<Box color={colors.primary[700]}>
+						<Typography
+							sx={{
+								my: '10px',
+								display: 'flex',
+								gap: '20px'
+							}}
+							variant='subtitle1'
+						>
+							<span style={{ fontSize: '10px' }}>название:</span>
+							{!work.name ? (
+								<span style={{ fontSize: '10px' }}>пусто</span>
+							) : (
+								work.name
+							)}
+						</Typography>
+						<Typography
+							sx={{
+								my: '10px',
+								display: 'flex',
+								gap: '20px'
+							}}
+							variant='subtitle1'
+						>
+							<span style={{ fontSize: '10px' }}>описание:</span>
+							{!work.description ? (
+								<span style={{ fontSize: '10px' }}>пусто</span>
+							) : (
+								work.description
+							)}
+						</Typography>
+						<Link
+							style={{ fontSize: '14px', textDecoration: 'underline' }}
+							href={`${process.env.NEXT_PUBLIC_APP_STATIC}${work.file}`}
+							target={'_blank'}
+						>
+							файл
+						</Link>
+					</Box>
 					<Box
 						sx={{
 							display: 'flex',
 							gap: '14px',
 							alignItems: 'center',
-							mt: '10px'
+							mt: '10px',
+							fontSize: '10px'
 						}}
 						color={colors.greenAccent[600]}
 					>
@@ -61,7 +94,8 @@ const TeachersItem: FC<{ works: ITeachersWork[] }> = ({ works }) => {
 							my: '4px',
 							display: 'flex',
 							gap: '22px',
-							alignItems: 'center'
+							alignItems: 'center',
+							fontSize: '10px'
 						}}
 						color={colors.greenAccent[600]}
 					>
@@ -69,12 +103,6 @@ const TeachersItem: FC<{ works: ITeachersWork[] }> = ({ works }) => {
 							дата создания:
 							<time>{dayjs(work.createdAt).format('YYYY-MM HH:mm:ss')}</time>
 						</span>
-						<Link
-							href={`${process.env.NEXT_PUBLIC_APP_STATIC}${work.file}`}
-							target={'_blank'}
-						>
-							файл
-						</Link>
 					</Box>
 				</Box>
 			))}

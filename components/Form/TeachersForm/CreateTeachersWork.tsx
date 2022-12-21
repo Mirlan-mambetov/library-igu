@@ -38,7 +38,9 @@ export const CreateTeachersWork = () => {
 			}
 			const formData = new FormData()
 			formData.append('authors', data.authors)
-			formData.append('description', data.description)
+			data.name?.length && formData.append('name', data.name)
+			data.description?.length &&
+				formData.append('description', data.description)
 			formData.append('file', file)
 
 			await createTeacherWork({ id: updateId, data: formData })
@@ -70,6 +72,11 @@ export const CreateTeachersWork = () => {
 					placeholder='Авторы'
 				/>
 				<Field
+					{...register('name')}
+					type='text'
+					placeholder='Название (необязательное поле)'
+				/>
+				<Field
 					{...register('file', {
 						required: 'Выберите файл'
 					})}
@@ -77,11 +84,8 @@ export const CreateTeachersWork = () => {
 					error={errors.file}
 				/>
 				<Textarea
-					{...register('description', {
-						required: 'Введите описание'
-					})}
-					placeholder='Описание'
-					error={errors.description}
+					{...register('description')}
+					placeholder='Описание (необязательное поле)'
 				/>
 				<Button color='success' type='submit'>
 					Отправить
