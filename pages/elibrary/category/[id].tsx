@@ -50,7 +50,7 @@ const Category: FC<ICategory> = ({ categories, category }): JSX.Element => {
 								<ElibrarySecondCategories data={secondCategories} />
 							)}
 						</div>
-						<div className={styles.category}>
+						<div className={styles.categories}>
 							{categories && (
 								<ElibraryCategories
 									categoryTitle='Категории'

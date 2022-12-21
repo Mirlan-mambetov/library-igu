@@ -9,6 +9,7 @@ import { FC } from 'react'
 export const TeachersFiles: FC<ITeachersWorks> = ({
 	id,
 	authors,
+	name,
 	category,
 	createdAt,
 	description,
@@ -27,6 +28,9 @@ export const TeachersFiles: FC<ITeachersWorks> = ({
 			<div className={styles.fileText}>
 				<Title type='h4' className={styles.authors}>
 					{authors}
+				</Title>
+				<Title type='h4' className={styles.name}>
+					{name}
 				</Title>
 				<div className={styles.title}>{description}</div>
 			</div>

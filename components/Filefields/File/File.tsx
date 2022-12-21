@@ -18,6 +18,9 @@ export const File: FC<FileProps> = ({ file }) => {
 				<Title type='h4' className={styles.authors}>
 					{file.authors}
 				</Title>
+				<Title type='h4' className={styles.name}>
+					{file.name}
+				</Title>
 				<div className={styles.title}>{file.description}</div>
 			</div>
 			<div className={styles.info}>

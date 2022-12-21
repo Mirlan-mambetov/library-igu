@@ -12,6 +12,7 @@ export interface IElibrarySecondCategory extends IBase {
 }
 export interface IElibraryBooks extends IBase {
 	authors: string
+	name: string
 	description: string
 	published: number
 	downloaded: number

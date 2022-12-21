@@ -24,7 +24,7 @@
 	.fileText {
 		display: flex;
 		flex-direction: column;
-		gap: 5px;
+		gap: 8px;
 
 		.authors {
 			font-weight: 700;
@@ -38,6 +38,16 @@
 			font-weight: 400;
 			font-size: 16px;
 			line-height: 20px;
+		}
+		.name {
+			font-size: 16px;
+			font-weight: normal;
+		}
+		.dateYer {
+			display: flex;
+			gap: 5px;
+			font-size: 12px;
+			font-weight: bold;
 		}
 	}
 

@@ -8,6 +8,7 @@ export interface ITeachersCategory extends IBase {
 
 export interface ITeachersWorks extends IBase {
 	authors: string
+	name: string
 	description: string
 	file: string
 	downloaded: number

@@ -9,6 +9,7 @@ import { FC } from 'react'
 export const ElibraryFiles: FC<IElibraryBooks> = ({
 	id,
 	authors,
+	name,
 	category,
 	createdAt,
 	description,
@@ -29,19 +30,20 @@ export const ElibraryFiles: FC<IElibraryBooks> = ({
 				<Title type='h4' className={styles.authors}>
 					{authors}
 				</Title>
+				<Title type='h4' className={styles.name}>
+					{name}
+				</Title>
 				<div className={styles.title}>{description}</div>
+				<div className={styles.dateYer}>
+					год издания:
+					<span>{published}</span>
+				</div>
 			</div>
 			<div className={styles.info}>
 				<div className={styles.infoItem}>
 					<strong>
 						скачано:
 						<span>{downloaded}</span>
-					</strong>
-				</div>
-				<div className={styles.infoItem}>
-					<strong>
-						год издания:
-						<span>{published}</span>
 					</strong>
 				</div>
 				<div className={styles.infoItem}>
