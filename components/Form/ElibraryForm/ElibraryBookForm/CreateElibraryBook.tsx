@@ -38,7 +38,7 @@ const CreateElibraryBook: FC = () => {
 			}
 
 			const formData = new FormData()
-			formData.append('authors', data.authors)
+			data.authors && formData.append('authors', data.authors)
 			formData.append('name', data.name)
 			data.description && formData.append('description', data.description)
 			formData.append('published', data.published)
@@ -67,12 +67,9 @@ const CreateElibraryBook: FC = () => {
 					Добавить книгу
 				</Typography>
 				<Field
-					{...register('authors', {
-						required: 'Введите автора'
-					})}
-					placeholder='Авторы'
+					{...register('authors')}
+					placeholder='Авторы (не обязательно)'
 					type='text'
-					error={errors.authors}
 				/>
 				<Field
 					{...register('name', {

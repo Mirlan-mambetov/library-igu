@@ -6,7 +6,7 @@ export interface ElibraryCategoryDto {
 	name: string
 }
 export interface ElibraryBookDto {
-	authors: string
+	authors?: string
 	name: string
 	description?: string
 	published: string

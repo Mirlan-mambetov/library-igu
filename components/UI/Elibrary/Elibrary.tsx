@@ -1,9 +1,11 @@
 import { IElibrary } from '../../../interfaces/elibrary.interface'
+import { elibraryApi } from '../../../store/api/elibrary/elibrary.api'
 import { tokens } from '../../../theme'
 import { CreateFragment } from '../../Form/CreateFragment/CreateFragment'
 import { UpdateFragment } from '../../Form/UpdateFragment/UpdateFragment'
 import { useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
@@ -13,6 +15,9 @@ import { FC } from 'react'
 const Elibrary: FC<{ data: IElibrary[] }> = ({ data }) => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
+
+	const [deleteMainCategory] = elibraryApi.useDeleteMainCategoryMutation()
+
 	return (
 		<Box
 			sx={{ width: '100%', py: '20px', my: '20px' }}
@@ -35,6 +40,15 @@ const Elibrary: FC<{ data: IElibrary[] }> = ({ data }) => {
 							всего категорий: {category.secondCategory.length}
 						</Typography>
 						<UpdateFragment fragmentUpdate='UpdateElibrary' id={category.id} />
+						{!category.secondCategory.length && (
+							<Button
+								sx={{ fontSize: '10px' }}
+								color='success'
+								onClick={() => deleteMainCategory(category.id)}
+							>
+								удалить категорию
+							</Button>
+						)}
 					</Grid>
 				))}
 			</Grid>
