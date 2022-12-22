@@ -15,6 +15,11 @@ export const teachersApi = api.injectEndpoints({
 				url: '/teachers'
 			})
 		}),
+		fetchTeacherCategory: builder.query<ITeachersCategory, number>({
+			query: (id) => ({
+				url: `/teachers/${id}`
+			})
+		}),
 		fetchTeachersWorksLimit: builder.query<ITeachersWorks[], { limit: number }>(
 			{
 				query: ({ limit }) => ({
