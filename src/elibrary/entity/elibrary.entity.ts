@@ -12,5 +12,5 @@ export class ElibraryEntity extends BaseEntity {
   image: string
   
   @OneToMany(() => ElibraryCategoryEntity, scat => scat.category)
-  secondCategory: ElibraryCategoryEntity
+  secondCategory: ElibraryCategoryEntity[]
 }

@@ -16,9 +16,7 @@ export class ElibraryCategoryDto {
 
 export class ElibraryBookDto {
 
-  @IsString({message: "Авторы должны быть в строковом формате"})
-  @Length(4, 255, {message: "Минимальная длина авторов 4 символа. Макс. 255 "})
-  authors: string
+  authors?: string
 
   @IsString({message: "Название должно быть в строковом формате"})
   @Length(4, 255, {message: "Минимальная длина названия 4 символа. Макс. 255 "})

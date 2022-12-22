@@ -5,8 +5,8 @@ import { ElibraryCategoryEntity } from "./elibrary.category.enity";
 @Entity({name: "elibrary_books"})
 export class ElibraryBooksEntity extends BaseEntity {
   
-  @Column()
-  authors: string
+  @Column({default: null})
+  authors?: string
 
   @Column({default: null})
   name: string

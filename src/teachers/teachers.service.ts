@@ -132,7 +132,7 @@ export class TeachersService {
         }
       },
       order: {
-        createdAt: "ASC"
+        createdAt: "DESC"
       }
     })
   }

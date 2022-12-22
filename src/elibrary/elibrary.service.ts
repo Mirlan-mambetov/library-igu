@@ -83,6 +83,9 @@ export class ElibraryService {
             name: true
           }
         }
+      },
+      order: {
+        createdAt: "DESC"
       }
     })
   }
@@ -111,6 +114,9 @@ export class ElibraryService {
   async findById(id: number) {
     const category = await this.elibraryRepository.findOne({
       where: {id},
+      relations: {
+        secondCategory: true
+      },
       select: {
         id: true,
         name: true
@@ -154,6 +160,13 @@ export class ElibraryService {
       ...dto,
       image: `${BOOK_CATEGORY_GET_UPLOADS_FILES}/${file}`
     })
+  }
+
+  async deleteMainCategory(id: number) {
+    const category = await this.findById(id)
+    if (category.secondCategory.length) throw new BadRequestException("Удаление невозможно, так как категория содержит материалы. Это приведет к не стабильной работе API")
+    await deleteFileWithName(category.image)
+    return await this.elibraryRepository.delete(id)
   }
 
   async createCategory(mainCategoryId: number, dto: ElibraryCategoryDto) {

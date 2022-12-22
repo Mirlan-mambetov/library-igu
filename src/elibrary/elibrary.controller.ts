@@ -120,6 +120,12 @@ export class ElibraryController {
     return this.elibraryService.update(id, dto, file.filename)
   }
 
+  @Delete(':id')
+  @HttpCode(201)
+  deleteMainCategory(@Param('id', ParseIntPipe) id: number) {
+    return this.elibraryService.deleteMainCategory(id)
+  }
+
   @Post('category/:id')
   @UsePipes(new ValidationPipe())
   @HttpCode(200)

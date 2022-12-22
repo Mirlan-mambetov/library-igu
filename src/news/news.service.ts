@@ -45,7 +45,7 @@ export class NewsService {
   async findAllWithPaginate(options: IPaginationOptions) {
     return paginate<NewsEntity>(this.newsRepository, options, {
       order: {
-        createdAt: "ASC"
+        createdAt: "DESC"
       }
     })
   }
@@ -53,7 +53,7 @@ export class NewsService {
   async findAllNews() {
     return await this.newsRepository.find({
       order: {
-        createdAt: "ASC"
+        createdAt: "DESC"
       }
     })
   }
@@ -62,7 +62,7 @@ export class NewsService {
     return await this.newsRepository.find({
       take: limit,
       order: {
-        createdAt: "ASC"
+        createdAt: "DESC"
       }
     })
   }
