@@ -25,7 +25,7 @@ export const PanelMenu: IMenuItem[] = [
 		icon: GiEarthAmerica
 	},
 	{
-		name: 'FAQ вопросы',
+		name: 'Раздел FAQ',
 		link: '/dashboard/faq',
 		icon: FaQuestionCircle
 	}
