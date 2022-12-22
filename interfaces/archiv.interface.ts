@@ -8,6 +8,7 @@ export interface IArhivs extends IBase {
 }
 export interface IArhivsMaterials extends IBase {
 	authors: string
+	name: string
 	description: string
 	file: string
 	downloaded?: number

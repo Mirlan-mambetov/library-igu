@@ -3,11 +3,9 @@ import { Category, Filefields, Hero } from '../../../components'
 import { IArhivs } from '../../../interfaces/archiv.interface'
 import { vestnikService } from '../../../services/vestnikService/vestnik.service'
 import { vestnikApi } from '../../../store/api/vestnik/vestnik.api'
-// STYLES
 import styles from './arhiv.module.scss'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 interface ICategory {
@@ -52,26 +50,7 @@ const CategoryPage: FC<ICategory> = ({ archiv }) => {
 		</Layout>
 	)
 }
-
-export const getStaticPaths: GetStaticPaths = async () => {
-	try {
-		const { data: archivs } = await vestnikService.getAllArchivs()
-		const paths = archivs.map((archiv) => ({
-			params: { id: String(archiv.id) }
-		}))
-		return {
-			paths,
-			fallback: true
-		}
-	} catch (e) {
-		return {
-			paths: [],
-			fallback: false
-		}
-	}
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	try {
 		// @ts-ignore
 		const { data: archiv } = await vestnikService.getArchivById(+params.id)
@@ -84,7 +63,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		return {
 			props: {
 				archiv: {} as IArhivs
-			} as ICategory
+			} as ICategory,
+			notFound: true
 		}
 	}
 }

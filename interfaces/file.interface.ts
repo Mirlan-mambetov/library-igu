@@ -9,6 +9,6 @@ export interface IFile extends IBase {
 	views?: number
 	category: IFileCategory
 }
-interface IFileCategory {
+interface IFileCategory extends IBase {
 	name: string
 }

@@ -78,43 +78,4 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	}
 }
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-// 	try {
-// 		const { data: categories } = await teacherService.fetchAllCategories()
-// 		const paths = categories.map((category) => ({
-// 			params: { id: String(category.id) }
-// 		}))
-// 		return {
-// 			paths,
-// 			fallback: true
-// 		}
-// 	} catch (e) {
-// 		return {
-// 			paths: [],
-// 			fallback: false
-// 		}
-// 	}
-// }
-
-// export const getStaticProps: GetStaticProps = async ({ params }) => {
-// 	try {
-// 		const { data: categories } = await teacherService.fetchAllCategories()
-// 		// @ts-ignore
-// 		const { data: category } = await teacherService.fetchCategoyById(+params.id)
-// 		return {
-// 			props: {
-// 				category,
-// 				categories
-// 			}
-// 		}
-// 	} catch (e) {
-// 		return {
-// 			props: {
-// 				category: {} as ITeachersCategory,
-// 				categories: [] as ITeachersCategory[]
-// 			} as ICategoryPage
-// 		}
-// 	}
-// }
-
 export default CategoryPage
