@@ -5,7 +5,8 @@ import {
 	Hero,
 	Tabs,
 	Title,
-	NewsComponent
+	NewsComponent,
+	Preloader
 } from '../components'
 import { IArrivalImage } from '../interfaces/arrival.interface'
 import { INews } from '../interfaces/news.interface'
@@ -24,10 +25,9 @@ import { FC } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Home: FC = (): JSX.Element => {
-	// STATIC PAGE ID ... so HARD CODING...
 	const id = 1
 	const limit = 3
-	const { data: page = {} as IPage } = pageApi.useFetchPageQuery(id)
+	const { data: page = {} as IPage, isLoading } = pageApi.useFetchPageQuery(id)
 	const { data: newses = {} as IITemsPaginate<INews> } =
 		newsApi.useFetchAllNewsWithPaginateQuery({
 			query: { page: 1, limit }
@@ -37,6 +37,7 @@ const Home: FC = (): JSX.Element => {
 	const { data: partners = [] as IPartners[] } =
 		partnersApi.useFetchPartnersQuery(null)
 
+	if (isLoading) return <Preloader />
 	return (
 		<Layout>
 			<NextSeo

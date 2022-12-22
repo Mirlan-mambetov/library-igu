@@ -2,7 +2,6 @@ import { Layout } from '../../../Layout/Layout'
 import {
 	ElibraryCategories,
 	ElibraryFileList,
-	EmptyItems,
 	Hero,
 	Title
 } from '../../../components'
@@ -12,9 +11,9 @@ import {
 } from '../../../interfaces/elibrary.interface'
 import { elibraryService } from '../../../services/elibrary/elibraryService'
 import styles from './books.module.scss'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { NextSeo } from 'next-seo'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 
 interface IBooksPage {
 	mainCategories: IElibraryCategory[]
@@ -84,27 +83,7 @@ const BooksPage: FC<IBooksPage> = ({
 		</Layout>
 	)
 }
-
-export const getStaticPaths: GetStaticPaths = async () => {
-	try {
-		const { data: categories } =
-			await elibraryService.fetchAllSecondCategories()
-		const paths = categories.map((category) => ({
-			params: { id: String(category.id) }
-		}))
-		return {
-			paths,
-			fallback: true
-		}
-	} catch (e) {
-		return {
-			paths: [],
-			fallback: false
-		}
-	}
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	try {
 		const { data: mainCategories } =
 			await elibraryService.fetchAllMainCategories()
@@ -123,7 +102,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			props: {
 				mainCategories: [] as IElibraryCategory[],
 				category: {} as IElibrarySecondCategory
-			} as IBooksPage
+			} as IBooksPage,
+			notFound: true
 		}
 	}
 }

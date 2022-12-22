@@ -1,5 +1,5 @@
 import { Layout } from '../../Layout/Layout'
-import { Hero, Tabs, Jurnal, Arhivs } from '../../components'
+import { Hero, Tabs, Jurnal, Arhivs, Preloader } from '../../components'
 import { IPage } from '../../interfaces/page.interface'
 import { pageApi } from '../../store/api/page/page.api'
 // STYLES
@@ -9,8 +9,9 @@ import React from 'react'
 
 const Vestnik = () => {
 	const pageId = 4
-	const { data: page = {} as IPage } = pageApi.useFetchPageQuery(pageId)
-
+	const { data: page = {} as IPage, isLoading } =
+		pageApi.useFetchPageQuery(pageId)
+	if (isLoading) return <Preloader />
 	return (
 		<Layout>
 			<NextSeo

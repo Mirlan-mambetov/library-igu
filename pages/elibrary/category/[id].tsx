@@ -7,11 +7,9 @@ import {
 import { IElibraryCategory } from '../../../interfaces/elibrary.interface'
 import { elibraryService } from '../../../services/elibrary/elibraryService'
 import { elibraryApi } from '../../../store/api/elibrary/elibrary.api'
-// STYLES
 import styles from './category.module.scss'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 interface ICategory {
@@ -66,26 +64,7 @@ const Category: FC<ICategory> = ({ categories, category }): JSX.Element => {
 		</Layout>
 	)
 }
-
-export const getStaticPaths: GetStaticPaths = async () => {
-	try {
-		const { data: categories } = await elibraryService.fetchAllMainCategories()
-		const paths = categories.map((category) => ({
-			params: { id: String(category.id) }
-		}))
-		return {
-			paths,
-			fallback: true
-		}
-	} catch (e) {
-		return {
-			paths: [],
-			fallback: false
-		}
-	}
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	try {
 		const { data: categories } = await elibraryService.fetchAllMainCategories()
 		const { data: category } = await elibraryService.fetchMainCategoryById(
@@ -103,7 +82,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			props: {
 				categories: [] as IElibraryCategory[],
 				category: {} as IElibraryCategory
-			} as ICategory
+			} as ICategory,
+			notFound: true
 		}
 	}
 }

@@ -3,17 +3,18 @@ import { Button, Hero, Imagebox, Title, NewsComponent } from '../../components'
 import { INews } from '../../interfaces/news.interface'
 import { newsService } from '../../services/newsService/newsService'
 import styles from './news.module.scss'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { FC } from 'react'
 
-interface newsI {
+interface NewsI {
 	news: INews
 	newses: INews[]
 }
 
-const NewsPage: FC<newsI> = ({ news, newses }) => {
+const NewsPage: FC<NewsI> = ({ news, newses }) => {
+	const currentNews = newses.filter((n) => n.id !== news.id)
 	return (
 		<Layout>
 			<NextSeo
@@ -35,7 +36,7 @@ const NewsPage: FC<newsI> = ({ news, newses }) => {
 						<Title type='h3'>Читайте также</Title>
 					</div>
 					<div className={styles.cardsWrapp}>
-						<NewsComponent data={newses} />
+						<NewsComponent data={currentNews} />
 					</div>
 					<div className={styles.cardsBtn}>
 						<Link href={'/news/arhiv'}>
@@ -49,32 +50,11 @@ const NewsPage: FC<newsI> = ({ news, newses }) => {
 		</Layout>
 	)
 }
-
-export const getStaticPaths: GetStaticPaths = async () => {
-	try {
-		const { data: newses } = await newsService.findAllNews()
-		const paths = newses.map((news) => ({
-			params: {
-				id: String(news.id)
-			}
-		}))
-		return {
-			paths,
-			fallback: false
-		}
-	} catch (e) {
-		return {
-			paths: [],
-			fallback: false
-		}
-	}
-}
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	try {
 		// @ts-ignore
 		const { data: news } = await newsService.findNewsById(+params?.id)
-		const { data: newses } = await newsService.findNewsOnLimit(3)
-
+		const { data: newses } = await newsService.findNewsOnLimit(6)
 		return {
 			props: {
 				news,
@@ -86,7 +66,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			props: {
 				news: {} as INews,
 				newses: [] as INews[]
-			} as newsI
+			} as NewsI,
+			notFound: true
 		}
 	}
 }

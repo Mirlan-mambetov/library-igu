@@ -1,6 +1,5 @@
 import { Preloader } from '../components'
 import { store } from '../store'
-// STYLES
 import '../styles/global.scss'
 import { NextSeo } from 'next-seo'
 import type { AppProps } from 'next/app'

@@ -16,7 +16,7 @@ const NewsArhiv: NextPage = (): JSX.Element => {
 
 	const { data: onePage } = pageApi.useFetchPageQuery(pageId)
 	const { data: newses = {} as IITemsPaginate<INews> } =
-		newsApi.useFetchAllNewsWithPaginateQuery({ query: { page, limit: 3 } })
+		newsApi.useFetchAllNewsWithPaginateQuery({ query: { page, limit: 10 } })
 
 	const paginateHandler = ({ selected }: { selected: number }) => {
 		setPage(selected + 1)
