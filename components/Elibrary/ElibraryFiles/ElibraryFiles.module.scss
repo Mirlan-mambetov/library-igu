@@ -32,6 +32,7 @@
 			line-height: 21px;
 			text-transform: uppercase;
 			margin-bottom: 12px;
+			color: #504a4a;
 		}
 
 		.title {
@@ -40,13 +41,14 @@
 			line-height: 20px;
 		}
 		.name {
-			font-size: 16px;
+			font-size: 18px;
 			font-weight: normal;
+			font-weight: bold;
 		}
 		.dateYer {
 			display: flex;
 			gap: 5px;
-			font-size: 12px;
+			font-size: 15px;
 			font-weight: bold;
 		}
 	}

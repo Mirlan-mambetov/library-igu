@@ -1,23 +1,31 @@
 @use '../../../styles/media/media-queres';
 @import '../../../styles/varriables/varriables';
 
+.categories {
+	position: sticky;
+	top: 80px;
+}
 .category {
-  position: sticky;
-  top: 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	height: 65vh;
+	overflow: hidden;
 
-  .categoryTop {
-    padding: 20px 0;
-  }
+	.categoryTop {
+		padding: 20px 0;
+	}
 
-  a {
-    padding: 12px 5px;
-    border: 1px solid #E4E4E4;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    color: $black;
-  }
+	a {
+		padding: 12px 5px;
+		border: 1px solid #e4e4e4;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 21px;
+		color: $black;
+	}
+	&.more {
+		height: auto;
+		overflow: visible;
+	}
 }

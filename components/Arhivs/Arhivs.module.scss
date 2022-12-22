@@ -2,48 +2,58 @@
 @import '../../styles/varriables/varriables';
 
 .arhivs {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
 
-    .infoItem {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      font-size: 14px;
-      line-height: 19px;
-      color: $primary;
-    }
-  }
+		.infoItem {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			font-size: 14px;
+			line-height: 19px;
+			color: $primary;
+		}
+	}
 
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 30px;
+	.links {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 30px;
+		height: 36vh;
+		overflow: hidden;
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		transition: all 0.5s ease;
 
-    a {
-      max-width: 45%;
-      width: 100%;
-      margin-bottom: 5px;
-      border: 1px solid #d1d1d1;
-      padding: 10px 20px;
-      color: $black;
+		a {
+			max-width: 45%;
+			width: 100%;
+			margin-bottom: 5px;
+			border: 1px solid #d1d1d1;
+			padding: 10px 20px;
+			color: $black;
 
-      @include media-queres.mediaOnly640px {
-        max-width: 100%;
-      }
-    }
+			@include media-queres.mediaOnly640px {
+				max-width: 100%;
+			}
+		}
 
-    @include media-queres.mediaOnly640px {
-      flex-direction: column;
-      gap: 12px;
-    }
-  }
+		@include media-queres.mediaOnly640px {
+			flex-direction: column;
+			gap: 12px;
+		}
+		&.more {
+			height: auto;
+			overflow: visible;
+		}
+	}
 }
