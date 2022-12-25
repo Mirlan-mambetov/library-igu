@@ -15,21 +15,21 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { NextPage } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { MdDeleteForever } from 'react-icons/md'
 
 const WebsiteMainPage: NextPage = () => {
+	const id = 1
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
-	const id = 1
+
 	const { data: page, error } = pageApi.useFetchOnePageQuery(id)
 	const { data: arrivalImages } = arrivalApi.useFetchAllArrivalImagesQuery(null)
 	const { data: partners = [] as IPartnersI[] } =
 		partnersApi.useFetchAllPartnersQuery(null)
 	const [deletePartnerLink] = partnersApi.useDeletePartnerLinkMutation()
-	console.log(page)
-	console.log(arrivalImages)
-	console.log(partners)
+
+	const deletePartner = async (id: number) => await deletePartnerLink(id)
+
 	return (
 		<Layout title='Главная страница сайта ИГУ'>
 			{/* @ts-ignore */}
@@ -69,21 +69,21 @@ const WebsiteMainPage: NextPage = () => {
 								key={partner.id}
 								sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
 							>
-								<Link href={`${partner.link}`} target='_blank'>
+								<a href={`http://${partner.link}`} target='_blank'>
 									<Image
 										width={270}
 										height={50}
 										src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${partner.image}`}
 										alt={partner.link}
 									/>
-								</Link>
+								</a>
 								<UpdateFragment
 									fragmentUpdate='UpdatePartnerLink'
 									id={partner.id}
 								/>
 								<Button
 									color='warning'
-									onClick={() => deletePartnerLink(partner.id)}
+									onClick={() => deletePartner(partner.id)}
 								>
 									<MdDeleteForever />
 								</Button>

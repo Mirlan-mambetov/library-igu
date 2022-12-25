@@ -8,7 +8,8 @@ const nextConfig = {
 				protocol: 'http',
 				hostname: '**'
 			}
-		]
+		],
+		domains: ['195.38.164.86:4200']
 	},
 	experimental: {
 		modularizeImports: {

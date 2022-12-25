@@ -20,8 +20,6 @@ const WebsiteServicesPage: NextPage = () => {
 	const { data: page } = pageApi.useFetchOnePageQuery(id)
 	const { data: imageCards = [] as IImageCard[] } =
 		imageCardApi.useFetchAllCardsQuery(null)
-	console.log(imageCards)
-	console.log(page)
 
 	return (
 		<Layout title='Страница сервисы'>

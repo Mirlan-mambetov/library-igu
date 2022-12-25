@@ -25,8 +25,6 @@ export const Archivs: FC<{ archiv: IArhivs[]; title: string }> = ({
 		})
 	}, [archiv])
 
-	console.log(pageId)
-
 	return (
 		<Box sx={{ width: '100%' }}>
 			<Box sx={{ display: 'flex', alignItems: 'baseline', gap: '40px' }}>

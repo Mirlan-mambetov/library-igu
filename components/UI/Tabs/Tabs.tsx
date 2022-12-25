@@ -19,7 +19,12 @@ export const Tabs: FC<{ tabs: ITabs[]; title?: string }> = ({
 }) => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
+
 	const [deleteTabLink] = tabsApi.useDeleteTabLinkMutation()
+
+	const deleteTabHandler = async (id: number) => {
+		await deleteTabLink(id)
+	}
 
 	return (
 		<Box>
@@ -63,7 +68,7 @@ export const Tabs: FC<{ tabs: ITabs[]; title?: string }> = ({
 								<Button
 									sx={{ fontSize: '10px' }}
 									color='warning'
-									onClick={() => deleteTabLink(link.id)}
+									onClick={() => deleteTabHandler(link.id)}
 								>
 									удалить
 								</Button>

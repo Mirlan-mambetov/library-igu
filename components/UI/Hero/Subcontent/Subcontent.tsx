@@ -19,7 +19,6 @@ export const HeroSubContent: FC<IHeroSubcontentProps> = ({ subContent }) => {
 			return
 		})
 	}, [subContent])
-	console.log(`SUBCONTENT HERO ID: ${heroId}`)
 
 	return (
 		<>

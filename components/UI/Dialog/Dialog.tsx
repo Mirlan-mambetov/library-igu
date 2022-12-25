@@ -1,4 +1,4 @@
-import { CompareContext } from '../../../contexts/CompareContext'
+import { DialogContext } from '../../../contexts/CompareContext'
 import { Fade } from '../Modal/Fade'
 import { Modal } from '@mui/material'
 import Box from '@mui/material/Box'
@@ -18,26 +18,26 @@ const style = {
 	p: 4
 }
 export const AlertComponent: FC = () => {
-	const { isCompare, clearCompare, deleteHandler } = useContext(CompareContext)
+	const { active, inActiveHandler, confirmDelete } = useContext(DialogContext)
 	return (
 		<Modal
 			aria-labelledby='spring-modal-title'
 			aria-describedby='spring-modal-description'
-			open={isCompare}
-			onClose={clearCompare}
+			open={active}
+			onClose={inActiveHandler}
 			closeAfterTransition
 			BackdropProps={{
 				timeout: 500
 			}}
 		>
-			<Fade in={isCompare}>
+			<Fade in={active}>
 				<Box sx={style}>
 					<Typography>Вы уверены что хотите удалить?</Typography>
 					<Box sx={{ my: '10px' }}>
-						<Button color='warning' onClick={deleteHandler}>
+						<Button color='warning' onClick={confirmDelete}>
 							Да, удалить
 						</Button>
-						<Button color='success' onClick={clearCompare}>
+						<Button color='success' onClick={inActiveHandler}>
 							Нет
 						</Button>
 					</Box>

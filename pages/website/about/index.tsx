@@ -29,9 +29,7 @@ const WebsiteAboutPage: NextPage = () => {
 		aboutApi.useFetchAboutOwnerQuery(null)
 	const { data: aboutTablo = [] as IAboutTablo[] } =
 		aboutApi.useFetchAboutTabloQuery(null)
-	console.log(aboutInfo)
-	console.log(aboutOwner)
-	console.log(aboutTablo)
+
 	return (
 		<Layout title='Страница О библиотеке'>
 			{/* @ts-ignore */}

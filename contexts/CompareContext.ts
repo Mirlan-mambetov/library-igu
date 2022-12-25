@@ -1,45 +1,41 @@
 import { createContext, useState } from 'react'
 
-export const CompareContext = createContext({
-	isCompare: false,
+export const DialogContext = createContext({
+	active: false,
 	deleted: false,
 	deletedId: 0,
-	compareHandler: () => {},
-	clearCompare: () => {},
-	deleteHandler: () => {},
-	deletedHandler: (id: number) => {}
+	activeHandler: (id: number) => {},
+	inActiveHandler: () => {},
+	confirmDelete: () => {}
 })
 
-export const CompareProvider = () => {
-	const [isCompare, setCompare] = useState<boolean>(false)
+export const DialogContextProvider = () => {
+	const [active, setActive] = useState<boolean>(false)
 	const [deleted, setDeleted] = useState<boolean>(false)
 	const [deletedId, setDeletedId] = useState<number>(0)
 
-	const compareHandler = () => {
-		setCompare(true)
+	const activeHandler = (id: number) => {
+		setActive(true)
+		setDeletedId(id)
 	}
 
-	const clearCompare = () => {
-		setCompare(false)
+	const inActiveHandler = () => {
+		setActive(false)
 		setDeleted(false)
 		setDeletedId(0)
 	}
 
-	const deleteHandler = () => {
+	const confirmDelete = () => {
+		setActive(false)
 		setDeleted(true)
 	}
 
-	const deletedHandler = (id: number) => {
-		setDeletedId(id)
-	}
-
 	return {
-		deletedId,
-		deletedHandler,
-		isCompare,
+		active,
 		deleted,
-		compareHandler,
-		clearCompare,
-		deleteHandler
+		deletedId,
+		activeHandler,
+		inActiveHandler,
+		confirmDelete
 	}
 }

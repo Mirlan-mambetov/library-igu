@@ -11,8 +11,13 @@ import { FC } from 'react'
 const MenuItem: FC<{ data: IMenuItem }> = ({ data }) => {
 	return (
 		<ListItem disablePadding>
-			<Link href={`${data.link}`}>
-				<ListItemButton>
+			<Link
+				href={`${data.link}`}
+				style={
+					data.disabled ? { cursor: 'not-allowed' } : { cursor: 'pointer' }
+				}
+			>
+				<ListItemButton disabled={data.disabled}>
 					{data.icon && (
 						<ListItemIcon>
 							<data.icon fontSize={'large'} />

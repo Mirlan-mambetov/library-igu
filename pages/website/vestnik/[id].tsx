@@ -10,7 +10,6 @@ const VestnikArchiv: FC = () => {
 	const { data: arhivs } = archivApi.useGetArchivByIdQuery(+query?.id, {
 		skip: !query.id
 	})
-	console.log(arhivs)
 	return (
 		<Layout title={`Архив ${arhivs ? arhivs?.name : ''}`}>
 			{arhivs && <ArchivsList data={arhivs} />}

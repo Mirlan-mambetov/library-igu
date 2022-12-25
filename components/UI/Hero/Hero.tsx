@@ -12,7 +12,6 @@ import {
 	useTheme
 } from '@mui/material'
 import { FC, useEffect, useState } from 'react'
-import { FaPencilAlt } from 'react-icons/fa'
 
 const Hero: FC<{ hero: IHero[] }> = ({ hero }) => {
 	const [pageId, setPageId] = useState<number>(0)
@@ -27,8 +26,6 @@ const Hero: FC<{ hero: IHero[] }> = ({ hero }) => {
 			return
 		})
 	}, [hero])
-	console.log(`Page ID: ${pageId}`)
-	console.log(`Hero ID: ${heroId}`)
 
 	return (
 		<Box>
@@ -39,8 +36,8 @@ const Hero: FC<{ hero: IHero[] }> = ({ hero }) => {
 							<Box sx={{ position: 'relative' }}>
 								<CardMedia
 									component='img'
+									src={`${process.env.NEXT_PUBLIC_APP_STATIC}${hero.background}`}
 									height={200}
-									image={`${process.env.NEXT_PUBLIC_APP_STATIC}${hero.background}`}
 								/>
 							</Box>
 							<CardContent>

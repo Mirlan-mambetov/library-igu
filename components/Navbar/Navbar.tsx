@@ -47,8 +47,9 @@ export const Navbar: FC = () => {
 						<InputBase
 							sx={{ ml: 2, flex: 1, borderBottom: '1px solid #fff' }}
 							placeholder='Поиск'
+							disabled
 						/>
-						<IconButton type='button' sx={{ p: 1 }}>
+						<IconButton type='button' sx={{ p: 1 }} disabled>
 							<SearchOutlined />
 						</IconButton>
 					</Box>

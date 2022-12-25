@@ -14,7 +14,7 @@ export const newsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
 		fetchAllNews: builder.query<INewsPaginationI, { query?: IPaginationDtoI }>({
 			query: ({ query }) => ({
-				url: `/news?page=${query?.page}`
+				url: `/news?page=${query?.page}&limit=${query?.limit}`
 			}),
 			providesTags: ['Pages']
 		}),
@@ -31,6 +31,13 @@ export const newsApi = api.injectEndpoints({
 				url: `/news/${id}`,
 				method: 'Put',
 				body: data
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
+		deleteNews: builder.mutation<null, number>({
+			query: (id) => ({
+				url: `/news/${id}`,
+				method: 'Delete'
 			}),
 			invalidatesTags: (res, error) => [{ type: 'Pages' }]
 		})

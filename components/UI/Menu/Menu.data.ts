@@ -1,12 +1,17 @@
 import { IMenuItem } from './MenuItem/MenuItem.props'
-import { BiLibrary, BiNews } from 'react-icons/bi'
-import { BsFillJournalBookmarkFill } from 'react-icons/bs'
-import { FaQuestionCircle, FaServicestack } from 'react-icons/fa'
+import { AiOutlineInfoCircle } from 'react-icons/ai'
+import { BiLibrary, BiLink, BiNews, BiWindow } from 'react-icons/bi'
+import { BsFillJournalBookmarkFill, BsJournal } from 'react-icons/bs'
+import { FaQuestionCircle } from 'react-icons/fa'
 import { GiEarthAmerica } from 'react-icons/gi'
 import { HiHome } from 'react-icons/hi'
 import { ImStatsDots } from 'react-icons/im'
-import { MdAdminPanelSettings, MdRule } from 'react-icons/md'
-import { SiAboutdotme, SiVectorworks } from 'react-icons/si'
+import {
+	MdAdminPanelSettings,
+	MdMiscellaneousServices,
+	MdRule,
+	MdWork
+} from 'react-icons/md'
 
 export const PanelMenu: IMenuItem[] = [
 	{
@@ -16,13 +21,15 @@ export const PanelMenu: IMenuItem[] = [
 	},
 	{
 		name: 'Статистика в линию',
-		link: '/dashboard/stats/line',
-		icon: ImStatsDots
+		link: '#',
+		icon: ImStatsDots,
+		disabled: true
 	},
 	{
 		name: 'Статистика на карте',
-		link: '/dashboard/stats/maps',
-		icon: GiEarthAmerica
+		link: '#',
+		icon: GiEarthAmerica,
+		disabled: true
 	},
 	{
 		name: 'Раздел FAQ',
@@ -40,7 +47,7 @@ export const WebsitePageMenu: IMenuItem[] = [
 	{
 		name: 'О библиотеке',
 		link: '/website/about',
-		icon: SiAboutdotme
+		icon: AiOutlineInfoCircle
 	},
 	{
 		name: 'Вестник ИГУ',
@@ -50,7 +57,7 @@ export const WebsitePageMenu: IMenuItem[] = [
 	{
 		name: 'Труды преподавателей',
 		link: '/website/teachers-work',
-		icon: SiVectorworks
+		icon: MdWork
 	},
 	{
 		name: 'Новости',
@@ -60,7 +67,7 @@ export const WebsitePageMenu: IMenuItem[] = [
 	{
 		name: 'Сервисы',
 		link: '/website/services',
-		icon: FaServicestack
+		icon: MdMiscellaneousServices
 	},
 	{
 		name: 'Правила пользования',
@@ -71,5 +78,23 @@ export const WebsitePageMenu: IMenuItem[] = [
 		name: 'Электронная библиотека',
 		link: '/website/elibrary',
 		icon: BiLibrary
+	},
+	{
+		name: 'Кыргыз-тили',
+		link: '#',
+		icon: BsJournal,
+		disabled: true
+	},
+	{
+		name: 'Единое окно',
+		link: '#',
+		icon: BiWindow,
+		disabled: true
+	},
+	{
+		name: 'Ссылки интернет',
+		link: '#',
+		icon: BiLink,
+		disabled: true
 	}
 ]

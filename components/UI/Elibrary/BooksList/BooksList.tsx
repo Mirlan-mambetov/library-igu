@@ -18,8 +18,7 @@ const BooksList: FC<{ category: Pick<IElibraryCategory, 'name' | 'id'> }> = ({
 	category
 }) => {
 	const [page, setPage] = useState(1)
-	const limit = 5
-
+	const limit = 8
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
 
@@ -34,6 +33,7 @@ const BooksList: FC<{ category: Pick<IElibraryCategory, 'name' | 'id'> }> = ({
 	const paginateHandler = async (e: ChangeEvent<unknown>, page: number) => {
 		setPage(page)
 	}
+
 	return (
 		<Box color={colors.primary[600]}>
 			<Box color={colors.primary[500]}>
@@ -123,12 +123,6 @@ const BooksList: FC<{ category: Pick<IElibraryCategory, 'name' | 'id'> }> = ({
 								<span>дата добавления:</span>
 								{dayjs(book.createdAt).format('YYYY-MM-D HH:mm:ss')}
 							</time>
-							<Link
-								href={`${process.env.NEXT_PUBLIC_APP_STATIC}${book.file}`}
-								target='_blank'
-							>
-								Файл
-							</Link>
 						</Box>
 						<Box sx={{ display: 'flex', gap: '10px' }}>
 							<UpdateFragment

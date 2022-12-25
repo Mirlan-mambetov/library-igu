@@ -8,6 +8,8 @@ import Image from 'next/image'
 import { FC } from 'react'
 
 export const ArrivalImages: FC<{ images: IArrival[] }> = ({ images }) => {
+	console.log(images)
+
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
 	return (
@@ -26,15 +28,16 @@ export const ArrivalImages: FC<{ images: IArrival[] }> = ({ images }) => {
 					flexWrap: 'wrap'
 				}}
 			>
-				{images.map((image) => (
-					<Box key={image.id}>
+				{images.map((block) => (
+					<Box key={block.id}>
 						<Image
 							width={130}
 							height={200}
-							src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${image.image}`}
-							alt={image.createdAt}
+							src={`${process.env.NEXT_PUBLIC_APP_STATIC}${block.image}`}
+							alt={block.image}
+							priority
 						/>
-						<UpdateFragment fragmentUpdate='UpdateArrivalImage' id={image.id} />
+						<UpdateFragment fragmentUpdate='UpdateArrivalImage' id={block.id} />
 					</Box>
 				))}
 			</Box>
