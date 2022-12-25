@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PAGE_NOT_FOUND } from 'src/page/constance/page.message.constance';
 import { PageEntity } from 'src/page/entity/page.entity';
@@ -105,5 +105,4 @@ export class HeroService {
   async deleteHeroSubcontent(id: number) {
     return await this.heroSubcontentRepository.delete(id)
   }
-
 }
