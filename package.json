@@ -30,6 +30,7 @@
 		"react-spring": "^9.5.5",
 		"redux-persist": "^6.0.0",
 		"sass": "^1.56.1",
+		"sharp": "^0.31.3",
 		"zod": "^3.19.1"
 	},
 	"devDependencies": {

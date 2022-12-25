@@ -1,4 +1,3 @@
-import { CompareContext } from '../../../../contexts/CompareContext'
 import { IElibraryCategory } from '../../../../interfaces/elibrary.interface'
 import { elibraryApi } from '../../../../store/api/elibrary/elibrary.api'
 import { tokens } from '../../../../theme'
