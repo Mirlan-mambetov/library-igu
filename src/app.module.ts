@@ -18,6 +18,7 @@ import { TeachersModule } from './teachers/teachers.module';
 import { AboutModule } from './about/about.module';
 import { ImageCardModule } from './imageCard/imageCard.module';
 import { ElibraryModule } from './elibrary/elibrary.module';
+import { WindowModule } from './window/window.module';
 
 
 @Module({
@@ -44,7 +45,8 @@ import { ElibraryModule } from './elibrary/elibrary.module';
     TeachersModule,
     AboutModule,
     ImageCardModule,
-    ElibraryModule
+    ElibraryModule,
+    WindowModule
   ],
   controllers: [],
   providers: [],
