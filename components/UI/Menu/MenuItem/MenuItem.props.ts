@@ -5,4 +5,5 @@ export interface IMenuItem {
 	link: string
 	icon?: IconType
 	disabled?: boolean
+	new?: boolean
 }

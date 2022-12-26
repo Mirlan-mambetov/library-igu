@@ -1,3 +1,4 @@
+import { NotifyNew } from '../../Notify/NotifyNew/NotifyNew'
 import { IMenuItem } from './MenuItem.props'
 import {
 	ListItem,
@@ -11,6 +12,7 @@ import { FC } from 'react'
 const MenuItem: FC<{ data: IMenuItem }> = ({ data }) => {
 	return (
 		<ListItem disablePadding>
+			{data.new && <NotifyNew />}
 			<Link
 				href={`${data.link}`}
 				style={

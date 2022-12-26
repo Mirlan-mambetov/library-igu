@@ -87,9 +87,9 @@ export const WebsitePageMenu: IMenuItem[] = [
 	},
 	{
 		name: 'Единое окно',
-		link: '#',
+		link: '/website/window',
 		icon: BiWindow,
-		disabled: true
+		new: true
 	},
 	{
 		name: 'Ссылки интернет',

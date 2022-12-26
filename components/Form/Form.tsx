@@ -32,6 +32,10 @@ import { CreateTeachersCategory } from './TeachersForm/CreateTeachersCategory'
 import { CreateTeachersWork } from './TeachersForm/CreateTeachersWork'
 import { UpdateTeachersCategory } from './TeachersForm/UpdateTeachersCategory'
 import { UpdateTeachersWork } from './TeachersForm/UpdateTeachersWork'
+import { CreateWindowCategory } from './WindowForm/CreateWindowCategory'
+import { UpdateWindowCategory } from './WindowForm/UpdateWindowCategory'
+import WindowCreateMainCategory from './WindowForm/WindowCreateMainCategory'
+import WindowUpdateMainCategory from './WindowForm/WindowUpdateMainCategory'
 import { FC, useContext } from 'react'
 
 export const Form: FC = () => {
@@ -101,6 +105,14 @@ export const Form: FC = () => {
 			return <UpdateElibraryBook />
 		case 'CreateTabLink':
 			return <CreateTabLink />
+		case 'CreateWindowMainCategory':
+			return <WindowCreateMainCategory />
+		case 'UpdateWindowMainCategory':
+			return <WindowUpdateMainCategory />
+		case 'CreateWindowCategory':
+			return <CreateWindowCategory />
+		case 'UpdateWindowCategory':
+			return <UpdateWindowCategory />
 		case 'CreatePage':
 			return <PageForm />
 		default:
