@@ -14,7 +14,7 @@ import Link from 'next/link'
 const WebsiteWindowPage = () => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
-	const pageId = 40
+	const pageId = 9
 	const { data: page } = pageApi.useFetchOnePageQuery(pageId)
 	const { data: windowMainCategories = [] as IWindow[] } =
 		windowApi.useFetchAllWindowMainCategoriesQuery(null)
