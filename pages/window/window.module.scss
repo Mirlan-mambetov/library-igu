@@ -1,0 +1,53 @@
+@use '../../styles/media/media-queres';
+@import '../../styles/varriables/varriables';
+
+.categories {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+	.category {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		max-width: 45%;
+		width: 100%;
+		padding: 18px 20px;
+		background: rgba(49, 100, 244, 0.11);
+		padding-left: 50px;
+		display: flex;
+		align-items: center;
+
+		.information {
+			display: none;
+		}
+
+		a {
+			color: $black;
+
+			h4 {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 18px;
+			}
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 30px;
+			height: 100%;
+			background: rgba(49, 100, 244, 0.29);
+		}
+
+		.icon {
+			svg {
+				width: 10px;
+				height: 10px;
+				fill: $primary;
+			}
+		}
+	}
+}

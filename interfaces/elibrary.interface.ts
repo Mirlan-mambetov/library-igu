@@ -20,3 +20,6 @@ export interface IElibraryBooks extends IBase {
 	file: string
 	category: IElibrarySecondCategory
 }
+export interface IElibraryReamaining extends IBase {
+	image: string
+}

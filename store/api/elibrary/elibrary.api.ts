@@ -1,6 +1,7 @@
 import {
 	IElibraryBooks,
 	IElibraryCategory,
+	IElibraryReamaining,
 	IElibrarySecondCategory
 } from '../../../interfaces/elibrary.interface'
 import {
@@ -40,6 +41,12 @@ export const elibraryApi = api.injectEndpoints({
 		>({
 			query: ({ id, query }) => ({
 				url: `/elibrary/books/category/${id}?page=${query.page}&limit=${query.limit}`
+			}),
+			providesTags: ['Books']
+		}),
+		fetchElibraryRemaining: builder.query<IElibraryReamaining[], null>({
+			query: () => ({
+				url: '/elibrary/remaining'
 			}),
 			providesTags: ['Books']
 		}),

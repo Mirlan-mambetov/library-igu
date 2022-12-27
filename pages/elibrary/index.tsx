@@ -1,6 +1,9 @@
 import { Layout } from '../../Layout/Layout'
-import { ElibraryCategories, Hero, Title } from '../../components'
-import { IElibraryCategory } from '../../interfaces/elibrary.interface'
+import { Bookscard, ElibraryCategories, Hero, Title } from '../../components'
+import {
+	IElibraryCategory,
+	IElibraryReamaining
+} from '../../interfaces/elibrary.interface'
 import { IPage } from '../../interfaces/page.interface'
 import { elibraryApi } from '../../store/api/elibrary/elibrary.api'
 import { pageApi } from '../../store/api/page/page.api'
@@ -13,6 +16,9 @@ const Elibrary: FC = (): JSX.Element => {
 	const { data: page = {} as IPage } = pageApi.useFetchPageQuery(pageId)
 	const { data: categories = [] as IElibraryCategory[] } =
 		elibraryApi.useFetchMainCategoriesQuery(null)
+
+	const { data: reamining = [] as IElibraryReamaining[] } =
+		elibraryApi.useFetchElibraryRemainingQuery(null)
 
 	return (
 		<Layout>
@@ -30,9 +36,10 @@ const Elibrary: FC = (): JSX.Element => {
 							<Title type='h3'>Недавние в электронной библиотеке</Title>
 						</div>
 						<div className={styles.books}>
-							{/* {BookscardData.map(books => (
-                <Bookscard data={books} key={books.id} />
-              ))} */}
+							{reamining &&
+								reamining.map((remaing) => (
+									<Bookscard key={remaing.id} data={remaing} />
+								))}
 						</div>
 					</div>
 				</div>
