@@ -3,7 +3,8 @@ import {
 	IElibrary,
 	IElibraryBooks,
 	IElibraryBooksByCategory,
-	IElibraryCategory
+	IElibraryCategory,
+	IElibraryRemaining
 } from '../../../interfaces/elibrary.interface'
 import { api } from '../api'
 import { IPaginationDto } from '../pagination.dto'
@@ -120,6 +121,30 @@ export const elibraryApi = api.injectEndpoints({
 		deleteMainCategory: builder.mutation<null, number>({
 			query: (id) => ({
 				url: `/elibrary/${id}`,
+				method: 'Delete'
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
+		fetchElibraryRemainings: builder.query<IElibraryRemaining[], null>({
+			query: () => ({
+				url: `/elibrary/remaining`
+			}),
+			providesTags: ['Pages']
+		}),
+		updateElibraryRemaining: builder.mutation<
+			null,
+			{ id: number; data: FormData }
+		>({
+			query: ({ id, data }) => ({
+				url: `/elibrary/remaining/${id}`,
+				method: 'Put',
+				body: data
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
+		deleteElibraryRemaining: builder.mutation<null, number>({
+			query: (id) => ({
+				url: `/elibrary/remaining/${id}`,
 				method: 'Delete'
 			}),
 			invalidatesTags: (res, error) => [{ type: 'Pages' }]

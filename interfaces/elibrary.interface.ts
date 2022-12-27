@@ -25,3 +25,6 @@ export interface IElibraryBooksByCategory {
 	items: IElibraryBooks[]
 	meta?: IPaginationI
 }
+export interface IElibraryRemaining extends IBase {
+	image: string
+}

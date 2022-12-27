@@ -11,6 +11,8 @@ import CreateElibraryCategory from './ElibraryForm/CreateElibraryCategory'
 import CreateElibraryMain from './ElibraryForm/CreateElibraryMain'
 import CreateElibraryBook from './ElibraryForm/ElibraryBookForm/CreateElibraryBook'
 import UpdateElibraryBook from './ElibraryForm/ElibraryBookForm/UpdateElibraryBook'
+import { CreateElibraryRemaining } from './ElibraryForm/ElibraryRemaining/CreateElibraryRemaining'
+import { UpdateElibraryRemaining } from './ElibraryForm/ElibraryRemaining/UpdateElibraryRemaining'
 import UpdateElibraryCategory from './ElibraryForm/UpdateElibraryCategory'
 import UpdateElibraryMain from './ElibraryForm/UpdateElibraryMain'
 import { CreateHeroSubcontent } from './HeroForm/CreateSubContent/CreateSubContent'
@@ -113,6 +115,10 @@ export const Form: FC = () => {
 			return <CreateWindowCategory />
 		case 'UpdateWindowCategory':
 			return <UpdateWindowCategory />
+		case 'CreateElibraryRemaining':
+			return <CreateElibraryRemaining />
+		case 'UpdateElibraryRemaining':
+			return <UpdateElibraryRemaining />
 		case 'CreatePage':
 			return <PageForm />
 		default:
