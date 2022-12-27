@@ -43,6 +43,7 @@ const WindowCategoryPage: NextPage<IWindowCategoryPage> = ({
 								<a
 									href={`${process.env.NEXT_PUBLIC_APP_STATIC}${category.file}`}
 									target='_blank'
+									rel='noreferrer'
 								>
 									<div>
 										<Title type='h4'>{category.name}</Title>

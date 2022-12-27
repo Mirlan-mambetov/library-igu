@@ -9,7 +9,7 @@ import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 
 const WindowPage: NextPage = () => {
-	const pageId = 40
+	const pageId = 9
 	const { data: page } = pageApi.useFetchPageQuery(pageId)
 	const { data: windowMainCategories = [] as IWindow[] } =
 		windowApi.useFetchWindowMainCategoriesQuery(null)
