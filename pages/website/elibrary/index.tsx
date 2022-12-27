@@ -16,7 +16,7 @@ import Image from 'next/image'
 const WebsiteElibraryPage: NextPage = () => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
-	const id = 38
+	const id = 6
 	const { data: page } = pageApi.useFetchOnePageQuery(id)
 	const { data: mainCategories = [] as IElibrary[] } =
 		elibraryApi.useFetchCategoriesQuery(null)

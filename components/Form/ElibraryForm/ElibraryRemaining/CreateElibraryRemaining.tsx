@@ -14,7 +14,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 export const CreateElibraryRemaining: FC = () => {
 	const theme = useTheme()
 	const colors = tokens(theme.palette.mode)
-	const { updateId, onClose } = useContext(MyModalContext)
+	const { onClose } = useContext(MyModalContext)
 	const { enqueueSnackbar } = useSnackbar()
 	const [createRemaining, { isLoading }] =
 		elibraryApi.useCreateElibraryRemainingMutation()
