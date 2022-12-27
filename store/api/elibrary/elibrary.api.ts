@@ -142,6 +142,14 @@ export const elibraryApi = api.injectEndpoints({
 			}),
 			invalidatesTags: (res, error) => [{ type: 'Pages' }]
 		}),
+		createElibraryRemaining: builder.mutation<null, { data: FormData }>({
+			query: (data) => ({
+				url: `/elibrary/remaining/`,
+				method: 'Post',
+				body: data
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
 		deleteElibraryRemaining: builder.mutation<null, number>({
 			query: (id) => ({
 				url: `/elibrary/remaining/${id}`,

@@ -16,8 +16,8 @@ export const CreateElibraryRemaining: FC = () => {
 	const colors = tokens(theme.palette.mode)
 	const { updateId, onClose } = useContext(MyModalContext)
 	const { enqueueSnackbar } = useSnackbar()
-	const [updateRemaining, { isLoading }] =
-		elibraryApi.useUpdateElibraryRemainingMutation()
+	const [createRemaining, { isLoading }] =
+		elibraryApi.useCreateElibraryRemainingMutation()
 
 	const {
 		register,
@@ -37,7 +37,7 @@ export const CreateElibraryRemaining: FC = () => {
 			}
 			const formData = new FormData()
 			formData.append('image', file)
-			await updateRemaining({ id: updateId, data: formData })
+			await createRemaining({ data: formData })
 				.unwrap()
 				.then(() => onClose())
 		} catch (err) {
