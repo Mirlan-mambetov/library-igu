@@ -12,17 +12,14 @@ const FaqQuestions: NextPage = () => {
 		<Layout title='Информация об обновлении: Продукта'>
 			<Box color={colors.blueAccent[900]}>
 				<Box>
-					<Typography>Обновление: 26.12.2022 00:00</Typography>
+					<Typography>Обновление: 27.12.2022 00:00</Typography>
 					<Typography variant='inherit'>
 						Частичное обновление:
 						<ul
 							style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}
 						>
-							<li>
-								Добавлен модуль 'Единое окно'
-								<br />
-								Реализации на клиенте ожидает обновление.
-							</li>
+							<li>Mодуль 'Единое окно' полностью обновлен</li>
+							<li>Реализовано: 'недавние в электронной библиотеке'</li>
 							<li style={{ color: `${colors.redAccent[600]}` }}>
 								Версия API(server): /api/v3/ будет обновлен в - - - -- : --
 								<ul
