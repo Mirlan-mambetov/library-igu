@@ -21,7 +21,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { fileFileFilter, imageFileFilter, renameFIleName } from 'src/utils/fileupload.utils';
-import { BOOK_CATEGORY_UPLOADS_FILES, BOOK_UPLOADS_FILES } from './constance/destination';
+import { BOOK_CATEGORY_UPLOADS_FILES, BOOK_IMAGE_UPLOADS_FILES, BOOK_UPLOADS_FILES } from './constance/destination';
 import { ElibraryBookDto, ElibraryCategoryDto, ElibraryDto } from './dto/elibrary.dto';
 import { ElibraryService } from './elibrary.service';
 
@@ -41,6 +41,13 @@ export class ElibraryController {
     return this.elibraryService.findAll()
   }
 
+  @Get('remaining')
+  @HttpCode(200)
+  findAllRemaining() {
+    return this.elibraryService.findAllRemaining()
+  }
+
+
   @Get('category')
   @HttpCode(200)
   findAllCategory() {
@@ -54,6 +61,8 @@ export class ElibraryController {
   ) {
     return this.elibraryService.findById(id)
   }
+
+
 
   @Get('category/:id')
   @HttpCode(200)
@@ -208,5 +217,47 @@ export class ElibraryController {
     @Param('id', ParseIntPipe) id: number
   ) {
     return this.elibraryService.updateBookView(id)
+  }
+
+  @Post('remaining')
+  @UsePipes(new ValidationPipe())
+  @UseInterceptors(FileInterceptor('image', {
+    storage: diskStorage({
+      destination: `${BOOK_IMAGE_UPLOADS_FILES}`,
+      filename: (req, file, cb) => renameFIleName(req, file, cb)
+    }),
+    fileFilter: imageFileFilter
+  }))
+  @HttpCode(200)
+  createRemaining(
+    @UploadedFile() image: Express.Multer.File,
+    @Req() req: Express.Request
+  ) {
+    if (!req.file) throw new BadRequestException('Выберите файл')
+    return this.elibraryService.createElibraryRemaining(image.filename)
+  }
+
+  @Put('remaining/:id')
+  @UsePipes(new ValidationPipe())
+  @UseInterceptors(FileInterceptor('image', {
+    storage: diskStorage({
+      destination: `${BOOK_IMAGE_UPLOADS_FILES}`,
+      filename: (req, file, cb) => renameFIleName(req, file, cb)
+    }),
+    fileFilter: imageFileFilter
+  }))
+  @HttpCode(200)
+  updateRemaining(
+    @Param('id', ParseIntPipe) id: number,
+    @UploadedFile() image: Express.Multer.File,
+    @Req() req: Express.Request
+  ) {
+    if (!req.file) throw new BadRequestException('Выберите файл')
+    return this.elibraryService.updateElibraryRemaining(id, image.filename)
+  }
+
+  @Delete('remaining/:id')
+  deleteRemaining(@Param('id', ParseIntPipe) id: number) {
+    return this.elibraryService.deleteElibraryRemaining(id)
   }
 }

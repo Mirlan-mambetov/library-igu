@@ -3,12 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { IPaginationOptions, paginate } from 'nestjs-typeorm-paginate';
 import { deleteFileWithName } from 'src/utils/fileupload.utils';
 import { Repository } from 'typeorm';
-import { BOOK_CATEGORY_GET_UPLOADS_FILES, BOOK_GET_UPLOADS_FILES } from './constance/destination';
+import { BOOK_CATEGORY_GET_UPLOADS_FILES, BOOK_GET_UPLOADS_FILES, BOOK_IMAGE_GET_UPLOADS_FILES, BOOK_IMAGE_UPLOADS_FILES } from './constance/destination';
 import { BOOK_NOT_FOUND, CATEGORY_ALREADY_EXIST, CATEGORY_NOT_FOUND, MAIN_CATEGORY_ALREADY_EXIST, MAIN_CATEGORY_NOT_FOUND } from './constance/message';
 import { ElibraryBookDto, ElibraryCategoryDto, ElibraryDto } from './dto/elibrary.dto';
 import { ElibraryBooksEntity } from './entity/elibrary.books.entity';
 import { ElibraryCategoryEntity } from './entity/elibrary.category.enity';
 import { ElibraryEntity } from './entity/elibrary.entity';
+import { ElibraryRemainingEntity } from './entity/elibrary.remaining.entity';
 
 @Injectable()
 export class ElibraryService {
@@ -16,7 +17,8 @@ export class ElibraryService {
   constructor(
     @InjectRepository(ElibraryEntity) private readonly elibraryRepository: Repository<ElibraryEntity>,
     @InjectRepository(ElibraryCategoryEntity) private readonly elibraryCategoryRepository: Repository<ElibraryCategoryEntity>,
-    @InjectRepository(ElibraryBooksEntity) private readonly elibraryBooksRepository: Repository<ElibraryBooksEntity>
+    @InjectRepository(ElibraryBooksEntity) private readonly elibraryBooksRepository: Repository<ElibraryBooksEntity>,
+    @InjectRepository(ElibraryRemainingEntity) private readonly elibraryRemainingRepository: Repository<ElibraryRemainingEntity>
   ) {}
 
   async findAll() {
@@ -225,5 +227,38 @@ export class ElibraryService {
     const book = await this.findBookById(id)
     book.views++
     return await this.elibraryBooksRepository.save(book)
+  }
+
+  async createElibraryRemaining(image: string) {
+    const books = await this.elibraryRemainingRepository.find()
+    if (books.length > 5) throw new BadRequestException('Максимально можно создать не больше 6 блоков')
+    const newData = this.elibraryRemainingRepository.create({
+      image: `${BOOK_IMAGE_GET_UPLOADS_FILES}/${image}`
+    })
+    return await this.elibraryRemainingRepository.save(newData)
+  }
+
+  async updateElibraryRemaining(id: number, image: string) {
+    const book = await this.elibraryRemainingRepository.findOne({where: {id}})
+    if (!book) throw new BadRequestException("Изображение по такому ID не найден")
+    await deleteFileWithName(book.image)
+    return await this.elibraryRemainingRepository.save({
+      ...book,
+      image: `${BOOK_IMAGE_GET_UPLOADS_FILES}/${image}`
+    })
+  }
+
+  async deleteElibraryRemaining(id: number) {
+    const book = await this.elibraryRemainingRepository.findOne({where: {id}})
+    await deleteFileWithName(book.image)
+    return await this.elibraryRemainingRepository.delete(id)
+  }
+
+  async findAllRemaining() {
+    return await this.elibraryRemainingRepository.find({
+      order: {
+        createdAt: "DESC"
+      }
+    })
   }
 }
