@@ -3,6 +3,7 @@ import { tabsApi } from '../../../../store/api/tabs/tabs.api'
 import { tokens } from '../../../../theme'
 import { Field } from '../../../UI'
 import { ErrorDisplayed } from '../../../UI'
+import { Textarea } from '../../../UI/Textarea/Textarea'
 import { IUpdateTabDto } from './UpdateTab.dto'
 import { useTheme } from '@mui/material'
 import Box from '@mui/material/Box'
@@ -80,11 +81,10 @@ export const UpdateTab: FC = () => {
 					</Box>
 				)}
 				{isLink && (
-					<Field
+					<Textarea
 						{...register('description', {
 							required: 'Введите описание'
 						})}
-						type='text'
 						placeholder='Описание'
 						error={errors.description}
 					/>
