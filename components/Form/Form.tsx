@@ -19,6 +19,10 @@ import { CreateHeroSubcontent } from './HeroForm/CreateSubContent/CreateSubConte
 import { UpdateHero } from './HeroForm/UpdateHero/UpdateHero'
 import { UpdateHeroSubcontent } from './HeroForm/UpdateHeroSubcontent/UpdateHeroSubcontent'
 import { UpdateImageCard } from './ImageCardForm/UpdateImageCard'
+import { CreateInternetLinkCategory } from './InternetLink/CreateInternetCategory'
+import { CreateLinkMainCategory } from './InternetLink/CreateLinkMainCategory'
+import { UpdateInternetLinkCategory } from './InternetLink/UpdateInternetCategory'
+import { UpdateLinkMainCategory } from './InternetLink/UpdateLinkMainCategory'
 import { UpdateJournal } from './JournalForm/UpdateJournalForm/UpdateJournalForm'
 import { UpdateJournalHead } from './JournalForm/UpdateJournalHead/UpdateJournalHead'
 import { UpdateJournalHeadItems } from './JournalForm/UpdateJournalHeadItems/UpdateJournalHeadItems'
@@ -119,6 +123,14 @@ export const Form: FC = () => {
 			return <CreateElibraryRemaining />
 		case 'UpdateElibraryRemaining':
 			return <UpdateElibraryRemaining />
+		case 'CreateInternetMainCategory':
+			return <CreateLinkMainCategory />
+		case 'UpdateInternetMainCategory':
+			return <UpdateLinkMainCategory />
+		case 'CreateInternetCategory':
+			return <CreateInternetLinkCategory />
+		case 'UpdateInternetCategory':
+			return <UpdateInternetLinkCategory />
 		case 'CreatePage':
 			return <PageForm />
 		default:

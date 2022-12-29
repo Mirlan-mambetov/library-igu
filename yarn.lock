@@ -453,7 +453,7 @@
   dependencies:
     tslib "^2.4.0"
 
-"@types/draft-js@*", "@types/draft-js@^0.11.10":
+"@types/draft-js@^0.11.10":
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/@types/draft-js/-/draft-js-0.11.10.tgz#46cf41e142b4b572467f7a78269a630a77e1f19c"
   integrity sha512-o/DST8x0wNerwhRiaE577UHFIXb6HCywaZOZfj9TF2vU3CONvsCGoQmdOsKqERdXp+3ZNlSvFUH0B8lEEYOT4A==
@@ -489,14 +489,6 @@
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.9.tgz#ffee5e4bfc2a2f8774b15496474f8e7fe8d0b504"
   integrity sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==
   dependencies:
-    "@types/react" "*"
-
-"@types/react-draft-wysiwyg@^1.13.4":
-  version "1.13.4"
-  resolved "https://registry.yarnpkg.com/@types/react-draft-wysiwyg/-/react-draft-wysiwyg-1.13.4.tgz#df951c76afb47e311061d363f41a10c76de04ac8"
-  integrity sha512-wasD1t78JDmQvdPDRPf/mf5FSHMlncunW0F6KMOKB3awzi3Wi21yHMGsRAUOkfTr3R8F+yceG8fSLz0kYWu/QA==
-  dependencies:
-    "@types/draft-js" "*"
     "@types/react" "*"
 
 "@types/react-icons@^3.0.0":
@@ -687,7 +679,7 @@ chownr@^1.1.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
   integrity sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==
 
-classnames@^2.2.6, classnames@^2.3.2:
+classnames@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
@@ -836,11 +828,6 @@ draft-js@^0.11.7:
     immutable "~3.7.4"
     object-assign "^4.1.1"
 
-draftjs-utils@^0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/draftjs-utils/-/draftjs-utils-0.10.2.tgz#a7f16d2c1c174ac38ba3bbf700c256f176b2699c"
-  integrity sha512-EstHqr3R3JVcilJrBaO/A+01GvwwKmC7e4TCjC7S94ZeMh4IVmf60OuQXtHHpwItK8C2JCi3iljgN5KHkJboUg==
-
 end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
@@ -978,11 +965,6 @@ hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1, hoist-non-react-
   dependencies:
     react-is "^16.7.0"
 
-html-to-draftjs@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/html-to-draftjs/-/html-to-draftjs-1.5.0.tgz#0df0eabf429deaedb63f5c859889e2c983606e86"
-  integrity sha512-kggLXBNciKDwKf+KYsuE+V5gw4dZ7nHyGMX9m0wy7urzWjKGWyNFetmArRLvRV0VrxKN70WylFsJvMTJx02OBQ==
-
 ieee754@^1.1.13:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
@@ -1089,13 +1071,6 @@ lines-and-columns@^1.1.6:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
-
-linkify-it@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.2.0.tgz#e3b54697e78bf915c70a38acd78fd09e0058b1cf"
-  integrity sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw==
-  dependencies:
-    uc.micro "^1.0.1"
 
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
@@ -1326,7 +1301,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15, prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -1365,17 +1340,6 @@ react-dom@18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
-
-react-draft-wysiwyg@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/react-draft-wysiwyg/-/react-draft-wysiwyg-1.15.0.tgz#d5b4173991033859b9e161c883889ddc00909a57"
-  integrity sha512-p1cYZcWc6/ALFBVksbFoCM3b29fGQDlZLIMrXng0TU/UElxIOF2/AWWo4L5auIYVhmqKTZ0NkNjnXOzGGuxyeA==
-  dependencies:
-    classnames "^2.2.6"
-    draftjs-utils "^0.10.2"
-    html-to-draftjs "^1.5.0"
-    linkify-it "^2.2.0"
-    prop-types "^15.7.2"
 
 react-hook-form@^7.39.4:
   version "7.39.4"
@@ -1696,11 +1660,6 @@ ua-parser-js@^0.7.18:
   version "0.7.32"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.32.tgz#cd8c639cdca949e30fa68c44b7813ef13e36d211"
   integrity sha512-f9BESNVhzlhEFf2CHMSj40NWOjYPl1YKYbrvIr/hFTDEmLq7SRbWvm7FcdcpCYT95zrOhC7gZSxjdnnTpBcwVw==
-
-uc.micro@^1.0.1:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
-  integrity sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
 
 unload@2.2.0:
   version "2.2.0"

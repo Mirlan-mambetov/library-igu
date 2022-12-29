@@ -5,8 +5,8 @@ export const NotifyNew: FC<{ msg?: string }> = ({ msg }) => {
 		<div
 			style={{
 				position: 'absolute',
-				top: '15px',
-				right: '12px',
+				top: '12px',
+				right: '0px',
 				zIndex: '20',
 				fontSize: '10px',
 				background: 'red',
