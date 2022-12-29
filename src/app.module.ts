@@ -19,6 +19,7 @@ import { AboutModule } from './about/about.module';
 import { ImageCardModule } from './imageCard/imageCard.module';
 import { ElibraryModule } from './elibrary/elibrary.module';
 import { WindowModule } from './window/window.module';
+import { InternetLinkModule } from './internetLinks/internetLink.module';
 
 
 @Module({
@@ -46,7 +47,8 @@ import { WindowModule } from './window/window.module';
     AboutModule,
     ImageCardModule,
     ElibraryModule,
-    WindowModule
+    WindowModule,
+    InternetLinkModule
   ],
   controllers: [],
   providers: [],

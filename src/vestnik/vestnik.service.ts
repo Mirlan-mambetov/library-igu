@@ -44,7 +44,7 @@ export class VestnikService {
   async findAllVestnik() {
     const vestnik = await this.vestnikRepository.find({
       order: {
-        name: "ASC"
+        createdAt: "ASC"
       }
     })
     if (!vestnik) throw new NotFoundException(VESTNIK_ALL_NOT_FOUND)
