@@ -93,7 +93,6 @@ export const WebsitePageMenu: IMenuItem[] = [
 	{
 		name: 'Ссылки интернет',
 		link: '/website/internet-link',
-		icon: BiLink,
-		new: true
+		icon: BiLink
 	}
 ]

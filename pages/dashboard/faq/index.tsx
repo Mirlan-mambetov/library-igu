@@ -12,28 +12,44 @@ const FaqQuestions: NextPage = () => {
 		<Layout title='Информация об обновлении: Продукта'>
 			<Box color={colors.blueAccent[900]}>
 				<Box>
-					<Typography>Обновление: 30.12.2022 00:00</Typography>
+					<Typography>Обновление: 22.01.2023 18:51</Typography>
 					<Typography variant='inherit'>
 						Частичное обновление:
 						<ul
 							style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}
 						>
-							<li>Доступен модуль Ссылки интернет</li>
+							<li>Исправлен внешний вид в ссылки интернет</li>
 							<li style={{ color: `${colors.redAccent[600]}` }}>
-								Версия API(server): /api/v4/ будет обновлен в - - - -- : --
-								<ul
-									style={{
-										marginTop: '5px',
-										color: `${colors.redAccent[400]}`
-									}}
-								>
+								В связи с большим весом, и утечек памяти с библиотекой Material
+								UI. <br /> Вся админ панель будет перписано в Сhakra UI.
+								<ul style={{ color: `${colors.redAccent[300]}`, width: '60%' }}>
 									<li>
-										Пользователи: <br />
-										Будет возможность создавать пользователя в Электронной
-										библиотеке
+										Chakra UI - это простая, модульная и доступная библиотека
+										компонентов, которая предоставляет строительные блоки,
+										необходимые для создания приложений React.
 										<br />
-										Администрация будет разделена на (Администратора |
-										модератора)
+										<a
+											style={{
+												color: `${colors.redAccent[500]}`,
+												textDecoration: 'underline'
+											}}
+											target='_blank'
+											href='https://chakra-ui.com/'
+										>
+											Chakra UI
+										</a>
+									</li>
+									<li>
+										<a
+											style={{
+												color: `${colors.redAccent[500]}`,
+												textDecoration: 'underline'
+											}}
+											target='_blank'
+											href='https://mui.com/'
+										>
+											MUI
+										</a>
 									</li>
 								</ul>
 							</li>

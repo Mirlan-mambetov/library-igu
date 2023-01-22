@@ -28,9 +28,11 @@ const WebsiteInternetLinkPage: NextPage = () => {
 					Главные категории
 				</Typography>
 				<CreateFragment fragmentCreate='CreateInternetMainCategory' />
-				<Box sx={{ display: 'flex', gap: '20px', mt: '40px' }}>
+				<Box
+					sx={{ display: 'flex', gap: '20px', mt: '40px', flexWrap: 'wrap' }}
+				>
 					{linkMainCategories ? (
-						linkMainCategories.map((mainCategory) => (
+						linkMainCategories.map(mainCategory => (
 							<Box
 								key={mainCategory.id}
 								sx={{

@@ -11,19 +11,7 @@ const nextConfig = {
 		],
 		domains: ['195.38.164.86:4200']
 	},
-	experimental: {
-		modularizeImports: {
-			lodash: {
-				transform: 'lodash/{{member}}'
-			},
-			'@mui/lab': {
-				transform: '@mui/lab/{{member}}'
-			},
-			'@mui/icons-material/?(((\\w*)?/?)*)': {
-				transform: '@mui/icons-material/{{ matches.[1] }}/{{member}}'
-			}
-		}
-	}
+	experimental: {}
 }
 
 module.exports = nextConfig
