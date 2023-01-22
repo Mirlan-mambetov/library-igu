@@ -5,6 +5,7 @@
 	display: flex;
 	gap: 16px;
 	flex-wrap: wrap;
+	justify-content: center;
 	.category {
 		display: flex;
 		justify-content: space-between;
@@ -29,6 +30,10 @@
 				font-weight: 400;
 				font-size: 16px;
 				line-height: 18px;
+				@include media-queres.mediaOnly992px{
+					font-size: 18px;
+					line-height: 22px;
+				}
 			}
 		}
 
@@ -49,5 +54,13 @@
 				fill: $primary;
 			}
 		}
+		@include media-queres.mediaOnly992px{
+			max-width: 80%;
+		}
+	}
+
+	@include media-queres.mediaOnly992px{
+		flex-direction: column;
+		align-items: center;
 	}
 }

@@ -1,3 +1,6 @@
+@use '../../styles/media/media-queres';
+@import '../../styles/varriables/varriables';
+
 .pagination {
 	display: -ms-flexbox;
 	display: flex;
@@ -16,6 +19,11 @@
 	color: #007bff;
 	background-color: #fff;
 	border: 1px solid #dee2e6;
+	@include media-queres.mediaOnly859px{
+		padding: 0.4rem 0.35rem;
+		margin-left: 0;
+		border: none;
+	}
 }
 
 .pageLink:hover {
@@ -27,4 +35,7 @@ li.pageIitem.active > a {
 	background: #007bff;
 	color: white;
 	border-color: #007bff;
+	@include media-queres.mediaOnly859px{
+		border: none;
+	}
 }

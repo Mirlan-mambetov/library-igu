@@ -32,6 +32,9 @@
         margin: 3px 0;
       }
     }
+    @include media-queres.mediaOnly640px{
+      max-width: 100%;
+    }
   }
 
   &.row {

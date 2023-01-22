@@ -52,6 +52,9 @@
         max-width: 100%;
       }
     }
+    @include media-queres.mediaOnly640px{
+      height: 50vh;
+    }
   }
 
   & .content {

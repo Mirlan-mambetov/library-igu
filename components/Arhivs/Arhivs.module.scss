@@ -49,11 +49,13 @@
 
 		@include media-queres.mediaOnly640px {
 			flex-direction: column;
-			gap: 12px;
+			gap: 1px;
 		}
 		&.more {
 			height: auto;
 			overflow: visible;
 		}
 	}
+
+
 }

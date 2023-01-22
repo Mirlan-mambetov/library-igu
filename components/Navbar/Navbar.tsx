@@ -74,8 +74,8 @@ export const Navbar: FC = (): JSX.Element => {
 				{/* search */}
 				<div className={classes.search}>
 					<svg
-						width='10'
-						height='10'
+						width='12'
+						height='12'
 						viewBox='0 0 10 10'
 						fill='none'
 						xmlns='http://www.w3.org/2000/svg'

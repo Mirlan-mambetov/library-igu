@@ -29,11 +29,11 @@
 		}
 
 		@include media-queres.mediaOnly1024px {
-			max-width: 60%;
+			max-width: 70%;
 		}
 
 		@include media-queres.mediaOnly535px {
-			max-width: 80%;
+			max-width: 90%;
 		}
 	}
 
@@ -57,6 +57,17 @@
 
 		@include media-queres.mediaOnly1024px {
 			max-width: 100%;
+		}
+		@include media-queres.mediaOnly859px {
+			.subTitle {
+				font-size: 18px;
+				line-height: 23px;
+			}
+	
+			.description {
+				font-size: 17px;
+				line-height: 21px;
+			}
 		}
 	}
 

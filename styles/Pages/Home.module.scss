@@ -11,8 +11,11 @@
 
     @include media-queres.mediaOnly859px {
       flex-wrap: wrap;
+      gap: 12px;
+    }
+    @include media-queres.mediaOnly640px {
       justify-content: center;
-      gap: 40px;
+      gap: 50px;
     }
   }
 
