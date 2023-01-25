@@ -13,7 +13,7 @@ interface ICategoryPage {
 }
 
 const CategoryPage: FC<ICategoryPage> = ({ categories, category }) => {
-	// const totalWorks = category?.works.flatMap((w) => w.id).length
+	const totalWorks = category?.works.flatMap(w => w.id).length
 	return (
 		<Layout>
 			<NextSeo
@@ -28,8 +28,8 @@ const CategoryPage: FC<ICategoryPage> = ({ categories, category }) => {
 					// @ts-ignore
 					data={{
 						title: category.name,
-						infoTitle: 'Всего работ'
-						// totalArticle: totalWorks
+						infoTitle: 'Всего работ',
+						totalArticle: totalWorks
 					}}
 				/>
 			)}

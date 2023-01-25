@@ -27,7 +27,7 @@ export const ElibraryCategories: FC<CategoriesProps> = ({
 					[styles.column]: position === 'column'
 				})}
 			>
-				{data.map((c) => (
+				{data.map(c => (
 					<div className={styles.categoty} key={c.id}>
 						<Link href={`/${categoryLink}/${c.id}`}>
 							<a>

@@ -27,7 +27,7 @@
 		gap: 5px;
 
 		.authors {
-			font-weight: 700;
+			font-weight: normal;
 			font-size: 16px;
 			line-height: 21px;
 			text-transform: uppercase;
@@ -35,14 +35,19 @@
 			color: #504a4a;
 		}
 
-		.title {
+		.description {
 			font-weight: 400;
 			font-size: 16px;
 			line-height: 20px;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 7;
+			-webkit-box-orient: vertical;
 		}
 		.name {
 			font-size: 16px;
-			font-weight: normal;
+			font-weight: 700;
+			text-transform: uppercase;
 		}
 	}
 
@@ -57,6 +62,11 @@
 				font-size: 12px;
 				line-height: 13px;
 				color: #0e2054;
+			}
+			a{
+				span{
+					text-decoration: underline;
+				}
 			}
 		}
 

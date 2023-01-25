@@ -19,17 +19,14 @@ const Vestnik = () => {
 				description='Научная библиотека ИГУ Вестник ИГУ им. К. Тыныстанова'
 			/>
 			{/* Hero */}
-			{page?.hero &&
-				page.hero.map((hero) => <Hero data={hero} key={hero.id} />)}
+			{page?.hero && page.hero.map(hero => <Hero data={hero} key={hero.id} />)}
 			{/* Jurnal about */}
 			<div className='container'>
 				<div className={styles.jurnalAbout}>
-					{page?.journal &&
-						page.journal.map((j) => <Jurnal {...j} key={j.id} />)}
+					{page?.journal && page.journal.map(j => <Jurnal {...j} key={j.id} />)}
 				</div>
 				<div className={styles.aboutVestnik}>
-					{page?.tabs &&
-						page.tabs.map((tab) => <Tabs tabs={tab} key={tab.id} />)}
+					{page?.tabs && page.tabs.map(tab => <Tabs tabs={tab} key={tab.id} />)}
 				</div>
 			</div>
 			{/* Arhivs */}

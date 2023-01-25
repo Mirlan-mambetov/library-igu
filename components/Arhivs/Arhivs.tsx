@@ -8,7 +8,9 @@ import { FC, useState } from 'react'
 
 export const Arhivs: FC<ArhivsProps> = ({ data, contentLink }): JSX.Element => {
 	const [more, setMore] = useState<boolean>(false)
-	const totalMaterials = data.flatMap((m) => m.materials).length
+	const totalMaterials = data.flatMap(m => m.materials).length
+
+	const newData = [...data].sort((a, b) => (a.name > b.name ? 1 : -1))
 
 	const moreHandler = () => {
 		if (!more) {
@@ -31,7 +33,7 @@ export const Arhivs: FC<ArhivsProps> = ({ data, contentLink }): JSX.Element => {
 					[styles.more]: more
 				})}
 			>
-				{data.map((archiv) => (
+				{newData.map(archiv => (
 					<Link href={`/${contentLink}/arhiv/${archiv.id}`} key={archiv.id}>
 						<a>{archiv.name}</a>
 					</Link>
