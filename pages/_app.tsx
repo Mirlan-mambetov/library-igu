@@ -7,9 +7,11 @@ import { Provider } from 'react-redux'
 import { Swiper, Autoplay, Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { PdfViewContext, PdfViewProvider } from '../contexts/Pdf-view.context'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	Swiper.use([Autoplay, Pagination])
+	const pdfView = PdfViewProvider()
 	return (
 		<Provider store={store}>
 			<NextSeo
@@ -37,7 +39,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 					}
 				]}
 			/>
-			<Preloader /> <Component {...pageProps} />
+			<Preloader />
+			<PdfViewContext.Provider value={pdfView}>
+				<Component {...pageProps} />
+			</PdfViewContext.Provider>
 		</Provider>
 	)
 }

@@ -68,6 +68,10 @@
 					text-decoration: underline;
 				}
 			}
+						.download {
+							cursor: pointer;
+							text-decoration: underline;
+						}
 		}
 
 		@include media-queres.mediaOnly480px {

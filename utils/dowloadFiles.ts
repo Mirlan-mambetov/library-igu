@@ -1,18 +1,18 @@
-export const downloadFiles = async (file: any, fileName: string) => {
-	const arr = new Array(file.length)
-	for (let i = 0; i < file.length; i++) {
-		arr[i] = file.charCodeAt(i)
-	}
-	const byteArray = new Uint8Array(arr)
-	const blob = new Blob([byteArray], { type: 'application/pdf' })
-
-	let link = document.createElement('a')
-	let downloadUrl = URL.createObjectURL(blob)
-	link.href = downloadUrl
-	link.download = fileName
-	document.body.appendChild(link)
-	link.style.display = 'none'
-	link.click()
-	URL.revokeObjectURL(downloadUrl)
-	document.body.removeChild(link)
+export const downloadFiles = async (fileUrl: string, fileName: string) => {
+	await fetch(process.env.NEXT_PUBLIC_APP_STATIC + fileUrl, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/pdf'
+		}
+	})
+		.then(response => response.blob())
+		.then(blob => {
+			const url = window.URL.createObjectURL(new Blob([blob]))
+			const link = document.createElement('a')
+			link.href = url
+			link.setAttribute('download', `${fileName}`)
+			document.body.appendChild(link)
+			link.click()
+			link?.parentNode?.removeChild(link)
+		})
 }

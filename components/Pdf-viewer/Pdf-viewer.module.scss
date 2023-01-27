@@ -1,0 +1,24 @@
+.vieweroverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, .8);
+  z-index: 202;
+  display: flex;
+  justify-content: center;
+
+  .close {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .document {
+    width: 100%;
+  }
+}

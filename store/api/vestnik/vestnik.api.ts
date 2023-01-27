@@ -6,9 +6,9 @@ import {
 import { api } from '../api'
 
 export const vestnikApi = api.injectEndpoints({
-	endpoints: (builder) => ({
+	endpoints: builder => ({
 		fetchArchivById: builder.query<IArhivs, number>({
-			query: (id) => ({
+			query: id => ({
 				url: `/vestnik/${id}`
 			})
 		}),
@@ -27,8 +27,15 @@ export const vestnikApi = api.injectEndpoints({
 			providesTags: ['Pages']
 		}),
 		updateMaterialViews: builder.mutation<null, number>({
-			query: (id) => ({
+			query: id => ({
 				url: `/vestnik/material-views/${id}`,
+				method: 'Post'
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
+		updateMaterialDownloaded: builder.mutation<null, number>({
+			query: id => ({
+				url: `/vestnik/material-download/${id}`,
 				method: 'Post'
 			}),
 			invalidatesTags: (res, error) => [{ type: 'Pages' }]
