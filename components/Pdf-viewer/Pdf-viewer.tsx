@@ -9,7 +9,7 @@ export const PdfViewer: FC<PdfViewerProps> = ({ url }) => {
 	return (
 		<div className={styles.vieweroverlay}>
 			<embed
-				className={styles.document}
+				className={styles.doc}
 				src={`${file}?zoom=100&#toolbar=0`}
 				type='application/pdf'
 			/>

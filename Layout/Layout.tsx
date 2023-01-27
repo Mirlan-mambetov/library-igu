@@ -6,7 +6,7 @@ import { useScrollLock } from '../hooks/lockScroll'
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
 	const { lockScroll, unlockScroll } = useScrollLock()
 
-	const { isOpen, handlerOpen } = useContext(PdfViewContext)
+	const { isOpen } = useContext(PdfViewContext)
 
 	if (isOpen) {
 		lockScroll()
