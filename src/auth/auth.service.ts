@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from 'src/users/entity/user.entity';
 import { Repository } from 'typeorm';
 import { USER_ALREADY_EXIST, USER_NOT_FOUND, USER_WRONG_PASSWORD } from './constance/auth.message.constance';
-import { AuthDto } from './dto/auth.dto';
+import { AutLoginhDto, AutRegisterhDto } from './dto/auth.dto';
 import {compare, genSalt, hash} from 'bcryptjs'
 import { ConfigService } from '@nestjs/config'
 
@@ -17,7 +17,7 @@ export class AuthService {
 		private readonly configService: ConfigService
 	) {}
 
-	async login(dto: Pick<AuthDto, 'email' | 'password'>) {
+	async login(dto: AutLoginhDto) {
 		const user = await this.validateUser(dto)
 		const tokens = await this.generateTokens(user.id, user.email)
 		await this.updateRtHash(user.id, tokens.refreshToken)
@@ -27,7 +27,7 @@ export class AuthService {
 		}
 	}
 
-	async register(dto: AuthDto) {
+	async register(dto: AutRegisterhDto) {
 		const oldUser = await this.userRepositroy.findOneBy({ email: dto.email })
 		if (oldUser) throw new BadRequestException(USER_ALREADY_EXIST)
 
@@ -36,7 +36,7 @@ export class AuthService {
 		const newUser = this.userRepositroy.create({
 			name: dto.name,
 			email: dto.email,
-			password: hashPassword
+			password: hashPassword,
 		})
 		const user = await this.userRepositroy.save(newUser)
 		const tokens = await this.generateTokens(user.id, user.email)
@@ -97,7 +97,7 @@ export class AuthService {
 		})
 	}
 
-	async validateUser(dto: Pick<AuthDto, 'email' | 'password'>) {
+	async validateUser(dto: Pick<AutLoginhDto, 'email' | 'password'>) {
 		const user = await this.userRepositroy.findOne({
 			where: { email: dto.email },
 			select: ['id', 'name', 'email', 'role', 'password']
@@ -106,10 +106,6 @@ export class AuthService {
 		const comparePassword = await compare(dto.password, user.password)
 		if (!comparePassword) throw new UnauthorizedException(USER_WRONG_PASSWORD)
 		return user
-	}
-
-	async getAllUsers() {
-		return await this.userRepositroy.find()
 	}
 
 	hashData(data: string) {

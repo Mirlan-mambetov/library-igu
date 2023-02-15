@@ -4,10 +4,10 @@ import {
 	Post,
 	Body,
 	ValidationPipe,
-	Get
+	UsePipes
 } from '@nestjs/common'
 import { AuthService } from './auth.service'
-import { AuthDto } from './dto/auth.dto'
+import { AutLoginhDto, AutRegisterhDto } from './dto/auth.dto'
 import { ParseIntPipe } from '@nestjs/common/pipes'
 import { HttpStatus } from '@nestjs/common/enums'
 import { Auth } from './decorators/auth.decorator'
@@ -21,13 +21,15 @@ export class AuthController {
 
 	@Post('login')
 	@HttpCode(HttpStatus.OK)
-	login(@Body(new ValidationPipe()) dto: Pick<AuthDto, 'email' | 'password'>) {
+	@UsePipes(new ValidationPipe())
+  login(@Body() dto: AutLoginhDto) {
 		return this.authService.login(dto)
 	}
 
 	@Post('register')
 	@HttpCode(HttpStatus.CREATED)
-	register(@Body(new ValidationPipe()) dto: AuthDto) {
+	@UsePipes(new ValidationPipe())
+	register(@Body() dto: AutRegisterhDto) {
 		return this.authService.register(dto)
 	}
 
@@ -43,12 +45,5 @@ export class AuthController {
 	@HttpCode(HttpStatus.OK)
 	refreshToken(@CurrentUser() user: UserEntity) {
 		return this.authService.refreshToken(user['sub'], user['refreshToken'])
-	}
-
-	@Auth('jwt')
-	@Get()
-	@HttpCode(HttpStatus.OK)
-	getAllUsers() {
-		return this.authService.getAllUsers()
 	}
 }
