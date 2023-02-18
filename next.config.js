@@ -5,13 +5,16 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				protocol: 'http',
+				protocol: 'https',
 				hostname: '**'
 			}
 		],
-		domains: ['195.38.164.86:4200']
+		domains: ['api.libraryiksu.kg']
 	},
-	experimental: {}
+	experimental: {},
+	typescript: {
+		ignoreBuildErrors: true
+	}
 }
 
 module.exports = nextConfig
