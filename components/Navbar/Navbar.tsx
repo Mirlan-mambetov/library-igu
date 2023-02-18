@@ -66,9 +66,13 @@ export const Navbar: FC = (): JSX.Element => {
 						</Link>
 					</li>
 					<li className={classes.menuItem}>
-						<Link href={'/#'}>
-							<a>Центр обучения</a>
-						</Link>
+						<a
+							href={'https://kyrlibnet.kg/ru/'}
+							target='_blank'
+							rel='noreferrer'
+						>
+							Электронный каталог
+						</a>
 					</li>
 				</ul>
 				{/* search */}
