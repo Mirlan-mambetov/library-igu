@@ -144,4 +144,11 @@ export class TeachersController {
   ) {
     return this.teachersService.updateWorksView(id)
   }
+
+  @Post('works-downloaded/:id')
+  updateWorkDownload(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.teachersService.updateWorksDownloaded(id)
+  }
 }

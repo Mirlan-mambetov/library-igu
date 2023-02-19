@@ -165,4 +165,10 @@ export class TeachersService {
     work.views++
     return await this.teachersWorksRepository.save(work)
   }
+
+  async updateWorksDownloaded(id: number) {
+    const work = await this.findOneWork(id)
+    work.downloaded++
+    return await this.teachersWorksRepository.save(work)
+  }
 }
