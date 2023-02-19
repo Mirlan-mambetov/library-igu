@@ -16,7 +16,6 @@ const TeachersPage: FC = (): JSX.Element => {
 	const { data: page } = pageApi.useFetchPageQuery(pageId)
 	const { data: categories = [] as ITeachersCategory[] } =
 		teachersApi.useFetchAllTeacherCategoryQuery(null)
-
 	const { data: works = [] as ITeachersWorks[] } =
 		teachersApi.useFetchTeachersWorksLimitQuery({ limit })
 

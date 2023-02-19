@@ -2,14 +2,13 @@ import { PdfViewContext } from '../../../contexts/Pdf-view.context'
 import { vestnikApi } from '../../../store/api/vestnik/vestnik.api'
 import { downloadFiles } from '../../../utils/dowloadFiles'
 import { formatDate } from '../../../utils/formatDate.utils'
-import { PdfViewer } from '../../Pdf-viewer/Pdf-viewer'
 import { Title } from '../../Title/Title'
 import styles from './File.module.scss'
 import { FileProps } from './File.props'
 import { FC, useContext } from 'react'
 
 export const File: FC<FileProps> = ({ file }) => {
-	const { isOpen, handlerOpen } = useContext(PdfViewContext)
+	const { handlerOpen } = useContext(PdfViewContext)
 	const [updateViews] = vestnikApi.useUpdateMaterialViewsMutation()
 	const [updateDownloaded] = vestnikApi.useUpdateMaterialDownloadedMutation()
 
@@ -59,9 +58,6 @@ export const File: FC<FileProps> = ({ file }) => {
 						Просмотр
 					</span>
 				</div>
-				{isOpen && (
-					<PdfViewer url={process.env.NEXT_PUBLIC_APP_STATIC + file.file} />
-				)}
 			</div>
 			<div className={styles.published}>
 				<span>{formatDate(file.createdAt)}</span>

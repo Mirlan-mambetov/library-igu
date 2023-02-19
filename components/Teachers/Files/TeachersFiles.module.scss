@@ -58,6 +58,12 @@
 				line-height: 13px;
 				color: #0e2054;
 			}
+			strong {
+				font-size: 10px;
+				text-transform: uppercase;
+				text-decoration: underline;
+				cursor: pointer;
+			}
 		}
 
 		@include media-queres.mediaOnly480px {

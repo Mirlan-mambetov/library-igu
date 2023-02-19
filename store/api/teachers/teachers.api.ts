@@ -24,7 +24,8 @@ export const teachersApi = api.injectEndpoints({
 			{
 				query: ({ limit }) => ({
 					url: `/teachers/works/limit?limit=${limit}`
-				})
+				}),
+				providesTags: ["Pages"]
 			}
 		),
 		fetchWorksByCategory: builder.query<
@@ -34,14 +35,21 @@ export const teachersApi = api.injectEndpoints({
 			query: ({ id, query }) => ({
 				url: `/teachers/works/category/${id}?page=${query?.page}&limit=${query?.limit}`
 			}),
-			providesTags: ['WorksByCategory']
+			providesTags: ['Pages']
 		}),
 		updateViews: builder.mutation<null, number>({
 			query: (id) => ({
 				url: `/teachers/works-views/${id}`,
 				method: 'Post'
 			}),
-			invalidatesTags: (res, error) => [{ type: 'WorksByCategory' }]
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
+		}),
+		updateDownload: builder.mutation<null, number>({
+			query: (id) => ({
+				url: `/teachers/works-downloaded/${id}`,
+				method: 'Post'
+			}),
+			invalidatesTags: (res, error) => [{ type: 'Pages' }]
 		})
 	})
 })
