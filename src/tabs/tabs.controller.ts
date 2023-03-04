@@ -1,5 +1,5 @@
 import { Controller, ValidationPipe, ParseIntPipe } from '@nestjs/common';
-import { Body, Delete, HttpCode, Param, Post, Put, Req, UploadedFile, UseInterceptors, UsePipes } from '@nestjs/common/decorators';
+import { Body, Delete, HttpCode, Param, Post, Put, Get, Req, UploadedFile, UseInterceptors, UsePipes } from '@nestjs/common/decorators';
 import { BadRequestException } from '@nestjs/common/exceptions';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
