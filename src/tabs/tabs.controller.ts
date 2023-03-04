@@ -12,6 +12,19 @@ import { TabsService } from './tabs.service';
 export class TabsController {
   constructor(private readonly tabsService: TabsService) {}
 
+  @Get()
+  getAllTabs() {
+    return this.tabsService.findAllTabs()
+  }
+
+  @Get(':id')
+  @HttpCode(200)
+  getTab(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.tabsService.findTabById(id)
+  }
+
   @Post(':pageId')
   @HttpCode(200)
   @UsePipes(new ValidationPipe())
@@ -71,8 +84,6 @@ export class TabsController {
     if (!req.file) throw new BadRequestException("Выберите файл")
     return this.tabsService.updateTabLink(id, dto, file.filename)
   }
-
-
 
   @Put('tablink/image/:id')
   @HttpCode(201)

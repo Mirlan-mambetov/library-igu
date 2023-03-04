@@ -18,6 +18,10 @@ export class TabsService {
     @InjectRepository(PageEntity) private readonly pageRepository: Repository<PageEntity>,
   ) {}
 
+  async findAllTabs() {
+    return await this.tabsRepository.find()
+  }
+
   async findTabById(id: number) {
     const tabs = await this.tabsRepository.findOne({
       where: {id},
