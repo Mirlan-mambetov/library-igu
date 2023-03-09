@@ -1,30 +1,30 @@
-import { 
-  Controller,
-  Post,
-  Put,
-  Get,
-  Param,
-  Body,
-  Delete,
-  ParseIntPipe,
-  ValidationPipe,
-  UsePipes,
-  UseInterceptors,
-  UploadedFile,
-  NotFoundException,
-  Req,
-  HttpCode,
-  Query,
-  DefaultValuePipe
- } from '@nestjs/common';
-import { VestnikService } from './vestnik.service';
-import {IVestnikDto} from './dto/vestnik.dto'
-import {IVestnikMaterialDto} from './dto/vestnik.material.dto'
+import {
+	Controller,
+	Post,
+	Put,
+	Get,
+	Param,
+	Body,
+	Delete,
+	ParseIntPipe,
+	ValidationPipe,
+	UsePipes,
+	UseInterceptors,
+	UploadedFile,
+	NotFoundException,
+	Req,
+	HttpCode,
+	Query,
+	DefaultValuePipe
+} from '@nestjs/common'
+import { VestnikService } from './vestnik.service'
+import { IVestnikDto } from './dto/vestnik.dto'
+import { IVestnikMaterialDto } from './dto/vestnik.material.dto'
 import { FileInterceptor } from '@nestjs/platform-express'
-import { diskStorage } from 'multer';
-import { fileFileFilter, renameFIleName } from 'src/utils/fileupload.utils';
-import { VESTNIK_UPLOADS_IMAGE } from './constance/destination.constance';
-import { PaginationParams } from './dto/pagination.dto';
+import { diskStorage } from 'multer'
+import { fileFileFilter, renameFIleName } from 'src/utils/fileupload.utils'
+import { VESTNIK_UPLOADS_IMAGE } from './constance/destination.constance'
+import { PaginationParams } from './dto/pagination.dto'
 
 @Controller('vestnik')
 export class VestnikController {
@@ -135,6 +135,12 @@ export class VestnikController {
 	@HttpCode(204)
 	deleteMaterial(@Param('id', ParseIntPipe) id: number) {
 		return this.vestnikService.deleteMaterial(id)
+	}
+
+	@Delete(':id')
+	@HttpCode(204)
+	deleteVestnik(@Param('id', ParseIntPipe) id: number) {
+		return this.vestnikService.deleteVestnik(id)
 	}
 
 	@Post('material-views/:materialId')

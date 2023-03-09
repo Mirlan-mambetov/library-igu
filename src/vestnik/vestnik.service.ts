@@ -1,19 +1,26 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { PAGE_NOT_FOUND } from 'src/page/constance/page.message.constance';
-import { PageEntity } from 'src/page/entity/page.entity';
-import { deleteFileWithName } from 'src/utils/fileupload.utils';
-import { Repository } from 'typeorm';
-import { VESTNIK_GET_UPLOADS_IMAGE } from './constance/destination.constance';
-import { VESTNIK_ALL_NOT_FOUND, VESTNIK_NOT_FOUND } from './constance/message.constance';
-import { IVestnikDto } from './dto/vestnik.dto';
-import { IVestnikMaterialDto } from './dto/vestnik.material.dto';
-import { VestnikEntity } from './entity/vestnik.entity';
-import { VestnikMaterialEntity } from './entity/vestnik.material.entity';
 import {
-  paginate,
-  Pagination,
-  IPaginationOptions,
+	BadRequestException,
+	Injectable,
+	NotFoundException
+} from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { PAGE_NOT_FOUND } from 'src/page/constance/page.message.constance'
+import { PageEntity } from 'src/page/entity/page.entity'
+import { deleteFileWithName } from 'src/utils/fileupload.utils'
+import { Repository } from 'typeorm'
+import { VESTNIK_GET_UPLOADS_IMAGE } from './constance/destination.constance'
+import {
+	VESTNIK_ALL_NOT_FOUND,
+	VESTNIK_NOT_FOUND
+} from './constance/message.constance'
+import { IVestnikDto } from './dto/vestnik.dto'
+import { IVestnikMaterialDto } from './dto/vestnik.material.dto'
+import { VestnikEntity } from './entity/vestnik.entity'
+import { VestnikMaterialEntity } from './entity/vestnik.material.entity'
+import {
+	paginate,
+	Pagination,
+	IPaginationOptions
 } from 'nestjs-typeorm-paginate'
 
 @Injectable()
@@ -53,7 +60,7 @@ export class VestnikService {
 			},
 			select: {
 				materials: {
-					id: true,
+					id: true
 				}
 			}
 		})
@@ -121,6 +128,10 @@ export class VestnikService {
 	async create(pageId: number, dto: IVestnikDto) {
 		const page = await this.pageRepository.findOne({ where: { id: pageId } })
 		if (!page) throw new NotFoundException(PAGE_NOT_FOUND)
+		const archiv = await this.vestnikRepository.find({
+			where: { name: dto.name }
+		})
+		if (archiv) throw new BadRequestException('Архив уже существует')
 		const newData = this.vestnikRepository.create({
 			...dto,
 			page
@@ -158,6 +169,15 @@ export class VestnikService {
 			...dto,
 			file: `${VESTNIK_GET_UPLOADS_IMAGE}/${file}`
 		})
+	}
+
+	async deleteVestnik(id: number) {
+		const vestnik = await this.findVestnikById(id)
+		if (vestnik.materials.length)
+			throw new BadRequestException(
+				'Удаление невозможно, есть вложенные материалы'
+			)
+		return await this.vestnikRepository.delete(id)
 	}
 
 	async deleteMaterial(id: number) {
