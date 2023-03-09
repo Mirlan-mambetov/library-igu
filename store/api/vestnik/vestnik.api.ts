@@ -24,7 +24,7 @@ export const vestnikApi = api.injectEndpoints({
 			query: ({ id, query }) => ({
 				url: `/vestnik/materials/category/${id}?page=${query?.page}&limit=${query?.limit}`
 			}),
-			providesTags: ['Pages']
+			providesTags: () => [{ type: 'Pages' }]
 		}),
 		updateMaterialViews: builder.mutation<null, number>({
 			query: id => ({

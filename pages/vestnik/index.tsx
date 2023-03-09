@@ -6,11 +6,13 @@ import { pageApi } from '../../store/api/page/page.api'
 import styles from './vestnik.module.scss'
 import { NextSeo } from 'next-seo'
 import React from 'react'
+import { vestnikApi } from '../../store/api/vestnik/vestnik.api'
 
 const Vestnik = () => {
 	const pageId = 4
 	const { data: page = {} as IPage, isLoading } =
 		pageApi.useFetchPageQuery(pageId)
+	const { data: vestnikData } = vestnikApi.useFetchAllArchivsQuery(null)
 	if (isLoading) return <Preloader />
 	return (
 		<Layout>
@@ -32,9 +34,7 @@ const Vestnik = () => {
 			{/* Arhivs */}
 			<div className='container'>
 				<div className={styles.arhivs}>
-					{page?.vestnik && (
-						<Arhivs data={page.vestnik} contentLink='vestnik' />
-					)}
+					{vestnikData && <Arhivs data={vestnikData} contentLink='vestnik' />}
 				</div>
 			</div>
 		</Layout>

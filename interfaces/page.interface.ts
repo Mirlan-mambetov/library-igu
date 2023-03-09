@@ -9,5 +9,4 @@ export interface IPage extends IBase {
 	hero: IHero[]
 	journal: IJournal[]
 	tabs: ITabs[]
-	vestnik: IArhivs[]
 }
