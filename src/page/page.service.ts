@@ -39,10 +39,6 @@ export class PageService {
 				},
 				tabs: {
 					isLink: true
-				},
-				vestnik: {
-					page: true,
-					materials: true
 				}
 			},
 			order: {
