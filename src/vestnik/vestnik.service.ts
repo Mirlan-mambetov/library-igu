@@ -128,10 +128,6 @@ export class VestnikService {
 	async create(pageId: number, dto: IVestnikDto) {
 		const page = await this.pageRepository.findOne({ where: { id: pageId } })
 		if (!page) throw new NotFoundException(PAGE_NOT_FOUND)
-		const archiv = await this.vestnikRepository.find({
-			where: { name: dto.name }
-		})
-		if (archiv) throw new BadRequestException('Архив уже существует')
 		const newData = this.vestnikRepository.create({
 			...dto,
 			page
