@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
-// STYLES 
+// STYLES
 import styles from './Navigation.module.scss'
 
 export const Navigation: FC = (): JSX.Element => {
-  return (
+	return (
 		<ul className={styles.navigation}>
 			<li className={styles.navigationItem}>
 				<Link href='/teachers'>
@@ -56,7 +56,7 @@ export const Navigation: FC = (): JSX.Element => {
 				</Link>
 			</li>
 			<li className={styles.navigationItem}>
-				<Link href='/teachers'>
+				<Link href='/internet-links'>
 					<a>
 						<svg
 							width='17'

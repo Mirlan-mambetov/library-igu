@@ -31,15 +31,17 @@ export const ElibraryFileList: FC<{ categoryId: number }> = ({
 	return (
 		<div className={styles.row}>
 			{books.items && books.items.length ? (
-				books.items?.map((book) => <ElibraryFiles {...book} key={book.id} />)
+				books.items?.map(book => <ElibraryFiles {...book} key={book.id} />)
 			) : (
 				<EmptyItems />
 			)}
-			<Paginate
-				handler={paginateHandler}
-				initialPage={page - 1}
-				totalPage={books.meta ? books.meta.totalPages : 1}
-			/>
+			{books?.items?.length && (
+				<Paginate
+					handler={paginateHandler}
+					initialPage={page - 1}
+					totalPage={books.meta ? books.meta.totalPages : 1}
+				/>
+			)}
 		</div>
 	)
 }

@@ -1,0 +1,45 @@
+@use '../../styles/media/media-queres';
+@import '../../styles/varriables/varriables';
+.category {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding-top: 60px;
+	padding-bottom: 120px;
+	a {
+		max-width: 45%;
+		width: 100%;
+		background: $skyBlue;
+		padding: 10px 12px;
+		color: $mainWhite;
+		border-radius: 3px;
+	}
+	.category_helper {
+		font-size: 12px;
+		display: block;
+		margin-top: 4px;
+	}
+}
+.link_wrapp {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 25px;
+	padding: 50px 0;
+}
+.link {
+	max-width: 45%;
+	width: 100%;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	a {
+		color: $skyBlue;
+		p {
+			margin: 5px 0;
+			display: block;
+		}
+		span {
+			font-size: 12px;
+		}
+	}
+}

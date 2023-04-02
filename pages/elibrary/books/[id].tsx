@@ -1,5 +1,6 @@
 import { Layout } from '../../../Layout/Layout'
 import {
+	Bookscard,
 	ElibraryCategories,
 	ElibraryFileList,
 	Hero,
@@ -7,6 +8,7 @@ import {
 } from '../../../components'
 import {
 	IElibraryCategory,
+	IElibraryReamaining,
 	IElibrarySecondCategory
 } from '../../../interfaces/elibrary.interface'
 import { elibraryService } from '../../../services/elibrary/elibraryService'
@@ -14,6 +16,7 @@ import styles from './books.module.scss'
 import { GetServerSideProps } from 'next'
 import { NextSeo } from 'next-seo'
 import { FC } from 'react'
+import { elibraryApi } from '../../../store/api/elibrary/elibrary.api'
 
 interface IBooksPage {
 	mainCategories: IElibraryCategory[]
@@ -23,7 +26,9 @@ const BooksPage: FC<IBooksPage> = ({
 	category,
 	mainCategories
 }): JSX.Element => {
-	const totalBooks = category?.books.flatMap((l) => l.id).length
+	const totalBooks = category?.books.flatMap(l => l.id).length
+	const { data: reamining = [] as IElibraryReamaining[] } =
+		elibraryApi.useFetchElibraryRemainingQuery(null)
 
 	return (
 		<Layout>
@@ -52,10 +57,10 @@ const BooksPage: FC<IBooksPage> = ({
 							<Title type='h3'>Недавние в электронной библиотеке</Title>
 						</div>
 						<div className={styles.books}>
-							<h3 style={{ color: 'red' }}>ЗДЕСЬ БУДЕТ КОНТЕНТ</h3>
-							{/* {BookscardData.map(books => (
-                <Bookscard data={books} key={books.id} />
-              ))} */}
+							{reamining &&
+								reamining.map(remaing => (
+									<Bookscard key={remaing.id} data={remaing} />
+								))}
 						</div>
 					</div>
 				</div>

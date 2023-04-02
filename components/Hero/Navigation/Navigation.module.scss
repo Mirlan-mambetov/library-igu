@@ -2,30 +2,31 @@
 @import '../../../styles/varriables/varriables';
 
 .navigation {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background: $mainWhite;
-  padding: 26px 20px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	background: $mainWhite;
+	padding: 26px 20px;
 
-  .navigationItem {
-    font-size: 14px;
-    text-transform: uppercase;
+	.navigationItem {
+		font-size: 14px;
+		text-transform: uppercase;
 
-    a {
-      display: flex;
-      align-items: baseline;
-      gap: 7px;
-      color: $skyBlue;
-    }
+		a {
+			display: flex;
+			align-items: baseline;
+			gap: 7px;
+			color: $skyBlue;
+		}
 
-    svg {
-      fill: $skyBlue;
-    }
-  }
+		svg {
+			fill: $skyBlue;
+		}
+	}
 
-  @include media-queres.mediaOnly992px {
-    display: none;
-  }
+	@include media-queres.mediaOnly992px {
+		display: none;
+	}
 }
