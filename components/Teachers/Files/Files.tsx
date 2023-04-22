@@ -1,8 +1,10 @@
 import { PdfViewContext } from '../../../contexts/Pdf-view.context'
 import { ITeachersWorks } from '../../../interfaces/teachers.interface'
 import { teachersApi } from '../../../store/api/teachers/teachers.api'
+import { boardCopy } from '../../../utils/clickboard'
 import { downloadFiles } from '../../../utils/dowloadFiles'
 import { formatDate } from '../../../utils/formatDate.utils'
+import { ClipboardComponent } from '../../Clipboard/Clipboard'
 import { Title } from '../../Title/Title'
 import styles from './TeachersFiles.module.scss'
 import { FC, useContext } from 'react'
@@ -62,6 +64,9 @@ export const TeachersFiles: FC<ITeachersWorks> = ({
 					>
 						Просмотр
 					</strong>
+				</div>
+				<div className={styles.infoItem}>
+					<ClipboardComponent link={process.env.NEXT_PUBLIC_APP_STATIC + file}/>
 				</div>
 			</div>
 			<div className={styles.published}>
