@@ -2,99 +2,95 @@
 @import '../../styles/varriables/varriables';
 
 .cards {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-	width: 32.33%;
-	overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 32.33%;
+  overflow: hidden;
+  cursor: pointer;
 
-	.cardsImage {
-		position: relative;
-		width: 100%;
-		height: 220px;
-		display: flex;
-		align-items: flex-end;
-		cursor: pointer;
-		img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			z-index: -1;
-		}
+  .cardsImage {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding-top: calc(100% / 150 * 89);
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(24, 38, 82, 0.2);
-		}
-		@include media-queres.mediaOnly640px {
-			height: 260px;
-		}
-		@include media-queres.mediaOnly535px {
-			height: 320px;
-		}
-	}
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(24, 38, 82, 0.2);
+    }
+    @include media-queres.mediaOnly640px {
+      height: 260px;
+    }
+    @include media-queres.mediaOnly535px {
+      height: 320px;
+    }
+  }
 
-	.cardsTitle {
-		color: $mainWhite;
-		padding: 5px 12px;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		z-index: 3;
-		font-weight: 700;
-		font-size: 18px;
-		line-height: 24px;
+  .cardsTitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    z-index: 3;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+  }
 
-	}
+  .newsDescription {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: $skyBlue;
+    padding: 0px 6px;
 
-	.newsDescription {
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		-webkit-box-orient: vertical;
-		text-overflow: ellipsis;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 16px;
-		color: $skyBlue;
-		padding: 0px 6px;
-				
-		@include media-queres.mediaOnly768px {
-			font-size: 18px;
-		}
-	}
+    @include media-queres.mediaOnly768px {
+      font-size: 18px;
+    }
+  }
 
-	.published {
-		position: absolute;
-		top: 10px;
-		left: 10px;
-		padding: 12px 8px;
-		background: $primary;
-		color: $mainWhite;
-		font-weight: 700;
-		font-size: 10px;
-		line-height: 15px;
-		text-transform: uppercase;
-	}
+  .published {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 6px;
+    background: $primary;
+    color: $mainWhite;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 15px;
+    text-transform: uppercase;
+  }
 
-	@include media-queres.mediaOnly859px {
-		max-width: 45%;
-		width: 100%;
-	}
-	@include media-queres.mediaOnly640px {
-		max-width: 65%;
-	}
-	@include media-queres.mediaOnly535px {
-		max-width: 100%;
-	}
+  @include media-queres.mediaOnly859px {
+    max-width: 45%;
+    width: 100%;
+  }
+  @include media-queres.mediaOnly640px {
+    max-width: 65%;
+  }
+  @include media-queres.mediaOnly535px {
+    max-width: 100%;
+  }
 }

@@ -5,7 +5,7 @@
 .hero {
   position: relative;
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
 
   &::after {
@@ -52,7 +52,7 @@
         max-width: 100%;
       }
     }
-    @include media-queres.mediaOnly640px{
+    @include media-queres.mediaOnly640px {
       height: 50vh;
     }
   }

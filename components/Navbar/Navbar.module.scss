@@ -1,11 +1,13 @@
 @use '../../styles/media/media-queres';
 @import '../../styles/varriables/varriables';
+@import '../../styles/mixins';
 
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
   background: $mainWhite;
+  @include mainFont;
 }
 
 .navigation {
@@ -16,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 8px 0;
 
   @include media-queres.mediaOnly1280px {
     padding-right: 15px;
@@ -43,7 +45,7 @@
     width: 16px;
     height: 1px;
     background: $black;
-    transition: all .3s ease-in;
+    transition: all 0.3s ease-in;
 
     &:nth-child(2) {
       width: 8px;
@@ -105,8 +107,8 @@
 
 .menuItem {
   font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
+  font-weight: 500;
+  font-size: 14px;
   line-height: 23px;
   text-transform: uppercase;
 
