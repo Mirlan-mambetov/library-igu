@@ -1,0 +1,35 @@
+@import '../../../styles/mixins';
+@import '../../../styles/varriables/varriables';
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .field {
+    display: flex;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 6px;
+    border-radius: 4px;
+    input {
+      width: 400px;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 100%;
+      cursor: not-allowed;
+
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      display: flex;
+      background: $primary;
+      padding: 10px;
+      cursor: not-allowed;
+      border-radius: 4px;
+      border: none;
+      font-size: 20px;
+      color: $mainWhite;
+    }
+  }
+}
