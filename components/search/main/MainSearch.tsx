@@ -57,7 +57,7 @@ function MainSearchComponent() {
           {data?.length ? (
             data.map((items) =>
               items.data.map((item) => (
-                <div className={styles.items}>
+                <div className={styles.items} key={item.id}>
                   <h4 className={styles.name}>{item.name || item.title}</h4>
                   <span className={styles.author}>{item.authors}</span>
                   <p className={styles.description}>{item.description}</p>
