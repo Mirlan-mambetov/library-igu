@@ -1,7 +1,18 @@
-import { HttpCode, Controller, Post, Body, Param, Get, Delete, Put, ValidationPipe, ParseIntPipe } from '@nestjs/common';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { PageDto } from './dto/page.dto';
-import { PageService } from './page.service';
+import {
+	HttpCode,
+	Controller,
+	Post,
+	Body,
+	Param,
+	Get,
+	Delete,
+	Put,
+	ValidationPipe,
+	ParseIntPipe
+} from '@nestjs/common'
+import { Auth } from 'src/auth/decorators/auth.decorator'
+import { PageDto } from './dto/page.dto'
+import { PageService } from './page.service'
 
 @Controller('page')
 export class PageController {
@@ -22,7 +33,7 @@ export class PageController {
 	@Post()
 	@HttpCode(201)
 	/**** FOR AUTH ADMIN */
-	@Auth('jwt')
+	// @Auth('jwt')
 	createPage(@Body(new ValidationPipe()) dto: PageDto) {
 		return this.pageService.createPage(dto)
 	}

@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { PAGE_NOT_FOUND } from 'src/page/constance/page.message.constance'
 import { PageEntity } from 'src/page/entity/page.entity'
 import { deleteFileWithName } from 'src/utils/fileupload.utils'
-import { Repository } from 'typeorm'
+import { FindManyOptions, ILike, Repository } from 'typeorm'
 import { VESTNIK_GET_UPLOADS_IMAGE } from './constance/destination.constance'
 import {
 	VESTNIK_ALL_NOT_FOUND,
@@ -86,8 +86,8 @@ export class VestnikService {
 		return material
 	}
 
-	async findVestnikMaterials() {
-		return await this.vestnikMaterialRepository.find({
+	async findVestnikMaterials(searchTerm?: string) {
+		const searchOptions: FindManyOptions<VestnikMaterialEntity> = {
 			relations: {
 				category: true
 			},
@@ -97,7 +97,14 @@ export class VestnikService {
 					name: true
 				}
 			}
-		})
+		}
+		if (searchTerm) {
+			searchOptions.where = [
+				{ authors: ILike(`%${searchTerm}%`) },
+				{ name: ILike(`%${searchTerm}%`) }
+			]
+		}
+		return await this.vestnikMaterialRepository.find(searchOptions)
 	}
 
 	async findMaterialsByCategory(
