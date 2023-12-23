@@ -2,7 +2,7 @@ import Logo from '../../public/logo.png'
 import classes from './Navbar.module.scss'
 import { MenuNavigation } from './mobile/menu/menu'
 import classNames from 'classnames'
-import { FaEarthAfrica } from 'react-icons/fa6'
+import { GiEarthAmerica } from 'react-icons/gi'
 import { MdArrowDropDown } from 'react-icons/md'
 import { MdEmail } from 'react-icons/md'
 import Image from 'next/image'
@@ -27,7 +27,7 @@ export const Navbar: FC = (): JSX.Element => {
           <Link href="/">
             <a>
               Научная библиотека ИГУ. им.К.Тыныстанова
-              <FaEarthAfrica />
+              <GiEarthAmerica />
             </a>
           </Link>
         </div>
