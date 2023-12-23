@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { INews } from '../../interfaces/news.interface'
 import { formatDate } from '../../utils/formatDate.utils'
 import { Paragraph } from '../Paragraph/Paragraph'
@@ -16,9 +17,13 @@ export const NewsComponent: FC<{ data: INews[] }> = ({ data }): JSX.Element => {
               {formatDate(news.createdAt, 'MMM-YYYY')}
             </div>
             <div className={styles.cardsImage}>
-              <img
+              <Image
+                unoptimized
+                priority
                 src={`${process.env.NEXT_PUBLIC_APP_STATIC}${news.image}`}
                 alt={news.title}
+                width={500}
+                height={500}
               />
             </div>
             <Title className={styles.cardsTitle} type="h4">

@@ -4,6 +4,7 @@ import { MenuNavigation } from './mobile/menu/menu'
 import classNames from 'classnames'
 import { FaEarthAfrica } from 'react-icons/fa6'
 import { MdArrowDropDown } from 'react-icons/md'
+import { MdEmail } from 'react-icons/md'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC, useState } from 'react'
@@ -21,6 +22,22 @@ export const Navbar: FC = (): JSX.Element => {
   }
   return (
     <div className={classes.navbar}>
+      <div className={classes.top}>
+        <div className={classes.logo}>
+          <Link href="/">
+            <a>
+              Научная библиотека ИГУ. им.К.Тыныстанова
+              <FaEarthAfrica />
+            </a>
+          </Link>
+        </div>
+        <div className={classes.item}>
+          <a href="mailto:library@rambler.ru">
+            <MdEmail />
+            library@rambler.ru
+          </a>
+        </div>
+      </div>
       <nav className={classes.navigation}>
         {/* Mobile Btn */}
         <div
@@ -32,15 +49,7 @@ export const Navbar: FC = (): JSX.Element => {
           <span></span>
         </div>
         {/* Logo */}
-        <div className={classes.logo}>
-          <Link href="/">
-            <a>
-              <Image src={Logo} />
-              {/* Научная библиотека
-              <FaEarthAfrica /> */}
-            </a>
-          </Link>
-        </div>
+
         <ul className={classes.menu}>
           <li className={classes.menuItem}>
             <Link href={'/'}>
@@ -57,16 +66,35 @@ export const Navbar: FC = (): JSX.Element => {
               <a>сервисы</a>
             </Link>
           </li>
+          <li className={classes.menuItem}>
+            <a>
+              Труды преподавателей ИГУ
+              <span>
+                <MdArrowDropDown />
+              </span>
+            </a>
+            <ul className={classes.submenu}>
+              <li className={classes.subitem}>
+                <Link href={`/teachers`}>
+                  <a>Труды преподавателей</a>
+                </Link>
+              </li>
 
+              <li className={classes.subitem}>
+                <Link href={`/vestnik`}>
+                  <a>Журнал "Вестник ИГУ"</a>
+                </Link>
+              </li>
+              <li className={classes.subitem}>
+                <Link href={`#`}>
+                  <a>Журнал "Кыргыз тили жана адабияты"</a>
+                </Link>
+              </li>
+            </ul>
+          </li>
           <li className={classes.menuItem}>
             <Link href={'/elibrary'}>
               <a>Электронная Библиотека</a>
-            </Link>
-          </li>
-
-          <li className={classes.menuItem}>
-            <Link href={'/internet-links'}>
-              <a>Электронные Ресурсы</a>
             </Link>
           </li>
           <li className={classes.menuItem}>
@@ -79,34 +107,15 @@ export const Navbar: FC = (): JSX.Element => {
             </a>
           </li>
           <li className={classes.menuItem}>
+            <Link href={'/internet-links'}>
+              <a>Электронные Ресурсы</a>
+            </Link>
+          </li>
+
+          <li className={classes.menuItem}>
             <Link href={'/window'}>
               <a>Единое окно</a>
             </Link>
-          </li>
-          <li className={classes.menuItem}>
-            <a>
-              Ресурсы
-              <span>
-                <MdArrowDropDown />
-              </span>
-            </a>
-            <ul className={classes.submenu}>
-              <li className={classes.subitem}>
-                <Link href={`/teachers`}>
-                  <a>Труды преподавателей</a>
-                </Link>
-              </li>
-              <li className={classes.subitem}>
-                <Link href={`#`}>
-                  <a>Кыргыз тили жана адабияты</a>
-                </Link>
-              </li>
-              <li className={classes.subitem}>
-                <Link href={`/vestnik`}>
-                  <a>Вестник</a>
-                </Link>
-              </li>
-            </ul>
           </li>
         </ul>
 
