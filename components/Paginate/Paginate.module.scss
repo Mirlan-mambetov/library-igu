@@ -2,40 +2,36 @@
 @import '../../styles/varriables/varriables';
 
 .pagination {
-	display: -ms-flexbox;
-	display: flex;
-	padding-left: 0;
-	list-style: none;
-	border-radius: 0.25rem;
-	padding-top: 20px;
-	align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  padding-top: 20px;
+  align-items: center;
 }
 
 .pageLink {
-	position: relative;
-	padding: 0.5rem 0.75rem;
-	margin-left: -1px;
-	line-height: 1.25;
-	color: #007bff;
-	background-color: #fff;
-	border: 1px solid #dee2e6;
-	@include media-queres.mediaOnly859px{
-		padding: 0.4rem 0.35rem;
-		margin-left: 0;
-		border: none;
-	}
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.25;
+  color: #007bff;
+  @include media-queres.mediaOnly859px {
+    padding: 0.4rem 0.35rem;
+    margin-left: 0;
+    border: none;
+  }
 }
 
 .pageLink:hover {
-	cursor: pointer;
-	background-color: #e6e6e6;
+  cursor: pointer;
 }
 
 li.pageIitem.active > a {
-	background: #007bff;
-	color: white;
-	border-color: #007bff;
-	@include media-queres.mediaOnly859px{
-		border: none;
-	}
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+  @include media-queres.mediaOnly859px {
+    border: none;
+  }
 }

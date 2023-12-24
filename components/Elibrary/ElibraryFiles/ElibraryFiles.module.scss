@@ -2,85 +2,84 @@
 @import '../../../styles/varriables/varriables';
 
 .file {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 
-	.published {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		max-width: 80px;
-		width: 100%;
-		background: $primary;
-		padding: 7px 3px;
-		color: $mainWhite;
-		font-weight: 700;
-		font-size: 10px;
-		line-height: 11px;
-		text-transform: uppercase;
-	}
+  .published {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 80px;
+    width: 100%;
+    padding: 8px;
+    font-size: 10px;
+    line-height: 11px;
+    text-transform: uppercase;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+  }
 
-	.fileText {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
+  .fileText {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
-		.authors {
-			font-weight: 700;
-			font-size: 16px;
-			line-height: 21px;
-			text-transform: uppercase;
-			margin-bottom: 12px;
-			color: #504a4a;
-		}
+    .authors {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 21px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: #504a4a;
+    }
 
-		.title {
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 20px;
-		}
-		.name {
-			font-size: 18px;
-			font-weight: normal;
-			font-weight: bold;
-		}
-		.dateYer {
-			display: flex;
-			gap: 5px;
-			font-size: 15px;
-			font-weight: bold;
-		}
-	}
+    .title {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    .name {
+      font-size: 12px;
+      font-weight: normal;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .dateYer {
+      display: flex;
+      gap: 5px;
+      font-size: 15px;
+      font-weight: bold;
+    }
+  }
 
-	.info {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 10px;
-		.infoItem {
-			a {
-				display: flex;
-			}
-			span {
-				font-weight: 700;
-				font-size: 12px;
-				line-height: 13px;
-				color: #0e2054;
-			}
-			strong {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 5px;
-				font-size: 12px;
-				line-height: 13px;
-			}
-		}
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .infoItem {
+      a {
+        display: flex;
+      }
+      span {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 13px;
+        color: #0e2054;
+      }
+      strong {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        font-size: 10px;
+        line-height: 13px;
+      }
+    }
 
-		@include media-queres.mediaOnly480px {
-			flex-direction: column;
-			gap: 12px;
-			align-items: flex-start;
-		}
-	}
+    @include media-queres.mediaOnly480px {
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+  }
 }

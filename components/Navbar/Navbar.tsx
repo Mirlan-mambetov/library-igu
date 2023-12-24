@@ -26,15 +26,15 @@ export const Navbar: FC = (): JSX.Element => {
         <div className={classes.logo}>
           <Link href="/">
             <a>
-              Научная библиотека ИГУ. им.К.Тыныстанова
+              Научная библиотека ИГУ им.К.Тыныстанова
               <GiEarthAmerica />
             </a>
           </Link>
         </div>
         <div className={classes.item}>
-          <a href="mailto:library@rambler.ru">
+          <a href="mailto:igulibrary@rambler.ru">
             <MdEmail />
-            library@rambler.ru
+            igulibrary@rambler.ru
           </a>
         </div>
       </div>

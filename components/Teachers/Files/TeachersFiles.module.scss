@@ -2,76 +2,72 @@
 @import '../../../styles/varriables/varriables';
 
 .file {
-	display: flex;
-	flex-direction: column;
-	gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 
-	.published {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		max-width: 80px;
-		width: 100%;
-		background: $primary;
-		padding: 12px 5px;
-		color: $mainWhite;
-		font-weight: 700;
-		font-size: 10px;
-		line-height: 11px;
-		text-transform: uppercase;
-	}
+  .published {
+    span {
+      padding: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 10px;
+      line-height: 11px;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+  }
 
-	.fileText {
-		display: flex;
-		flex-direction: column;
-		gap: 5px;
+  .fileText {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 
-		.authors {
-			font-weight: 700;
-			font-size: 16px;
-			line-height: 21px;
-			text-transform: uppercase;
-			margin-bottom: 12px;
-			color: #504a4a;
-		}
+    .authors {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 21px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: #504a4a;
+    }
 
-		.title {
-			font-weight: 400;
-			font-size: 15px;
-			line-height: 20px;
-		}
-		.name {
-			font-size: 16px;
-			font-weight: bold;
-		}
-	}
+    .title {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+    }
+    .name {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 18px;
+    }
+  }
 
-	.info {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		flex-wrap: wrap;
-		gap: 12px;
+  .info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 
-		.infoItem {
-			span {
-				font-weight: 700;
-				font-size: 12px;
-				line-height: 13px;
-				color: #0e2054;
-			}
-			strong {
-				font-size: 10px;
-				text-transform: uppercase;
-				text-decoration: underline;
-				cursor: pointer;
-			}
-		}
+    .infoItem {
+      span {
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 13px;
+        color: #0e2054;
+      }
+      strong {
+        font-size: 10px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
 
-		@include media-queres.mediaOnly480px {
-			flex-direction: column;
-			gap: 12px;
-			align-items: flex-start;
-		}
-	}
+    @include media-queres.mediaOnly480px {
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+  }
 }
