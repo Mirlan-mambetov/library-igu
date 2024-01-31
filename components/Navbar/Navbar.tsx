@@ -86,7 +86,7 @@ export const Navbar: FC = (): JSX.Element => {
                 </Link>
               </li>
               <li className={classes.subitem}>
-                <Link href={`#`}>
+                <Link href={`/kyrgyz-language`}>
                   <a>Журнал "Кыргыз тили жана адабияты"</a>
                 </Link>
               </li>

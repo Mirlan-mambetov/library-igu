@@ -34,8 +34,8 @@ export const Jurnal: FC<IJournal> = ({
           <Image
             src={`${process.env.NEXT_PUBLIC_APP_STATIC}/${image}`}
             alt={title}
-            width={600}
-            height={600}
+            width={500}
+            height={720}
           />
         </div>
       </div>

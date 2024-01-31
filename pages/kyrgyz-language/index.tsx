@@ -1,46 +1,47 @@
-import { Layout } from '../../Layout/Layout'
-import { Button } from '../../components'
-import styles from './kyrgyz.language.module.scss'
 import { NextSeo } from 'next-seo'
-import React from 'react'
+import { Layout } from '../../Layout/Layout'
+import { Hero, Jurnal } from '../../components'
+import { IPage } from '../../interfaces/page.interface'
+import { pageApi } from '../../store/api/page/page.api'
+import styles from './kyrgyz.language.module.scss'
 
 const KyrgyzLanguagePage = () => {
-	return (
-		<Layout>
-			<NextSeo
-				title='Кыргыз - тили жана адабияты - Научная библиотека ИГУ'
-				description='Кыргыз - тили жана адабияты Научная библиотека ИГУ'
-			/>
-			{/* Hero */}
-			{/* {HeroData.map((h, i) => (
-				<Hero
-					key={i}
-					title={h.title}
-					subContent={h.subContent}
-					subContentOrientation='row'
-				/>
-			))} */}
-			{/* About jurnal */}
-			<section className={styles.aboutJurnal}>
-				{/* <div className='container'>
-					{JurnalData.map((jurnal) => (
-						<Jurnal {...jurnal} key={jurnal.id} />
-					))}
+  const pageId = 11
+  const { data: page = {} as IPage, isLoading } =
+    pageApi.useFetchPageQuery(pageId)
+
+  return (
+    <Layout>
+      <NextSeo
+        title="Кыргыз - тили жана адабияты - Научная библиотека ИГУ"
+        description="Кыргыз - тили жана адабияты Научная библиотека ИГУ"
+      />
+      {/* Hero */}
+      {page?.hero &&
+        page.hero.map((hero) => <Hero data={hero} key={hero.id} />)}
+      {/* About jurnal */}
+      <div className="container">
+        <div className={styles.jurnalAbout}>
+          {page?.journal &&
+            page.journal.map((j) => <Jurnal {...j} key={j.id} />)}
+        </div>
+        {/* <div className={styles.aboutVestnik}>
+					{page?.tabs && page.tabs.map(tab => <Tabs tabs={tab} key={tab.id} />)}
 				</div> */}
-			</section>
-			{/* Arhivs */}
-			<div className='container'>
-				<div className={styles.arhivs}>
-					{/* {ArhivsData.map((arhiv, i) => (
+      </div>
+      {/* Arhivs */}
+      <div className="container">
+        <div className={styles.arhivs}>
+          {/* {ArhivsData.map((arhiv, i) => (
 						<Arhivs data={arhiv} key={i} contentLink='kyrgyz-language' />
 					))} */}
-					<div className={styles.arhivsBtn}>
-						<Button orientation='right'>Показать больше архивов</Button>
-					</div>
-				</div>
-			</div>
-		</Layout>
-	)
+          <div className={styles.arhivsBtn}>
+            {/* <Button orientation="right">Показать больше архивов</Button> */}
+          </div>
+        </div>
+      </div>
+    </Layout>
+  )
 }
 
 export default KyrgyzLanguagePage
