@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo'
 import { Layout } from '../../Layout/Layout'
-import { Hero, Jurnal } from '../../components'
+import { Hero, Jurnal, Tabs } from '../../components'
 import { IPage } from '../../interfaces/page.interface'
 import { pageApi } from '../../store/api/page/page.api'
 import styles from './kyrgyz.language.module.scss'
@@ -25,9 +25,10 @@ const KyrgyzLanguagePage = () => {
           {page?.journal &&
             page.journal.map((j) => <Jurnal {...j} key={j.id} />)}
         </div>
-        {/* <div className={styles.aboutVestnik}>
-					{page?.tabs && page.tabs.map(tab => <Tabs tabs={tab} key={tab.id} />)}
-				</div> */}
+        <div className={styles.aboutVestnik}>
+          {page?.tabs &&
+            page.tabs.map((tab) => <Tabs tabs={tab} key={tab.id} />)}
+        </div>
       </div>
       {/* Arhivs */}
       <div className="container">
