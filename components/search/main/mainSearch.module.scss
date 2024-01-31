@@ -1,4 +1,5 @@
 @import '../../../styles/mixins';
+@import '../../../styles/media/media-queres';
 @import '../../../styles/varriables/varriables';
 .search {
   position: relative;
@@ -17,6 +18,10 @@
       font-family: inherit;
       font-size: 100%;
 
+      @include mediaOnly535px {
+        width: 200px;
+      }
+
       &:focus {
         outline: none;
       }
@@ -29,6 +34,9 @@
       border: none;
       font-size: 20px;
       color: $mainWhite;
+      @include mediaOnly535px {
+        padding: 4px;
+      }
     }
   }
   .result {

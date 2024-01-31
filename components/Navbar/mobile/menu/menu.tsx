@@ -1,13 +1,12 @@
+import classNames from 'classnames'
 import { FC } from 'react'
 import { MenuProps } from './menu.props'
-import classNames from 'classnames'
 
 // STYLES
-import styles from './menu.module.scss'
 import Link from 'next/link'
+import styles from './menu.module.scss'
 
 export const MenuNavigation: FC<MenuProps> = ({ active }): JSX.Element => {
-
   return (
     <div className={classNames(styles.menu, { [styles.active]: active })}>
       <div className="container">
@@ -59,7 +58,7 @@ export const MenuNavigation: FC<MenuProps> = ({ active }): JSX.Element => {
               </Link>
             </li>
             <li className={styles.listItem}>
-              <Link href="/resources">
+              <Link href="/internet-links">
                 <a>Электронные ресурсы</a>
               </Link>
             </li>
